@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import CarCard from "../components/CarCard";
-import Filters from "../components/Filters";
+import CarCard from "../components/CarCard/CarCard";
+import Filters from "../components/Filters/Filters";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCars } from "../redux/advertsSlice";
+import { fetchCars } from "../redux/advertSlice";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();

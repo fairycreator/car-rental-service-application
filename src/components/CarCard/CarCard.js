@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { toggleFavorite } from "../redux/advertsSlice";
+import { toggleFavorite } from "../../redux/advertSlice";
 
 const CarCard = ({ car }) => {
   const dispatch = useDispatch();
