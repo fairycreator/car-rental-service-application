@@ -5,9 +5,9 @@ import Loader from "./components/Loader/Loader";
 import { Header } from "./components/Header/Header";
 import { selectLoading } from "./redux/selectors";
 
-const Home = lazy(() => import("./pages/Homepage"));
-const Catalog = lazy(() => import("./pages/CatalogPage"));
-const Favorites = lazy(() => import("./pages/FavoritesPage"));
+const Home = lazy(() => import("./pages/HomePage/Homepage"));
+const Catalog = lazy(() => import("./pages/CatalogPage/CatalogPage"));
+const Favorites = lazy(() => import("./pages/FavoritesPage/FavoritesPage"));
 
 export const App = () => {
   const isLoading = useSelector(selectLoading);
