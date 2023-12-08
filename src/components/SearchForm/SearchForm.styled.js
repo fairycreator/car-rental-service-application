@@ -85,7 +85,3 @@ export const BtnSearch = styled.button`
     background-color: #0b5ed7;
   }
 `;
-
-// <StyledSelect name="make" placeholder="Enter the text" options={sortedMakes} />
-// <LabelMilage name="mileageFrom" placeholder="From" />
-// <LabelMilage name="mileageTo" placeholder="To" />
