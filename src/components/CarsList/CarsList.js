@@ -1,4 +1,4 @@
-import { CarCard } from "../../components/CarCard/CarCard";
+import { CarCard } from "../CarCard/CarCard";
 
 import { List } from "./CarsList.styled";
 

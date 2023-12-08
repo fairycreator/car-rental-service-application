@@ -18,8 +18,8 @@ export const NotFoundTitle = styled.h2`
   color: #adb5bd;
 `;
 
-// export const Graphic = styled.img`
-//   max-width: 100%;
-//   height: auto;
-//   margin-bottom: 1rem;
-// `;
+export const Graphic = styled.img`
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+`;

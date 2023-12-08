@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../components/Button/Button";
+import { Button } from "../../components/Button/Button";
 
 export const CatalogPage = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ export const Grid = styled.div`
   gap: 1rem;
   margin-top: 2rem;
   width: 100%;
-  max-width: 1200px; /* Or the max-width you prefer */
+  max-width: 1200px; // Or the max-width you prefer
 `;
 
 export const Card = styled.div`

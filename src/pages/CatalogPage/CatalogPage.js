@@ -6,12 +6,10 @@ import {
   selectFilteredCars,
   selectLoading,
 } from "../../redux/selectors";
-import { CatalogPage } from "./Catalog.styled";
-import { clearCarsList } from "../../redux/carSlice";
+import { CatalogPage, LoadMoreButton } from "./CatalogPage.styled";
 import { clearFilter } from "../../redux/filterSlice";
 import { CarsList } from "../../components/CarsList/CarsList";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
-import { Button } from "../../components/Button/Button";
 import { NotFound } from "../../components/NotFound/NotFound";
 
 const Catalog = () => {
@@ -23,7 +21,6 @@ const Catalog = () => {
 
   useEffect(() => {
     if (page === 1) {
-      dispatch(clearCarsList());
       dispatch(clearFilter());
     }
 
@@ -33,15 +30,16 @@ const Catalog = () => {
   const handleLoadMore = () => {
     setPage((prevState) => prevState + 1);
   };
+
   return (
-    <>
-      <CatalogPage>
-        <SearchForm />
-        {filteredCars.length > 0 && <CarsList cars={filteredCars} />}
-        {filteredCars.length === 0 && !isLoading && <NotFound />}
-        {amount < 32 && <Button onClick={handleLoadMore} />}
-      </CatalogPage>
-    </>
+    <CatalogPage>
+      <SearchForm />
+      {filteredCars.length > 0 ? <CarsList cars={filteredCars} /> : null}
+      {filteredCars.length === 0 && !isLoading && <NotFound />}
+      {amount > filteredCars.length && (
+        <LoadMoreButton onClick={handleLoadMore}>Load More</LoadMoreButton>
+      )}
+    </CatalogPage>
   );
 };
 

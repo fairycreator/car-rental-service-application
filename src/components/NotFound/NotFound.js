@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, NotFoundTitle, Graphic } from "./NotFound.styled";
-import NotFoundImage from "../../assets/NotFoundImage.png";
+import NotFoundImage from "../../assets/NotFoundImage.jpeg";
 
 export const NotFound = () => {
   return (

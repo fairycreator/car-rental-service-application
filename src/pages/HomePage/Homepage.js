@@ -1,6 +1,6 @@
 import React from "react";
 import { HomePage, Img, Link, Title, SubTitle } from "./HomePage.styled";
-import Background from "./";
+import Background from "../../assets/background-car-rental.jpeg";
 
 const Home = () => {
   return (

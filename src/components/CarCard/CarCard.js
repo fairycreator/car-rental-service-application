@@ -12,14 +12,14 @@ import {
   StyledHeart,
   StyledHeartIcon,
 } from "./CarCard.styled";
-import { Modal } from "../../components/CarModal/CarModal";
-import { selectFavoritesCars } from "../../redux/selectors";
+import CarModal from "../../components/CarModal/CarModal";
+import { selectFavoriteCars } from "../../redux/selectors";
 import { addFavoriteCar, deleteFavoritCar } from "../../redux/favoriteSlice";
 
 export const CarCard = ({ car }) => {
   const [toggleModal, setToggleModal] = useState(false);
   const dispatch = useDispatch();
-  const favoriteCars = useSelector(selectFavoritesCars);
+  const favoriteCars = useSelector(selectFavoriteCars);
   const handleClick = () => {
     setToggleModal((prevState) => !prevState);
   };
@@ -71,7 +71,7 @@ export const CarCard = ({ car }) => {
           <StyledHeartIcon $isInFavorites={isInFavorites} />
         </StyledHeart>
       </Item>
-      {toggleModal && <Modal handleClick={handleClick} car={car}></Modal>}
+      {toggleModal && <CarModal handleClick={handleClick} car={car}></CarModal>}
     </>
   );
 };
