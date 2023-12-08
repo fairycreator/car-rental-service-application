@@ -1,6 +1,6 @@
 import React from "react";
 import { HomePage, Img, Link, Title, SubTitle } from "./HomePage.styled";
-import Background from " ";
+import Background from "./";
 
 const Home = () => {
   return (
@@ -11,7 +11,7 @@ const Home = () => {
         Ми пропонуємо широкий вибір автомобілів для оренди на будь-який смак і
         бюджет. Надійність, комфорт і доступні ціни - наші головні пріоритети.
       </SubTitle>
-      <Link></Link>
+      <Link href="#">Дізнатися більше</Link>
     </HomePage>
   );
 };

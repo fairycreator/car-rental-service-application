@@ -1,42 +1,48 @@
-import React, { useState, useEffect } from "react";
-import CarCard from "../../components/CarCard/CarCard";
-import Filters from "../../components/Filters/Filters";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchCars } from "../../redux/advertSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCars } from "../../redux/operations";
+import {
+  selectAmountCars,
+  selectFilteredCars,
+  selectLoading,
+} from "../../redux/selectors";
+import { CatalogPage } from "./Catalog.styled";
+import { clearCarsList } from "../../redux/carSlice";
+import { clearFilter } from "../../redux/filterSlice";
+import { CarsList } from "../../components/CarsList/CarsList";
+import { SearchForm } from "../../components/SearchForm/SearchForm";
+import { Button } from "../../components/Button/Button";
+import { NotFound } from "../../components/NotFound/NotFound";
 
-const CatalogPage = () => {
+const Catalog = () => {
   const dispatch = useDispatch();
-  const [selectedMake, setSelectedMake] = useState("");
-  const cars = useSelector((state) => state.adverts.items);
-  const makes = useSelector((state) => state.adverts.makes);
+  const [page, setPage] = useState(1);
+  const amount = useSelector(selectAmountCars);
+  const filteredCars = useSelector(selectFilteredCars);
+  const isLoading = useSelector(selectLoading);
 
   useEffect(() => {
-    dispatch(fetchCars());
-  }, [dispatch]);
+    if (page === 1) {
+      dispatch(clearCarsList());
+      dispatch(clearFilter());
+    }
 
-  const handleMakeSelect = (make) => {
-    setSelectedMake(make);
+    dispatch(fetchCars({ page, limit: 8 }));
+  }, [dispatch, page]);
+
+  const handleLoadMore = () => {
+    setPage((prevState) => prevState + 1);
   };
-
-  const filteredCars = cars.filter((car) => {
-    return selectedMake ? car.make === selectedMake : true;
-  });
-
   return (
-    <div>
-      <Filters
-        makes={makes}
-        selectedMake={selectedMake}
-        onMakeSelect={handleMakeSelect}
-      />
-      <div className="car-cards-container">
-        {filteredCars.map((car) => (
-          <CarCard key={car.id} car={car} />
-        ))}
-      </div>
-      {/* Тут буде компонент для пагінації */}
-    </div>
+    <>
+      <CatalogPage>
+        <SearchForm />
+        {filteredCars.length > 0 && <CarsList cars={filteredCars} />}
+        {filteredCars.length === 0 && !isLoading && <NotFound />}
+        {amount < 32 && <Button onClick={handleLoadMore} />}
+      </CatalogPage>
+    </>
   );
 };
 
-export default CatalogPage;
+export default Catalog;
