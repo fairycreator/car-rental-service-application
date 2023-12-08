@@ -1,27 +1,94 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { toggleFavorite } from "../../redux/advertSlice";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import PropTypes from "prop-types";
+import {
+  Btn,
+  Descr,
+  Image,
+  ThumbImage,
+  Item,
+  Paragraf,
+  Span,
+  StyledHeart,
+  StyledHeartIcon,
+} from "./CarCard.styled";
+import { Modal } from "../../components/CarModal/CarModal";
+import { selectFavoritesCars } from "../../redux/selectors";
+import { addFavoriteCar, deleteFavoritCar } from "../../redux/favoriteSlice";
 
-const CarCard = ({ car }) => {
+export const CarCard = ({ car }) => {
+  const [toggleModal, setToggleModal] = useState(false);
   const dispatch = useDispatch();
-  const { id, make, model, year, price, mileage, image } = car;
-
-  const handleFavoriteClick = () => {
-    dispatch(toggleFavorite(id));
+  const favoriteCars = useSelector(selectFavoritesCars);
+  const handleClick = () => {
+    setToggleModal((prevState) => !prevState);
   };
+  const handleToogleFavorites = (carId) => {
+    const persistedCar = favoriteCars.find(({ id }) => carId === id);
+
+    if (!persistedCar) {
+      dispatch(addFavoriteCar(car));
+    } else {
+      dispatch(deleteFavoritCar(carId));
+    }
+  };
+  const {
+    id,
+    year,
+    make,
+    model,
+    type,
+    img,
+    accessories,
+    functionalities,
+    rentalPrice,
+    rentalCompany,
+    address,
+  } = car;
+  const updateaddress = address.split(", ").slice(-2).join(" | ");
+  const isInFavorites = favoriteCars.some((i) => i.id === id);
 
   return (
-    <div className="car-card">
-      <img src={image} alt={`${make} ${model}`} />
-      <h3>{`${make} ${model}, ${year}`}</h3>
-      <p>{`$${price}/hour`}</p>
-      <p>{`Mileage: ${mileage.toLocaleString()} km`}</p>
-      <button onClick={handleFavoriteClick}>
-        {car.isFavorite ? "❤️" : "♡"}
-      </button>
-      <button>Learn more</button>
-    </div>
+    <>
+      <Item>
+        <ThumbImage>
+          <Image src={img} alt={model} />
+        </ThumbImage>
+        <Paragraf>
+          <p>
+            {make} <Span> {model}, </Span> {year}
+          </p>
+          <p> {rentalPrice}</p>
+        </Paragraf>
+        <Descr>
+          {updateaddress} | {rentalCompany} | {make} | {id} | {type} |{" "}
+          {accessories[0]} | {functionalities[0]}
+        </Descr>
+        <Btn id={id} onClick={handleClick}>
+          learn more
+        </Btn>
+        <StyledHeart id={id} onClick={() => handleToogleFavorites(id)}>
+          <StyledHeartIcon $isInFavorites={isInFavorites} />
+        </StyledHeart>
+      </Item>
+      {toggleModal && <Modal handleClick={handleClick} car={car}></Modal>}
+    </>
   );
 };
 
-export default CarCard;
+CarCard.propTypes = {
+  car: PropTypes.shape({
+    id: PropTypes.number,
+    year: PropTypes.number,
+    make: PropTypes.string,
+    model: PropTypes.string,
+    type: PropTypes.string,
+    img: PropTypes.string,
+    description: PropTypes.string,
+    accessories: PropTypes.arrayOf(PropTypes.string),
+    functionalities: PropTypes.arrayOf(PropTypes.string),
+    rentalPrice: PropTypes.string,
+    rentalCompany: PropTypes.string,
+    address: PropTypes.string,
+  }),
+};
