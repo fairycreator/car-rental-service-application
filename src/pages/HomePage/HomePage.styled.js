@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HomePage = styled.div`
   display: flex;
@@ -15,11 +15,12 @@ export const Title = styled.h1`
   font-size: 2.5em;
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 40px;
 `;
 
 export const SubTitle = styled.h2`
   color: #555;
-  font-size: 1.5em;
+  font-size: 1.3em;
   text-align: center;
   margin-bottom: 30px;
 `;
@@ -28,7 +29,7 @@ export const Img = styled.img`
   max-width: 80%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
 `;
 

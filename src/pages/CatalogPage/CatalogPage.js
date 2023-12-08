@@ -6,7 +6,8 @@ import {
   selectFilteredCars,
   selectLoading,
 } from "../../redux/selectors";
-import { CatalogPage, LoadMoreButton } from "./CatalogPage.styled";
+import { CatalogPage } from "./CatalogPage.styled";
+import { Button } from "../../components/Button/Button";
 import { clearFilter } from "../../redux/filterSlice";
 import { CarsList } from "../../components/CarsList/CarsList";
 import { SearchForm } from "../../components/SearchForm/SearchForm";
@@ -21,6 +22,7 @@ const Catalog = () => {
 
   useEffect(() => {
     if (page === 1) {
+      dispatch(CarsList());
       dispatch(clearFilter());
     }
 
@@ -30,15 +32,12 @@ const Catalog = () => {
   const handleLoadMore = () => {
     setPage((prevState) => prevState + 1);
   };
-
   return (
     <CatalogPage>
       <SearchForm />
-      {filteredCars.length > 0 ? <CarsList cars={filteredCars} /> : null}
+      {filteredCars.length > 0 && <CarsList cars={filteredCars} />}
       {filteredCars.length === 0 && !isLoading && <NotFound />}
-      {amount > filteredCars.length && (
-        <LoadMoreButton onClick={handleLoadMore}>Load More</LoadMoreButton>
-      )}
+      {amount < 32 && <Button onClick={handleLoadMore} />}
     </CatalogPage>
   );
 };

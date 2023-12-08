@@ -1,87 +1,91 @@
 import styled from "styled-components";
-import Select from "react-select";
+
+export const Title = styled.p`
+  margin: 0;
+  color: #8a8a89;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+`;
 
 export const Form = styled.form`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 0;
   gap: 20px;
-  margin-bottom: 20px;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 export const SubForm = styled.div`
   display: flex;
-  gap: 10px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-export const Title = styled.h2`
-  font-size: 0.9rem;
-  color: #333;
-  margin-bottom: 5px;
-`;
-
-export const StyledSelect = styled(Select)`
-  .Select__control {
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    padding: 4px 8px;
-    font-size: 0.9rem;
-
-    &:hover {
-      border-color: #adb5bd;
-    }
-  }
-
-  .Select__menu {
-    font-size: 0.9rem;
-  }
-
-  .Select__single-value {
-    color: #495057;
-  }
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  gap: 20px;
 `;
 
 export const EnterText = styled.div`
   display: flex;
-  gap: 10px;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-`;
-
-export const LabelMilage = styled.input.attrs({
-  type: "number",
-})`
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  font-size: 0.9rem;
-  color: #495057;
-
-  &::placeholder {
-    color: #6c757d;
-  }
-`;
-
-export const BtnSearch = styled.button`
-  background-color: #0d6efd;
-  color: white;
+  width: 320px;
+  height: 40px;
   border: none;
-  padding: 10px 20px;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s;
+  align-items: flex-start;
+  margin-top: 20px;
 
+  margin: 0;
+`;
+
+export const LabelMilage1 = styled.input`
+  display: flex;
+  width: 160px;
+  height: 38px;
+  border: none;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 4px 0px 0px 4px;
+  border-right: 1px solid lightgray;
+  background-color: white;
+  align-items: flex-start;
+`;
+export const LabelMilage2 = styled.input`
+  display: flex;
+  width: 160px;
+  height: 38px;
+  border: none;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 0px 4px 4px 0px;
+  background-color: white;
+  border-left: 1px solid lightgray;
+`;
+export const BtnSearch = styled.button`
+  width: 100px;
+  height: 38px;
+  color: #fff;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  border-radius: 4px;
+  background: #3470ff;
+  transition: all 0.3s ease-in-out;
+  &.active {
+    background-color: #afffff;
+    color: #000000;
+  }
   &:hover {
-    background-color: #0b5ed7;
+    scale: 1.1;
+    color: red;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 1px 5px 0px rgba(0, 0, 0, 0.14), 0px 2px 5px -1px rgba(0, 0, 0, 0.12);
   }
 `;

@@ -12,7 +12,7 @@ import {
   StyledHeart,
   StyledHeartIcon,
 } from "./CarCard.styled";
-import CarModal from "../../components/CarModal/CarModal";
+import { CarModal } from "../../components/CarModal/CarModal";
 import { selectFavoriteCars } from "../../redux/selectors";
 import { addFavoriteCar, deleteFavoritCar } from "../../redux/favoriteSlice";
 

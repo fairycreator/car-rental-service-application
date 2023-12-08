@@ -1,18 +1,18 @@
 import Select from "react-select";
 import { useDispatch } from "react-redux";
+import {
+  BtnSearch,
+  EnterText,
+  Form,
+  LabelMilage1,
+  LabelMilage2,
+  SubForm,
+  Title,
+} from "./SearchForm.styled";
 import { pricePoints, sortedMakes } from "../../utils/searchPointers";
 import { fetchCars } from "../../redux/operations";
 import { setFilter } from "../../redux/filterSlice";
 import { carsList } from "../../redux/advertSlice";
-import {
-  Form,
-  SubForm,
-  Title,
-  StyledSelect,
-  EnterText,
-  LabelMilage,
-  BtnSearch,
-} from "./SearchForm.styled";
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ export const SearchForm = () => {
         </label>
         <label>
           <Title>Price / 1 hour </Title>
-          <StyledSelect
+          <Select
             name="rentalPrice"
             placeholder="To $"
             options={pricePoints.map((price) => ({
@@ -82,10 +82,10 @@ export const SearchForm = () => {
         <Title> Car mileage / km</Title>
         <EnterText>
           <label>
-            <LabelMilage name="mileageFrom" placeholder="From" />
+            <LabelMilage1 type="number" name="mileageFrom" placeholder="From" />
           </label>
           <label>
-            <LabelMilage name="mileageTo" placeholder="To" />
+            <LabelMilage2 type="number" name="mileageTo" placeholder="To" />
           </label>
         </EnterText>
       </div>
