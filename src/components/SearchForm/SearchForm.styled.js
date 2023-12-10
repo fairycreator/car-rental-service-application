@@ -17,6 +17,7 @@ export const Form = styled.form`
   padding: 10px;
   margin: 0;
   gap: 20px;
+  padding-top: 40px;
 `;
 
 export const SubForm = styled.div`

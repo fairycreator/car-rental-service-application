@@ -14,7 +14,7 @@ import {
 } from "./CarCard.styled";
 import { CarModal } from "../../components/CarModal/CarModal";
 import { selectFavoriteCars } from "../../redux/selectors";
-import { addFavoriteCar, deleteFavoritCar } from "../../redux/favoriteSlice";
+import { addFavoriteCar, deleteFavoriteCar } from "../../redux/favoriteSlice";
 
 export const CarCard = ({ car }) => {
   const [toggleModal, setToggleModal] = useState(false);
@@ -29,7 +29,7 @@ export const CarCard = ({ car }) => {
     if (!persistedCar) {
       dispatch(addFavoriteCar(car));
     } else {
-      dispatch(deleteFavoritCar(carId));
+      dispatch(deleteFavoriteCar(carId));
     }
   };
   const {

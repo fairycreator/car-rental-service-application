@@ -9,7 +9,7 @@ export const advertSlice = createSlice({
     isError: "",
   },
   reducers: {
-    carsList(state, action) {
+    advertsList(state, action) {
       state.items = action.payload;
     },
   },
@@ -29,4 +29,4 @@ export const advertSlice = createSlice({
   },
 });
 
-export const { carsList } = advertSlice.actions;
+export const { advertsList } = advertSlice.actions;

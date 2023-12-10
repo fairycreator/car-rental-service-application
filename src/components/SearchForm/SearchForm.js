@@ -12,7 +12,7 @@ import {
 import { pricePoints, sortedMakes } from "../../utils/searchPointers";
 import { fetchCars } from "../../redux/operations";
 import { setFilter } from "../../redux/filterSlice";
-import { carsList } from "../../redux/advertSlice";
+import { advertsList } from "../../redux/advertSlice";
 
 export const SearchForm = () => {
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ export const SearchForm = () => {
       mileageFrom: mileageFromInNumber,
       mileageTo: mileageToInNumber,
     };
-    dispatch(carsList());
+    dispatch(advertsList());
     dispatch(fetchCars({ page: 1, limit: 32 }));
     dispatch(setFilter(filters));
   };

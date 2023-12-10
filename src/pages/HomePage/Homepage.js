@@ -1,17 +1,27 @@
 import React from "react";
-import { HomePage, Img, Link, Title, SubTitle } from "./HomePage.styled";
-import Background from "../../assets/background-car-rental.jpeg";
+import {
+  HomePage,
+  LinkButton,
+  Hero,
+  Title,
+  SubTitle,
+  ContentContainer,
+} from "./HomePage.styled";
 
 const Home = () => {
   return (
     <HomePage>
-      <Title>Ласкаво просимо до нашого сервісу оренди автомобілів</Title>
-      <SubTitle>
-        Ми пропонуємо широкий вибір автомобілів для оренди на будь-який смак і
-        бюджет. Надійність, комфорт і доступні ціни - наші головні пріоритети.
-      </SubTitle>
-      <Img src={Background} alt="car rental service" />
-      <Link href="#">Дізнатися більше</Link>
+      <Hero>
+        <ContentContainer>
+          <Title>Ласкаво просимо до нашого сервісу оренди автомобілів</Title>
+          <SubTitle>
+            Ми пропонуємо широкий вибір автомобілів для оренди на будь-який смак
+            і бюджет. Надійність, комфорт і доступні ціни - наші головні
+            пріоритети.
+          </SubTitle>
+          <LinkButton href="/catalog">Дізнатися більше</LinkButton>
+        </ContentContainer>
+      </Hero>
     </HomePage>
   );
 };

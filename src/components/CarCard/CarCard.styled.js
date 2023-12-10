@@ -3,6 +3,7 @@ import { ReactComponent as GoHeart } from "../../assets/heart.svg";
 
 export const Item = styled.li`
   position: relative;
+  margin: 10px;
   border-radius: 14px;
   max-width: 474px;
   min-height: 426px;

@@ -1,50 +1,71 @@
 import styled from "styled-components";
+import bgImg from "../../assets/background-car-rental.jpeg";
 
 export const HomePage = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const Hero = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url(${bgImg});
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  background-color: #f0f4f8;
-  padding: 20px;
+  text-align: center;
+`;
+
+export const ContentContainer = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  text-align: center;
+  padding: 24px;
 `;
 
 export const Title = styled.h1`
-  color: #333;
-  font-size: 2.5em;
-  text-align: center;
-  margin-bottom: 20px;
-  margin-top: 40px;
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 24px;
 `;
 
 export const SubTitle = styled.h2`
-  color: #555;
-  font-size: 1.3em;
-  text-align: center;
-  margin-bottom: 30px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 24px;
+`;
+
+export const LinkButton = styled.a`
+  display: inline-block;
+  border-radius: 22px;
+  padding: 18px 24px;
+  background: #3470ff;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    background: #0b44cd;
+  }
 `;
 
 export const Img = styled.img`
-  max-width: 80%;
+  width: 100%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px;
-`;
-
-export const Link = styled.a`
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 1em;
-  cursor: pointer;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #0056b3;
-  }
 `;

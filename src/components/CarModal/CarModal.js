@@ -29,8 +29,6 @@ import {
 } from "./CarModal.styled";
 import { numberWithSlash } from "../../helpers/numberWithSlash";
 
-const modalRoot = document.querySelector("#modal-root");
-
 export const CarModal = ({ handleClick, car }) => {
   useEffect(() => {
     const handlePressKey = (event) => {
@@ -38,6 +36,7 @@ export const CarModal = ({ handleClick, car }) => {
         handleClick();
       }
     };
+
     document.body.classList.add("no-scroll");
     window.addEventListener("keydown", handlePressKey);
 
@@ -52,6 +51,7 @@ export const CarModal = ({ handleClick, car }) => {
       handleClick();
     }
   };
+
   const {
     id,
     year,
@@ -76,6 +76,12 @@ export const CarModal = ({ handleClick, car }) => {
   const userConditionsDescr = userconditions.split(": ");
   const driverLicense = rentalConditionsToArray[1];
   const security = rentalConditionsToArray[2];
+
+  const modalRoot = document.querySelector("#modal-root");
+  if (!modalRoot) {
+    console.error("Modal root not found");
+    return null;
+  }
 
   return createPortal(
     <Overlay onClick={handleOverlayClick}>

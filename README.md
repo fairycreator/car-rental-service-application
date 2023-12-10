@@ -1,7 +1,3 @@
-Certainly! Below is a template for a README file for your car rental application that incorporates the JSON dataset. You can adjust it to fit the specific details and features of your application.
-
----
-
 # Car Rental Application
 
 ## Overview

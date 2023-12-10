@@ -2,13 +2,18 @@ import { createSelector } from "@reduxjs/toolkit";
 
 export const selectCars = (state) => state.cars.items;
 export const selectFilter = (state) => state.filter;
-export const selectAmountCars = (state) => state.cars.items.length;
+export const selectAmountCars = (state) => state.cars.items?.length;
 export const selectLoading = (state) => state.cars.isLoading;
-export const selectFavoriteCars = (state) => state.favorite.favoritCar;
+export const selectFavoriteCars = (state) => state.favorite.favoriteCar;
+
 export const selectFilteredCars = createSelector(
   [selectCars, selectFilter],
   (cars, { make, mileageFrom, mileageTo, rentalPrice }) => {
-    let filteredCars = [];
+    if (!cars) return [];
+
+    let filteredCars = cars.filter((car) =>
+      car.make.toLowerCase().includes(make.toLowerCase())
+    );
 
     filteredCars = cars.filter((car) =>
       car.make.toLowerCase().includes(make.toLowerCase())
