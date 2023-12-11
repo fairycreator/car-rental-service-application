@@ -86,5 +86,3 @@ If you encounter any issues or have questions, please contact us at support@carr
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-You can modify this template to better suit your application's specifics, such as adding sections for API documentation, more detailed installation instructions, or additional features.
