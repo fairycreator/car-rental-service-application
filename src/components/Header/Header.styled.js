@@ -5,7 +5,7 @@ export const ContainerNav = styled.nav`
   padding-right: 10px;
   padding-top: 16px;
   display: flex;
-  gap: 1200px;
+  justify-content: space-between;
 
   @media screen and (min-width: 834px) {
     padding-left: 27px;
