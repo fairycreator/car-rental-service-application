@@ -17,11 +17,11 @@ To set up the application on your local machine:
 
 1. Clone the repository:
    ```
-   git clone https://github.com/your-username/car-rental-app.git
+   git clone https://github.com/your-username/car-rental-service-application.git
    ```
 2. Navigate to the application directory:
    ```
-   cd car-rental-app
+   cd car-rental-service-application
    ```
 3. Install the dependencies:
    ```

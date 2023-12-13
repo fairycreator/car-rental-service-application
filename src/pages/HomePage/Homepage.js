@@ -13,13 +13,13 @@ const Home = () => {
     <HomePage>
       <Hero>
         <ContentContainer>
-          <Title>Ласкаво просимо до нашого сервісу оренди автомобілів</Title>
+          <Title>Welcome to our car rental service</Title>
           <SubTitle>
-            Ми пропонуємо широкий вибір автомобілів для оренди на будь-який смак
-            і бюджет. Надійність, комфорт і доступні ціни - наші головні
-            пріоритети.
+            We offer a wide selection of cars for rent for every taste and the
+            budget. Reliability, comfort and affordable prices are our main
+            priorities priorities.
           </SubTitle>
-          <LinkButton href="/catalog">Дізнатися більше</LinkButton>
+          <LinkButton href="/catalog">Learn more</LinkButton>
         </ContentContainer>
       </Hero>
     </HomePage>
