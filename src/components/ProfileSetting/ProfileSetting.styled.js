@@ -19,6 +19,7 @@ export const Title = styled.h2`
     margin-bottom: 24px;
   }
 `;
+
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -34,7 +35,7 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const Image = styled.img`
+export const Image = styled.svg`
   width: 300px;
   height: 296px;
 
