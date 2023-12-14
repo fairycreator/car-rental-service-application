@@ -53,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   margin: 0;
-  font-family: 'Poppins700', sans-serif;
+  font-family: 'Poppins400', sans-serif;
   background-color: var(--primary-color-black-one);
   color: var(--primary-color-white); 
   font-size: var(--main-font-size);
