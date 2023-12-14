@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 import 'modern-normalize';
 
+import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
+import PoppinsMedium from './assets/fonts/Poppins-Medium.ttf';
+import PoppinsRegular from './assets/fonts/Poppins-Regular.ttf';
+import PoppinsSemiBold from './assets/fonts/Poppins-SemiBold.ttf';
+
 export const GlobalStyle = createGlobalStyle`
 :root{
 --primary-color-white:#FFFFFF; 
@@ -22,9 +27,33 @@ export const GlobalStyle = createGlobalStyle`
 --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@font-face {
+    font-family: 'Poppins400';
+    font-weight: 400;
+    src: url(${PoppinsRegular}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Poppins500';
+    font-weight: 500;
+    src: url(${PoppinsMedium}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Poppins600';
+    font-weight: 600;
+    src: url(${PoppinsSemiBold}) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Poppins700';
+    font-weight: 700;
+    src: url(${PoppinsBold}) format('truetype');
+  }
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins400', sans-serif;
   background-color: var(--primary-color-black-one);
   color: var(--primary-color-white); 
   font-size: var(--main-font-size);
@@ -67,4 +96,3 @@ button {
     cursor: pointer;
 }
 `;
-
