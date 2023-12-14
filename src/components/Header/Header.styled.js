@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 
 export const ContainerNav = styled.nav`
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 16px;
+  padding: 19px 10px;
+  background-color: var(--primary-color-black-two);
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   @media screen and (min-width: 834px) {
-    padding-left: 27px;
-    padding-right: 27px;
-    padding-top: 24px;
+    padding: 34px 27px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding-left: 34px;
-    padding-right: 34px;
-    padding-top: 20px;
+    padding: 34px;
   }
 `;

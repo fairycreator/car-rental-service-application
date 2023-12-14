@@ -11,10 +11,10 @@ export const Header = () => {
     <ContainerNav>
       <Logo />
       {isLoggedIn ?
-      <ControlPanel/> : <Navigation/>}
-</ContainerNav>
+        <ControlPanel /> : <Navigation />}
+    </ContainerNav>
   )
-}
+};
 
 
 
