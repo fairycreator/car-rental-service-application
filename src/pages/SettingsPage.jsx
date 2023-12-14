@@ -1,5 +1,11 @@
+import { ProfileSetting } from '../components/ProfileSetting/ProfileSetting';
+
 const SettingsPage = () => {
-  return <div>SettingsPage</div>;
+  return (
+    <>
+      <ProfileSetting />
+    </>
+  );
 };
 
 export default SettingsPage;
