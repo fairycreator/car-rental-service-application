@@ -1,10 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { BoxNav, Icon, Link } from "./Navigation.styled";
 
 export const Navigation = () => {
     return (
-        <div>
-            <NavLink to='/signin'>Sign in<span> / </span></NavLink>
-            <NavLink to='/signup'>Sign up</NavLink>
-        </div>
+        <BoxNav>
+            <Link to='/signin'>Sign in</Link>
+            <span>/</span>
+            <Link to='/signup'>Sign up</Link>
+            <Icon>
+                <use href='/src/assets/images/sprite.svg#icon-profile-circle'></use>
+          </Icon>
+        </BoxNav>
     )
 };

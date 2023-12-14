@@ -1,8 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link } from "./Logo.styled";
 
 export const Logo = () => {
-
     return (
-        <NavLink to="/welcome">HealthyHub</NavLink>
+        <Link to="/welcome">HealthyHub</Link>
     )
 };
