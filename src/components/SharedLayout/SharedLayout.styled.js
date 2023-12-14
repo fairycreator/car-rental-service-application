@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { hidden } from '../../GlobalStyle';
 
 export const Container = styled.div`
   padding-left: 10px;
@@ -16,4 +17,8 @@ export const Container = styled.div`
     padding-right: 34px;
     padding-top: 20px;
   }
+`;
+
+export const AppTitle = styled.h1`
+  ${hidden}
 `;

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import 'modern-normalize';
 
 import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
@@ -27,27 +27,23 @@ export const GlobalStyle = createGlobalStyle`
 --transition-dur-and-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@font-face {
+  @font-face {
     font-family: 'Poppins400';
-    font-weight: 400;
-    src: url(${PoppinsRegular}) format('truetype');
+    src: local("Poppins400"), url(${PoppinsRegular}) format('truetype');
   }
 
   @font-face {
     font-family: 'Poppins500';
-    font-weight: 500;
-    src: url(${PoppinsMedium}) format('truetype');
+    src: local("Poppins500"), url(${PoppinsMedium}) format('truetype');
   }
 
   @font-face {
     font-family: 'Poppins600';
-    font-weight: 600;
     src: url(${PoppinsSemiBold}) format('truetype');
   }
 
   @font-face {
     font-family: 'Poppins700';
-    font-weight: 700;
     src: url(${PoppinsBold}) format('truetype');
   }
 
@@ -95,4 +91,17 @@ a
 button {
     cursor: pointer;
 }
+`;
+
+export const hidden = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 `;

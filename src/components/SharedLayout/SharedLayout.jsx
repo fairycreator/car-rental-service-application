@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header/Header';
-import { Container } from './SharedLayout.styled';
+import { Container, AppTitle } from './SharedLayout.styled';
 
 const SharedLayout = () => {
   return (
@@ -12,6 +12,7 @@ const SharedLayout = () => {
       <main>
         <section>
           <Container>
+            <AppTitle>Healthy Hub</AppTitle>
             <Suspense fallback={null}>
               <Outlet />
             </Suspense>
