@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 import 'modern-normalize';
 
 import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
@@ -95,4 +95,17 @@ a
 button {
     cursor: pointer;
 }
+`;
+
+export const hidden = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 `;
