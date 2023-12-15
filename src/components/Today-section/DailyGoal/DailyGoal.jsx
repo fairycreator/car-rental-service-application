@@ -1,6 +1,7 @@
 import sprite from '../../../assets/images/sprite.svg';
 import {
   Wrapper,
+  Title,
   List,
   Item,
   BubbleIcon,
@@ -12,7 +13,7 @@ import {
 export const DailyGoal = () => {
   return (
     <Wrapper>
-      <h3>Daily goal</h3>
+      <Title>Daily goal</Title>
       <List>
         <Item>
           <BubbleIcon>

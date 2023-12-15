@@ -4,6 +4,12 @@ export const Wrapper = styled.div`
   width: 300px;
 `;
 
+export const Title = styled.h3`
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+`;
+
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
