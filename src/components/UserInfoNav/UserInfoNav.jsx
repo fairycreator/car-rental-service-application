@@ -43,7 +43,6 @@ const StyledMenu = styled(Menu)({
     },
 });
 
-
 export const UserInfoNav = () => {
     
     const [anchorEl, setAnchorEl] = useState(null);
@@ -71,9 +70,12 @@ export const UserInfoNav = () => {
                     src="/static/images/avatar/1.jpg"
                     sx={{ width: 24, height: 24 }}
                 />
-                <IconDown>
+                {open ? <IconDown>
+                    <use href={`${sprite}#icon-arrow-up`}></use>
+                </IconDown> : <IconDown>
                     <use href={`${sprite}#icon-arrow-down`}></use>
-                </IconDown>
+                </IconDown>}
+                
             </ButtonMenu>
                 
             <StyledMenu
