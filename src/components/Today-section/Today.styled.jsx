@@ -30,6 +30,7 @@ export const Title = styled.h2`
 `;
 
 export const StyledLink = styled(Link)`
+  display: flex;
   align-items: center;
   font-size: 14px;
   font-weight: 500;
