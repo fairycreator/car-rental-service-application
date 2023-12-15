@@ -6,7 +6,17 @@ export const Wrapper = styled.div`
 `;
 
 export const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 12px;
+  margin-top: 6px;
   background-color: var(--primary-color-black-two);
+`;
+
+export const Item = styled.li`
+  display: flex;
+  gap: 20px;
 `;
 
 export const BubbleIcon = styled.svg`
@@ -22,9 +32,16 @@ export const MilkIcon = styled.svg`
 `;
 
 export const Text = styled.p`
+  margin-bottom: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
   color: var(--primary-color-grey);
 `;
 
 export const Amount = styled.span`
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.11;
   color: var(--primary-color-white);
 `;

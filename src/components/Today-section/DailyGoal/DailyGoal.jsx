@@ -2,6 +2,7 @@ import sprite from '../../../assets/images/sprite.svg';
 import {
   Wrapper,
   List,
+  Item,
   BubbleIcon,
   MilkIcon,
   Text,
@@ -13,22 +14,23 @@ export const DailyGoal = () => {
     <Wrapper>
       <h3>Daily goal</h3>
       <List>
-        <li>
+        <Item>
           <BubbleIcon>
             <use href={`${sprite}#icon-bubble`}></use>
           </BubbleIcon>
           <Text>
-            Calories <Amount>1700</Amount>
+            Calories <br /> <Amount>1700</Amount>
           </Text>
-        </li>
-        <li>
+        </Item>
+        <Item>
           <MilkIcon>
             <use href={`${sprite}#icon-milk`}></use>
           </MilkIcon>
           <Text>
-            Water <Amount>1500</Amount> ml
+            Water <br />
+            <Amount>1500</Amount> ml
           </Text>
-        </li>
+        </Item>
       </List>
     </Wrapper>
   );
