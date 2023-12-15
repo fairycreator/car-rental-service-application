@@ -11,11 +11,13 @@ export const List = styled.ul`
   gap: 20px;
   padding: 16px 12px;
   margin-top: 6px;
+  border-radius: 12px;
   background-color: var(--primary-color-black-two);
 `;
 
 export const Item = styled.li`
   display: flex;
+  align-items: center;
   gap: 20px;
 `;
 
