@@ -10,6 +10,7 @@ import {
   Text,
   Amount,
   Button,
+  Span,
 } from './Water.styled';
 
 export const Water = () => {
@@ -23,10 +24,14 @@ export const Water = () => {
         <ProgressBar>%</ProgressBar>
         <DetailsWrapper>
           <SecondTitle>Water consumption</SecondTitle>
+
           <Text>
-            <Amount>1500</Amount>ml <br />
-            left: 450 ml
+            <Amount>1500</Amount>ml
           </Text>
+          <Text>
+            <Span>left:</Span> 450 ml
+          </Text>
+
           <Button type="button">
             <AddIcon>
               <use href={`${sprite}#icon-add-converted`}></use>

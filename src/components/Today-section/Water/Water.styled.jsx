@@ -44,6 +44,10 @@ export const Text = styled.p`
   color: var(--primary-color-grey);
 `;
 
+export const Span = styled.span`
+  color: var(--primary-color-white);
+`;
+
 export const Amount = styled.span`
   margin-right: 8px;
   font-size: 28px;
