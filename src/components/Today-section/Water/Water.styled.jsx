@@ -68,6 +68,7 @@ export const AddIcon = styled.svg`
 `;
 
 export const Button = styled.button`
+  display: flex;
   align-items: center;
   padding: 8px 10px;
   color: var(--primary-color-black-two);
