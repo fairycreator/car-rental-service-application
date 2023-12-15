@@ -6,6 +6,7 @@ import {
   Wrapper,
   TitleWrapper,
   List,
+  Item,
   Title,
   StyledLink,
   Icon,
@@ -24,15 +25,15 @@ export const Today = () => {
         </StyledLink>
       </TitleWrapper>
       <List>
-        <li>
+        <Item>
           <DailyGoal />
-        </li>
-        <li>
-          <Food />
-        </li>
-        <li>
+        </Item>
+        <Item>
           <Water />
-        </li>
+        </Item>
+        <Item>
+          <Food />
+        </Item>
       </List>
     </Wrapper>
   );

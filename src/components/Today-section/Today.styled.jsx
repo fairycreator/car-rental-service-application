@@ -13,6 +13,10 @@ export const TitleWrapper = styled.div`
   align-items: center;
 `;
 
+export const Item = styled.li`
+  width: 300px;
+`;
+
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
