@@ -6,7 +6,7 @@ import { Navigation } from "../Navigation/Navigation";
 import { ContainerNav } from "./Header.styled";
 
 export const Header = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn)
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <ContainerNav>
       <Logo />
