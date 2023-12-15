@@ -17,7 +17,7 @@ export const DailyGoal = () => {
       <List>
         <Item>
           <BubbleIcon>
-            <use href={`${sprite}#icon-bubble`}></use>
+            <use href={`${sprite}#bubble`}></use>
           </BubbleIcon>
           <Text>
             Calories <br /> <Amount>1700</Amount>
@@ -25,7 +25,7 @@ export const DailyGoal = () => {
         </Item>
         <Item>
           <MilkIcon>
-            <use href={`${sprite}#icon-milk`}></use>
+            <use href={`${sprite}#milk`}></use>
           </MilkIcon>
           <Text>
             Water <br />
