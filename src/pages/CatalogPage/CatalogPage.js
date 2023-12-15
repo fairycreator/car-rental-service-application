@@ -27,7 +27,7 @@ const Catalog = () => {
       dispatch(clearFilter());
     }
 
-    dispatch(fetchCars({ page, limit: 12 }));
+    dispatch(fetchCars({ page, limit: 16 }));
   }, [dispatch, page]);
 
   const handleLoadMore = () => {
