@@ -19,9 +19,9 @@ export const Water = () => {
       <Title>Water</Title>
       <Wrapper>
         <TrashIcon>
-          <use href={`${sprite}#icon-arrow-down`}></use>
+          <use href={`${sprite}#trash-delete`}></use>
         </TrashIcon>
-        <ProgressBar>%</ProgressBar>
+        <ProgressBar></ProgressBar>
         <DetailsWrapper>
           <SecondTitle>Water consumption</SecondTitle>
 
