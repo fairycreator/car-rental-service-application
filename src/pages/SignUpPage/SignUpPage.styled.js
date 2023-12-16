@@ -1,45 +1,44 @@
 import styled from 'styled-components';
 
-export const SignInContainer = styled.div`
+export const SignUpContainer = styled.div`
   background-color: var(--primary-color-black-one);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 20px;
   height: 100vh;
-`;
-
-export const MainContent = styled.main`
-  background-color: var(--primary-color-black-one);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
 `;
 
-export const SignUpBox = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
+export const SignUpDiv = styled.div`
+  background-color: var(--primary-color-black-one);
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
 `;
 
-export const SignUpTitle = styled.h1`
+export const Frame2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+`;
+
+export const SignUpTitle = styled.div`
   color: var(--primary-color-white);
   font-family: 'Poppins500';
   font-size: 24px;
   font-weight: 500;
-  margin-bottom: 16px;
   margin: 0;
 `;
 
-export const LoginMessage = styled.p`
+export const SignUpMessage = styled.p`
   color: var(--primary-color-grey);
   font-family: 'Poppins400';
   font-size: 18px;
-  margin-bottom: 24px;
+  font-weight: 400;
+  margin: 0;
 `;
 
 export const InputWrapper = styled.div`
@@ -74,59 +73,41 @@ export const InputField = styled.input`
   }
 `;
 
-export const SignInButtonBox = styled.div`
+export const NextButtonWrapper = styled.div`
+  background-color: var(--primary-color-green-lite);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%;
-`;
-
-export const SignInButton = styled.div`
-  background-color: var(--primary-color-green-lite);
-  color: var(--primary-color-black-two);
-  font-family: 'Poppins500';
-  font-size: var(--main-font-size);
-  text-align: center;
-  padding: 12px 16px;
+  padding: 8px 10px;
   border: none;
-  border-radius: 12px;
-  cursor: pointer;
   width: 100%;
-  margin-top: 40px;
-
-  &:hover {
-    background-color: #22c55e;
-  }
+  cursor: pointer;
 `;
 
-export const SignUpPrompt = styled.div`
+export const NextButton = styled.div`
   display: flex;
-  gap: 20px;
+  align-items: center;
   justify-content: center;
-  width: 100%;
+  color: var(--primary-color-black-two);
+  font-family: 'Poppins400';
 `;
 
-export const SignUpPromptText = styled.div`
+export const AccountPromptWrapper = styled.div`
+  text-align: center;
+  padding-top: 16px;
+`;
+
+export const AccountPrompt = styled.p`
   color: var(--primary-color-grey);
-  font-family: 'Poppins500';
+  font-family: 'Poppins400';
+  margin: 0;
 `;
 
-export const SignUpLink = styled.div`
+export const SignInLink = styled.div`
   color: var(--primary-color-white);
-  font-family: 'Poppins500';
+  font-family: 'Poppins400';
   cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-export const ForgotPasswordText = styled.div`
-  color: var(--primary-color-grey);
-  font-family: 'Poppins500';
-  cursor: pointer;
-  margin-top: 14px;
-  margin-bottom: 54px;
 
   &:hover {
     text-decoration: underline;

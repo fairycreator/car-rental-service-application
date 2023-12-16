@@ -5,7 +5,7 @@ import { RestrictedRoute } from './components/Routes/RestrictedRoute.jsx';
 import { PrivateRoute } from './components/Routes/PrivateRoute.jsx';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
-const SignUpPage = lazy(() => import('pages/SignUpPage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage.jsx'));
 const SignInPage = lazy(() => import('pages/SignInPage/SignInPage.jsx'));
 const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
 const MainPage = lazy(() => import('pages/MainPage'));

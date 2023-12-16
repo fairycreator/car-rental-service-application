@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom';
 import Illustration from '../../components/Illustartion/Illustration';
+import SignInForm from '../../components/SignInForm/SignInForm';
 import {
   SignInContainer,
   MainContent,
   SignUpBox,
   SignUpTitle,
   LoginMessage,
-  InputWrapper,
-  InputField,
-  SignInButtonBox,
-  SignInButton,
   SignUpPrompt,
   SignUpPromptText,
   SignUpLink,
@@ -65,23 +62,11 @@ const SignIn = () => {
       <MainContent>
         <Illustration $pathname={location.pathname} />
         <SignUpBox>
-          <Link to="/signup">
-            <SignUpTitle>Sign up</SignUpTitle>
-          </Link>
+          <SignUpTitle>Sign up</SignUpTitle>
           <LoginMessage>You need to login to use the service</LoginMessage>
         </SignUpBox>
-        <InputWrapper>
-          <InputField type="text" placeholder="E-mail" />
-        </InputWrapper>
-        <InputWrapper>
-          <InputField type="password" placeholder="Password" />
-        </InputWrapper>
-        <SignInButtonBox>
-          <Link to="/main">
-            <SignInButton>Sign In</SignInButton>
-          </Link>
-        </SignInButtonBox>
-        <Link to="/forgot">
+        <SignInForm />
+        <Link to="/forgot-password">
           <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
         </Link>
         <SignUpPrompt>
