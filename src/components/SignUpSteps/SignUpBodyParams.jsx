@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from 'formik';
 
-const BodyParametersStep = ({ values, errors, touched }) => {
+const BodyParametersStep = () => {
   return (
     <div>
       <h2>Body parameters</h2>

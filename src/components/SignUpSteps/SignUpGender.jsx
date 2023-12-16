@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from 'formik';
 
-const SelectGender = ({ values, setFieldValue, errors, touched }) => {
+const SelectGender = () => {
   return (
     <div>
       <h2>Select gender, Age</h2>

@@ -1,24 +1,24 @@
 import { useState } from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
+import { Link } from 'react-router-dom';
 import signUpSchema from '../../schemas/signUpSchema';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/auth/authOperations';
 import { useNavigate } from 'react-router-dom';
 import {
-  // Input,
-  // ErrorDiv,
-  // WrapForm,
-  // WrapperError,
-  // SvgIconCheckBox,
-  // LabelWrap,
-  // IconWrapped,
-  // SvgIconEye,
+  WrapForm,
+  WrapperError,
+  LabelWrap,
+  IconWrapped,
+  SvgIconEye,
+  InputStyled,
   NextButton,
   BackButton,
+  SignInButton,
+  AccountPromptWrapper,
+  AccountPrompt,
 } from './SignUpForm.styled';
-import { SignInButton } from '../SignInForm/SignInForm.styled';
 import sprite from '../../assets/images/sprite.svg';
-// import validateEmail from '../../schemas/validateEmail';
 import GoalSelectionStep from '../SignUpSteps/SignUpYourGoal';
 import SelectGender from '../SignUpSteps/SignUpGender';
 import BodyParametersStep from '../SignUpSteps/SignUpBodyParams';
@@ -38,8 +38,7 @@ const initialValues = {
 
 const SignUpForm = () => {
   const [step, setStep] = useState(1);
-  const [toggleIcon, setToggleIcon] = useState(`${sprite}#icon-eye-off`);
-  const [type, setType] = useState('password');
+  const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,56 +48,58 @@ const SignUpForm = () => {
     navigate('/main');
   };
 
-  const togglePassInput = () => {
-    if (type === 'password') {
-      setType('text');
-      setToggleIcon(`${sprite}#icon-eye`);
-    } else {
-      setType('password');
-      setToggleIcon(`${sprite}#icon-eye-off`);
-    }
+  const togglePasswordVisibility = () => {
+    setPasswordShown(!passwordShown);
   };
 
   const nextStep = () => setStep(step + 1);
   const previousStep = () => setStep(step - 1);
 
-  const renderStep = (errors, touched, values, handleChange, handleBlur) => {
+  const StepOne = () => (
+    <WrapForm>
+      <InputStyled name="name" type="text" placeholder="Name" />
+      <InputStyled name="email" type="email" placeholder="E-mail" />
+      <LabelWrap>
+        <InputStyled
+          name="password"
+          type={passwordShown ? 'text' : 'password'}
+          placeholder="Password"
+        />
+        <IconWrapped onClick={togglePasswordVisibility}>
+          <SvgIconEye>
+            <use
+              href={
+                passwordShown ? `${sprite}#icon-eye` : `${sprite}#icon-eye-off`
+              }
+            />
+          </SvgIconEye>
+        </IconWrapped>
+      </LabelWrap>
+      <WrapperError>{/* Error message handling here */}</WrapperError>
+      <NextButton type="button" onClick={nextStep}>
+        Next
+      </NextButton>
+      <AccountPromptWrapper>
+        <AccountPrompt>Do you already have an account?</AccountPrompt>
+        <Link to="/signin">
+          <SignInButton>Sign in</SignInButton>
+        </Link>
+      </AccountPromptWrapper>
+    </WrapForm>
+  );
+
+  const renderStep = () => {
     switch (step) {
       case 1:
-        return (
-          <GoalSelectionStep
-            errors={errors}
-            touched={touched}
-            values={values}
-            handleChange={handleChange}
-          />
-        );
+        return <StepOne />;
       case 2:
-        return (
-          <SelectGender
-            errors={errors}
-            touched={touched}
-            values={values}
-            handleChange={handleChange}
-          />
-        );
+        return <GoalSelectionStep />;
       case 3:
-        return (
-          <BodyParametersStep
-            errors={errors}
-            touched={touched}
-            values={values}
-            handleChange={handleChange}
-          />
-        );
+        return <SelectGender />;
       case 4:
-        return (
-          <ActivityLevelStep
-            errors={errors}
-            touched={touched}
-            values={values}
-          />
-        );
+        return <BodyParametersStep />;
+      case 5:
+        return <ActivityLevelStep />;
       default:
         return <div>Unknown step</div>;
     }
@@ -113,21 +114,11 @@ const SignUpForm = () => {
       {({ errors, touched, values, handleChange, handleBlur }) => (
         <Form autoComplete="off">
           {renderStep(errors, touched, values, handleChange, handleBlur)}
-
-          <div>
-            {step > 1 && (
-              <BackButton type="button" onClick={previousStep}>
-                Back
-              </BackButton>
-            )}
-            {step < 5 ? (
-              <NextButton type="button" onClick={nextStep}>
-                Next
-              </NextButton>
-            ) : (
-              <SignInButton type="submit">Sign Up</SignInButton>
-            )}
-          </div>
+          {step > 1 && (
+            <BackButton type="button" onClick={previousStep}>
+              Back
+            </BackButton>
+          )}
         </Form>
       )}
     </Formik>

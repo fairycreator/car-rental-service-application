@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from 'formik';
 
-const ActivityLevelStep = ({ values, errors, touched }) => {
+const ActivityLevelStep = () => {
   return (
     <div>
       <h2>Your Activity</h2>

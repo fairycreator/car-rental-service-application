@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Illustration from '../../components/Illustartion/Illustration';
 import SignInForm from '../../components/SignInForm/SignInForm';
 import {
@@ -13,50 +13,50 @@ import {
   ForgotPasswordText,
 } from './SignIn.styled';
 
-// /*Email verification*/
-// import axios from 'axios';
-// import { toast } from 'react-toastify';
-// const toastError = (text) => {
-//   toast.error(text, {
-//     position: 'top-center',
-//     autoClose: 7000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: 'dark',
-//   });
-// };
-// const toastSuccess = (text) => {
-//   toast.success(text, {
-//     position: 'top-center',
-//     autoClose: 7000,
-//     hideProgressBar: false,
-//     closeOnClick: true,
-//     pauseOnHover: true,
-//     draggable: true,
-//     progress: undefined,
-//     theme: 'dark',
-//   });
-// };
+/*Email verification*/
+import axios from 'axios';
+import { toast } from 'react-toastify';
+const toastError = (text) => {
+  toast.error(text, {
+    position: 'top-center',
+    autoClose: 7000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
+};
+const toastSuccess = (text) => {
+  toast.success(text, {
+    position: 'top-center',
+    autoClose: 7000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: 'dark',
+  });
+};
 
-// const instance = axios.create({
-//   baseURL: '',
-// });
+const instance = axios.create({
+  baseURL: '',
+});
 
-// const verifyEmail = async (verifyToken) => {
-//   try {
-//     const { data } = await instance.get(`auth/verify/${verifyToken}`);
-//     toastSuccess(`${data.message}! Use your credentials to login`);
-//   } catch (error) {
-//     toastError(`Error when verifying email: ${error.response.data}`);
-//   }
-// };
+const verifyEmail = async (verifyToken) => {
+  try {
+    const { data } = await instance.get(`auth/verify/${verifyToken}`);
+    toastSuccess(`${data.message}! Use your credentials to login`);
+  } catch (error) {
+    toastError(`Error when verifying email: ${error.response.data}`);
+  }
+};
 
 const SignIn = () => {
-  // const { verificationToken } = useParams();
-  // if (verificationToken) verifyEmail(verificationToken);
+  const { verificationToken } = useParams();
+  if (verificationToken) verifyEmail(verificationToken);
   return (
     <SignInContainer>
       <MainContent>
