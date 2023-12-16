@@ -3,6 +3,11 @@ import styled from 'styled-components';
 export const DashboardWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-bottom: 60px;
+
+  @media screen and (min-width: 1440px) {
+    padding-bottom: 40px;
+  }
 `;
 
 export const MonthWrapper = styled.div`

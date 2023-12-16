@@ -1,7 +1,7 @@
-import { Calendar } from './Calendar/Calendar';
+import Calendar from './Calendar/Calendar';
 import { LineChart } from './LineChart/LineChart';
 import { Month } from './Month/Month';
-import { WeightChart } from './WeightChart/WeightChart';
+
 import sprite from '../../assets/images/sprite.svg';
 import {
   Text,
@@ -16,6 +16,7 @@ import {
   ValueWrapper,
   AverageValue,
 } from './Dashboard.styled';
+import { WeightTable } from './WeightTable/WeightTable';
 
 export const Dashboard = () => {
   const values = {
@@ -64,7 +65,7 @@ export const Dashboard = () => {
             Average value: <AverageValue>{values.kg} kg</AverageValue>
           </Text>
         </ValueWrapper>
-        <WeightChart />
+        <WeightTable />
       </ChartWrapper>
     </DashboardWrapper>
   );
