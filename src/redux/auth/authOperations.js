@@ -33,7 +33,7 @@ export const registerUser = createAsyncThunk(
   //   'auth/registerUser',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.post('auth/register', dataUser);
+      const { data } = await instance.post('auth/signup', dataUser);
       token.set(data.token);
 
       return data;
@@ -48,7 +48,7 @@ export const loginUser = createAsyncThunk(
   //   'auth/loginUser',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.post('auth/login', dataUser);
+      const { data } = await instance.post('auth/signin', dataUser);
       token.set(data.token);
 
       return data;

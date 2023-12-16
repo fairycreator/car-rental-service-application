@@ -16,7 +16,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: (builder) =>
     builder
-      // register
+      // signup
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.authenticated = true;
@@ -24,7 +24,7 @@ const authSlice = createSlice({
         state.userData = action.payload.user;
         state.error = null;
       })
-      // login
+      // signin
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.authenticated = true;
