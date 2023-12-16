@@ -1,18 +1,18 @@
 import { Formik, Form } from 'formik';
-import signupSchema from '../../schema/signupSchema';
+import signUpSchema from '../../schemas/signUpSchema';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/auth/operations';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  InputStyled,
-  ErrorDivStyled,
-  WrapFormStyled,
-  WrapperErrorStyled,
-  SvgIconCheckBoxStyled,
-  LabelWrapStyled,
-  IconWrappedStyled,
-  SvgIconEyeStyled,
+  Input,
+  ErrorDiv,
+  WrapForm,
+  WrapperError,
+  SvgIconCheckBox,
+  LabelWrap,
+  IconWrapped,
+  SvgIconEye,
 } from './SignUpForm.styled';
 import { SignInButton } from '../SignInForm/SignInForm.styled';
 import sprite from '../../assets/sprite.svg';
@@ -51,14 +51,14 @@ const SignUpForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={signupSchema}
+      validationSchema={signUpSchema}
       onSubmit={handleSubmit}
     >
       {({ errors, touched }) => (
         <Form autoComplete="off">
-          <WrapFormStyled>
+          <WrapForm>
             <div>
-              <InputStyled
+              <Input
                 border={
                   touched.name
                     ? errors.name
@@ -73,23 +73,23 @@ const SignUpForm = () => {
               />
               {(errors.name && touched.name) ||
               (!errors.name && touched.name) ? (
-                <WrapperErrorStyled>
-                  <SvgIconCheckBoxStyled
+                <WrapperError>
+                  <SvgIconCheckBox
                     fill={!errors.name && touched.name ? '#3cbc81' : null}
                   >
                     <use href={`${sprite}#icon-checkbox`} />
-                  </SvgIconCheckBoxStyled>
-                  <ErrorDivStyled
+                  </SvgIconCheckBox>
+                  <ErrorDiv
                     color={!errors.name && touched.name ? '#3cbc81' : null}
                   >
                     {errors.name ? errors.name : 'Success name'}
-                  </ErrorDivStyled>
-                </WrapperErrorStyled>
+                  </ErrorDiv>
+                </WrapperError>
               ) : null}
             </div>
 
             <div>
-              <InputStyled
+              <Input
                 border={
                   touched.email
                     ? errors.email
@@ -104,24 +104,24 @@ const SignUpForm = () => {
               />
               {(errors.email && touched.email) ||
               (!errors.email && touched.email) ? (
-                <WrapperErrorStyled>
-                  <SvgIconCheckBoxStyled
+                <WrapperError>
+                  <SvgIconCheckBox
                     fill={!errors.email && touched.email ? '#3CBF61' : null}
                   >
                     <use href={`${sprite}#icon-checkbox`} />
-                  </SvgIconCheckBoxStyled>
-                  <ErrorDivStyled
+                  </SvgIconCheckBox>
+                  <ErrorDiv
                     color={!errors.email && touched.email ? '#3CBF61' : null}
                   >
                     {errors.email ? errors.email : 'Success email'}
-                  </ErrorDivStyled>
-                </WrapperErrorStyled>
+                  </ErrorDiv>
+                </WrapperError>
               ) : null}
             </div>
 
             <div>
-              <LabelWrapStyled>
-                <InputStyled
+              <LabelWrap>
+                <Input
                   border={
                     touched.password
                       ? errors.password
@@ -133,33 +133,33 @@ const SignUpForm = () => {
                   name="password"
                   placeholder="Password"
                 />
-                <IconWrappedStyled>
-                  <SvgIconEyeStyled onClick={togglePassInput}>
+                <IconWrapped>
+                  <SvgIconEye onClick={togglePassInput}>
                     <use href={toggleIcon} />
-                  </SvgIconEyeStyled>
-                </IconWrappedStyled>
-              </LabelWrapStyled>
+                  </SvgIconEye>
+                </IconWrapped>
+              </LabelWrap>
               {(errors.password && touched.password) ||
               (!errors.password && touched.password) ? (
-                <WrapperErrorStyled>
-                  <SvgIconCheckBoxStyled
+                <WrapperError>
+                  <SvgIconCheckBox
                     fill={
                       !errors.password && touched.password ? '#3CBF61' : null
                     }
                   >
                     <use href={`${sprite}#icon-checkbox`} />
-                  </SvgIconCheckBoxStyled>
-                  <ErrorDivStyled
+                  </SvgIconCheckBox>
+                  <ErrorDiv
                     color={
                       !errors.password && touched.password ? '#3CBF61' : null
                     }
                   >
                     {errors.password ? errors.password : 'Success password'}
-                  </ErrorDivStyled>
-                </WrapperErrorStyled>
+                  </ErrorDiv>
+                </WrapperError>
               ) : null}
             </div>
-          </WrapFormStyled>
+          </WrapForm>
 
           <SignInButton type="submit">Sign Up</SignInButton>
         </Form>

@@ -2,7 +2,7 @@ import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/auth/operations';
 import { useState } from 'react';
-import signinSchema from '../../schema/signinSchema';
+import signInSchema from '../../schema/signInSchema';
 import {
   InputStyled,
   WrapFormStyled,
@@ -45,7 +45,7 @@ const SignInForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={signinSchema}
+      validationSchema={signInSchema}
       onSubmit={handleSubmit}
     >
       {({ errors, touched }) => {
