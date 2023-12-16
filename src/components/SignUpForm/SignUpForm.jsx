@@ -15,7 +15,7 @@ import {
   SvgIconEye,
 } from './SignUpForm.styled';
 import { SignInButton } from '../SignInForm/SignInForm.styled';
-import sprite from '../../assets/sprite.svg';
+import sprite from '../../assets/images/sprite.svg';
 import validateEmail from '../../js/validateEmail';
 import validateName from '../../js/validateName';
 

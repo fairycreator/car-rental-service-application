@@ -1,6 +1,6 @@
 import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/auth/operations';
+import { loginUser } from '../../redux/auth/authOperations';
 import { useState } from 'react';
 import signInSchema from '../../schema/signInSchema';
 import {
@@ -14,8 +14,8 @@ import {
   IconWrappedStyled,
 } from '../SignUpForm/SignUpForm.styled';
 import { SignInButton } from './SignInForm.styled';
-import sprite from '../../assets/sprite.svg';
-import validateEmail from '../../js/validateEmail';
+import sprite from '../../assets/images/sprite.svg';
+import validateEmail from '../../schemas/validateEmail';
 
 const initialValues = {
   email: '',

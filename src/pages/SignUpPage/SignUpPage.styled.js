@@ -17,7 +17,7 @@ export const SignUpDiv = styled.div`
   overflow: hidden;
 `;
 
-export const Frame2 = styled.div`
+export const Frame = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import Illustration from '../../components/Illustartion/Illustration';
+import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import {
   SignUpContainer,
   SignUpDiv,
-  Frame2,
+  Frame,
   SignUpTitle,
   SignUpMessage,
-  InputWrapper,
-  InputField,
   NextButtonWrapper,
   NextButton,
   AccountPromptWrapper,
@@ -20,19 +19,11 @@ const SignUpPage = () => {
     <SignUpContainer>
       <SignUpDiv>
         <Illustration $pathname={location.pathname} />
-        <Frame2>
+        <Frame>
           <SignUpTitle>Sign up</SignUpTitle>
           <SignUpMessage>You need to register to use the service</SignUpMessage>
-        </Frame2>
-        <InputWrapper>
-          <InputField type="text" placeholder="Name" />
-        </InputWrapper>
-        <InputWrapper>
-          <InputField type="text" placeholder="E-mail" />
-        </InputWrapper>
-        <InputWrapper>
-          <InputField type="password" placeholder="Password" />
-        </InputWrapper>
+        </Frame>
+        <SignUpForm />
         <NextButtonWrapper>
           <NextButton>Next</NextButton>
         </NextButtonWrapper>
