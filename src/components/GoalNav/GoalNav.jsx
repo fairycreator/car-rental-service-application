@@ -7,29 +7,57 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-// import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import loseFat from '../../assets/images/loseFat.png';
-// import maintain from '../../assets/images/maintain.png';
-// import gainMuscle from '../../assets/images/gainMuscle.png';
-import { DivImage, DivStyled, LoseFat, MainText, Text } from './GoalNav.styled';
+import maintain from '../../assets/images/maintain.png';
+import gainMuscle from '../../assets/images/gainMuscle.png';
+import { DivImage, DivStyled, LoseFat, MainText, MenuTitle, MenuText, Text, BtnText } from './GoalNav.styled';
 import sprite from 'assets/images/sprite.svg';
 import { IconDown } from '../UserInfoNav/UserInfoNav.styled';
 
 const ButtonMenu = styled(Button)({
     display: 'flex',
     gap: '12px',
-    boxShadow: 'none',
     textTransform: 'none',
-    fontSize: '100%',
     padding: '0px 0px',
-    lineHeight: 1.5,
-    backgroundColor: 'none',
     borderColor: 'none',
+});
+
+const ButtonList = styled(Button)({
+  border: 'none',
+  textTransform: 'none',
+  backgroundColor: '#E3FFA8',
+  marginTop: '7px',
+  borderRadius: '12px',
+  width: '166px',
+  height: '36px',
+});
+
+const StyledMenu = styled(Menu)({
+    '& .MuiPaper-root': {
+        borderRadius: 12,
+        marginTop: '16px',
+    backgroundColor: '#0F0F0F',
+        boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
+    },
+    '& .MuiMenuItem-root': {
+        // padding: '0px',
+      // gap: '8px',
+    },
+    '& .MuiList-root': {
+        // display: 'flex',
+        // flexDirection: 'column',
+        // justifyContent: 'center',
+        width: '392px',
+        height: 'auto',
+        // gap: '16px',
+        padding: '20px 0px 40px 24px', 
+    },
 });
 
 export const GoalNav = () => {
   const [value, setValue] = useState('Lose fat');
+  const [currentValue, setCurrentValue] = useState('');
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -40,19 +68,20 @@ export const GoalNav = () => {
     setAnchorEl(null);
   };
   const handleRadioChange = (event) => {
-    setValue(event.target.value);
+    setCurrentValue(event.target.value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (value === 'Lose fat') {
+    if (currentValue === 'Lose fat') {
       console.log("Lose fat")
-    } else if (value === 'Maintain') {
+    } else if (currentValue === 'Maintain') {
       console.log("Maintain")
     } else {
       console.log("Gain muscle")
     }
+    setValue(currentValue);
     handleClose();
   };
 
@@ -80,11 +109,11 @@ export const GoalNav = () => {
             </IconDown> : <IconDown>
               <use href={`${sprite}#icon-arrow-down`}></use>
             </IconDown>}
-          </div>
-             
+          </div>       
         </DivStyled>
       </ButtonMenu>
-      <Menu
+
+      <StyledMenu
         id="fade-menu"
         MenuListProps={{
           'aria-labelledby': 'fade-button',
@@ -95,27 +124,54 @@ export const GoalNav = () => {
         TransitionComponent={Fade}
       >
         <form onSubmit={handleSubmit}>
-          <FormControl sx={{ m: 3 }} variant="standard">
+          <FormControl >
+
             <FormLabel id="demo-error-radios">
-              Target selection<br />
-              The service will adjust your calorie intake to your goal
+            <MenuTitle>Target selection</MenuTitle>
+            <MenuText>The service will adjust your calorie<br />intake to your goal</MenuText> 
             </FormLabel>
             <RadioGroup
-              aria-labelledby="demo-error-radios"
+              // aria-labelledby="demo-error-radios"
+              sx={{
+                '& .MuiFormControlLabel-root .MuiFormControlLabel-label': {
+                  fontFamily: 'Poppins400',
+                  fontSize: '14px',
+                  color: 'white.main',
+                  marginLeft: '3px'
+                },
+              }}
               name="quiz"
               value={value}
               onChange={handleRadioChange}
             >
-              <FormControlLabel value="Lose fat" control={<Radio />} label="Lose fat" />
-              <FormControlLabel value="Maintain" control={<Radio />} label="Maintain" />
-              <FormControlLabel value="Gain muscle" control={<Radio />} label="Gain Muscle" />
+
+              <FormControlLabel value="Lose fat" control={<Radio icon={<DivImage >
+          <LoseFat src={loseFat} alt="Lose fat" />
+              </DivImage>} checkedIcon={<DivImage>
+          <LoseFat src={loseFat} alt="Lose fat" />
+              </DivImage>} />} label="Lose fat" />
+              
+              <FormControlLabel value="Maintain" control={<Radio icon={<DivImage>
+                <LoseFat src={maintain} alt="Maintain" />
+              </DivImage>} checkedIcon={<DivImage>
+                <LoseFat src={maintain} alt="Maintain" />
+                </DivImage>} />} label="Maintain" />
+              
+              <FormControlLabel value="Gain muscle" control={<Radio icon={<DivImage>
+          <LoseFat src={gainMuscle} alt="Gain muscle" />
+        </DivImage>} checkedIcon={<DivImage>
+          <LoseFat src={gainMuscle} alt="Gain muscle" />
+                </DivImage>} />} label="Gain Muscle" />
+              
             </RadioGroup>
-            <Button sx={{ mt: 1, mr: 1 }} type="submit" variant="outlined">
-              Confirm
-            </Button>
+
+            <ButtonList type="submit" variant="outlined">
+              <BtnText>Confirm</BtnText>
+            </ButtonList>
+
           </FormControl>
         </form>
-      </Menu>
+      </StyledMenu>
     </div> 
   );
 };
