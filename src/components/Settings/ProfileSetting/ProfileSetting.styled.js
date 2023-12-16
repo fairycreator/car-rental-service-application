@@ -167,3 +167,43 @@ export const radioStyled = {
     height: '12px',
   },
 };
+
+export const buttonGroupStyled = {
+  gap: '12px',
+  width: '100%',
+  [theme.breakpoints.down('tablet')]: {
+    flexDirection: 'column',
+  },
+  '& .MuiButtonGroup-firstButton': {
+    borderRadius: '12px',
+    color: 'blacktwo.main',
+    backgroundColor: 'greenlite.main',
+    margin: '0px',
+    borderRightColor: 'none',
+  },
+  // '& .MuiButtonGroup-firstButton:hover': {
+  //   borderRadius: '12px',
+  //   color: 'blacktwo.main',
+  //   backgroundColor: 'greenlite.main',
+  //   border: '1px solid transparent',
+  //   borderRightColor: 'transparent',
+  // },
+  '& .MuiButtonGroup-lastButton': {
+    borderRadius: '12px',
+    color: 'grey.main',
+    margin: '0px',
+  },
+  // '& .MuiButtonGroup-lastButton:hover': {
+  //   borderColor: 'greenlite.main',
+  //   color: 'greenlite.main',
+  // },
+};
+
+export const buttonStyled = {
+  width: '212px',
+  padding: '8px 10px',
+  border: '1px solid transparent',
+  [theme.breakpoints.down('tablet')]: {
+    width: '100%',
+  },
+};

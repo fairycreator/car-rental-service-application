@@ -3,6 +3,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { Formik } from 'formik';
 import image from '../../../assets/images/settings-page-image.png';
@@ -19,6 +21,8 @@ import {
   formLabelStyled,
   formControlLabel,
   radioStyled,
+  buttonGroupStyled,
+  buttonStyled,
 } from './ProfileSetting.styled';
 
 export const ProfileSetting = () => {
@@ -134,10 +138,10 @@ export const ProfileSetting = () => {
                 />
               </RadioGroup>
             </FormControl>
-            <div>
-              <button type="submit">Save</button>
-              <button type="button">Cancel</button>
-            </div>
+            <ButtonGroup aria-label="button group" sx={buttonGroupStyled}>
+              <Button sx={buttonStyled}>Save</Button>
+              <Button sx={buttonStyled}>Cancel</Button>
+            </ButtonGroup>
           </FormWrapper>
         </Formik>
       </ContentWrapper>
