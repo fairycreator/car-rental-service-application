@@ -8,7 +8,8 @@ import {
   CalendarWrapper,
   ChartWrapper,
   DashboardWrapper,
-  IconWrapper,
+  IconArrowLeftWrapper,
+  IconArrowUprapper,
   LineChartsWrapper,
   MonthWrapper,
   Value,
@@ -22,18 +23,17 @@ export const Dashboard = () => {
     ml: 200,
     kg: 60,
   };
-  // return <div>Dashboard!!!</div>;
   return (
     <DashboardWrapper>
       <MonthWrapper>
         <CalendarWrapper>
-          <IconWrapper>
+          <IconArrowLeftWrapper>
             <use href={`${sprite}#icon-arrowright`}></use>
-          </IconWrapper>
+          </IconArrowLeftWrapper>
           <Calendar />
-          <IconWrapper>
+          <IconArrowUprapper>
             <use href={`${sprite}#icon-arrow-down`}></use>
-          </IconWrapper>
+          </IconArrowUprapper>
         </CalendarWrapper>
         <Month />
       </MonthWrapper>
