@@ -4,7 +4,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
-import { Field, Formik } from 'formik';
+import { Formik } from 'formik';
 import image from '../../../assets/images/settings-page-image.png';
 import {
   PageWrapper,
@@ -13,13 +13,10 @@ import {
   Image,
   FormWrapper,
   LabelInput,
-  LabelRadioBtn,
   FieldStyled,
-  GenderWrapper,
-  ActivityWrapper,
-  ActivityLabels,
   Avatar,
 } from './ProfileSetting.styled';
+import { theme } from '../../../GlobalStyle';
 
 export const ProfileSetting = () => {
   return (
@@ -55,7 +52,17 @@ export const ProfileSetting = () => {
               Your age
               <FieldStyled id="age" name="age" />
             </LabelInput>
-            <FormControl sx={{ gap: '12px' }}>
+            <FormControl
+              sx={{
+                gap: '12px',
+                [theme.breakpoints.down('tablet')]: {
+                  width: '300px',
+                },
+                [theme.breakpoints.up('tablet')]: {
+                  width: '212px',
+                },
+              }}
+            >
               <FormLabel
                 id="gender-radio-group"
                 sx={{

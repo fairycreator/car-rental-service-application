@@ -115,52 +115,6 @@ export const FieldStyled = styled(Field)`
   }
 `;
 
-export const GenderWrapper = styled.div`
-  font-family: 'Poppins500';
-  font-weight: 500;
-  width: 300px;
-
-  @media screen and (min-width: 834px) {
-    width: 212px;
-  }
-`;
-
-export const ActivityWrapper = styled.div`
-  font-family: 'Poppins500';
-  font-weight: 500;
-  width: 300px;
-
-  @media screen and (min-width: 834px) {
-    width: 464px;
-  }
-`;
-
-export const ActivityLabels = styled.div`
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-`;
-
-export const LabelRadioBtn = styled.label`
-  font-family: 'Poppins400';
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  position: relative;
-  cursor: pointer;
-
-  &:before {
-    content: '';
-    width: 12px;
-    height: 12px;
-    display: inline-block;
-    border: 1px solid var(--primary-color-grey);
-    border-radius: 50%;
-  }
-`;
-
 export const Avatar = styled.img`
   width: 36px;
   height: 36px;
