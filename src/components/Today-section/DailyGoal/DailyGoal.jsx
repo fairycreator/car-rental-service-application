@@ -1,6 +1,5 @@
 import sprite from '../../../assets/images/sprite.svg';
 import {
-  Wrapper,
   Title,
   List,
   Item,
@@ -12,7 +11,7 @@ import {
 
 export const DailyGoal = () => {
   return (
-    <Wrapper>
+    <div>
       <Title>Daily goal</Title>
       <List>
         <Item>
@@ -33,6 +32,6 @@ export const DailyGoal = () => {
           </Text>
         </Item>
       </List>
-    </Wrapper>
+    </div>
   );
 };

@@ -9,7 +9,6 @@ export const Title = styled.h3`
 export const Wrapper = styled.div`
   display: flex;
   position: relative;
-  width: 300px;
   gap: 20px;
   padding: 16px 12px;
   margin-top: 6px;

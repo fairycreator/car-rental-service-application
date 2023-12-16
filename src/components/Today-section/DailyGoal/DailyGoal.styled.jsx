@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  width: 300px;
-`;
-
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 400;
