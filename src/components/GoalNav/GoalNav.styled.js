@@ -34,3 +34,26 @@ export const Text = styled.p`
   line-height: var(--main-line-height);
   color: var(--primary-color-white);
 `;
+
+export const MenuTitle = styled.p`
+  font-family: 'Poppins500', sans-serif;
+  font-size: 18px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  color: var(--primary-color-white);
+`;
+
+export const MenuText = styled.p`
+  font-family: 'Poppins400', sans-serif;
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  color: var(--primary-color-grey);
+  margin-bottom: 7px;
+`;
+
+export const BtnText = styled.p`
+  font-family: 'Poppins500', sans-serif;
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  color: var(--primary-color-black-one);
+`;
