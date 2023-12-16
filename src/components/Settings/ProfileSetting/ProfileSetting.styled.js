@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import { theme } from '../../../GlobalStyle';
 
 export const PageWrapper = styled.div`
   padding-bottom: 40px;
@@ -123,3 +124,46 @@ export const Avatar = styled.img`
     url(<path-to-image>),
     lightgray 50% / cover no-repeat;
 `;
+
+export const formControlStyled = {
+  gap: '12px',
+  [theme.breakpoints.down('tablet')]: {
+    width: '300px',
+  },
+  [theme.breakpoints.up('tablet')]: {
+    width: '212px',
+  },
+};
+
+export const formLabelStyled = {
+  fontFamily: 'Poppins500',
+  fontSize: '14px',
+  color: 'white.main',
+  '&.Mui-focused': {
+    color: 'white.main',
+  },
+};
+
+export const formControlLabel = {
+  gap: '8px',
+  margin: '0px',
+  '& .MuiTypography-root': {
+    fontFamily: 'Poppins400',
+    fontWeight: 400,
+    fontSize: '14px',
+  },
+  '& .MuiButtonBase-root': {
+    padding: '0px',
+  },
+};
+
+export const radioStyled = {
+  color: 'grey.main',
+  '&.Mui-checked': {
+    color: 'greenlite.main',
+  },
+  '& .MuiSvgIcon-root': {
+    width: '12px',
+    height: '12px',
+  },
+};
