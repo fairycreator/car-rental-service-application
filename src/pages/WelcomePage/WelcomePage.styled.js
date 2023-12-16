@@ -6,20 +6,16 @@ export const Container = styled.div`
   align-items: center;
   background-color: var(--primary-color-black-one);
   color: var(--primary-color-white);
-  min-height: 100vh;
+  height: 100vh;
   /* padding: 10px 24px; */
 `;
 
 export const MainContent = styled.main`
+  background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-`;
-
-export const Illustration = styled.img`
-  max-width: 100%;
-  height: auto;
 `;
 
 export const Title = styled.h2`
@@ -115,7 +111,7 @@ export const WelcomePrimaryBtn = styled(StyledActionButton)`
 
   &:hover,
   &:focus {
-    background-color: rgba(182, 204, 135, 1);
+    background-color: #22c55e;
   }
 `;
 
