@@ -1,3 +1,4 @@
+import { createTheme } from '@mui/material/styles';
 import { createGlobalStyle, css } from 'styled-components';
 import 'modern-normalize';
 
@@ -5,6 +6,41 @@ import PoppinsBold from './assets/fonts/Poppins-Bold.ttf';
 import PoppinsMedium from './assets/fonts/Poppins-Medium.ttf';
 import PoppinsRegular from './assets/fonts/Poppins-Regular.ttf';
 import PoppinsSemiBold from './assets/fonts/Poppins-SemiBold.ttf';
+
+export const theme = createTheme({
+  palette: {
+    white: {
+      main: '#FFFFFF',
+    },
+    blackone: {
+      main: '#050505',
+    },
+    violet: {
+      main: '#B6C3FF',
+    },
+    blacktwo: {
+      main: '#0F0F0F',
+    },
+    litegreen: {
+      main: '#45FFBC',
+    },
+    grey: {
+      main: '#B6B6B6',
+    },
+    greenlite: {
+      main: '#E3FFA8',
+    },
+    greyone: {
+      main: '#292928',
+    },
+    pink: {
+      main: '#FFC4F7',
+    },
+    yellow: {
+      main: '#FFF3B7',
+    },
+  },
+});
 
 export const GlobalStyle = createGlobalStyle`
 :root{
