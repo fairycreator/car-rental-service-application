@@ -2,7 +2,7 @@ import { Formik, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/auth/authOperations';
 import { useState } from 'react';
-import signInSchema from '../../schema/signInSchema';
+import signInSchema from '../../schemas/signInSchema';
 import {
   InputStyled,
   WrapFormStyled,

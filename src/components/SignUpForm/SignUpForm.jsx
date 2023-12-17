@@ -2,12 +2,11 @@ import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import signUpSchema from '../../schemas/signUpSchema';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { registerUser } from '../../redux/auth/authOperations';
 import { useNavigate } from 'react-router-dom';
 import {
   WrapForm,
-  WrapperError,
   LabelWrap,
   IconWrapped,
   SvgIconEye,
@@ -23,6 +22,11 @@ import GoalSelectionStep from '../SignUpSteps/SignUpYourGoal';
 import SelectGender from '../SignUpSteps/SignUpGender';
 import BodyParametersStep from '../SignUpSteps/SignUpBodyParams';
 import ActivityLevelStep from '../SignUpSteps/SignUpActivity';
+import {
+  setCurrentStep,
+  updateFormData,
+  submitFormData,
+} from '../../redux/signUp/signUpActions';
 
 const initialValues = {
   name: '',
@@ -34,10 +38,11 @@ const initialValues = {
   height: '',
   weight: '',
   activityLevel: '',
+  avatar: '',
 };
 
 const SignUpForm = () => {
-  const [step, setStep] = useState(1);
+  const { step, formData } = useSelector((state) => state.signUp);
   const [passwordShown, setPasswordShown] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -52,8 +57,18 @@ const SignUpForm = () => {
     setPasswordShown(!passwordShown);
   };
 
-  const nextStep = () => setStep(step + 1);
-  const previousStep = () => setStep(step - 1);
+  const handleNextStep = (newData) => {
+    dispatch(updateFormData(newData));
+    dispatch(setCurrentStep(step + 1));
+  };
+
+  const handlePrevStep = () => {
+    dispatch(setCurrentStep(step - 1));
+  };
+
+  const handleFinalSubmit = () => {
+    dispatch(submitFormData(formData));
+  };
 
   const StepOne = () => (
     <WrapForm>
@@ -75,8 +90,10 @@ const SignUpForm = () => {
           </SvgIconEye>
         </IconWrapped>
       </LabelWrap>
-      <WrapperError>{/* Error message handling here */}</WrapperError>
-      <NextButton type="button" onClick={nextStep}>
+      {/* <ErrorDivStyled color={!errors.email && touched.email ? '#3cbc81' : null}>
+        {errors.email ? errors.email : 'Success email'}
+      </ErrorDivStyled> */}
+      <NextButton type="button" onClick={handleNextStep}>
         Next
       </NextButton>
       <AccountPromptWrapper>
@@ -91,17 +108,34 @@ const SignUpForm = () => {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <StepOne />;
+        return <StepOne nextStep={handleNextStep} />;
       case 2:
-        return <GoalSelectionStep />;
+        return (
+          <GoalSelectionStep
+            nextStep={handleNextStep}
+            prevStep={handlePrevStep}
+          />
+        );
       case 3:
-        return <SelectGender />;
+        return (
+          <SelectGender nextStep={handleNextStep} prevStep={handlePrevStep} />
+        );
       case 4:
-        return <BodyParametersStep />;
+        return (
+          <BodyParametersStep
+            nextStep={handleNextStep}
+            prevStep={handlePrevStep}
+          />
+        );
       case 5:
-        return <ActivityLevelStep />;
+        return (
+          <ActivityLevelStep
+            nextStep={handleFinalSubmit}
+            prevStep={handlePrevStep}
+          />
+        );
       default:
-        return <div>Unknown step</div>;
+        return <div>Thank you for signing up!</div>;
     }
   };
 
@@ -115,7 +149,7 @@ const SignUpForm = () => {
         <Form autoComplete="off">
           {renderStep(errors, touched, values, handleChange, handleBlur)}
           {step > 1 && (
-            <BackButton type="button" onClick={previousStep}>
+            <BackButton type="button" onClick={handlePrevStep}>
               Back
             </BackButton>
           )}

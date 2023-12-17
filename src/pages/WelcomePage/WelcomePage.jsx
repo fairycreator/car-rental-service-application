@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import FeatureItem from '../../components/FeatureItem/FeatureItem';
-import Illustration from '../../components/Illustartion/Illustration';
+// import Illustration from '../../components/Illustartion/Illustration';
+import image from '../../assets/backgroundImages/welcomepage.jpg';
 
 import {
   Container,
@@ -11,13 +12,15 @@ import {
   Buttons,
   WelcomePrimaryBtn,
   WelcomeOutlinedBtn,
+  Image,
 } from './WelcomePage.styled';
 
 const WelcomePage = () => {
   return (
     <Container>
       <MainContent>
-        <Illustration $pathname={location.pathname} />
+        <Image src={image} alt="Activity trtacker" />
+        {/* <Illustration $pathname={location.pathname} /> */}
         <Title>Set goals and achieve them</Title>
         <Description>
           The service will help you set goals and follow them.

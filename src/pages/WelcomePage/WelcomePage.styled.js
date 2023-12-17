@@ -10,6 +10,16 @@ export const Container = styled.div`
   /* padding: 10px 24px; */
 `;
 
+export const Image = styled.img`
+  height: 296px;
+  width: 300px;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+`;
+
 export const MainContent = styled.main`
   background-color: var(--primary-color-black-one);
   display: flex;
