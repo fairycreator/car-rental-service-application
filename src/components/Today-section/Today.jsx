@@ -9,11 +9,13 @@ import {
   Title,
   StyledLink,
   Icon,
+  ItemFood,
+  Wrapper,
 } from './Today.styled';
 
 export const Today = () => {
   return (
-    <>
+    <Wrapper>
       <TitleWrapper>
         <Title>Today</Title>
         <StyledLink to="/dashboard">
@@ -30,10 +32,10 @@ export const Today = () => {
         <Item>
           <Water />
         </Item>
-        <Item>
+        <ItemFood>
           <Food />
-        </Item>
+        </ItemFood>
       </List>
-    </>
+    </Wrapper>
   );
 };

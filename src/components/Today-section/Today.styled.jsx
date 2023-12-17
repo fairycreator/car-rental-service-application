@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// export const Wrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-// `;
+export const Wrapper = styled.div`
+  margin: 0 auto;
+  max-width: 300px;
+  @media screen and (min-width: 834px) {
+    max-width: 780px;
+  }
+`;
 
 export const TitleWrapper = styled.div`
   display: flex;
@@ -23,6 +25,7 @@ export const List = styled.ul`
   @media screen and (min-width: 834px) {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
   }
 `;
 
@@ -30,7 +33,15 @@ export const Item = styled.li`
   width: 300px;
 
   @media screen and (min-width: 834px) {
-    min-width: 380px;
+    width: 380px;
+  }
+`;
+
+export const ItemFood = styled.li`
+  width: 300px;
+
+  @media screen and (min-width: 834px) {
+    width: 780px;
   }
 `;
 
