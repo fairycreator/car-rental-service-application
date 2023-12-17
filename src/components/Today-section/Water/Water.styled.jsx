@@ -39,7 +39,7 @@ export const ProgressBar = styled.div`
   height: 192px;
   border-radius: 20px;
   border: 1px solid var(--primary-color-grey);
-  background-color: white;
+  background-color: var(--primary-color-violet);
   margin: 0;
   padding: 0;
   color: black;

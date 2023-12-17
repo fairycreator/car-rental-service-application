@@ -51,7 +51,7 @@ export const Calories = styled.div`
   width: 168px;
   height: 168px;
   border-radius: 100%;
-  background-color: white;
+  background-color: var(--primary-color-lite-green);
 `;
 
 export const Item = styled.li`
