@@ -75,6 +75,7 @@ const StyledMenu = styled(Menu)({
 export const GoalNav = () => {
   const [value, setValue] = useState('Lose fat');
   const [currentValue, setCurrentValue] = useState('');
+  const [currentImage, setCurrentImage] = useState(loseFat)
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -92,15 +93,22 @@ export const GoalNav = () => {
     event.preventDefault();
 
     if (currentValue === 'Lose fat') {
+      setCurrentImage(loseFat)
       console.log('Lose fat');
+
     } else if (currentValue === 'Maintain') {
+      setCurrentImage(maintain)
       console.log('Maintain');
-    } else {
+
+    } else if (currentValue === 'Gain muscle') {
+      setCurrentImage(gainMuscle)
       console.log('Gain muscle');
     }
     setValue(currentValue);
     handleClose();
   };
+
+
 
   return (
     <div>
@@ -112,7 +120,7 @@ export const GoalNav = () => {
         onClick={handleClick}
       >
         <DivImage>
-          <LoseFatBig src={loseFat} alt="Lose fat" />
+          <LoseFatBig src={currentImage} alt="Lose fat" />
         </DivImage>
 
         <DivStyled>
@@ -176,7 +184,7 @@ export const GoalNav = () => {
                     color: '#B6C3FF',
                     fontFamily: 'Poppins500',
                   },
-                  '& :hover.igoMVi': {
+                  '& :active.igoMVi': {
                     borderColor: '#B6C3FF',
                   },
                 }}

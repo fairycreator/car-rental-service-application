@@ -31,6 +31,7 @@ const StyledMenu = styled(Menu)({
     '& .MuiMenuItem-root': {
         padding: '0px',
         gap: '8px',
+        minHeight: 'auto',
     },
     '& .MuiList-root': {
         display: 'flex',
