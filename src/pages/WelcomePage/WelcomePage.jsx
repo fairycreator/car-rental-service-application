@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import FeatureItem from '../../components/FeatureItem/FeatureItem';
-import image from '../../assets/backgroundImages/welcomepage.jpg';
+import image from '../../assets/backgroundImages/welcomepage.png';
 
 import {
   Container,
