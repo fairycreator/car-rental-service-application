@@ -18,7 +18,6 @@ const ButtonMenu = styled(Button)({
     lineHeight: 1.5,
     backgroundColor: 'none',
     borderColor: 'none',
-    
 });
 
 const StyledMenu = styled(Menu)({
@@ -40,7 +39,7 @@ const StyledMenu = styled(Menu)({
         width: '158px',
         height: '112px',
         gap: '24px',
-        padding: '24px', 
+        padding: '24px',
     },
 });
 
