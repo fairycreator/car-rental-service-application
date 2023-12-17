@@ -10,6 +10,22 @@ export const LoseFat = styled.img`
   height: 20px;
 `;
 
+export const ButtonClose = styled.button`
+  /* cursor: pointer; */
+  background: 0 0;
+  border: none;
+  padding: 0px 0px;
+  position: absolute;
+  top: 20px;
+  right: 32px;
+`;
+
+export const IconClose = styled.svg`
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-grey);
+`;
+
 export const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
