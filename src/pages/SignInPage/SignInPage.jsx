@@ -1,5 +1,6 @@
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import Illustration from '../../components/Illustartion/Illustration';
+import image from '../../assets/backgroundImages/welcomepage.png';
 import SignInForm from '../../components/SignInForm/SignInForm';
 import {
   SignInContainer,
@@ -11,58 +12,47 @@ import {
   SignUpPromptText,
   SignUpLink,
   ForgotPasswordText,
+  Message,
+  Image,
 } from './SignIn.styled';
-
-/*Email verification*/
 import axios from 'axios';
-import { toast } from 'react-toastify';
-const toastError = (text) => {
-  toast.error(text, {
-    position: 'top-center',
-    autoClose: 7000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
-  });
-};
-const toastSuccess = (text) => {
-  toast.success(text, {
-    position: 'top-center',
-    autoClose: 7000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'dark',
-  });
-};
 
 const instance = axios.create({
-  baseURL: '',
+  baseURL: 'apiurl',
 });
 
-const verifyEmail = async (verifyToken) => {
+const verifyEmail = async (verifyToken, setSuccessMessage, setErrorMessage) => {
   try {
     const { data } = await instance.get(`auth/verify/${verifyToken}`);
-    toastSuccess(`${data.message}! Use your credentials to login`);
+    setSuccessMessage(`${data.message}! Use your credentials to login`);
   } catch (error) {
-    toastError(`Error when verifying email: ${error.response.data}`);
+    const errorMessage =
+      error.response && error.response.data.message
+        ? `Error when verifying email: ${error.response.data.message}`
+        : 'Error when verifying email: An unknown error occurred.';
+    setErrorMessage(errorMessage);
   }
 };
 
 const SignIn = () => {
   const { verificationToken } = useParams();
-  if (verificationToken) verifyEmail(verificationToken);
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  useEffect(() => {
+    if (verificationToken) {
+      verifyEmail(verificationToken, setSuccessMessage, setErrorMessage);
+    }
+  }, [verificationToken]);
+
   return (
     <SignInContainer>
       <MainContent>
-        <Illustration $pathname={location.pathname} />
+        {successMessage && <Message type="success">{successMessage}</Message>}
+        {errorMessage && <Message type="error">{errorMessage}</Message>}
+        <Image src={image} alt="Activity trtacker" />
         <SignUpBox>
-          <SignUpTitle>Sign up</SignUpTitle>
+          <SignUpTitle>Sign in</SignUpTitle>
           <LoginMessage>You need to login to use the service</LoginMessage>
         </SignUpBox>
         <SignInForm />
@@ -79,4 +69,5 @@ const SignIn = () => {
     </SignInContainer>
   );
 };
+
 export default SignIn;
