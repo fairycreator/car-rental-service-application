@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import sprite from '../../../assets/images/sprite.svg';
 import {
   Wrapper,
@@ -13,8 +14,11 @@ import {
   Button,
   Span,
 } from './Water.styled';
+import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
 
 export const Water = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <Wrapper>
       <Title>Water</Title>
@@ -33,7 +37,7 @@ export const Water = () => {
             <Span>left:</Span> 450 ml
           </Text>
 
-          <Button type="button">
+          <Button type="button" onClick={() => setIsModalOpen(true)}>
             <AddIcon>
               <use href={`${sprite}#icon-add-converted`}></use>
             </AddIcon>
@@ -41,6 +45,7 @@ export const Water = () => {
           </Button>
         </DetailsWrapper>
       </ContentWrapper>
+      {isModalOpen && <AddWaterModal setIsModalOpen={setIsModalOpen} />}
     </Wrapper>
   );
 };
