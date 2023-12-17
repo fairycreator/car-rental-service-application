@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
-export const LoseFat = styled.img`
+export const LoseFatBig = styled.img`
   width: 28px;
   height: 28px;
+`;
+
+export const LoseFat = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 export const DivStyled = styled.div`
@@ -48,7 +53,7 @@ export const MenuText = styled.p`
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
   color: var(--primary-color-grey);
-  margin-bottom: 7px;
+  margin-bottom: 16px;
 `;
 
 export const BtnText = styled.p`

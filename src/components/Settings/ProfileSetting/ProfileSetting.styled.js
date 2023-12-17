@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
+import { theme } from '../../../GlobalStyle';
 
 export const PageWrapper = styled.div`
   padding-bottom: 40px;
@@ -123,3 +124,86 @@ export const Avatar = styled.img`
     url(<path-to-image>),
     lightgray 50% / cover no-repeat;
 `;
+
+export const formControlStyled = {
+  gap: '12px',
+  [theme.breakpoints.down('tablet')]: {
+    width: '300px',
+  },
+  [theme.breakpoints.up('tablet')]: {
+    width: '212px',
+  },
+};
+
+export const formLabelStyled = {
+  fontFamily: 'Poppins500',
+  fontSize: '14px',
+  color: 'white.main',
+  '&.Mui-focused': {
+    color: 'white.main',
+  },
+};
+
+export const formControlLabel = {
+  gap: '8px',
+  margin: '0px',
+  '& .MuiTypography-root': {
+    fontFamily: 'Poppins400',
+    fontWeight: 400,
+    fontSize: '14px',
+  },
+  '& .MuiButtonBase-root': {
+    padding: '0px',
+  },
+};
+
+export const radioStyled = {
+  color: 'grey.main',
+  '&.Mui-checked': {
+    color: 'greenlite.main',
+  },
+  '& .MuiSvgIcon-root': {
+    width: '12px',
+    height: '12px',
+  },
+};
+
+export const buttonGroupStyled = {
+  gap: '12px',
+  width: '100%',
+  [theme.breakpoints.down('tablet')]: {
+    flexDirection: 'column',
+  },
+  '& .MuiButtonGroup-firstButton': {
+    borderRadius: '12px',
+    color: 'blacktwo.main',
+    backgroundColor: 'greenlite.main',
+    margin: '0px',
+    borderRightColor: 'none',
+  },
+  // '& .MuiButtonGroup-firstButton:hover': {
+  //   borderRadius: '12px',
+  //   color: 'blacktwo.main',
+  //   backgroundColor: 'greenlite.main',
+  //   border: '1px solid transparent',
+  //   borderRightColor: 'transparent',
+  // },
+  '& .MuiButtonGroup-lastButton': {
+    borderRadius: '12px',
+    color: 'grey.main',
+    margin: '0px',
+  },
+  // '& .MuiButtonGroup-lastButton:hover': {
+  //   borderColor: 'greenlite.main',
+  //   color: 'greenlite.main',
+  // },
+};
+
+export const buttonStyled = {
+  width: '212px',
+  padding: '8px 10px',
+  border: '1px solid transparent',
+  [theme.breakpoints.down('tablet')]: {
+    width: '100%',
+  },
+};
