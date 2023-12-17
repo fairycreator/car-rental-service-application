@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 834px) {
     width: 780px;
   }
+
+  @media screen and (min-width: 1440px) {
+    width: 560px;
+  }
 `;
 
 export const ContentWrapper = styled.div`

@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    max-width: 1372px;
   }
 `;
 
@@ -35,28 +35,13 @@ export const ContentWrapper = styled.div`
   align-items: center;
   gap: 20px;
   margin: 0 auto;
+
   @media screen and (min-width: 834px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
   }
 `;
-
-// export const Item = styled.li`
-//   width: 300px;
-
-//   @media screen and (min-width: 834px) {
-//     width: 380px;
-//   }
-// `;
-
-// export const ItemFood = styled.li`
-//   width: 300px;
-
-//   @media screen and (min-width: 834px) {
-//     width: 780px;
-//   }
-// `;
 
 export const Title = styled.h2`
   font-size: 24px;
