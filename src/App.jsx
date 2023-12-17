@@ -21,10 +21,10 @@ function App() {
         <Route
           index
           element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
+            <RestrictedRoute redirectTo="/recommended-food" component={<RecommendedFoodPage/>} />
           }
         />
-        <Route
+        {/* <Route
           path="/welcome"
           element={
             <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
@@ -68,12 +68,12 @@ function App() {
           element={
             <PrivateRoute redirectTo="/welcome" component={<DiaryPage />} />
           }
-        />
+        /> */}
         <Route
           path="/recommended-food"
           element={
             <PrivateRoute
-              redirectTo="/welcome"
+              // redirectTo="/welcome"
               component={<RecommendedFoodPage />}
             />
           }
