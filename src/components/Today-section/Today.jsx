@@ -3,7 +3,6 @@ import { Food } from './Food/Food';
 import { Water } from './Water/Water';
 import sprite from '../../assets/images/sprite.svg';
 import {
-  Wrapper,
   TitleWrapper,
   List,
   Item,
@@ -14,7 +13,7 @@ import {
 
 export const Today = () => {
   return (
-    <Wrapper>
+    <>
       <TitleWrapper>
         <Title>Today</Title>
         <StyledLink to="/dashboard">
@@ -35,6 +34,6 @@ export const Today = () => {
           <Food />
         </Item>
       </List>
-    </Wrapper>
+    </>
   );
 };
