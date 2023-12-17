@@ -14,12 +14,20 @@ export const List = styled.ul`
   margin-top: 6px;
   border-radius: 12px;
   background-color: var(--primary-color-black-two);
+
+  @media screen and (min-width: 834px) {
+    gap: 32px;
+    padding: 24px 40px;
+  }
 `;
 
 export const Item = styled.li`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media screen and (min-width: 834px) {
+  }
 `;
 
 export const BubbleIcon = styled.svg`
