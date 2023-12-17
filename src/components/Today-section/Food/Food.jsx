@@ -1,36 +1,34 @@
+import { DoughnutChart } from './DoughnutChart/DoughnutChart';
+
 import {
   Wrapper,
   ContentWrapper,
   List,
+  Item,
   Title,
-  SecondTitle,
-  ProgressBar,
+  Calories,
 } from './Food.styled';
+import { FoodCard } from './FoodCard/FoodCard';
 
 export const Food = () => {
   return (
     <Wrapper>
       <Title>Food</Title>
       <ContentWrapper>
-        <ProgressBar></ProgressBar>
+        <Calories>
+          <DoughnutChart />
+        </Calories>
+
         <List>
-          <li>
-            <SecondTitle>Carbonohidrates</SecondTitle>
-            <p>Goal: </p>
-            <p>left: </p>
-          </li>
-          <li>
-            <div>o</div>
-            <SecondTitle>Protein</SecondTitle>
-            <p>Goal: </p>
-            <p>left: </p>
-          </li>
-          <li>
-            <div>o</div>
-            <SecondTitle>Fat</SecondTitle>
-            <p>Goal: </p>
-            <p>left: </p>
-          </li>
+          <Item>
+            <FoodCard />
+          </Item>
+          <Item>
+            <FoodCard />
+          </Item>
+          <Item>
+            <FoodCard />
+          </Item>
         </List>
       </ContentWrapper>
     </Wrapper>
