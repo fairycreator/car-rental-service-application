@@ -10,6 +10,7 @@ export const ChartWrapper = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   gap: 12px;
+  align-items: center;
 `;
 
 export const InfoWrapper = styled.div`
@@ -18,4 +19,16 @@ export const InfoWrapper = styled.div`
   gap: 12px;
 `;
 
-export const Goal = styled.div``;
+export const Title = styled.h4`
+  margin-bottom: 2px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+`;
+
+export const Amount = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--primary-color-grey);
+`;

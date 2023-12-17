@@ -1,5 +1,11 @@
 import { DoughnutChart } from '../DoughnutChart/DoughnutChart';
-import { ChartWrapper, Wrapper, InfoWrapper } from './FoodCard.styled';
+import {
+  ChartWrapper,
+  Wrapper,
+  InfoWrapper,
+  Title,
+  Amount,
+} from './FoodCard.styled';
 
 export const FoodCard = () => {
   return (
@@ -8,12 +14,14 @@ export const FoodCard = () => {
         <DoughnutChart />
       </ChartWrapper>
       <div>
-        <h4>Title</h4>
+        <Title>Title</Title>
         <InfoWrapper>
           <p>
-            Goal: <span>1221</span>
+            Goal: <Amount>1221</Amount>
           </p>
-          <p>left:</p>
+          <p>
+            left: <Amount>322</Amount>
+          </p>
         </InfoWrapper>
       </div>
     </Wrapper>
