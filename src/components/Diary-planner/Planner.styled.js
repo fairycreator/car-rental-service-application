@@ -17,19 +17,19 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1440px) {
     width: 1440px;
-    display: flex;
-    flex-wrap: wrap;
   }
 `;
 
 export const Wrapper = styled.div`
   @media screen and (min-width: 834px) {
-    width: 834px;
+    /* width: 834px; */
     display: flex;
     justify-content: space-between;
   }
 
   @media screen and (min-width: 1440px) {
+    /* display: flex;
+    flex-wrap: wrap; */
   }
 `;
 
@@ -42,7 +42,12 @@ export const MealTitle = styled.p`
 export const MealContainer = styled.div`
   display: flex;
   gap: 12px;
-  margin-right: 150px;
+  @media screen and (min-width: 834px) {
+    margin-right: 196px;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-right: 159px;
+  }
 `;
 
 export const MealImage = styled.img``;
@@ -58,6 +63,9 @@ export const MealSubscription = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 export const MealSubText = styled.p`
@@ -83,10 +91,22 @@ export const MealDashbord = styled.div`
   max-width: 300px;
   /* width: 834px; */
   @media screen and (min-width: 834px) {
-    max-width: 834px;
+    max-width: 780px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 676px;
+    height: 240px;
   }
+`;
+export const DesktopContainer = styled.div`
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+`;
+
+export const RecordMealBlock = styled.div`
+  max-width: 676px;
 `;
