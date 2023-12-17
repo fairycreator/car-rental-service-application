@@ -21,7 +21,7 @@ export const Water = () => {
         <TrashIcon>
           <use href={`${sprite}#trash-delete`}></use>
         </TrashIcon>
-        <ProgressBar></ProgressBar>
+        <ProgressBar>70%</ProgressBar>
         <DetailsWrapper>
           <SecondTitle>Water consumption</SecondTitle>
 

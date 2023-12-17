@@ -9,11 +9,17 @@ export const Title = styled.h3`
 export const Wrapper = styled.div`
   display: flex;
   position: relative;
+  align-items: center;
   gap: 20px;
   padding: 16px 12px;
   margin-top: 6px;
   border-radius: 12px;
   background-color: var(--primary-color-black-two);
+
+  @media screen and (min-width: 834px) {
+    gap: 40px;
+    padding: 24px 22px;
+  }
 `;
 
 export const ProgressBar = styled.div`
@@ -22,10 +28,17 @@ export const ProgressBar = styled.div`
   border-radius: 20px;
   border: 1px solid var(--primary-color-grey);
   background-color: white;
+  margin: 0;
+  padding: 0;
+  color: black;
+  text-align: center;
 `;
 
 export const DetailsWrapper = styled.div`
-  padding: 22px 0;
+  /* padding: 22px 0; */
+  @media screen and (min-width: 834px) {
+    /* padding: 33px 0; */
+  }
 `;
 
 export const SecondTitle = styled.h4`
@@ -62,6 +75,11 @@ export const TrashIcon = styled.svg`
   width: 20px;
   height: 20px;
   fill: var(--primary-color-green-lite);
+
+  @media screen and (min-width: 834px) {
+    top: 24px;
+    right: 24px;
+  }
 `;
 
 export const AddIcon = styled.svg`
