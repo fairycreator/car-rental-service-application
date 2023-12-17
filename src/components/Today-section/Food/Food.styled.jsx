@@ -20,11 +20,18 @@ export const ContentWrapper = styled.div`
   margin-top: 6px;
   border-radius: 12px;
   background-color: var(--primary-color-black-two);
+
+  @media screen and (min-width: 834px) {
+    flex-direction: row;
+    padding: 36px 40px;
+    gap: 40px;
+  }
 `;
 
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
+  width: 216px;
   gap: 12px;
 `;
 
@@ -40,11 +47,13 @@ export const SecondTitle = styled.h4`
   line-height: 1.33;
 `;
 
-export const ProgressBar = styled.div`
+export const Calories = styled.div`
   width: 168px;
   height: 168px;
   border-radius: 100%;
   background-color: white;
-  color: black;
-  text-align: center;
+`;
+
+export const Item = styled.li`
+  display: flex;
 `;
