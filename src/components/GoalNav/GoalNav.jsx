@@ -154,7 +154,8 @@ export const GoalNav = () => {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-         <ButtonClose>
+        <ButtonClose
+        onClick={handleClose}>
                 <IconClose>
                   <use href={`${sprite}#icon-close-circle`}></use>
                 </IconClose>

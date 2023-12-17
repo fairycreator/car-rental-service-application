@@ -24,7 +24,7 @@ const ButtonMenu = styled(Button)({
 const StyledMenu = styled(Menu)({
     '& .MuiPaper-root': {
         borderRadius: 12,
-        marginTop: '39px',
+        marginTop: '16px',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
     },
