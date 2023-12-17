@@ -155,11 +155,11 @@ export const GoalNav = () => {
         TransitionComponent={Fade}
       >
         <ButtonClose
-        onClick={handleClose}>
-                <IconClose>
-                  <use href={`${sprite}#icon-close-circle`}></use>
-                </IconClose>
-              </ButtonClose>
+          onClick={handleClose}>
+          <IconClose>
+            <use href={`${sprite}#icon-close-circle`}></use>
+          </IconClose>
+        </ButtonClose>
         <form onSubmit={handleSubmit}>
           <FormControl sx={{ margin: '0px' }}>
             <FormLabel id="demo-error-radios" sx={{ marginRight: '0px' }}>
