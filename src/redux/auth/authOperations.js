@@ -17,7 +17,7 @@ const toastError = (text) => {
 };
 
 export const instance = axios.create({
-  baseURL: '',
+  baseURL: 'api_url',
 });
 
 export const token = {

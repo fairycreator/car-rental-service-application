@@ -17,13 +17,20 @@ const validationSchema = Yup.object().shape({
 
 const ActivityLevelStep = ({ nextStep, prevStep }) => {
   const activityImageUrl = '../../assets/backgroundImages/activity.png';
+  const saveToLocalStorage = (values) => {
+    localStorage.setItem('activityLevel', values.activityLevel);
+  };
   return (
     <Formik
       initialValues={{
         activityLevel: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={(values, actions) => {}}
+      onSubmit={(values, actions) => {
+        saveToLocalStorage(values);
+        nextStep(values);
+        actions.setSubmitting(false);
+      }}
     >
       {({ isSubmitting }) => (
         <Form>
