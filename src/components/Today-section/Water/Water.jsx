@@ -1,7 +1,8 @@
 import sprite from '../../../assets/images/sprite.svg';
 import {
-  Title,
   Wrapper,
+  Title,
+  ContentWrapper,
   ProgressBar,
   TrashIcon,
   AddIcon,
@@ -15,9 +16,9 @@ import {
 
 export const Water = () => {
   return (
-    <>
+    <Wrapper>
       <Title>Water</Title>
-      <Wrapper>
+      <ContentWrapper>
         <TrashIcon>
           <use href={`${sprite}#trash-delete`}></use>
         </TrashIcon>
@@ -39,7 +40,7 @@ export const Water = () => {
             Add water intake
           </Button>
         </DetailsWrapper>
-      </Wrapper>
-    </>
+      </ContentWrapper>
+    </Wrapper>
   );
 };

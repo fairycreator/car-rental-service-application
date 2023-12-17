@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 export const Wrapper = styled.div`
   margin: 0 auto;
   max-width: 300px;
+
   @media screen and (min-width: 834px) {
     max-width: 780px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
   }
 `;
 
@@ -14,9 +19,17 @@ export const TitleWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 834px) {
+    margin-bottom: 24px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 16px;
+  }
 `;
 
-export const List = styled.ul`
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,21 +42,21 @@ export const List = styled.ul`
   }
 `;
 
-export const Item = styled.li`
-  width: 300px;
+// export const Item = styled.li`
+//   width: 300px;
 
-  @media screen and (min-width: 834px) {
-    width: 380px;
-  }
-`;
+//   @media screen and (min-width: 834px) {
+//     width: 380px;
+//   }
+// `;
 
-export const ItemFood = styled.li`
-  width: 300px;
+// export const ItemFood = styled.li`
+//   width: 300px;
 
-  @media screen and (min-width: 834px) {
-    width: 780px;
-  }
-`;
+//   @media screen and (min-width: 834px) {
+//     width: 780px;
+//   }
+// `;
 
 export const Title = styled.h2`
   font-size: 24px;

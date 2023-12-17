@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  width: 300px;
+
+  @media screen and (min-width: 834px) {
+    width: 380px;
+  }
+`;
+
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
 `;
 
-export const Wrapper = styled.div`
+export const ContentWrapper = styled.div`
   display: flex;
   position: relative;
   align-items: center;

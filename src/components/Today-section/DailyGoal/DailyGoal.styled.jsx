@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  width: 300px;
+
+  @media screen and (min-width: 834px) {
+    width: 380px;
+  }
+`;
+
 export const Title = styled.h3`
   font-size: 18px;
   font-weight: 400;

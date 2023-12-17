@@ -4,12 +4,10 @@ import { Water } from './Water/Water';
 import sprite from '../../assets/images/sprite.svg';
 import {
   TitleWrapper,
-  List,
-  Item,
+  ContentWrapper,
   Title,
   StyledLink,
   Icon,
-  ItemFood,
   Wrapper,
 } from './Today.styled';
 
@@ -25,17 +23,11 @@ export const Today = () => {
           </Icon>
         </StyledLink>
       </TitleWrapper>
-      <List>
-        <Item>
-          <DailyGoal />
-        </Item>
-        <Item>
-          <Water />
-        </Item>
-        <ItemFood>
-          <Food />
-        </ItemFood>
-      </List>
+      <ContentWrapper>
+        <DailyGoal />
+        <Water />
+        <Food />
+      </ContentWrapper>
     </Wrapper>
   );
 };

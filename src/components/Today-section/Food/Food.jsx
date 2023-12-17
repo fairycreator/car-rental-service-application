@@ -1,14 +1,36 @@
-import { Wrapper, List, Title, SecondTitle, ProgressBar } from './Food.styled';
+import {
+  Wrapper,
+  ContentWrapper,
+  List,
+  Title,
+  SecondTitle,
+} from './Food.styled';
+
+// import { CircularProgressBar } from '../CircularProgressBar/CircularProgressBar';
+
+// import { CircularDeterminate } from '../CircularProgressBar/CircularProgressBar';
+
+// import { DynamicDoughnutChart } from '../CircularProgressBar/CircularProgressBar';
+
+import CircularProgressBar from '../CircularProgressBar/CircularProgressBar';
+import { ProgressBarWrapper } from '../CircularProgressBar/CircularProgressBar.styled';
 
 export const Food = () => {
   return (
-    <>
+    <Wrapper>
       <Title>Food</Title>
-      <Wrapper>
-        <ProgressBar>1360 calories</ProgressBar>
+      <ContentWrapper>
+        <ProgressBarWrapper>
+          <CircularProgressBar />
+        </ProgressBarWrapper>
+        {/* <CircularWithValueLabel /> */}
+        {/* <DynamicDoughnutChart /> */}
+        {/* <CircularDeterminate /> */}
+        {/* <CircularProgressBar /> */}
+        {/* <ProgressBar>1360 calories</ProgressBar> */}
         <List>
           <li>
-            <div>o</div>
+            {/* <CircularDeterminate /> */}
             <SecondTitle>Carbonohidrates</SecondTitle>
             <p>Goal: </p>
             <p>left: </p>
@@ -26,7 +48,7 @@ export const Food = () => {
             <p>left: </p>
           </li>
         </List>
-      </Wrapper>
-    </>
+      </ContentWrapper>
+    </Wrapper>
   );
 };
