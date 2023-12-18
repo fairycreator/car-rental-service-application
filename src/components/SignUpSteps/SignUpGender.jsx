@@ -1,4 +1,5 @@
 import { ErrorMessage, Formik, Form, Field } from 'formik';
+import { useSignUpContext } from '../../hooks/SignUpContext';
 import * as Yup from 'yup';
 import {
   StepContainer,
@@ -10,73 +11,71 @@ import {
   StepButton,
   BackButton,
 } from './Components.styled';
+import image from '../../assets/backgroundImages/goals.png';
 
 const validationSchema = Yup.object().shape({
-  activityLevel: Yup.string().required('Required'),
+  genderSelection: Yup.string().required('Required'),
 });
 
-const SelectGender = ({ nextStep, prevStep }) => {
-  const image = '../../assets/backgroundImages/activity.png';
-  const saveToLocalStorage = (values) => {
-    localStorage.setItem('activityLevel', values.activityLevel);
+const SelectGender = ({ isSubmitting }) => {
+  const { nextStage, prevStage, signUpData, addSignUpData } =
+    useSignUpContext();
+
+  const initialValues = {
+    gender: signUpData.gender || '',
+  };
+
+  const handleSubmit = (values, { resetForm }) => {
+    addSignUpData(values);
+    nextStage();
+    resetForm();
   };
   return (
-    <Formik
-      initialValues={{
-        genderSelection: '',
-      }}
-      validationSchema={validationSchema}
-      onSubmit={(values, actions) => {
-        saveToLocalStorage(values);
-        nextStep(values);
-        actions.setSubmitting(false);
-      }}
-    >
-      {({ isSubmitting }) => (
+    <StepContainer>
+      <Image src={image} alt="Select gender" />
+      <StepTitle>Select Gender, Age</StepTitle>
+      <StepDescription>
+        Choose a goal so that we can help you effectively
+      </StepDescription>
+
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
         <Form>
-          <StepContainer>
-            <Image src={image} alt="Select gender" />
-            <StepTitle>Select Gender, Age</StepTitle>
-            <StepDescription>
-              Choose a goal so that we can help you effectively
-            </StepDescription>
-            <RadioGroupContainer role="group" aria-labelledby="gender-group">
-              <FormControlLabel>
-                <Field type="radio" name="gender" value="Male" />
-                Male
-              </FormControlLabel>
-              <FormControlLabel>
-                <Field type="radio" name="gender" value="Female" />
-                Female
-              </FormControlLabel>
-            </RadioGroupContainer>
-            <ErrorMessage name="gender" component="div" />
-
-            <FormControlLabel htmlFor="age">
-              Your age
-              <Field
-                id="age"
-                name="age"
-                placeholder="Enter your age"
-                type="number"
-              />
+          <RadioGroupContainer role="group" aria-labelledby="gender-group">
+            <FormControlLabel>
+              <Field type="radio" name="gender" value="Male" />
+              Male
             </FormControlLabel>
-            <ErrorMessage name="age" component="div" />
+            <FormControlLabel>
+              <Field type="radio" name="gender" value="Female" />
+              Female
+            </FormControlLabel>
+          </RadioGroupContainer>
+          <ErrorMessage name="gender" component="div" />
 
-            <StepButton
-              type="submit"
-              disabled={isSubmitting}
-              onClick={nextStep}
-            >
-              Next
-            </StepButton>
-            <BackButton type="button" onClick={prevStep}>
-              Back
-            </BackButton>
-          </StepContainer>
+          <FormControlLabel htmlFor="age">
+            Your age
+            <Field
+              id="age"
+              name="age"
+              placeholder="Enter your age"
+              type="number"
+            />
+          </FormControlLabel>
+          <ErrorMessage name="age" component="div" />
+
+          <StepButton type="submit" disabled={isSubmitting} onClick={nextStage}>
+            Next
+          </StepButton>
+          <BackButton type="button" onClick={prevStage}>
+            Back
+          </BackButton>
         </Form>
-      )}
-    </Formik>
+      </Formik>
+    </StepContainer>
   );
 };
 

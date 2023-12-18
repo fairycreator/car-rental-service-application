@@ -1,4 +1,5 @@
 import { Formik, Form, ErrorMessage, Field } from 'formik';
+import { useSignUpContext } from '../../hooks/SignUpContext';
 import * as Yup from 'yup';
 import {
   StepContainer,
@@ -15,59 +16,58 @@ import image from '../../assets/backgroundImages/goals.png';
 const validationSchema = Yup.object().shape({
   goalSelection: Yup.string().required('Required'),
 });
-const GoalSelectionStep = ({ nextStep, prevStep }) => {
-  const saveToLocalStorage = (values) => {
-    localStorage.setItem('goalSelection', values.activityLevel);
+
+const GoalSelectionStep = ({ isSubmitting }) => {
+  const { nextStage, prevStage, signUpData, addSignUpData } =
+    useSignUpContext();
+
+  const initialValues = {
+    goal: signUpData.goal || '',
+  };
+
+  const handleSubmit = (values, { resetForm }) => {
+    addSignUpData(values);
+    nextStage();
+    resetForm();
   };
   return (
-    <Formik
-      initialValues={{
-        goalSelection: '',
-      }}
-      validationSchema={validationSchema}
-      onSubmit={(values, actions) => {
-        saveToLocalStorage(values);
-        nextStep(values);
-        actions.setSubmitting(false);
-      }}
-    >
-      {({ isSubmitting }) => (
+    <StepContainer>
+      <Image src={image} alt="Goal selection" />
+      <StepTitle>Your Goal</StepTitle>
+      <StepDescription>
+        Choose a goal so that we can help you effectively
+      </StepDescription>
+
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
         <Form>
-          <StepContainer>
-            <Image src={image} alt="Goal selection" />
-            <StepTitle>Your Goal</StepTitle>
-            <StepDescription>
-              Choose a goal so that we can help you effectively
-            </StepDescription>
-            <RadioGroupContainer role="group" aria-labelledby="goal-group">
-              <FormControlLabel>
-                <Field type="radio" name="goal" value="Lose Fat" />
-                Lose Fat
-              </FormControlLabel>
-              <FormControlLabel>
-                <Field type="radio" name="goal" value="Maintain" />
-                Maintain
-              </FormControlLabel>
-              <FormControlLabel>
-                <Field type="radio" name="goal" value="Gain Muscle" />
-                Gain Muscle
-              </FormControlLabel>
-            </RadioGroupContainer>
-            <ErrorMessage name="goal" component="div" />
-            <StepButton
-              type="submit"
-              disabled={isSubmitting}
-              onClick={nextStep}
-            >
-              Next
-            </StepButton>
-            <BackButton type="button" onClick={prevStep}>
-              Back
-            </BackButton>
-          </StepContainer>
+          <RadioGroupContainer role="group" aria-labelledby="my-radio-group">
+            <FormControlLabel>
+              <Field type="radio" name="goal" value="Lose Fat" />
+              Lose Fat
+            </FormControlLabel>
+            <FormControlLabel>
+              <Field type="radio" name="goal" value="Maintain" />
+              Maintain
+            </FormControlLabel>
+            <FormControlLabel>
+              <Field type="radio" name="goal" value="Gain Muscle" />
+              Gain Muscle
+            </FormControlLabel>
+          </RadioGroupContainer>
+          <ErrorMessage name="goal" component="div" />
+          <StepButton type="submit" disabled={isSubmitting} onClick={nextStage}>
+            Next
+          </StepButton>
+          <BackButton type="button" onClick={prevStage}>
+            Back
+          </BackButton>
         </Form>
-      )}
-    </Formik>
+      </Formik>
+    </StepContainer>
   );
 };
 
