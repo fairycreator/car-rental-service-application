@@ -1,8 +1,13 @@
 import { ErrorMessage, Field } from 'formik';
+import image from '../../assets/backgroundImages/goals.png';
+import { Image } from './Components.styled.js';
 
 const BodyParametersStep = () => {
   return (
     <div>
+      <div>
+        <Image src={image} alt="Activity tracker" />
+      </div>
       <h2>Body parameters</h2>
       <p>Enter your parameters for correct performance tracking</p>
       <div>

@@ -113,3 +113,13 @@ export const SignInLink = styled.div`
     text-decoration: underline;
   }
 `;
+
+export const Image = styled.img`
+  height: 296px;
+  width: 300px;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+`;

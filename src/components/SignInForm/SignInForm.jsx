@@ -5,13 +5,13 @@ import { useState } from 'react';
 import signInSchema from '../../schemas/signInSchema';
 import {
   InputStyled,
-  WrapFormStyled,
+  WrapForm,
   ErrorDivStyled,
-  SvgIconEyeStyled,
-  SvgIconCheckBoxStyled,
-  WrapperErrorStyled,
-  LabelWrapStyled,
-  IconWrappedStyled,
+  SvgIconEye,
+  SvgIconCheckBox,
+  WrapperError,
+  LabelWrap,
+  IconWrapped,
 } from '../SignUpForm/SignUpForm.styled';
 import { SignInButton } from './SignInForm.styled';
 import sprite from '../../assets/images/sprite.svg';
@@ -63,9 +63,9 @@ const SignInForm = () => {
 
         return (
           <Form autoComplete="off">
-            <WrapFormStyled>
+            <WrapForm>
               <div>
-                <LabelWrapStyled>
+                <LabelWrap>
                   <InputStyled
                     border={borderEmailColor}
                     type="text"
@@ -73,49 +73,49 @@ const SignInForm = () => {
                     validate={validateEmail}
                     placeholder="Email"
                   />
-                </LabelWrapStyled>
+                </LabelWrap>
 
                 {(errors.email && touched.email) ||
                 (!errors.email && touched.email) ? (
-                  <WrapperErrorStyled>
-                    <SvgIconCheckBoxStyled
+                  <WrapperError>
+                    <SvgIconCheckBox
                       fill={!errors.email && touched.email ? '#3cbc81' : null}
                     >
                       <use href={`${sprite}#icon-checkbox`} />
-                    </SvgIconCheckBoxStyled>
+                    </SvgIconCheckBox>
                     <ErrorDivStyled
                       color={!errors.email && touched.email ? '#3cbc81' : null}
                     >
                       {errors.email ? errors.email : 'Success email'}
                     </ErrorDivStyled>
-                  </WrapperErrorStyled>
+                  </WrapperError>
                 ) : null}
               </div>
 
               <div>
-                <LabelWrapStyled>
+                <LabelWrap>
                   <InputStyled
                     border={borderPasswordColor}
                     type={type}
                     name="password"
                     placeholder="Password"
                   />
-                  <IconWrappedStyled>
-                    <SvgIconEyeStyled onClick={togglePassInput}>
+                  <IconWrapped>
+                    <SvgIconEye onClick={togglePassInput}>
                       <use href={toggleIcon} />
-                    </SvgIconEyeStyled>
-                  </IconWrappedStyled>
-                </LabelWrapStyled>
+                    </SvgIconEye>
+                  </IconWrapped>
+                </LabelWrap>
                 {(errors.password && touched.password) ||
                 (!errors.password && touched.password) ? (
-                  <WrapperErrorStyled>
-                    <SvgIconCheckBoxStyled
+                  <WrapperError>
+                    <SvgIconCheckBox
                       fill={
                         !errors.password && touched.password ? '#3cbc81' : null
                       }
                     >
                       <use href={`${sprite}#icon-checkbox`} />
-                    </SvgIconCheckBoxStyled>
+                    </SvgIconCheckBox>
                     <ErrorDivStyled
                       color={
                         !errors.password && touched.password ? '#3cbc81' : null
@@ -123,10 +123,10 @@ const SignInForm = () => {
                     >
                       {errors.password ? errors.password : 'Success password'}
                     </ErrorDivStyled>
-                  </WrapperErrorStyled>
+                  </WrapperError>
                 ) : null}
               </div>
-            </WrapFormStyled>
+            </WrapForm>
 
             <SignInButton type="submit">Sign In</SignInButton>
           </Form>

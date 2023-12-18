@@ -1,8 +1,13 @@
 import { ErrorMessage, Field } from 'formik';
+import image from '../../assets/backgroundImages/welcomepage.png';
+import { Image } from './Components.styled.js';
 
 const SelectGender = () => {
   return (
     <div>
+      <div>
+        <Image src={image} alt="Activity tracker" />
+      </div>
       <h2>Select gender, Age</h2>
       <p>Choose a goal so that we can help you effectively</p>
       <div role="group" aria-labelledby="gender-group">

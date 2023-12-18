@@ -7,7 +7,7 @@ import {
   FormControlLabel,
   StepTitle,
   StepDescription,
-  ActivityImage,
+  Image,
   BackButton,
 } from './Components.styled';
 
@@ -35,7 +35,7 @@ const ActivityLevelStep = ({ nextStep, prevStep }) => {
       {({ isSubmitting }) => (
         <Form>
           <StepContainer>
-            <ActivityImage src={activityImageUrl} alt="Activity Illustration" />
+            <Image src={activityImageUrl} alt="Activity Illustration" />
             <StepTitle>Your Activity</StepTitle>
             <StepDescription>
               To correctly calculate calorie and water intake

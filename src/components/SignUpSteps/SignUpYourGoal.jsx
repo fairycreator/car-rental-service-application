@@ -1,12 +1,12 @@
 import { ErrorMessage, Field } from 'formik';
-import Illustration from '../../components/Illustartion/Illustration';
-// import { RadioInput, RadioLabel, GoalHeading, GoalFormBlock } from './Components.styled.js';
+import image from '../../assets/backgroundImages/goals.png';
+import { Image } from './Components.styled.js';
 
 const GoalSelectionStep = ({ handleChange, values }) => {
   return (
     <div>
       <div>
-        <Illustration $pathname={location.pathname} />
+        <Image src={image} alt="Activity tracker" />
       </div>
       <h2>Your goal</h2>
       <p>Choose a goal so that we can help you effectively</p>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SignInContainer = styled.div`
   background-color: var(--primary-color-black-one);
@@ -131,4 +131,39 @@ export const ForgotPasswordText = styled.div`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const Image = styled.img`
+  height: 296px;
+  width: 300px;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+`;
+
+export const Message = styled.div`
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 4px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+
+  ${(props) =>
+    props.type === 'success' &&
+    css`
+      background-color: #28a745; // Green for success
+      border: 1px solid #1e7e34;
+    `}
+
+  ${(props) =>
+    props.type === 'error' &&
+    css`
+      background-color: #dc3545; // Red for error
+      border: 1px solid #c82333;
+    `}
 `;

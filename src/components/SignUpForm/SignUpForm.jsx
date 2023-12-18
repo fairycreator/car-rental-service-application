@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Formik, Form } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
 import signUpSchema from '../../schemas/signUpSchema';
-import {
-  setCurrentStep,
-  updateFormData,
-  submitFormData,
-  loadInitialData,
-} from '../../redux/signUp/signUpActions';
 import {
   WrapForm,
   LabelWrap,
@@ -17,9 +11,9 @@ import {
   InputStyled,
   NextButton,
   BackButton,
-  SignInButton,
-  AccountPromptWrapper,
-  AccountPrompt,
+  SignUpLink,
+  SignUpPrompt,
+  SignUpPromptText,
 } from './SignUpForm.styled';
 import sprite from '../../assets/images/sprite.svg';
 import GoalSelectionStep from '../SignUpSteps/SignUpYourGoal';
@@ -28,33 +22,57 @@ import BodyParametersStep from '../SignUpSteps/SignUpBodyParams';
 import ActivityLevelStep from '../SignUpSteps/SignUpActivity';
 
 const SignUpForm = () => {
-  const { step, formData } = useSelector((state) => state.signUp);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [passwordShown, setPasswordShown] = React.useState(false);
+  const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    goal: '',
+    gender: '',
+    age: '',
+    height: '',
+    weight: '',
+    activityLevel: '',
+  });
+  const [passwordShown, setPasswordShown] = useState(false);
 
   useEffect(() => {
-    dispatch(loadInitialData());
-  }, [dispatch]);
+    // Load initial data from local storage or set default values
+    const savedData = localStorage.getItem('signUpData');
+    if (savedData) {
+      setFormData(JSON.parse(savedData));
+    }
+  }, []);
 
-  const handleSubmit = (values) => {
-    const finalData = { ...formData, ...values };
-    dispatch(submitFormData(finalData));
-    navigate('/main');
+  const handleNextStep = (newData) => {
+    const updatedFormData = { ...formData, ...newData };
+    setFormData(updatedFormData);
+    setStep(step + 1);
+    localStorage.setItem('signUpData', JSON.stringify(updatedFormData));
+  };
+
+  const handlePrevStep = () => {
+    setStep(step - 1);
+  };
+
+  const handleSubmit = async (values, actions) => {
+    try {
+      await axios.post('http://.../signup', formData);
+      navigate('/main');
+      localStorage.removeItem('signUpData');
+    } catch (error) {
+      console.error('Error during form submission:', error.response || error);
+      actions.setFieldError(
+        'general',
+        'An error occurred while submitting the form.'
+      );
+      actions.resetForm();
+    }
   };
 
   const togglePasswordVisibility = () => {
     setPasswordShown(!passwordShown);
-  };
-
-  const handleNextStep = (values) => {
-    const newFormData = { ...formData, ...values };
-    dispatch(updateFormData(newFormData));
-    dispatch(setCurrentStep(step + 1));
-  };
-
-  const handlePrevStep = () => {
-    dispatch(setCurrentStep(step - 1));
   };
 
   const renderStep = () => {
@@ -173,12 +191,12 @@ const StepOne = ({
     >
       Next
     </NextButton>
-    <AccountPromptWrapper>
-      <AccountPrompt>Do you already have an account?</AccountPrompt>
+    <SignUpPrompt>
+      <SignUpPromptText>Do you already have an account?</SignUpPromptText>
       <Link to="/signin">
-        <SignInButton>Sign in</SignInButton>
+        <SignUpLink>Sign in</SignUpLink>
       </Link>
-    </AccountPromptWrapper>
+    </SignUpPrompt>
   </WrapForm>
 );
 
