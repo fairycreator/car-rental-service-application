@@ -5,11 +5,11 @@ import { NavLink } from "react-router-dom";
 export const RecPageContentWrapper = styled.div`
 padding: 16px 10px;
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 834px){
     padding: 24px 27px;
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1440px){
 
     padding: 20px 34px;
 }
@@ -23,14 +23,21 @@ flex-direction:column;
 gap: 24px;
 align-items: center;
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 834px){
     
 }
 
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1440px){
   flex-direction: row;
   gap: 44px;  
 }
+
+`
+export const RecPageTitle = styled.h2`
+font-size: 24px;
+font-style: normal;
+font-weight: 500;
+line-height: 30px;
 
 `
 
@@ -39,12 +46,12 @@ width : 300px;
 height: 312px;
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
    width : 380px;
 height: 396px;
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1440px) {
 width : 536px;
 height: 560px;
   }
@@ -68,4 +75,19 @@ gap: 6px;
 align-items: center;
 padding: 3px;
 
+`
+export const RecList = styled.ul`
+display:flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 20px;
+flex-wrap: wrap;
+width: 100%;
+
+
+@media screen and (min-width: 834px) {
+    flex-direction: row;  
+    align-items: center;
+  
+}
 `

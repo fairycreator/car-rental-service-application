@@ -1,14 +1,49 @@
 import image from '../../../assets/images/loseFat.png'
+import {
+    RecCard,
+    Image,
+    CardTextWrapper,
+    CardTitle,
+    CardCalloriesWrapper, 
+    CardWeight, 
+    CardCallories
+} from './RecommendedCard.styled'
 
-export const RecommendedCard = () =>
+export const RecommendedCard = (
+   ) =>
 { return(
-    <li>
-        <img src={image} alt="img" />
-        <div>
-        <h3>Avocado</h3>
-        <p>Calories</p>
-        <p>Amonth</p>
-        </div>
+    <RecCard>
+        < Image src={image} alt="img" ></Image>
+        <CardTextWrapper>
+            <CardTitle>Avocado</CardTitle>
+         <CardCalloriesWrapper>
+                <CardWeight>100 g</CardWeight>
+                <CardCallories>200 calories</CardCallories>
+         </CardCalloriesWrapper>
+        </CardTextWrapper>
 
-    </li>)
+    </RecCard>)
     }
+
+
+
+// export const RecommendedCard = ({
+//     item: {
+//         name,
+//         amount,
+//         img,
+//         calories
+//     }}) =>
+// { return(
+//     <RecCard>
+//         < Image src={img} alt="img" ></Image>
+//         <CardTextWrapper>
+//             <CardTitle>{name }</CardTitle>
+//          <CardCalloriesWrapper>
+//                 <CardWeight>{ amount}</CardWeight>
+//                 <CardCallories>{calories} calories</CardCallories>
+//          </CardCalloriesWrapper>
+//         </CardTextWrapper>
+
+//     </RecCard>)
+//     }
