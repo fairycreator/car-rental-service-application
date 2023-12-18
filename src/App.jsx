@@ -4,9 +4,9 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { RestrictedRoute } from './components/Routes/RestrictedRoute.jsx';
 import { PrivateRoute } from './components/Routes/PrivateRoute.jsx';
 
-const WelcomePage = lazy(() => import('pages/WelcomePage'));
-const SignUpPage = lazy(() => import('pages/SignUpPage'));
-const SignInPage = lazy(() => import('pages/SignInPage'));
+const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
+const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage.jsx'));
+const SignInPage = lazy(() => import('pages/SignInPage/SignInPage.jsx'));
 const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
 const MainPage = lazy(() => import('pages/MainPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
