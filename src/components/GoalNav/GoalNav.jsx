@@ -20,6 +20,8 @@ import {
   MenuTitle,
   MenuText,
   Text,
+  IconClose,
+  ButtonClose,
 } from './GoalNav.styled';
 import sprite from 'assets/images/sprite.svg';
 import { IconDown } from '../UserInfoNav/UserInfoNav.styled';
@@ -53,7 +55,7 @@ const ButtonList = styled(Button)({
 const StyledMenu = styled(Menu)({
   '& .MuiPaper-root': {
     borderRadius: 12,
-    marginTop: '16px',
+    marginTop: '26px',
     backgroundColor: '#0F0F0F',
     boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
   },
@@ -69,6 +71,7 @@ const StyledMenu = styled(Menu)({
     height: '352px',
     // gap: '16px',
     padding: '20px 0px 40px 24px',
+    position: 'relative'
   },
 });
 
@@ -151,6 +154,12 @@ export const GoalNav = () => {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
+        <ButtonClose
+        onClick={handleClose}>
+                <IconClose>
+                  <use href={`${sprite}#icon-close-circle`}></use>
+                </IconClose>
+              </ButtonClose>
         <form onSubmit={handleSubmit}>
           <FormControl sx={{ margin: '0px' }}>
             <FormLabel id="demo-error-radios" sx={{ marginRight: '0px' }}>
@@ -160,6 +169,7 @@ export const GoalNav = () => {
                 <br />
                 intake to your goal
               </MenuText>
+
             </FormLabel>
             <RadioGroup
               aria-labelledby="demo-error-radios"
