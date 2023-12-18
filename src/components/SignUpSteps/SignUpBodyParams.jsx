@@ -1,38 +1,81 @@
-import { ErrorMessage, Field } from 'formik';
+import { ErrorMessage, Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+import {
+  StepContainer,
+  StepButton,
+  FormControlLabel,
+  StepTitle,
+  StepDescription,
+  Image,
+  BackButton,
+} from './Components.styled';
 import image from '../../assets/backgroundImages/goals.png';
-import { Image } from './Components.styled.js';
 
-const BodyParametersStep = () => {
+const validationSchema = Yup.object().shape({
+  bodyparameters: Yup.string().required('Required'),
+});
+const BodyParameters = ({ nextStep, prevStep }) => {
+  const saveToLocalStorage = (values) => {
+    localStorage.setItem('goalSelection', values.activityLevel);
+  };
   return (
-    <div>
-      <div>
-        <Image src={image} alt="Activity tracker" />
-      </div>
-      <h2>Body parameters</h2>
-      <p>Enter your parameters for correct performance tracking</p>
-      <div>
-        <label htmlFor="height">Height</label>
-        <Field
-          id="height"
-          name="height"
-          placeholder="Enter your height"
-          type="number"
-        />
-        <ErrorMessage name="height" component="div" />
-      </div>
+    <Formik
+      initialValues={{
+        bodyparameters: '',
+      }}
+      validationSchema={validationSchema}
+      onSubmit={(values, actions) => {
+        saveToLocalStorage(values);
+        nextStep(values);
+        actions.setSubmitting(false);
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <StepContainer>
+            <Image src={image} alt="Body parameters" />
+            <StepTitle>Body Parameters</StepTitle>
+            <StepDescription>
+              Enter your parameters for correct performance tracking
+            </StepDescription>
 
-      <div>
-        <label htmlFor="weight">Weight</label>
-        <Field
-          id="weight"
-          name="weight"
-          placeholder="Enter your weight"
-          type="number"
-        />
-        <ErrorMessage name="weight" component="div" />
-      </div>
-    </div>
+            <FormControlLabel htmlFor="height">
+              Height
+              <Field
+                id="height"
+                name="height"
+                placeholder="Enter your height"
+                type="number"
+              />
+            </FormControlLabel>
+            <ErrorMessage name="height" component="div" />
+
+            <FormControlLabel htmlFor="weight">
+              Weight
+              <Field
+                id="weight"
+                name="weight"
+                placeholder="Enter your weight"
+                type="number"
+              />
+            </FormControlLabel>
+            <ErrorMessage name="weight" component="div" />
+
+            <StepButton
+              type="submit"
+              disabled={isSubmitting}
+              onClick={nextStep}
+            >
+              Next
+            </StepButton>
+            <BackButton type="button" onClick={prevStep}>
+              Back
+            </BackButton>
+          </StepContainer>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
-export default BodyParametersStep;
+export default BodyParameters;

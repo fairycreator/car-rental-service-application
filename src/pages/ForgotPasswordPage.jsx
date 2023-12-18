@@ -1,7 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
-import { TextInput } from '../components/TextInput';
-import { submitForgotPassword } from '../store/actions/forgotPasswordActions';
 import { validationSchema } from '../utils/formValidation';
 import {
   Container,
@@ -11,13 +9,14 @@ import {
   Description,
   SubmitButton,
   SignInLink,
+  Input,
 } from '../styles/ForgotPasswordStyles';
 
 const ForgotPasswordPage = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    dispatch(submitForgotPassword(values.email));
+    dispatch(console.log(values.email));
   };
 
   return (
@@ -38,7 +37,7 @@ const ForgotPasswordPage = () => {
         >
           {({ isSubmitting }) => (
             <Form>
-              <TextInput name="email" type="email" placeholder="E-mail" />
+              <Input name="email" type="email" placeholder="E-mail" />
               <SubmitButton type="submit" disabled={isSubmitting}>
                 Send Instructions
               </SubmitButton>

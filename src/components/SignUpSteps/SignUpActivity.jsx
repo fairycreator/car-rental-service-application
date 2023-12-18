@@ -10,13 +10,13 @@ import {
   Image,
   BackButton,
 } from './Components.styled';
+import image from '../../assets/backgroundImages/goals.png';
 
 const validationSchema = Yup.object().shape({
   activityLevel: Yup.string().required('Required'),
 });
 
-const ActivityLevelStep = ({ nextStep, prevStep }) => {
-  const activityImageUrl = '../../assets/backgroundImages/activity.png';
+const ActivityLevel = ({ nextStep, prevStep }) => {
   const saveToLocalStorage = (values) => {
     localStorage.setItem('activityLevel', values.activityLevel);
   };
@@ -35,7 +35,7 @@ const ActivityLevelStep = ({ nextStep, prevStep }) => {
       {({ isSubmitting }) => (
         <Form>
           <StepContainer>
-            <Image src={activityImageUrl} alt="Activity Illustration" />
+            <Image src={image} alt="Activity Illustration" />
             <StepTitle>Your Activity</StepTitle>
             <StepDescription>
               To correctly calculate calorie and water intake
@@ -85,4 +85,4 @@ const ActivityLevelStep = ({ nextStep, prevStep }) => {
   );
 };
 
-export default ActivityLevelStep;
+export default ActivityLevel;
