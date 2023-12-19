@@ -28,7 +28,6 @@ export const Title = styled.h4`
 
 export const Amount = styled.span`
   margin-left: 4px;
-  font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
   color: var(--primary-color-grey);
