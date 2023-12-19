@@ -47,7 +47,7 @@ const BodyParameters = ({
       </FormControlLabel>
       <ErrorMessage name="weight" component="div" />
 
-      <StepButton type="button" onClick={nextStep} disabled={isSubmitting}>
+      <StepButton type="submit" onClick={nextStep} disabled={isSubmitting}>
         Next
       </StepButton>
       <BackButton type="button" onClick={prevStep}>

@@ -35,7 +35,7 @@ const SignUpForm = ({ nextStep, isSubmitting }) => {
           </SvgIconEye>
         </IconWrapped>
       </LabelWrap>
-      <NextButton type="button" onClick={nextStep} disabled={isSubmitting}>
+      <NextButton type="submit" onClick={nextStep} disabled={isSubmitting}>
         Next
       </NextButton>
       <SignUpPrompt>

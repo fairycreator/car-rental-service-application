@@ -36,7 +36,7 @@ const GoalSelectionStep = ({ nextStep, prevStep, isSubmitting }) => {
       </RadioGroupContainer>
       <ErrorMessage name="goal" component="div" />
 
-      <StepButton type="button" onClick={nextStep} disabled={isSubmitting}>
+      <StepButton type="submit" onClick={nextStep} disabled={isSubmitting}>
         Next
       </StepButton>
       <BackButton type="button" onClick={prevStep}>
