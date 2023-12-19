@@ -19,11 +19,25 @@ export const Modal = styled.div`
   padding: 16px 12px 24px;
   border-radius: 12px;
   background-color: var(--primary-color-black-two);
+
+  @media screen and (min-width: 834px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 338px;
+    height: 280px;
+    padding: 24px 40px;
+  }
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 834px) {
+    max-width: 212px;
+  }
 `;
 
 export const SubmitBtn = styled.button`
