@@ -7,17 +7,30 @@ import {
   ProgressBar,
   TrashIcon,
   AddIcon,
-  DetailsWrapper,
   SecondTitle,
   Text,
   Amount,
   Button,
   Span,
+  Percentage,
 } from './Water.styled';
+
 import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
+import { WaterChart } from './WaterChart';
 
 export const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // дані з беку
+  const waterGoal = 1500;
+  const waterFilled = 1050;
+
+  const waterPercentage =
+    waterFilled <= waterGoal
+      ? Math.round((waterFilled * 100) / waterGoal)
+      : 100;
+
+  const left = waterGoal - waterFilled;
 
   return (
     <Wrapper>
@@ -26,15 +39,18 @@ export const Water = () => {
         <TrashIcon>
           <use href={`${sprite}#trash-delete`}></use>
         </TrashIcon>
-        <ProgressBar>70%</ProgressBar>
-        <DetailsWrapper>
+        <ProgressBar>
+          <WaterChart waterIntake={waterPercentage} />
+          <Percentage>{`${waterPercentage}%`}</Percentage>
+        </ProgressBar>
+        <div>
           <SecondTitle>Water consumption</SecondTitle>
 
           <Text>
-            <Amount>1500</Amount>ml
+            <Amount>{waterFilled}</Amount>ml
           </Text>
           <Text>
-            <Span>left:</Span> 450 ml
+            <Span>left:</Span> {`${left} ml`}
           </Text>
 
           <Button type="button" onClick={() => setIsModalOpen(true)}>
@@ -43,7 +59,7 @@ export const Water = () => {
             </AddIcon>
             Add water intake
           </Button>
-        </DetailsWrapper>
+        </div>
       </ContentWrapper>
       {isModalOpen && <AddWaterModal setIsModalOpen={setIsModalOpen} />}
     </Wrapper>
