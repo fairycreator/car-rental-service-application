@@ -8,9 +8,13 @@ import {
   MilkIcon,
   Text,
   Amount,
+  Span,
 } from './DailyGoal.styled';
 
 export const DailyGoal = () => {
+  const dailyCaloriesGoal = 1700;
+  const dailyWaterGoal = 1500;
+
   return (
     <Wrapper>
       <Title>Daily goal</Title>
@@ -20,7 +24,8 @@ export const DailyGoal = () => {
             <use href={`${sprite}#bubble`}></use>
           </BubbleIcon>
           <Text>
-            Calories <br /> <Amount>1700</Amount>
+            <p>Calories</p>
+            <Amount>{dailyCaloriesGoal}</Amount>
           </Text>
         </Item>
         <Item>
@@ -28,8 +33,10 @@ export const DailyGoal = () => {
             <use href={`${sprite}#milk`}></use>
           </MilkIcon>
           <Text>
-            Water <br />
-            <Amount>1500</Amount> ml
+            <p> Water</p>
+            <Amount>
+              {dailyWaterGoal} <Span>ml</Span>
+            </Amount>
           </Text>
         </Item>
       </List>
