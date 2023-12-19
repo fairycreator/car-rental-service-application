@@ -1,21 +1,35 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser } from './authOperations';
+import {
+  registerUser,
+  loginUser,
+  logOut,
+  forgotPassword,
+  refreshUser,
+} from './authOperations';
 
-const initialState = {
+const defaultUserData = {
   name: '',
   email: '',
   password: '',
   goal: '',
   gender: '',
-  age: '',
-  height: '',
-  weight: '',
-  activityLevel: '',
+  age: null,
+  height: null,
+  weight: null,
+  activityLevel: null,
   avatar: '',
+  waterRate: null,
+  BMRRate: null,
+  proteinRate: null,
+  fatRate: null,
+  carbsRate: null,
+};
+
+const initialState = {
+  userData: { ...defaultUserData },
   token: null,
-  isLoading: false,
-  authenticated: false,
   error: null,
+  isLoading: false,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -27,20 +41,31 @@ const authSlice = createSlice({
     builder
       // signup
       .addCase(registerUser.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.authenticated = true;
-        state.token = action.payload.token;
         state.userData = action.payload.user;
-        state.error = null;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
       })
       // signin
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.authenticated = true;
-        state.token = action.payload.token;
         state.userData = action.payload.user;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
-        state.error = null;
+      })
+      // logout
+      .addCase(logOut.fulfilled, (state) => {
+        state.userData = { ...defaultUserData };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
+      // forgotPassword
+      .addCase(forgotPassword.fulfilled, (state) => {
+        state.isLoggedIn = false;
+      })
+      // refreshUser
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.userData = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
       }),
 });
 
