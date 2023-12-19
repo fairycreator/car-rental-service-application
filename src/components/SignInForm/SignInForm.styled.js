@@ -7,7 +7,7 @@ export const SignInButtonBox = styled.div`
   width: 100%;
 `;
 
-export const SignInButton = styled.div`
+export const SignInButton = styled.button`
   background-color: var(--primary-color-green-lite);
   color: var(--primary-color-black-two);
   font-family: 'Poppins500';
