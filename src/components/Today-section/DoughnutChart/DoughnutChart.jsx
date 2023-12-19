@@ -1,5 +1,6 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { theme } from '../../../GlobalStyle';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -39,7 +40,7 @@ const bgCircle = {
 
     ctx.beginPath();
     ctx.lineWidth = width;
-    ctx.strokeStyle = '#292928';
+    ctx.strokeStyle = `${theme.palette.greyone.main}`;
     ctx.arc(xCoor, yCoor, outerRadius - width / 2, 0, angle * 360, false);
     ctx.stroke();
   },
