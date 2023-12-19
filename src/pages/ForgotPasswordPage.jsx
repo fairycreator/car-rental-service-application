@@ -1,6 +1,6 @@
 // import { useDispatch } from 'react-redux';
 // import { Formik, Form } from 'formik';
-// import { validationSchema } from '../utils/formValidation';
+// import validateEmail from '../schemas/validateEmail';
 // import {
 //   Container,
 //   MainContent,
@@ -11,6 +11,7 @@
 //   SignInLink,
 //   Input,
 // } from '../styles/ForgotPasswordStyles';
+
 
 const ForgotPasswordPage = () => {
   // const dispatch = useDispatch();
@@ -49,6 +50,7 @@ const ForgotPasswordPage = () => {
     //         <SignInLink to="/signup">Sign up</SignInLink>
     //       </MainContent>
     //     </Container>
+ 
   );
 };
 
