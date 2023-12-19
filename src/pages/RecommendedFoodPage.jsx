@@ -13,6 +13,7 @@ const RecommendedFoodPage = () => {
     <RecImage src={image} alt="Page image"></RecImage>
       <RecommendedPageList />
       </RecPageWrapper>
+      <RecommendedList/>
     </RecPageContentWrapper>
 )
 

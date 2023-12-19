@@ -37,7 +37,13 @@ export const RecPageTitle = styled.h2`
 font-size: 24px;
 font-style: normal;
 font-weight: 500;
-line-height: 30px;
+line-height: 0.8 ;
+
+@media screen  and (min-width: 834px){
+  font-size: 30px;
+  line-height: 0.8 ;
+}
+ 
 
 `
 
@@ -58,9 +64,20 @@ height: 560px;
 
 
 `
+export const RecForMainWrapper = styled.div`
+padding-top: 20px;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+`
+
 
 export const RecLink = styled(NavLink)`
 font-size: 15px;
+display: flex ; 
+justify-content: center;
+align-items: center;
 `
 
 export const Image = styled.svg`
@@ -76,16 +93,17 @@ align-items: center;
 padding: 3px;
 
 `
+
+
 export const RecList = styled.ul`
 display:flex;
 flex-direction: column;
 align-items: flex-start;
 gap: 20px;
 flex-wrap: wrap;
-width: 100%;
 
 
-@media screen and (min-width: 834px) {
+ @media screen and (min-width: 834px) {
     flex-direction: row;  
     align-items: center;
   
