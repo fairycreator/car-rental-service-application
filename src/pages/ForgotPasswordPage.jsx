@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
-import { validationSchema } from '../utils/formValidation';
+import validateEmail from '../schemas/validateEmail';
 import {
   Container,
   MainContent,
@@ -32,7 +32,7 @@ const ForgotPasswordPage = () => {
         </Description>
         <Formik
           initialValues={{ email: '' }}
-          validationSchema={validationSchema}
+          validationSchema={validateEmail}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
