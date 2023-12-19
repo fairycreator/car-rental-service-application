@@ -34,7 +34,6 @@ export const ContentWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    gap: 40px;
     padding: 24px 40px;
   }
 `;
