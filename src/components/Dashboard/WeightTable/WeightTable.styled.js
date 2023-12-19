@@ -1,4 +1,4 @@
-import { styled,} from 'styled-components';
+import { styled} from 'styled-components';
 import TableRow from '@mui/material/TableRow';
 
 export const CustomTableRowUp = styled(TableRow)({

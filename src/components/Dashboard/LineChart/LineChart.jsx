@@ -1,8 +1,3 @@
-// export const LineChart = () => {
-//   return (
-//     <div>LineChart</div>
-//   )
-// }
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -27,29 +22,64 @@ ChartJS.register(
   Legend
 );
 
+
 const options = {
+  elements: {
+    point: {
+      backgroundColor: '#E3FFA8',
+      borderWidth: 1,
+      radius: 4,
+      hoverRadius: 4,
+    },
+    line: {
+      backgroundColor: '#E3FFA8',
+      borderColor: '#E3FFA8',
+      borderWidth: 1,
+      tension: 0.5,
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+    tooltip: {
+      backgroundColor: '#0F0F0F',
+    },
+  },
   responsive: true,
   scales: {
-    y: { // defining min and max so hiding the dataset does not change scale range
-      min: 0,
+    x: {
+      grid: {
+        color: '#292928',
+        weight: '1px',
+      },
+    },
+    y: {
       max: 3000,
+      ticks: {
+        callback: (value) => `${value / 1000} K`,
+        stepSize: 1000,
+      },
+      grid: {
+        color: '#292928',
+        weight: '1px',
+      },
     },
   },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const data = {
   labels,
   datasets: [
     {
-      data: [1752,1525,1420,1800],
-      borderColor: '#E3FFA8',
-      backgroundColor: '#E3FFA8',
+      data: [1, 1525, 1520, 1100, 1550, 1525, 1520, 1500],
     },
   ],
 };
 
 export const LineChart = () => {
   return <Line options={options} data={data} />;
-}
+};
