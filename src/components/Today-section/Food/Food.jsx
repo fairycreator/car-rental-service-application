@@ -1,4 +1,5 @@
-import { DoughnutChart } from './DoughnutChart/DoughnutChart';
+import { DoughnutChart } from '../DoughnutChart/DoughnutChart';
+import { FoodCard } from './FoodCard/FoodCard';
 
 import {
   Wrapper,
@@ -8,15 +9,24 @@ import {
   Title,
   Calories,
 } from './Food.styled';
-import { FoodCard } from './FoodCard/FoodCard';
 
 export const Food = () => {
+  // пізніше ці дані приходитимуть з беку
+  const caloriesGoal = 2000;
+  const caloriesCurrent = 1360;
+  //
+  const caloriesChartBgColor = '#45FFBC';
+
   return (
     <Wrapper>
       <Title>Food</Title>
       <ContentWrapper>
         <Calories>
-          <DoughnutChart />
+          <DoughnutChart
+            dailyGoal={caloriesGoal}
+            filledValue={caloriesCurrent}
+            bgColor={caloriesChartBgColor}
+          />
         </Calories>
 
         <List>
