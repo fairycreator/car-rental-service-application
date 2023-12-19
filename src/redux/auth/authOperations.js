@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const instance = axios.create({
-  baseURL: 'api_url',
+  baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api/',
 });
 
 export const token = {
@@ -23,7 +23,7 @@ const handleError = (error) => {
 };
 
 export const registerUser = createAsyncThunk(
-  //   'auth/registerUser',
+  'auth/signup',
   async (dataUser, thunkApi) => {
     try {
       const { data } = await instance.post('auth/signup', dataUser);
@@ -38,7 +38,7 @@ export const registerUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk(
-  //   'auth/loginUser',
+  'auth/signin',
   async (dataUser, thunkApi) => {
     try {
       const { data } = await instance.post('auth/signin', dataUser);
@@ -48,6 +48,50 @@ export const loginUser = createAsyncThunk(
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
+  try {
+    await axios.post('auth/signout');
+    token.clear();
+  } catch (error) {
+    const errorMessage = handleError(error);
+    return thunkAPI.rejectWithValue(errorMessage);
+  }
+});
+
+export const forgotPassword = createAsyncThunk(
+  'auth/forgot-password',
+  async (dataUser, thunkAPI) => {
+    try {
+      await axios.post('auth/forgot-password', dataUser);
+
+      console.log('Password send');
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+
+    if (token === null) {
+      return thunkAPI.rejectWithValue('Unable to fetch user');
+    }
+
+    try {
+      token.set(token);
+      const { data } = await axios.get('user/current');
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkAPI.rejectWithValue(errorMessage);
     }
   }
 );

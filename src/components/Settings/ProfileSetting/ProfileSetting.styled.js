@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
-import { theme } from '../../../GlobalStyle';
+import { hidden, theme } from '../../../GlobalStyle';
 
 export const PageWrapper = styled.div`
   padding-bottom: 40px;
@@ -107,11 +107,8 @@ export const FieldStyled = styled(Field)`
   background: var(--primary-color-black-two);
   font-family: 'Poppins400';
 
+  &:focus,
   &:hover {
-    border-color: var(--primary-color-green-lite);
-  }
-
-  &:focus {
     border-color: var(--primary-color-green-lite);
   }
 `;
@@ -120,16 +117,50 @@ export const Avatar = styled.img`
   width: 36px;
   height: 36px;
   border-radius: 36px;
-  background:
-    url(<path-to-image>),
-    lightgray 50% / cover no-repeat;
+`;
+
+export const InputWrapper = styled.div`
+  width: 219px;
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const IconWrapper = styled.svg`
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-green-lite);
+`;
+
+export const DownloadButton = styled.label`
+  background-color: var(--primary-color-black-one);
+  padding: 0px;
+  border: transparent;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const DownloadSpan = styled.span`
+  color: var(--primary-color-white);
+  font-family: 'Poppins400';
+  font-size: 13.5px;
+`;
+
+export const InputStyled = styled.input`
+  ${hidden}
 `;
 
 export const formControlStyled = {
   gap: '12px',
-  [theme.breakpoints.down('tablet')]: {
-    width: '300px',
-  },
+  width: '300px',
   [theme.breakpoints.up('tablet')]: {
     width: '212px',
   },
@@ -181,22 +212,22 @@ export const buttonGroupStyled = {
     margin: '0px',
     borderRightColor: 'none',
   },
-  // '& .MuiButtonGroup-firstButton:hover': {
-  //   borderRadius: '12px',
-  //   color: 'blacktwo.main',
-  //   backgroundColor: 'greenlite.main',
-  //   border: '1px solid transparent',
-  //   borderRightColor: 'transparent',
-  // },
+  '& .MuiButtonGroup-firstButton:hover': {
+    borderRadius: '12px',
+    color: 'blacktwo.main',
+    backgroundColor: 'greenlite.main',
+    border: '1px solid transparent',
+    borderRightColor: 'transparent',
+  },
   '& .MuiButtonGroup-lastButton': {
     borderRadius: '12px',
     color: 'grey.main',
     margin: '0px',
   },
-  // '& .MuiButtonGroup-lastButton:hover': {
-  //   borderColor: 'greenlite.main',
-  //   color: 'greenlite.main',
-  // },
+  '& .MuiButtonGroup-lastButton:hover': {
+    borderColor: 'greenlite.main',
+    color: 'greenlite.main',
+  },
 };
 
 export const buttonStyled = {
@@ -207,3 +238,10 @@ export const buttonStyled = {
     width: '100%',
   },
 };
+
+export const ErrorMessageStyled = styled.div`
+  color: red;
+  font-family: 'Poppins400';
+  font-size: 12px;
+  margin-left: 4px;
+`;
