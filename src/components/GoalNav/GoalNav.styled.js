@@ -20,10 +20,19 @@ export const ButtonClose = styled.button`
   right: 32px;
 `;
 
+// export const Icon = styled.use`
+//   &:hover {
+//     stroke: var(--primary-color-green-lite);
+//   }
+// `;
+
 export const IconClose = styled.svg`
   width: 16px;
   height: 16px;
   fill: var(--primary-color-grey);
+  &:hover {
+    stroke: var(--primary-color-green-lite);
+  }
 `;
 
 export const DivStyled = styled.div`
