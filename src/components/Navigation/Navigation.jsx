@@ -1,5 +1,5 @@
-import { BoxNav, Icon, Link } from "./Navigation.styled";
 import sprite from 'assets/images/sprite.svg';
+import { BoxNav, Icon, Link } from "./Navigation.styled";
 
 export const Navigation = () => {
     return (
