@@ -34,25 +34,6 @@ export const ContentWrapper = styled.div`
   }
 `;
 
-export const ProgressBar = styled.div`
-  width: 80px;
-  height: 192px;
-  border-radius: 20px;
-  border: 1px solid var(--primary-color-grey);
-  background-color: var(--primary-color-violet);
-  margin: 0;
-  padding: 0;
-  color: black;
-  text-align: center;
-`;
-
-export const DetailsWrapper = styled.div`
-  /* padding: 22px 0; */
-  @media screen and (min-width: 834px) {
-    /* padding: 33px 0; */
-  }
-`;
-
 export const SecondTitle = styled.h4`
   margin-bottom: 12px;
   font-size: 16px;
@@ -111,4 +92,25 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+`;
+
+export const ProgressBar = styled.div`
+  position: relative;
+  height: 192px;
+  width: 80px;
+  border-radius: 20px;
+  padding: 8px;
+  border: 1px solid var(--secondary-color-grey-one);
+`;
+
+export const Percentage = styled.p`
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--primary-color-violet);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
 `;
