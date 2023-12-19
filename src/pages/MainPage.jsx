@@ -1,5 +1,11 @@
+import { Today } from '../components/Today-section/Today';
+
 const MainPage = () => {
-  return <div>MainPage</div>;
+  return (
+    <>
+      <Today />
+    </>
+  );
 };
 
 export default MainPage;
