@@ -8,13 +8,15 @@ import {
   Item,
   Title,
   Calories,
+  ChartInfo,
+  Amount,
+  Text,
 } from './Food.styled';
 
 export const Food = () => {
   // пізніше ці дані приходитимуть з беку
   const caloriesGoal = 2000;
   const caloriesCurrent = 1360;
-  //
   const caloriesChartBgColor = '#45FFBC';
 
   return (
@@ -27,6 +29,10 @@ export const Food = () => {
             filledValue={caloriesCurrent}
             bgColor={caloriesChartBgColor}
           />
+          <ChartInfo>
+            <Amount>{caloriesCurrent}</Amount>
+            <Text>calories</Text>
+          </ChartInfo>
         </Calories>
 
         <List>
