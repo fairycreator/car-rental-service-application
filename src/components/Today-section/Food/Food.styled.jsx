@@ -48,12 +48,32 @@ export const SecondTitle = styled.h4`
 `;
 
 export const Calories = styled.div`
+  position: relative;
   width: 168px;
   height: 168px;
-  border-radius: 100%;
-  background-color: var(--primary-color-lite-green);
 `;
 
 export const Item = styled.li`
   display: flex;
+`;
+
+export const ChartInfo = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+`;
+
+export const Amount = styled.p`
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.18;
+`;
+
+export const Text = styled.p`
+  color: var(--primary-color-grey);
 `;
