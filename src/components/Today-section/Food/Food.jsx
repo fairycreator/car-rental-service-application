@@ -1,5 +1,6 @@
 import { DoughnutChart } from '../DoughnutChart/DoughnutChart';
 import { FoodCard } from './FoodCard/FoodCard';
+import { theme } from '../../../GlobalStyle';
 
 import {
   Wrapper,
@@ -14,14 +15,14 @@ import {
 } from './Food.styled';
 
 export const Food = () => {
-  const carbsColor = '#FFC4F7';
-  const proteinColor = '#FFF3B7';
-  const fatColor = '#B6B6B6';
+  const carbsColor = `${theme.palette.pink.main}`;
+  const proteinColor = `${theme.palette.yellow.main}`;
+  const fatColor = `${theme.palette.grey.main}`;
 
-  // пізніше ці дані приходитимуть з беку
+  // дані з беку
   const caloriesGoal = 2000;
   const caloriesCurrent = 1360;
-  const caloriesChartBgColor = '#45FFBC';
+  const caloriesChartBgColor = `${theme.palette.litegreen.main}`;
 
   const carbsGoal = 170;
   const proteinGoal = 127.5;
