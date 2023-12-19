@@ -62,9 +62,17 @@ export const Text = styled.p`
   color: var(--primary-color-grey);
 `;
 
-export const Amount = styled.span`
+export const Amount = styled.p`
+  margin-top: 4px;
   font-size: 34px;
   font-weight: 600;
   line-height: 1.11;
   color: var(--primary-color-white);
+`;
+
+export const Span = styled.span`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  color: var(--primary-color-grey);
 `;
