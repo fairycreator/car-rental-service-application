@@ -95,3 +95,45 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  'auth/update-profile',
+  async (dataUser, thunkApi) => {
+    try {
+      const { data } = await instance.put('user/update', dataUser);
+
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateGoal = createAsyncThunk(
+  'auth/update-goal',
+  async (dataUser, thunkApi) => {
+    try {
+      const { data } = await instance.put('user/goal', dataUser);
+
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateWeight = createAsyncThunk(
+  'auth/update-weight',
+  async (dataUser, thunkApi) => {
+    try {
+      const { data } = await instance.put('user/weight', dataUser);
+
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
