@@ -9,7 +9,7 @@ import {
   // Image,
 } from '../../pages/SignUpPage/SignUpPage.styled';
 
-const SignUpPage = () => {
+const SignUp = () => {
   return (
     <SignUpContainer>
       {/* <Image src={image} alt="Activity trtacker" /> */}
@@ -24,4 +24,4 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+export default SignUp;
