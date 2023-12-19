@@ -1,75 +1,71 @@
-// import SignUpForm from '../../components/SignUpForm/SignUpForm';
-// // import image from '../../assets/backgroundImages/welcomepage.png';
-// import {
-//   SignUpContainer,
-//   SignUpDiv,
-//   Frame,
-//   SignUpTitle,
-//   SignUpMessage,
-//   // Image,
-// } from './SignUpPage.styled';
-
-// const SignUpPage = () => {
-//   return (
-//     <SignUpContainer>
-//       {/* <Image src={image} alt="Activity trtacker" /> */}
-//       <SignUpDiv>
-//         <Frame>
-//           <SignUpTitle>Sign up</SignUpTitle>
-//           <SignUpMessage>You need to register to use the service</SignUpMessage>
-//         </Frame>
-//         <SignUpForm />
-//       </SignUpDiv>
-//     </SignUpContainer>
-//   );
-// };
-
-// export default SignUpPage;
-
-import { createContext, useState } from 'react';
+import { useState } from 'react';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import SignUp from '../../components/SignUpSteps/SignUp';
 import GoalSelectionStep from '../../components/SignUpSteps/SignUpYourGoal';
 import SelectGender from '../../components/SignUpSteps/SignUpGender';
 import BodyParameters from '../../components/SignUpSteps/SignUpBodyParams';
 import ActivityLevel from '../../components/SignUpSteps/SignUpActivity';
 
-export const SignUpContext = createContext();
+const initialValues = {
+  name: '',
+  email: '',
+  password: '',
+  goal: '',
+  gender: '',
+  age: '',
+  height: '',
+  weight: '',
+  activityLevel: '',
+};
 
-export const SignUpProcessPage = () => {
-  const [currentStage, setCurrentStage] = useState(0);
-  const [signUpData, setSignUpData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    goal: '',
-    gender: '',
-    age: '',
-    height: '',
-    weight: '',
-    activityLevel: '',
-  });
+const validationSchema = Yup.object().shape({
+  initialValues: Yup.string().required('Required'),
+});
 
-  const prevStage = () => setCurrentStage(currentStage - 1);
-  const nextStage = () => setCurrentStage(currentStage + 1);
-  const addSignUpData = (newData) =>
-    setSignUpData({ ...signUpData, ...newData });
-
-  const stages = [
+export const SignUpPage = () => {
+  const [currentStep, setCurrentStep] = useState(0);
+  const steps = [
     SignUp,
     GoalSelectionStep,
     SelectGender,
     BodyParameters,
     ActivityLevel,
   ];
-  const CurrentStage = stages[currentStage];
+  const CurrentStep = steps[currentStep];
+
+  const nextStep = () => setCurrentStep(currentStep + 1);
+  const prevStep = () => setCurrentStep(currentStep - 1);
+
+  const handleSubmit = (values, actions) => {
+    if (currentStep < steps.length - 1) {
+      nextStep();
+      actions.setTouched({});
+      actions.setSubmitting(false);
+    } else {
+      // Submit data to the backend
+      console.log(values);
+    }
+  };
 
   return (
-    <SignUpContext.Provider
-      value={{ prevStage, nextStage, signUpData, addSignUpData, currentStage }}
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema[currentStep]}
+      onSubmit={handleSubmit}
     >
-      <CurrentStage />
-    </SignUpContext.Provider>
+      {(formikProps) => (
+        <Form>
+          <CurrentStep
+            {...formikProps}
+            nextStep={nextStep}
+            prevStep={prevStep}
+            isLastStep={currentStep === steps.length - 1}
+          />
+        </Form>
+      )}
+    </Formik>
   );
 };
 
-export default SignUpProcessPage;
+export default SignUpPage;

@@ -102,7 +102,7 @@ export const SignUpLink = styled.div`
 
 export const NextButton = styled.button`
   background-color: var(--primary-color-green-lite);
-  color: var(--primary-color-white);
+  color: var(--primary-color-black-two);
   padding: 15px;
   border: none;
   border-radius: 5px;
