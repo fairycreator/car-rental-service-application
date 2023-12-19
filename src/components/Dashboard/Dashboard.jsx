@@ -1,5 +1,5 @@
 import Calendar from './Calendar/Calendar';
-import { LineChart } from './LineChart/LineChart';
+
 import { Month } from './Month/Month';
 
 import sprite from '../../assets/images/sprite.svg';
@@ -9,14 +9,18 @@ import {
   ChartWrapper,
   DashboardWrapper,
   IconArrowLeftWrapper,
-  IconArrowUprapper,
   LineChartsWrapper,
   MonthWrapper,
   Value,
   ValueWrapper,
   AverageValue,
+  PrevBtn,
+  LinkBtnItem,
 } from './Dashboard.styled';
 import { WeightTable } from './WeightTable/WeightTable';
+import { LineChartCalories } from './LineChart/LineChartCalories';
+import { LineChartWater } from './LineChart/LineChartWater';
+import { useLocation } from 'react-router-dom';
 
 export const Dashboard = () => {
   const values = {
@@ -24,17 +28,20 @@ export const Dashboard = () => {
     ml: 200,
     kg: 60,
   };
+  const location = useLocation();
+  const backLink = location?.state?.from ?? '/';
   return (
     <DashboardWrapper>
       <MonthWrapper>
         <CalendarWrapper>
-          <IconArrowLeftWrapper>
-            <use href={`${sprite}#icon-arrowright`}></use>
-          </IconArrowLeftWrapper>
+          <PrevBtn type="button">
+            <LinkBtnItem to={backLink}>
+              <IconArrowLeftWrapper>
+                <use href={`${sprite}#icon-arrowright`}></use>
+              </IconArrowLeftWrapper>
+            </LinkBtnItem>
+          </PrevBtn>
           <Calendar />
-          <IconArrowUprapper>
-            <use href={`${sprite}#icon-arrow-down`}></use>
-          </IconArrowUprapper>
         </CalendarWrapper>
         <Month />
       </MonthWrapper>
@@ -46,7 +53,7 @@ export const Dashboard = () => {
               Average value: <AverageValue>{values.cal} cal</AverageValue>
             </Text>
           </ValueWrapper>
-          <LineChart />
+          <LineChartCalories />
         </ChartWrapper>
         <ChartWrapper>
           <ValueWrapper>
@@ -55,7 +62,7 @@ export const Dashboard = () => {
               Average value: <AverageValue>{values.ml} ml</AverageValue>
             </Text>
           </ValueWrapper>
-          <LineChart />
+          <LineChartWater />
         </ChartWrapper>
       </LineChartsWrapper>
       <ChartWrapper>

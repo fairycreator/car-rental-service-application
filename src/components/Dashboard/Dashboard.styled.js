@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const DashboardWrapper = styled.div`
@@ -23,6 +24,22 @@ export const CalendarWrapper = styled.div`
     gap: 12px;
   }
 `;
+export const PrevBtn = styled.div`
+  display: inline-block;
+  max-width: 15px;
+  max-height: 20px;
+
+  svg {
+    &:hover,
+    &:focus {
+      fill: #e3ffa8;
+    }
+  }
+`;
+
+export const LinkBtnItem = styled(Link)`
+  color: #ffffff;
+`;
 
 export const IconArrowLeftWrapper = styled.svg`
   width: 16px;
@@ -34,13 +51,6 @@ export const IconArrowLeftWrapper = styled.svg`
     width: 24px;
     height: 24px;
   }
-`;
-
-export const IconArrowUprapper = styled.svg`
-  width: 16px;
-  height: 16px;
-  transform: rotate(180deg);
-  fill: var(--primary-color-grey);
 `;
 
 export const LineChartsWrapper = styled.div`
