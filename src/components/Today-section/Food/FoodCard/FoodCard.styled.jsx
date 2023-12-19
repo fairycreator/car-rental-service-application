@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const ChartWrapper = styled.div`
+  position: relative;
   width: 48px;
   height: 48px;
   border-radius: 100%;
-  background-color: white;
 `;
 
 export const Wrapper = styled.div`
@@ -27,8 +27,18 @@ export const Title = styled.h4`
 `;
 
 export const Amount = styled.span`
+  margin-left: 4px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+  color: var(--primary-color-grey);
+`;
+
+export const Percentage = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   color: var(--primary-color-grey);
 `;
