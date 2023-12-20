@@ -31,9 +31,9 @@ export const addWater = createAsyncThunk(
 
 export const deleteWater = createAsyncThunk(
   'dailyStatistics/deleteWater',
-  async (thunkAPI) => {
+  async (_id, thunkAPI) => {
     try {
-      const response = await instance.delete('/user/water-intake');
+      const response = await instance.delete('/user/water-intake', _id);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

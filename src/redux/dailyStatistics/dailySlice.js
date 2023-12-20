@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCurrentStatistics, addWater, deleteWater } from './dailyOperations';
+// import { getCurrentStatistics, addWater, deleteWater } from './dailyOperations';
+import { addWater, deleteWater } from './dailyOperations';
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -10,22 +11,27 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleGetCurrentFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-  state.consumedFood = action.payload;
-};
+// const handleGetCurrentFulfilled = (state, action) => {
+//   state.isLoading = false;
+//   state.error = null;
+//   state.consumedFood = action.payload;
+// };
 
 const handleAddWaterFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedWater = action.payload.result.value;
+  state.consumedWater.value = action.payload.result.value;
+  state.consumedWater._id = action.payload.result._id;
 };
 
-const handleDeleteWaterFulfilled = (state) => {
+const handleDeleteWaterFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedWater = 0;
+
+  const idToDelete = action.payload.result._id;
+  if (state.dailyStatistics.consumedWater._id === idToDelete) {
+    state.dailyStatistics.consumedWater = { value: 0, id: '' };
+  }
 };
 
 const consumedFood = {
@@ -36,7 +42,10 @@ const consumedFood = {
 };
 
 const initialState = {
-  consumedWater: 0,
+  consumedWater: {
+    value: 0,
+    _id: '',
+  },
   consumedFood,
   isLoading: false,
   error: null,
@@ -48,9 +57,9 @@ const dailyStatisticsSlice = createSlice({
 
   extraReducers: (builder) =>
     builder
-      .addCase(getCurrentStatistics.pending, handlePending)
-      .addCase(getCurrentStatistics.fulfilled, handleGetCurrentFulfilled)
-      .addCase(getCurrentStatistics.rejected, handleRejected)
+      // .addCase(getCurrentStatistics.pending, handlePending)
+      // .addCase(getCurrentStatistics.fulfilled, handleGetCurrentFulfilled)
+      // .addCase(getCurrentStatistics.rejected, handleRejected)
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, handleAddWaterFulfilled)
       .addCase(addWater.rejected, handleRejected)
