@@ -56,7 +56,7 @@ export const logOut = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
   try {
     const { token } = thunkAPI.getState().auth;
     instance.defaults.headers['Authorization'] = `Bearer ${token}`;
-    await axios.post('auth/signout');
+    await instance.post('auth/signout');
     instance.defaults.headers['Authorization'] = '';
   } catch (error) {
     const errorMessage = handleError(error);
@@ -89,7 +89,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       token.set(token);
-      const { data } = await axios.get('user/current');
+      const { data } = await instance.get('user/current');
       return data;
     } catch (error) {
       const errorMessage = handleError(error);
@@ -130,7 +130,7 @@ export const updateWeight = createAsyncThunk(
   'auth/update-weight',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.put('user/weight', dataUser);
+      const { data } = await instance.post('user/weight', dataUser);
 
       return data;
     } catch (error) {
