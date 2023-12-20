@@ -46,6 +46,7 @@ const authSlice = createSlice({
         state.userData = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.error = null;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.error = action.payload;
@@ -55,6 +56,7 @@ const authSlice = createSlice({
         state.userData = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.error = action.payload;
@@ -64,6 +66,7 @@ const authSlice = createSlice({
         state.userData = { ...defaultUserData };
         state.token = '';
         state.isLoggedIn = false;
+        state.error = null;
       })
       .addCase(logOut.rejected, (state, action) => {
         state.error = action.payload;
@@ -71,6 +74,7 @@ const authSlice = createSlice({
       // forgotPassword
       .addCase(forgotPassword.fulfilled, (state) => {
         state.isLoggedIn = false;
+        state.error = null;
       })
       .addCase(forgotPassword.rejected, (state, action) => {
         state.error = action.payload;
@@ -80,6 +84,7 @@ const authSlice = createSlice({
         state.userData = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.error = null;
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.error = action.payload;
@@ -98,6 +103,7 @@ const authSlice = createSlice({
         state.userData.proteinRate = action.payload.user.proteinRate;
         state.userData.fatRate = action.payload.user.fatRate;
         state.userData.carbsRate = action.payload.user.carbsRate;
+        state.error = null;
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.error = action.payload;
@@ -108,6 +114,7 @@ const authSlice = createSlice({
         state.userData.proteinRate = action.payload.user.proteinRate;
         state.userData.fatRate = action.payload.user.fatRate;
         state.userData.carbsRate = action.payload.user.carbsRate;
+        state.error = null;
       })
       .addCase(updateGoal.rejected, (state, action) => {
         state.error = action.payload;
@@ -120,6 +127,7 @@ const authSlice = createSlice({
         state.userData.proteinRate = action.payload.user.proteinRate;
         state.userData.fatRate = action.payload.user.fatRate;
         state.userData.carbsRate = action.payload.user.carbsRate;
+        state.error = null;
       })
       .addCase(updateWeight.rejected, (state, action) => {
         state.error = action.payload;

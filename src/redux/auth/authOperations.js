@@ -82,13 +82,12 @@ export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
     const { token } = thunkAPI.getState().auth;
-
     if (token === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
 
     try {
-      token.set(token);
+      instance.defaults.headers['Authorization'] = `Bearer ${token}`;
       const { data } = await instance.get('user/current');
       return data;
     } catch (error) {
