@@ -13,13 +13,13 @@ const handleRejected = (state, action) => {
 const handleGetCurrentFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.dailyStatistics = action.payload;
+  state.consumedFood = action.payload;
 };
 
 const handleAddWaterFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedWater += action.payload;
+  state.consumedWater = action.payload.result.value;
 };
 
 const handleDeleteWaterFulfilled = (state) => {

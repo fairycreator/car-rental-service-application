@@ -5,17 +5,17 @@ export const instance = axios.create({
   baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api/',
 });
 
-export const getCurrentStatistics = createAsyncThunk(
-  'dailyStatistics/getCurrent',
-  async (_, thunkAPI) => {
-    try {
-      const response = await instance.get('/user/current');
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+// export const getCurrentStatistics = createAsyncThunk(
+//   'dailyStatistics/getCurrent',
+//   async (_, thunkAPI) => {
+//     try {
+//       const response = await instance.get('/user/current');
+//       return response.data;
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const addWater = createAsyncThunk(
   'dailyStatistics/addWater',
