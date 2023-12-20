@@ -22,10 +22,10 @@ const handleAddWaterFulfilled = (state, action) => {
   state.consumedWater += action.payload;
 };
 
-const handleDeleteWaterFulfilled = (state, action) => {
+const handleDeleteWaterFulfilled = (state) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedWater = action.payload;
+  state.consumedWater = 0;
 };
 
 const consumedFood = {
