@@ -29,7 +29,7 @@ function App() {
         <Route
           index
           element={
-            <RestrictedRoute redirectTo="/recommended-food" component={<RecommendedFoodPage/>} />
+            <RestrictedRoute redirectTo="/welcome" component={<RecommendedFoodPage/>} />
           }
         />
         {/* <Route

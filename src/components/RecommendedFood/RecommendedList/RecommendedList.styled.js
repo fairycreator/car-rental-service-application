@@ -72,19 +72,33 @@ align-items: flex-start;
 gap: 16px;
 `
 
+export const RecListTitle = styled.h2`
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 0.7 ;
+
+
+
+`
 
 export const RecLink = styled(NavLink)`
 font-size: 15px;
 display: flex ; 
 justify-content: center;
 align-items: center;
+font-size: 16px;
+font-weight: 500;
+line-height: 0.7;
+color: var(--primary-color-grey );
 `
 
 export const Image = styled.svg`
 width: 16px;
 height: 16px;
-fill: white;
+fill: var(--primary-color-grey);
 align-items: center;
+
 `
 export const RecLinkWrapper = styled.div`
 display: flex ; 

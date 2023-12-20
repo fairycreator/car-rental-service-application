@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchRecFoods } from "./recOperations";
-import { builders } from "prettier/doc";
+
 
 
 const handlePending = state => {
@@ -21,7 +21,7 @@ const handleFetchRecFulfilled = (state, action) => {
 const recSlice = createSlice({
     name: 'recommendedFood',
     initialState: {
-        items: [],
+        recomendedFoods : [{  name: '', amount: 0, img: '', calories: 0 }],
         isLoading: true,
         error: null,
     },

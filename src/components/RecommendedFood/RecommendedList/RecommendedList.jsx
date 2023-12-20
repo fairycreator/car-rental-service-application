@@ -1,13 +1,19 @@
 import sprite from 'assets/images/sprite.svg';
-import { RecommendedCard } from "../RecommendedCard/RecommendedCard"
-import {RecPageTitle ,RecList, RecLink, Image, RecLinkWrapper, RecForMainWrapper } from "./RecommendedList.styled"
+import { RecommendedCard } from "../RecommendedCard/RecommendedCard";
+import { selectRecFoods } from '../../../redux/recommended/recSelectors';
+import { RecList, RecLink, Image, RecLinkWrapper, RecForMainWrapper, RecListTitle } from "./RecommendedList.styled"
+import { useSelector } from 'react-redux';
 export const RecommendedList = () => {
+
+    const recommendedFoods = useSelector(selectRecFoods);
     return (
         <RecForMainWrapper>
-            <RecPageTitle>Recommented food</RecPageTitle>
-            <RecList>
-                <RecommendedCard />
-                <RecommendedCard />
+            <RecListTitle>Recommented food</RecListTitle>
+            <RecList >
+                {recommendedFoods.map(item => {
+                    <RecommendedCard item={item } /> 
+                })}
+                
                
                 
             </RecList>
