@@ -63,17 +63,9 @@ const StyledMenu = styled(Menu)({
     backgroundColor: '#0F0F0F',
     boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
   },
-  '& .MuiMenuItem-root': {
-    // padding: '0px',
-    // gap: '8px',
-  },
   '& .MuiList-root': {
-    // display: 'flex',
-    // flexDirection: 'column',
-    // justifyContent: 'center',
     width: '392px',
     height: '352px',
-    // gap: '16px',
     padding: '20px 0px 40px 24px',
     position: 'relative'
   },
@@ -85,20 +77,17 @@ export const GoalNav = () => {
 
   let imageGoal;
   if (userGoal === "Lose Fat") {
-    isGender==="male" ? imageGoal = loseFat : imageGoal = loseFat_girl
-  } else if (userGoal === "Maintain"){
-    isGender==="male" ? imageGoal = maintain : imageGoal = maintain_girl
+    isGender === "male" ? imageGoal = loseFat : imageGoal = loseFat_girl
+  } else if (userGoal === "Maintain") {
+    isGender === "male" ? imageGoal = maintain : imageGoal = maintain_girl
   } else if (userGoal === "Gain Muscle") {
     imageGoal = gainMuscle
   };
 
-  
   const [currentImage, setCurrentImage] = useState(imageGoal)
   const [value, setValue] = useState(userGoal);
   const [currentValue, setCurrentValue] = useState(userGoal);
   const [anchorEl, setAnchorEl] = useState(null);
-  
- 
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -190,29 +179,23 @@ export const GoalNav = () => {
               aria-labelledby="demo-error-radios"
               // defaultValue={value}
               sx={{
-                gap: '16px',
+                gap: '16px',    
                 '& .MuiFormControlLabel-root .MuiFormControlLabel-label': {
                   fontFamily: 'Poppins400',
                   fontSize: '14px',
                   color: 'white.main',
                   marginLeft: '12px',
                 },
+                '& :hover.MuiTypography-root': {
+                  color: '#B6C3FF',
+                  fontFamily: 'Poppins500',
+                },
               }}
               name="quiz"
               value={value}
               onChange={handleRadioChange}
             >
-              <FormControlLabel
-                sx={{
-                  margin: '0px',
-                  '& :hover.MuiTypography-root': {
-                    color: '#B6C3FF',
-                    fontFamily: 'Poppins500',
-                  },
-                  '& :hover.igoMVi': {
-                    borderColor: '#B6C3FF',
-                  },
-                }}
+              <FormControlLabel sx={{ margin: '0px' }}
                 value="Lose Fat"
                 control={
                   <Radio
@@ -223,12 +206,12 @@ export const GoalNav = () => {
                     }}
                     icon={
                       <DivImage>
-                        <LoseFat src={isGender==="male" ? loseFat : loseFat_girl} alt="Lose fat" />
+                        <LoseFat src={isGender === "male" ? loseFat : loseFat_girl} alt="Lose fat" />
                       </DivImage>
                     }
                     checkedIcon={
                       <DivImage>
-                        <LoseFat src={isGender==="male" ? loseFat : loseFat_girl} alt="Lose fat" />
+                        <LoseFat src={isGender === "male" ? loseFat : loseFat_girl} alt="Lose fat" />
                       </DivImage>
                     }
                   />
@@ -245,15 +228,8 @@ export const GoalNav = () => {
                       padding: '0px',
                     }}
                     icon={
-                      <DivImage
-                        className="test"
-                        style={{
-                          'input:hover ~ &': {
-                            backgroundColor: 'red',
-                          },
-                        }}
-                      >
-                        <LoseFat src={isGender==="male" ? maintain : maintain_girl} alt="Maintain" />
+                      <DivImage>
+                        <LoseFat src={isGender === "male" ? maintain : maintain_girl} alt="Maintain" />
                       </DivImage>
                     }
                     checkedIcon={
