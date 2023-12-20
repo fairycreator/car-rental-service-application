@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from "react-redux";
 import { styled } from '@mui/material/styles';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -8,8 +9,11 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
+import { selectUserGender, selectUserGoal } from '../../redux/auth/authSelectors';
 import loseFat from '../../assets/images/loseFat.png';
 import maintain from '../../assets/images/maintain.png';
+import loseFat_girl from '../../assets/images/loseFat_girl.png';
+import maintain_girl from '../../assets/images/maintain_girl.png';
 import gainMuscle from '../../assets/images/gainMuscle.png';
 import {
   DivImage,
@@ -76,10 +80,25 @@ const StyledMenu = styled(Menu)({
 });
 
 export const GoalNav = () => {
-  const [value, setValue] = useState('Lose fat');
-  const [currentValue, setCurrentValue] = useState('');
-  const [currentImage, setCurrentImage] = useState(loseFat)
+  const isGender = useSelector(selectUserGender);
+  const userGoal = useSelector(selectUserGoal);
+
+  let imageGoal;
+  if (userGoal === "Lose Fat") {
+    isGender==="male" ? imageGoal = loseFat : imageGoal = loseFat_girl
+  } else if (userGoal === "Maintain"){
+    isGender==="male" ? imageGoal = maintain : imageGoal = maintain_girl
+  } else if (userGoal === "Gain Muscle") {
+    imageGoal = gainMuscle
+  };
+
+  
+  const [currentImage, setCurrentImage] = useState(imageGoal)
+  const [value, setValue] = useState(userGoal);
+  const [currentValue, setCurrentValue] = useState(userGoal);
   const [anchorEl, setAnchorEl] = useState(null);
+  
+ 
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -95,23 +114,18 @@ export const GoalNav = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (currentValue === 'Lose fat') {
-      setCurrentImage(loseFat)
-      console.log('Lose fat');
+    if (currentValue === 'Lose Fat') {
+      setCurrentImage(isGender === "male" ? loseFat : loseFat_girl)
 
     } else if (currentValue === 'Maintain') {
-      setCurrentImage(maintain)
-      console.log('Maintain');
+      setCurrentImage(isGender === "male" ? maintain : maintain_girl)
 
-    } else if (currentValue === 'Gain muscle') {
+    } else if (currentValue === 'Gain Muscle') {
       setCurrentImage(gainMuscle)
-      console.log('Gain muscle');
     }
     setValue(currentValue);
     handleClose();
   };
-
-
 
   return (
     <div>
@@ -199,7 +213,7 @@ export const GoalNav = () => {
                     borderColor: '#B6C3FF',
                   },
                 }}
-                value="Lose fat"
+                value="Lose Fat"
                 control={
                   <Radio
                     sx={{
@@ -209,12 +223,12 @@ export const GoalNav = () => {
                     }}
                     icon={
                       <DivImage>
-                        <LoseFat src={loseFat} alt="Lose fat" />
+                        <LoseFat src={isGender==="male" ? loseFat : loseFat_girl} alt="Lose fat" />
                       </DivImage>
                     }
                     checkedIcon={
                       <DivImage>
-                        <LoseFat src={loseFat} alt="Lose fat" />
+                        <LoseFat src={isGender==="male" ? loseFat : loseFat_girl} alt="Lose fat" />
                       </DivImage>
                     }
                   />
@@ -239,7 +253,7 @@ export const GoalNav = () => {
                           },
                         }}
                       >
-                        <LoseFat src={maintain} alt="Maintain" />
+                        <LoseFat src={isGender==="male" ? maintain : maintain_girl} alt="Maintain" />
                       </DivImage>
                     }
                     checkedIcon={
@@ -254,7 +268,7 @@ export const GoalNav = () => {
 
               <FormControlLabel
                 sx={{ margin: '0px' }}
-                value="Gain muscle"
+                value="Gain Muscle"
                 control={
                   <Radio
                     sx={{
