@@ -21,7 +21,7 @@ import {
   MenuText,
   Text,
   IconClose,
-  ButtonClose,
+  ButtonClose
 } from './GoalNav.styled';
 import sprite from 'assets/images/sprite.svg';
 import { IconDown } from '../UserInfoNav/UserInfoNav.styled';
@@ -160,6 +160,7 @@ export const GoalNav = () => {
             <use href={`${sprite}#icon-close-circle`}></use>
           </IconClose>
         </ButtonClose>
+      
         <form onSubmit={handleSubmit}>
           <FormControl sx={{ margin: '0px' }}>
             <FormLabel id="demo-error-radios" sx={{ marginRight: '0px' }}>
@@ -190,11 +191,11 @@ export const GoalNav = () => {
               <FormControlLabel
                 sx={{
                   margin: '0px',
-                  '& :active.MuiTypography-root': {
+                  '& :hover.MuiTypography-root': {
                     color: '#B6C3FF',
                     fontFamily: 'Poppins500',
                   },
-                  '& :active.igoMVi': {
+                  '& :hover.igoMVi': {
                     borderColor: '#B6C3FF',
                   },
                 }}

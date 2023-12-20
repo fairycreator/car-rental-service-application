@@ -6,8 +6,13 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
-import { Formik } from 'formik';
+import { useRef } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import { Formik, useFormik } from 'formik';
+import { validationSchema } from '../../../schemas/profileUpdateSchema';
 import image from '../../../assets/images/settings-page-image.png';
+import defaultAvatar from '../../../assets/images/default-avatar.png';
+import sprite from '../../../assets/images/sprite.svg';
 import {
   PageWrapper,
   Title,
@@ -23,85 +28,202 @@ import {
   radioStyled,
   buttonGroupStyled,
   buttonStyled,
+  ErrorMessageStyled,
+  InputWrapper,
+  IconWrapper,
+  DownloadButton,
+  InputStyled,
+  DownloadSpan,
 } from './ProfileSetting.styled';
 
+const showImage = (data) => {
+  const reader = new FileReader();
+  reader.readAsDataURL(data);
+  function isFileImage(data) {
+    return data && data['type'].split('/')[0] === 'image';
+  }
+  reader.onload = () => {
+    isFileImage(data) ? reader.result : '/default.svg';
+  };
+  // console.log(data);
+  // console.log(reader.result);
+  return reader.result;
+};
+
 export const ProfileSetting = () => {
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/main');
+
+  const initialValues = {
+    name: 'test',
+    image: '',
+    age: 18,
+    gender: 'male',
+    height: 10,
+    weight: 10,
+    activity: 1.2,
+  };
+
+  const formik = useFormik({
+    initialValues: initialValues,
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      formik.values.activity = Number(values.activity);
+      console.log(values);
+    },
+  });
+
   return (
     <PageWrapper>
       <Title>Profile setting</Title>
       <ContentWrapper>
         <Image src={image} alt="Page image" />
 
-        <Formik initialValues={{}}>
-          <FormWrapper>
+        <Formik>
+          <FormWrapper onSubmit={formik.handleSubmit}>
             <LabelInput htmlFor="name">
               Your name
-              <FieldStyled id="name" name="name" />
-            </LabelInput>
-            <LabelInput htmlFor="photo">
-              Your photo
-              <Avatar src="" alt="users avatar" />
-              <input
-                type="file"
-                name="image"
-                // set supported file types here,
-                // could also check again within formik validation or backend
-                accept="image/png, .svg"
-                // onChange={(e) => {
-                //   // Object is possibly null error w/o check
-                //   if (e.currentTarget.files) {
-                //     setFieldValue('image', e.currentTarget.files[0]);
-                //   }
-                // }}
+              <FieldStyled
+                id="name"
+                name="name"
+                value={formik.values.name}
+                onChange={formik.handleChange}
               />
+              {formik.errors.name && formik.touched.name && (
+                <ErrorMessageStyled id="feedback" name="name">
+                  {formik.errors.name}
+                </ErrorMessageStyled>
+              )}
+            </LabelInput>
+            <LabelInput>
+              Your photo
+              <InputWrapper>
+                {formik.values.image ? (
+                  <Avatar
+                    src={showImage(formik.values.image)}
+                    alt="user avatar"
+                    file={formik.values.image}
+                  />
+                ) : (
+                  <Avatar
+                    src={defaultAvatar}
+                    alt="user avatar"
+                    file={formik.values.image}
+                  />
+                )}
+                <DownloadButton type="button" htmlFor="image">
+                  <InputStyled
+                    id="image"
+                    name="image"
+                    type="file"
+                    accept="image/png, .svg, .jpg, .gif, .jpeg, .webp"
+                    onChange={(e) => {
+                      if (e.currentTarget.files) {
+                        formik.setFieldValue('image', e.currentTarget.files[0]);
+                      }
+                    }}
+                  />
+                  <IconWrapper>
+                    <use href={`${sprite}#icon-direct-inbox`} />
+                  </IconWrapper>
+                  <DownloadSpan>
+                    {formik.values.image.name
+                      ? formik.values.image.name
+                      : 'Download new photo'}
+                  </DownloadSpan>
+                </DownloadButton>
+              </InputWrapper>
             </LabelInput>
             <LabelInput htmlFor="age">
               Your age
-              <FieldStyled id="age" name="age" />
+              <FieldStyled
+                id="age"
+                name="age"
+                type="number"
+                value={formik.values.age}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.age && formik.touched.age && (
+                <ErrorMessageStyled id="feedback" name="age">
+                  {formik.errors.age}
+                </ErrorMessageStyled>
+              )}
             </LabelInput>
             <FormControl sx={formControlStyled}>
-              <FormLabel id="gender-radio-group" sx={formLabelStyled}>
+              <FormLabel id="gender" sx={formLabelStyled}>
                 Gender
               </FormLabel>
               <RadioGroup
                 row
                 sx={{ gap: '16px' }}
-                aria-labelledby="gender-radio-group"
-                name="gender-radio-group"
-                defaultValue=""
+                aria-labelledby="gender"
+                name="gender"
+                value={formik.values.gender}
+                onChange={formik.handleChange}
               >
                 <FormControlLabel
-                  value="Male"
+                  value="male"
                   sx={formControlLabel}
                   control={<Radio sx={radioStyled} />}
                   label="Male"
                 />
                 <FormControlLabel
-                  value="Female"
+                  value="female"
                   sx={formControlLabel}
                   control={<Radio sx={radioStyled} />}
                   label="Female"
                 />
+                {formik.errors.gender && formik.touched.gender && (
+                  <ErrorMessageStyled id="feedback" name="gender">
+                    {formik.errors.gender}
+                  </ErrorMessageStyled>
+                )}
               </RadioGroup>
             </FormControl>
             <LabelInput htmlFor="height">
               Height
-              <FieldStyled id="height" name="height" />
+              <FieldStyled
+                id="height"
+                name="height"
+                type="number"
+                value={formik.values.height}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.height && formik.touched.height && (
+                <ErrorMessageStyled id="feedback" name="height">
+                  {formik.errors.height}
+                </ErrorMessageStyled>
+              )}
+              <ErrorMessageStyled name="height" component="span" />
             </LabelInput>
             <LabelInput htmlFor="weight">
               Weight
-              <FieldStyled id="weight" name="weight" />
+              <FieldStyled
+                id="weight"
+                name="weight"
+                type="number"
+                value={formik.values.weight}
+                onChange={formik.handleChange}
+              />
+              {formik.errors.weight && formik.touched.weight && (
+                <ErrorMessageStyled id="feedback" name="weight">
+                  {formik.errors.weight}
+                </ErrorMessageStyled>
+              )}
+              <ErrorMessageStyled name="weight" component="span" />
             </LabelInput>
             <FormControl sx={{ gap: '12px' }}>
-              <FormLabel id="activity-radio-group" sx={formLabelStyled}>
+              <FormLabel id="activity" sx={formLabelStyled}>
                 Your activity
               </FormLabel>
               <RadioGroup
                 row
                 sx={{ gap: '16px' }}
-                aria-labelledby="activity-radio-group"
-                name="activity-radio-group"
-                defaultValue=""
+                aria-labelledby="activity"
+                name="activity"
+                type="number"
+                value={formik.values.activity}
+                onChange={formik.handleChange}
               >
                 <FormControlLabel
                   value="1.2"
@@ -136,11 +258,20 @@ export const ProfileSetting = () => {
                   times a day and include strength exercises in your training
                   program"
                 />
+                {formik.errors.activity && formik.touched.activity && (
+                  <ErrorMessageStyled id="feedback" name="activity">
+                    {formik.errors.activity}
+                  </ErrorMessageStyled>
+                )}
               </RadioGroup>
             </FormControl>
             <ButtonGroup aria-label="button group" sx={buttonGroupStyled}>
-              <Button sx={buttonStyled}>Save</Button>
-              <Button sx={buttonStyled}>Cancel</Button>
+              <Button sx={buttonStyled} type="submit">
+                Save
+              </Button>
+              <Button sx={buttonStyled}>
+                <Link to={backLinkHref.current}>Cancel</Link>
+              </Button>
             </ButtonGroup>
           </FormWrapper>
         </Formik>
