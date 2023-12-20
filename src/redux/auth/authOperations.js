@@ -54,8 +54,10 @@ export const loginUser = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
   try {
+    const { token } = thunkAPI.getState().auth;
+    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
     await axios.post('auth/signout');
-    token.clear();
+    instance.defaults.headers['Authorization'] = '';
   } catch (error) {
     const errorMessage = handleError(error);
     return thunkAPI.rejectWithValue(errorMessage);
@@ -66,7 +68,7 @@ export const forgotPassword = createAsyncThunk(
   'auth/forgot-password',
   async (dataUser, thunkAPI) => {
     try {
-      await axios.post('auth/forgot-password', dataUser);
+      await instance.post('auth/forgot-password', dataUser);
 
       console.log('Password send');
     } catch (error) {
@@ -92,6 +94,48 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       const errorMessage = handleError(error);
       return thunkAPI.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/update-profile',
+  async (dataUser, thunkApi) => {
+    try {
+      const { data } = await instance.put('user/update', dataUser);
+
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateGoal = createAsyncThunk(
+  'auth/update-goal',
+  async (dataUser, thunkApi) => {
+    try {
+      const { data } = await instance.put('user/goal', dataUser);
+
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkApi.rejectWithValue(errorMessage);
+    }
+  }
+);
+
+export const updateWeight = createAsyncThunk(
+  'auth/update-weight',
+  async (dataUser, thunkApi) => {
+    try {
+      const { data } = await instance.put('user/weight', dataUser);
+
+      return data;
+    } catch (error) {
+      const errorMessage = handleError(error);
+      return thunkApi.rejectWithValue(errorMessage);
     }
   }
 );

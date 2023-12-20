@@ -5,12 +5,14 @@ import {
   logOut,
   forgotPassword,
   refreshUser,
+  updateUser,
+  updateGoal,
+  updateWeight,
 } from './authOperations';
 
 const defaultUserData = {
   name: '',
   email: '',
-  password: '',
   goal: '',
   gender: '',
   age: null,
@@ -27,7 +29,7 @@ const defaultUserData = {
 
 const initialState = {
   userData: { ...defaultUserData },
-  token: null,
+  token: '',
   error: null,
   isLoading: false,
   isLoggedIn: false,
@@ -54,8 +56,11 @@ const authSlice = createSlice({
       // logout
       .addCase(logOut.fulfilled, (state) => {
         state.userData = { ...defaultUserData };
-        state.token = null;
+        state.token = '';
         state.isLoggedIn = false;
+      })
+      .addCase(logOut.rejected, (state, action) => {
+        state.error = action.payload;
       })
       // forgotPassword
       .addCase(forgotPassword.fulfilled, (state) => {
@@ -66,6 +71,18 @@ const authSlice = createSlice({
         state.userData = action.payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+      })
+      // updateUser
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.userData = action.payload;
+      })
+      // updateGoal
+      .addCase(updateGoal.fulfilled, (state, action) => {
+        state.userData = action.payload;
+      })
+      // updatewWeight
+      .addCase(updateWeight.fulfilled, (state, action) => {
+        state.userData = action.payload;
       }),
 });
 
