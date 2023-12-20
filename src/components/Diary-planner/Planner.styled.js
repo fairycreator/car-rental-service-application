@@ -50,7 +50,10 @@ export const MealContainer = styled.div`
   }
 `;
 
-export const MealImage = styled.img``;
+export const MealImage = styled.img`
+  width: 32px;
+  height: 32px;
+`;
 
 export const MealSubscription = styled.div`
   width: 178px;
