@@ -43,6 +43,17 @@ export const Title = styled.h2`
   font-style: normal;
   font-weight: 500;
   line-height: 30px; /* 125% */
+  @media screen and (min-width: 834px) {
+    font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: 36px; 120%
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+
+
 `;
 
 export const RecordInputBig = styled.input`
