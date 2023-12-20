@@ -29,7 +29,7 @@ const defaultUserData = {
 
 const initialState = {
   userData: { ...defaultUserData },
-  token: null,
+  token: '',
   error: null,
   isLoading: false,
   isLoggedIn: false,
@@ -56,8 +56,11 @@ const authSlice = createSlice({
       // logout
       .addCase(logOut.fulfilled, (state) => {
         state.userData = { ...defaultUserData };
-        state.token = null;
+        state.token = '';
         state.isLoggedIn = false;
+      })
+      .addCase(logOut.rejected, (state, action) => {
+        state.error = action.payload;
       })
       // forgotPassword
       .addCase(forgotPassword.fulfilled, (state) => {
