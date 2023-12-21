@@ -19,17 +19,21 @@ import {
 
 import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
 import { WaterChart } from './WaterChart';
-import { selectConsumedWaterId } from '../../../redux/dailyStatistics/dailySelectors';
+import {
+  selectConsumedWaterId,
+  selectConsumedWaterValue,
+} from '../../../redux/dailyStatistics/dailySelectors';
 import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
+import { selectUserWaterRate } from '../../../redux/auth/authSelectors';
 
 export const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const _id = useSelector(selectConsumedWaterId);
+
   const dispatch = useDispatch();
 
-  // дані з беку
-  const waterGoal = 1500;
-  const waterFilled = 1050;
+  const _id = useSelector(selectConsumedWaterId);
+  const waterGoal = useSelector(selectUserWaterRate);
+  const waterFilled = useSelector(selectConsumedWaterValue);
 
   const waterPercentage =
     waterFilled <= waterGoal
@@ -48,7 +52,6 @@ export const Water = () => {
             console.log(_id);
             dispatch(deleteWater(_id));
           }}
-          // onClick={(e) => console.log(e.target)}
         >
           <svg width="20px" height="20px">
             <use href={`${sprite}#trash-delete`}></use>
