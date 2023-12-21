@@ -1,51 +1,54 @@
-import { useState } from 'react';
-import { Field } from 'formik';
-import { Link } from 'react-router-dom';
-import sprite from '../../assets/images/sprite.svg';
-import {
-  WrapForm,
-  LabelWrap,
-  IconWrapped,
-  SvgIconEye,
-  InputStyled,
-  NextButton,
-  SignUpLink,
-  SignUpPrompt,
-  SignUpPromptText,
-} from './SignUpForm.styled';
+// import { Formik, Form, Field, ErrorMessage } from 'formik';
+// import signUpSchema from '../../schemas/signUpSchema';
+// import {
+//   WrapForm,
+//   LabelWrap,
+//   // IconWrapped,
+//   // SvgIconEye,
+//   InputStyled,
+//   NextButton,
+// } from './SignUpForm.styled';
 
-const SignUpForm = ({ nextStep, isSubmitting }) => {
-  const [visible, setVisible] = useState(false);
+// const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
+//   return (
+//     <WrapForm>
+//       <Formik
+//         initialValues={{
+//           name: nameValue || '',
+//           email: emailValue || '',
+//           password: passwordValue || '',
+//         }}
+//         validationSchema={signUpSchema}
+//         onSubmit={onForm}
+//       >
+//         {({ isSubmitting }) => (
+//           <Form>
+//             <LabelWrap>
+//               Name
+//               <Field as={InputStyled} type="text" name="name" />
+//               <ErrorMessage name="name" component="div" />
+//             </LabelWrap>
 
-  return (
-    <WrapForm>
-      <Field as={InputStyled} name="name" type="text" placeholder="Name" />
-      <Field as={InputStyled} name="email" type="email" placeholder="E-mail" />
-      <LabelWrap>
-        <Field
-          as={InputStyled}
-          id="password"
-          name="password"
-          type={visible ? 'text' : 'password'}
-          placeholder="Password"
-        />
-        <IconWrapped onClick={() => setVisible(!visible)}>
-          <SvgIconEye>
-            <use href={`${sprite}#${visible ? 'icon-eye' : 'icon-eye-off'}`} />
-          </SvgIconEye>
-        </IconWrapped>
-      </LabelWrap>
-      <NextButton type="submit" onClick={nextStep} disabled={isSubmitting}>
-        Next
-      </NextButton>
-      <SignUpPrompt>
-        <SignUpPromptText>Do you already have an account?</SignUpPromptText>
-        <Link to="/signin">
-          <SignUpLink>Sign in</SignUpLink>
-        </Link>
-      </SignUpPrompt>
-    </WrapForm>
-  );
-};
+//             <LabelWrap>
+//               Email
+//               <Field as={InputStyled} type="email" name="email" />
+//               <ErrorMessage name="email" component="div" />
+//             </LabelWrap>
 
-export default SignUpForm;
+//             <LabelWrap>
+//               Password
+//               <Field as={InputStyled} type="password" name="password" />
+//               <ErrorMessage name="password" component="div" />
+//             </LabelWrap>
+
+//             <NextButton type="submit" disabled={isSubmitting}>
+//               Next
+//             </NextButton>
+//           </Form>
+//         )}
+//       </Formik>
+//     </WrapForm>
+//   );
+// };
+
+// export default SignUpForm;

@@ -7,9 +7,11 @@ import { PrivateRoute } from './components/Routes/PrivateRoute.jsx';
 import { refreshUser } from './redux/auth/authOperations.js';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
-const SignUpPage = lazy(() => import('pages/SignUpPage/SignUpPage.jsx'));
+const SignUpPage = lazy(() => import('pages/SignUpPage.jsx'));
 const SignInPage = lazy(() => import('pages/SignInPage/SignInPage.jsx'));
-const ForgotPasswordPage = lazy(() => import('pages/ForgotPasswordPage'));
+const ForgotPasswordPage = lazy(() =>
+  import('pages/ForgotYourPasswordPage/ForgotPasswordPage.jsx')
+);
 const MainPage = lazy(() => import('pages/MainPage'));
 const DashboardPage = lazy(() => import('pages/DashboardPage'));
 const DiaryPage = lazy(() => import('pages/DiaryPage'));
