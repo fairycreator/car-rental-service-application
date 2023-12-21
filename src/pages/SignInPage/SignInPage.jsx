@@ -18,7 +18,7 @@ import {
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'apiurl',
+  baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api/',
 });
 
 const verifyEmail = async (verifyToken, setSuccessMessage, setErrorMessage) => {

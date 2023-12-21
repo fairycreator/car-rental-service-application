@@ -8,24 +8,6 @@ export const SignInButtonBox = styled.div`
   width: 100%;
 `;
 
-export const SignInButton = styled.button`
-  background-color: var(--primary-color-green-lite);
-  color: var(--primary-color-black-two);
-  font-family: 'Poppins500';
-  font-size: var(--main-font-size);
-  text-align: center;
-  padding: 12px 16px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  width: 100%;
-  margin-top: 40px;
-
-  &:hover {
-    background-color: #22c55e;
-  }
-`;
-
 const colors = {
   text: '#FFFFFF',
   inputBorder: '#45FFBC',
@@ -125,21 +107,55 @@ export const SignUpLink = styled.div`
   }
 `;
 
-export const NextButton = styled.button`
-  background-color: var(--primary-color-green-lite);
-  color: var(--primary-color-black-two);
-  padding: 15px;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  cursor: pointer;
+export const Input = styled.input`
+  position: relative;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--color-primary-green-lite, #e3ffa8);
+  background: var(--color-primary-black-2, #0f0f0f);
+  color: var(--primary-color-grey, #b6b6b6);
+  font-size: 14px;
+  line-height: 1.43;
 
-  &:hover {
-    background-color: #22c55e;
+  &.inputError {
+    border: 2px solid #e74a3b;
+  }
+
+  &.inputValid {
+    border: 2px solid #3cbc81;
+  }
+
+  &::placeholder {
+    color: var(--color-primary-grey);
+    font-size: 14px;
+    line-height: 1.43;
   }
 `;
 
-export const BackButton = styled(NextButton)`
-  background-color: transparent;
-  color: var(--primary-color-grey);
+// Button
+export const SignInButton = styled.button`
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 40px;
+  margin-bottom: 47px;
+  border-radius: 12px;
+  text-decoration: none;
+  background: var(--color-primary-green-lite, #e3ffa8);
+  color: var(--color-primary-black-2, #0f0f0f);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+
+  @media screen and (min-width: 834px) {
+    width: 380px;
+    margin-bottom: 238px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+    margin-bottom: 208px;
+  }
 `;
