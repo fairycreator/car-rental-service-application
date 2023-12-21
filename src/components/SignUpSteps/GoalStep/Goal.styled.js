@@ -5,11 +5,13 @@ export const GoalWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #000; // Black background as seen in the image
-  color: #fff; // White text color
+  background-color: var(
+    --primary-color-black-one
+  ); // Black background as seen in the image
+  color: #fff;
   height: 100vh; // Full viewport height
   padding: 20px;
-  font-family: 'Arial', sans-serif; // Replace with the actual font used in the design
+  font-family: 'Poppins'; // Replace with the actual font used in the design
 `;
 
 export const Image = styled.img`
@@ -50,10 +52,12 @@ export const RadioLabel = styled.label`
 `;
 
 export const NextButton = styled.button`
-  background-color: #0f0; // Bright green button as seen in the design
+  background-color: var(
+    --primary-color-green-lite
+  ); // Bright green button as seen in the design
   color: #000; // Text color for the button
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 0.5rem;
   font-weight: bold;
   width: 100%;

@@ -55,7 +55,9 @@ export const InputStyled = styled(Field)`
 `;
 
 export const NextButton = styled.button`
-  background-color: #0f0; // Bright green color for the button
+  background-color: var(
+    --primary-color-green-lite
+  ); // Bright green color for the button
   color: #000; // Text color for button
   border: none;
   border-radius: 4px;

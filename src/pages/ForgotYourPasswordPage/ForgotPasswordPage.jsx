@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
-import { Formik, Form } from 'formik';
-import validateEmail from '../../schemas/validateEmail';
+import { useNavigate, Link } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { forgotPassword } from '../../redux/auth/authOperations';
+import Notify from 'notiflix/build/notiflix-notify-aio';
 import image from '../../assets/backgroundImages/welcomepage.png';
 import {
   Container,
@@ -9,46 +12,63 @@ import {
   Title,
   Description,
   SubmitButton,
-  Link,
   Input,
   SignUpPrompt,
   SignUpPromptText,
-} from './ForgotYorPassword.styled';
+} from './ForgotYourPassword.styled';
+
+const EmailSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email').required('Required'),
+});
 
 const ForgotPasswordPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleSubmit = (values) => {
-    dispatch(console.log(values.email));
+  const handleSubmit = async (values, { setSubmitting }) => {
+    try {
+      await dispatch(forgotPassword({ email: values.email }));
+      Notify.success('A password reset link has been sent to your email.');
+      navigate('/signin');
+    } catch (error) {
+      Notify.failure('Failed to send password reset link. Please try again.');
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <Container>
       <MainContent>
-        <Image src={image} alt="Activity trtacker" />
+        <Image src={image} alt="Forgot Password" />
         <Title>Forgot your password</Title>
         <Description>
-          We will send you an email with recovery instructions
+          Enter your email to receive password recovery instructions
         </Description>
         <Formik
           initialValues={{ email: '' }}
-          validationSchema={validateEmail}
+          validationSchema={EmailSchema}
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
             <Form>
-              <Input name="email" type="email" placeholder="E-mail" />
+              <Field
+                as={Input}
+                name="email"
+                type="email"
+                placeholder="E-mail"
+              />
+              <ErrorMessage name="email" component="div" />
               <SubmitButton type="submit" disabled={isSubmitting}>
-                Sign In
+                Send
               </SubmitButton>
             </Form>
           )}
         </Formik>
         <SignUpPrompt>
           <SignUpPromptText>If you do not have an account yet</SignUpPromptText>
-          <Link to="/signup">
-            <Link>Sign up</Link>
-          </Link>
+          <Link to="/signup">Sign up</Link>
         </SignUpPrompt>
       </MainContent>
     </Container>

@@ -57,10 +57,12 @@ export const StyledField = styled(Field)`
 `;
 
 export const NextButton = styled.button`
-  background-color: #0f0; /* Adjust as per the button color in the design */
+  background-color: var(
+    --primary-color-green-lite
+  ); /* Adjust as per the button color in the design */
   color: #000; /* Adjust as per the button text color in the design */
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
   padding: 10px;
   font-weight: bold;
   width: 100%;

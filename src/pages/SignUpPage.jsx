@@ -90,7 +90,7 @@ const SignUpPage = () => {
         age,
         height: Number(height),
         weight: Number(weight),
-        activity: Number(selectedActivity),
+        activityLevel: Number(selectedActivity),
       })
     ).then((result) => {
       if (result.meta.requestStatus === 'fulfilled') {
