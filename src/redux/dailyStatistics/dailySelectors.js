@@ -4,7 +4,6 @@ export const selectConsumedWaterValue = (state) =>
   state.dailyStatistics.consumedWater.value;
 export const selectConsumedWaterId = (state) =>
   state.dailyStatistics.consumedWater._id;
-// export const selectConsumedFood = state => state.dailyStatistics.consumedFood;
 export const selectBreakfast = (state) =>
   state.dailyStatistics.consumedFood.breakfast;
 export const selectLunch = (state) => state.dailyStatistics.consumedFood.lunch;
