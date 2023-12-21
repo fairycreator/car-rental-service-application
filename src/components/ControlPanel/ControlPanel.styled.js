@@ -12,11 +12,15 @@ export const DesktopContainer = styled.div`
     gap: 80px;
   }
 `;
-
+// Test
 export const Box = styled.div`
   display: flex;
   align-items: center;
-  gap: 74px;
+  gap: 48px;
+
+  @media screen and (min-width: 834px) {
+    gap: 74px;
+  }
 
   @media screen and (min-width: 1440px) {
     gap: 124px;
