@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { getCurrentStatistics, addWater, deleteWater } from './dailyOperations';
+// import { getCurrentStatistics } from './dailyOperations';
 import { addWater, deleteWater } from './dailyOperations';
 
 const handlePending = (state) => {
@@ -9,6 +9,7 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
+  console.log(action.payload);
 };
 
 // const handleGetCurrentFulfilled = (state, action) => {
@@ -20,8 +21,8 @@ const handleRejected = (state, action) => {
 const handleAddWaterFulfilled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedWater.value = action.payload.result.value;
-  state.consumedWater._id = action.payload.result._id;
+  state.consumedWater.value = action.payload.water.value;
+  state.consumedWater._id = action.payload.water._id;
 };
 
 const handleDeleteWaterFulfilled = (state) => {
