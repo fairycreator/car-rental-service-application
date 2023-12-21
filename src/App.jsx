@@ -23,6 +23,7 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -101,5 +102,6 @@ function App() {
       </Route>
     </Routes>
   );
+  
 }
 export default App;
