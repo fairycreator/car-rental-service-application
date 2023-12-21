@@ -11,21 +11,20 @@ import {
 } from './authOperations';
 
 const defaultUserData = {
-  user: { name: null, email: null },
-  // name: '',
-  // email: '',
-  // goal: '',
-  // gender: '',
-  // age: null,
-  // height: null,
-  // weight: null,
-  // activityLevel: null,
-  // avatar: '',
-  // waterRate: null,
-  // BMRRate: null,
-  // proteinRate: null,
-  // fatRate: null,
-  // carbsRate: null,
+  name: '',
+  email: '',
+  goal: '',
+  gender: '',
+  age: null,
+  height: null,
+  weight: null,
+  activityLevel: null,
+  avatar: '',
+  waterRate: null,
+  BMRRate: null,
+  proteinRate: null,
+  fatRate: null,
+  carbsRate: null,
 };
 
 const initialState = {

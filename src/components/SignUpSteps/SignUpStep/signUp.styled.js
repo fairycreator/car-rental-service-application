@@ -4,12 +4,9 @@ import iconeye from '../../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 
 export const SignUpContainer = styled.div`
-  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
   background-color: var(--primary-color-black-one);
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +22,6 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 24px 0;
   transition: width 0.5s ease;
 
   @media screen and (min-width: 834px) {
@@ -103,7 +99,7 @@ export const Subtitle = styled.h2`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  row-gap: 16px;
+  row-gap: 20px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
@@ -128,7 +124,7 @@ export const Input = styled.input`
   border-radius: 12px;
   border: 2px solid var(--color-primary-green-lite, #e3ffa8);
   background: var(--color-primary-black-2, #0f0f0f);
-  color: var(--color-primary-white, #fff);
+  color: var(--primary-color-grey, #b6b6b6);
   font-size: 14px;
   line-height: 1.43;
 
@@ -141,7 +137,7 @@ export const Input = styled.input`
   }
 
   &::placeholder {
-    color: var(--color-primary-grey, #b6b6b6);
+    color: var(--color-primary-grey);
     font-size: 14px;
     line-height: 1.43;
   }
@@ -152,6 +148,8 @@ export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
+  margin-top: 40px;
+  margin-bottom: 47px;
   border-radius: 12px;
   text-decoration: none;
   background: var(--color-primary-green-lite, #e3ffa8);
@@ -160,7 +158,6 @@ export const NextButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
-  margin-bottom: 80px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
