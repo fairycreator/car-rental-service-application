@@ -5,12 +5,14 @@ import {
   MealTitle,
 } from '../Diary-planner/Planner.styled';
 import {
+  AddMore,
   BackDrop,
   Button,
   ButtonBlock,
   ContentBlock,
   InputBlock,
   RecordInputBig,
+  RecordInputBigFirst,
   SubInput,
   SubInputBlock,
   Title,
@@ -32,7 +34,7 @@ export const Record = () => {
           <MealTitle>Breakfast</MealTitle>
         </MealContainer>
         <InputBlock>
-          <RecordInputBig />
+          <RecordInputBigFirst />
           <RecordInputBig />
           <RecordInputBig />
           <SubInputBlock>
@@ -50,6 +52,25 @@ export const Record = () => {
             </svg>
           </SubInputBlock>
         </InputBlock>
+        <div
+          style={{
+            display: 'flex',
+            gap: '6px',
+            marginTop: '40px',
+          }}
+        >
+          <svg
+            style={{
+              display: 'inline-block',
+              width: '20px',
+              height: ' 20px',
+              fill: 'white',
+            }}
+          >
+            <use href={`${iconPath}#icon-add-converted`}></use>
+          </svg>
+          <AddMore>Add more</AddMore>
+        </div>
         <ButtonBlock>
           <Button>Confirm</Button>
           <button

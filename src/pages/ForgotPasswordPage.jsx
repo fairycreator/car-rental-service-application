@@ -12,6 +12,7 @@
 //   Input,
 // } from '../styles/ForgotPasswordStyles';
 
+
 const ForgotPasswordPage = () => {
   // const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ const ForgotPasswordPage = () => {
   // };
 
   return (
-    <div>forgot your passsword</div>
+    <p>forgot your passsword</p>
     //     <Container>
     //       <MainContent>
     //         <Illustration
@@ -49,6 +50,7 @@ const ForgotPasswordPage = () => {
     //         <SignInLink to="/signup">Sign up</SignInLink>
     //       </MainContent>
     //     </Container>
+ 
   );
 };
 

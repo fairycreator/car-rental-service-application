@@ -9,7 +9,7 @@ export const Navigation = () => {
             <Link to='/signup'>Sign up</Link>
             <Icon>
                 <use href={`${sprite}#icon-profile-circle`}></use>
-            </Icon>
+          </Icon>
         </BoxNav>
     )
 };

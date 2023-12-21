@@ -54,7 +54,7 @@ export const MilkIcon = styled.svg`
   fill: var(--primary-color-violet);
 `;
 
-export const Text = styled.div`
+export const Text = styled.p`
   margin-bottom: 4px;
   font-size: 18px;
   font-weight: 500;

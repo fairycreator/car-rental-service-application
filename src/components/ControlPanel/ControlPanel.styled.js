@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const DesktopContainer = styled.div`
+export const Container = styled.div`
+  display: none;
+
   @media screen and (min-width: 834px) {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 40px;
   }
@@ -18,7 +19,7 @@ export const Box = styled.div`
   align-items: center;
   gap: 74px;
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 834px) {
     gap: 124px;
   }
 `;

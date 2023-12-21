@@ -1,8 +1,3 @@
-// import { useSelector } from 'react-redux';
-// import {
-//   selectUserBMRRate,
-//   selectUserWaterRate,
-// } from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/images/sprite.svg';
 import {
   Wrapper,
@@ -17,11 +12,8 @@ import {
 } from './DailyGoal.styled';
 
 export const DailyGoal = () => {
-  // const userBMRRate = useSelector(selectUserBMRRate);
-  // const userWaterRate = useSelector(selectUserWaterRate);
-
-  const userBMRRate = 1700;
-  const userWaterRate = 1050;
+  const dailyCaloriesGoal = 1700;
+  const dailyWaterGoal = 1500;
 
   return (
     <Wrapper>
@@ -33,7 +25,7 @@ export const DailyGoal = () => {
           </BubbleIcon>
           <Text>
             <p>Calories</p>
-            <Amount>{userBMRRate}</Amount>
+            <Amount>{dailyCaloriesGoal}</Amount>
           </Text>
         </Item>
         <Item>
@@ -43,7 +35,7 @@ export const DailyGoal = () => {
           <Text>
             <p> Water</p>
             <Amount>
-              {userWaterRate} <Span>ml</Span>
+              {dailyWaterGoal} <Span>ml</Span>
             </Amount>
           </Text>
         </Item>

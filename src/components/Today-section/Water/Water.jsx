@@ -1,13 +1,11 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../../assets/images/sprite.svg';
 import {
   Wrapper,
   Title,
   ContentWrapper,
   ProgressBar,
-  ClearButton,
-  // TrashIcon,
+  TrashIcon,
   AddIcon,
   SecondTitle,
   Text,
@@ -19,13 +17,9 @@ import {
 
 import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
 import { WaterChart } from './WaterChart';
-import { selectConsumedWaterId } from '../../../redux/dailyStatistics/dailySelectors';
-import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
 
 export const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const _id = useSelector(selectConsumedWaterId);
-  const dispatch = useDispatch();
 
   // дані з беку
   const waterGoal = 1500;
@@ -42,18 +36,9 @@ export const Water = () => {
     <Wrapper>
       <Title>Water</Title>
       <ContentWrapper>
-        <ClearButton
-          type="button"
-          onClick={() => {
-            console.log(_id);
-            dispatch(deleteWater(_id));
-          }}
-          // onClick={(e) => console.log(e.target)}
-        >
-          <svg width="20px" height="20px">
-            <use href={`${sprite}#trash-delete`}></use>
-          </svg>
-        </ClearButton>
+        <TrashIcon>
+          <use href={`${sprite}#trash-delete`}></use>
+        </TrashIcon>
         <ProgressBar>
           <WaterChart waterIntake={waterPercentage} />
           <Percentage>{`${waterPercentage}%`}</Percentage>
