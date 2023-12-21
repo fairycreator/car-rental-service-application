@@ -1,6 +1,23 @@
 import { MonthName } from "./Month.styled";
 
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+const date = new Date();
+let month = months[date.getMonth()];
+
 export const Month = () => {
-  const monthName = "November";
-  return <MonthName>{monthName}</MonthName>;
+  return <MonthName>{month}</MonthName>;
 };

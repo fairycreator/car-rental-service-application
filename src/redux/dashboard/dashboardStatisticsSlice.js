@@ -1,27 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getStatisticsForDashboard } from './dashboardOperations';
-import { handleFulfilledGetStatistics, handlePending, handleRejected } from './dashboardReducers';
+import { getMonthStatistics } from './dashboardOperations';
+import {
+  handlePending,
+  handleRejected,
+  handleFulfilledGetMonthStatistics,
+} from './dashboardReducers';
+
 // import { logOut } from './auth/authOperations';
 
-const dashboardStatisticsInitialState = {
-  items: [],
+const monthStatisticsInitialState = {
+  colories: [],
+  water: [],
+  waight: [],
   isLoading: false,
   error: null,
 };
 
-const dashboardStatisticsSlice = createSlice({
-  name: 'statisticsForDashboard',
-  initialState: dashboardStatisticsInitialState,
+const monthStatisticsSlice = createSlice({
+  name: 'monthStatistics',
+  initialState: monthStatisticsInitialState,
   extraReducers: (builder) => {
     builder
-      .addCase(getStatisticsForDashboard.pending, handlePending)
-      .addCase(
-        getStatisticsForDashboard.fulfilled,
-        handleFulfilledGetStatistics
-      )
-      .addCase(getStatisticsForDashboard.rejected, handleRejected);
+      .addCase(getMonthStatistics.pending, handlePending)
+      .addCase(getMonthStatistics.fulfilled, handleFulfilledGetMonthStatistics)
+      .addCase(getMonthStatistics.rejected, handleRejected);
     //   .addCase(logOut.fulfilled, handleStatisticsLogoutFulfilled)
   },
 });
 
-export const dashboardStatisticsReducer = dashboardStatisticsSlice.reducer;
+export const monthStatisticsReducer = monthStatisticsSlice.reducer;

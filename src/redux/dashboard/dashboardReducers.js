@@ -2,8 +2,10 @@ export const handlePending = (state) => {
   state.isLoading = true;
 };
 
-export const handleFulfilledGetStatistics = (state, { payload }) => {
-  state.items = payload;
+export const handleFulfilledGetMonthStatistics = (state, { payload }) => {
+  state.calories = payload[0].statistics.calories;
+  state.water = payload[0].statistics.water;
+  state.weight = payload[0].statistics.weight;
   state.isLoading = false;
   state.error = '';
 };

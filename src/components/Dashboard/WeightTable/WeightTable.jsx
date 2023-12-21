@@ -4,17 +4,45 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 
 import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
+import { useSelector } from 'react-redux';
+import { selectWeightMonthStatistics } from '../../../redux/dashboard/dashboardSelectors';
 
-function createData(day, weight) {
-  return { day, weight };
-}
-let column = [];
 
-for (let i = 1; i < 31; i++) {
-  column.push(createData(68 + i, i));
+const date = new Date();
+const currentYear = date.getFullYear();
+const currentMonth = date.getMonth() + 1; 
+const currentDay = date.getDate();
+
+function getDaysInMonth(year, month) {
+  return new Date(year, month, 0).getDate();
 }
+const daysInMonth = getDaysInMonth(currentYear, currentMonth);
+console.log(daysInMonth);
+
 
 export const WeightTable = () => {
+  const weightFromBack = useSelector(selectWeightMonthStatistics);
+  let days = [];
+  let weight = [];
+  let prevWeight = 45;
+  const arrDayFromBack = weightFromBack?.flatMap((arr) => Number(arr.day));
+  
+
+  for (let i = 0; i < daysInMonth; i++) {
+    if (weightFromBack) {
+      if (arrDayFromBack.includes(i + 1)) {
+        let item = weightFromBack?.find((item) => Number(item.day) === i + 1);
+        weight.push(item.value);
+        prevWeight = item.value;
+      } else {
+        weight.push(prevWeight);
+      }
+      days.push(i + 1);
+    } else {
+      weight.push(prevWeight);
+      days.push(i + 1);
+    }
+  }
   return (
     <>
       <TableContainer
@@ -41,18 +69,18 @@ export const WeightTable = () => {
             <CustomTableRowUp
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              {column.map((column) => (
-                <TableCell key={column.day} component="th" scope="row">
-                  {column.day}
+              {weight?.map((item, index) => (
+                <TableCell key={item+index} component="th" scope="row">
+                  {item}
                 </TableCell>
               ))}
             </CustomTableRowUp>
             <CustomTableRowDown
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              {column.map((column) => (
-                <TableCell key={column.day} align="right">
-                  {column.weight}
+              {days?.map((item) => (
+                <TableCell key={item} align="right">
+                  {item}
                 </TableCell>
               ))}
             </CustomTableRowDown>
