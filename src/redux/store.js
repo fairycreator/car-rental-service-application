@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 
-import { recReducer } from './recommended/recSlice';
+import { recReducer } from './recomendedFoods/recSlice';
 
 import { dailyStatisticsReducer } from './dailyStatistics/dailySlice';
 
@@ -27,7 +27,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
 
-    recommendedFood: recReducer,
+    recommendedFoods: recReducer,
 
     dailyStatistics: dailyStatisticsReducer,
 

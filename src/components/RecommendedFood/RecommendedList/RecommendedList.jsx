@@ -1,46 +1,85 @@
 import sprite from 'assets/images/sprite.svg';
 import { RecommendedCard } from "../RecommendedCard/RecommendedCard";
-import { selectRecFoods } from '../../../redux/recommended/recSelectors';
+import { selectRecFoods, selectIsLoading, selectError } from '../../../redux/recomendedFoods/recSelectors';
 import { RecList, RecLink, Image, RecLinkWrapper, RecForMainWrapper, RecListTitle } from "./RecommendedList.styled"
 import { useSelector } from 'react-redux';
-export const RecommendedList = () => {
+import { useEffect, useState } from 'react';
 
-    const recommendedFoods = useSelector(selectRecFoods);
-    return (
-        <RecForMainWrapper>
-            <RecListTitle>Recommented food</RecListTitle>
-            <RecList >
-                {recommendedFoods.map(item => {
-                    <RecommendedCard item={item } /> 
-                })}
-                
-               
-                
-            </RecList>
-            <RecLinkWrapper>
-                <RecLink to='/recommended-food'>See more
-                    <Image> < use href={`${sprite}#icon-arrowright`}></use></Image>
-                </RecLink>
-            </RecLinkWrapper>
+    export const RecommendedList = () => {
+  const recommendedFoods = useSelector(selectRecFoods);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
-        </RecForMainWrapper>
-    )
+  
+
+ const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 834) {
+        setNumberOfCardsToRender(4);
+      } else {
+        setNumberOfCardsToRender(2);
+      }
+    };
+
+   
+    handleResize();
+
+   
+    window.addEventListener('resize', handleResize);
+
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+        if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+  return (
+    <RecForMainWrapper>
+      <RecListTitle>Recommended food</RecListTitle>
+      <RecList className="rec-list">
+        {recommendedFoods.slice(0, numberOfCardsToRender).map((item) => (
+          <RecommendedCard key={item.name} {...item} />
+        ))}
+      </RecList>
+      <RecLinkWrapper>
+        <RecLink to="/recommended-food">
+          See more
+          <Image>
+            
+            <use href={`${sprite}#icon-arrowright`}></use>
+          </Image>
+        </RecLink>
+      </RecLinkWrapper>
+    </RecForMainWrapper>
+  );
 };
 
 export const RecommendedPageList = () => {
+    const recommendedFoods = useSelector(selectRecFoods);
+      const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
     return (
         <RecList>
-            <RecommendedCard />
-            <RecommendedCard />
-            <RecommendedCard />
-            <RecommendedCard />
-            <RecommendedCard />
-                <RecommendedCard />
-                <RecommendedCard />
-                <RecommendedCard /><RecommendedCard />
-                <RecommendedCard />
-                <RecommendedCard />
-                <RecommendedCard />
+            {recommendedFoods.slice(0, 10).map(item => (
+          <RecommendedCard key={item.name} {...item} />
+        ))}
+           
         </RecList>
     )
 };

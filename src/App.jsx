@@ -23,16 +23,17 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
+
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
           element={
-            <RestrictedRoute redirectTo="/welcome" component={<RecommendedFoodPage/>} />
+            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
           }
         />
-        {/* <Route
+        <Route
           path="/welcome"
           element={
             <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
@@ -76,12 +77,12 @@ function App() {
           element={
             <PrivateRoute redirectTo="/welcome" component={<DiaryPage />} />
           }
-        /> */}
+        />
         <Route
           path="/recommended-food"
           element={
             <PrivateRoute
-              // redirectTo="/welcome"
+              redirectTo="/welcome"
               component={<RecommendedFoodPage />}
             />
           }
@@ -101,5 +102,6 @@ function App() {
       </Route>
     </Routes>
   );
+  
 }
 export default App;

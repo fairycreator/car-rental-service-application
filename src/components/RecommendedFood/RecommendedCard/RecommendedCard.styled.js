@@ -13,6 +13,7 @@ padding: 20px 80px 20px 24px;
 align-items: flex-start;
 
 @media screen and (min-width: 834px) {
+
    width: calc((100% - 20px) / 2 );
 }
 
