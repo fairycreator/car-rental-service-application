@@ -10,15 +10,22 @@ import {
   Input,
   CancelBtn,
 } from './AddWaterModal.styled';
+// import { selectConsumedWaterValue } from '../../../redux/dailyStatistics/dailySelectors';
 
 export const AddWaterModal = ({ setIsModalOpen }) => {
+  // const consumedWaterValue = useSelector(selectConsumedWaterValue);
   const [inputValue, setInputValue] = useState(0);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addWater(inputValue));
+    const value = {
+      value: inputValue,
+    };
+
+    dispatch(addWater(value));
+    // dispatch(addWater(inputValue));
   };
 
   return (
