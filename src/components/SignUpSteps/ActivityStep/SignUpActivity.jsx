@@ -14,7 +14,9 @@ import {
 } from './Activity.styled';
 
 const activitySchema = Yup.object().shape({
-  activity: Yup.string().required('Selecting an activity level is required'),
+  activityLevel: Yup.string().required(
+    'Selecting an activity level is required'
+  ),
 });
 
 function ActivityLevel({ onBackPage, onForm }) {

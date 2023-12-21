@@ -32,12 +32,12 @@ const SignUpPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [goal, setGoal] = useState('Lose fat');
+  const [goal, setGoal] = useState('Lose Fat');
   const [gender, setGender] = useState('male');
   const [age, setAge] = useState('');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-  const [activity, setActivity] = useState('1.2');
+  const [activityLevel, setActivityLevel] = useState('1.2');
 
   const dispatch = useDispatch();
 
@@ -64,6 +64,7 @@ const SignUpPage = () => {
     setGender(selectedGender);
     setAge(selectedAge);
     nextPage();
+    console.log('Gender called');
   };
 
   const handleBodyParameters = (values) => {
@@ -73,13 +74,13 @@ const SignUpPage = () => {
     setHeight(selectedHeight);
     setWeight(selectedWeight);
     nextPage();
+    console.log('Gender called');
   };
 
   const handleActivityLevel = (values) => {
-    const selectedActivity = values.activity;
-
-    setActivity(selectedActivity);
-
+    const selectedActivity = values.activityLevel;
+    setActivityLevel(selectedActivity);
+    console.log(selectedActivity);
     dispatch(
       registerUser({
         name,
@@ -93,6 +94,7 @@ const SignUpPage = () => {
         activityLevel: Number(selectedActivity),
       })
     ).then((result) => {
+      console.log(result);
       if (result.meta.requestStatus === 'fulfilled') {
         Notify.success(`Hey ${name}, you're all set! Let's get started!`);
       } else {
@@ -138,8 +140,8 @@ const SignUpPage = () => {
         <ActivityLevel
           onForm={handleActivityLevel}
           onBackPage={backPage}
-          activity={activity}
-          setActivity={setActivity}
+          activity={activityLevel}
+          setActivity={setActivityLevel}
         />
       )}
     </SignUpContainer>

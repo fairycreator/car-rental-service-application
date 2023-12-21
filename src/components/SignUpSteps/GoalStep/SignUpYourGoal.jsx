@@ -35,7 +35,7 @@ function GoalSelectionStep({ onForm, onBackPage }) {
             <Form>
               <RadioWrapper>
                 <RadioLabel>
-                  <Field type="radio" name="goal" value="Lose fat" />
+                  <Field type="radio" name="goal" value="Lose Fat" />
                   Lose Fat
                 </RadioLabel>
                 <RadioLabel>
@@ -43,7 +43,7 @@ function GoalSelectionStep({ onForm, onBackPage }) {
                   Maintain
                 </RadioLabel>
                 <RadioLabel>
-                  <Field type="radio" name="goal" value="Gain muscle" />
+                  <Field type="radio" name="goal" value="Gain Muscle" />
                   Gain Muscle
                 </RadioLabel>
               </RadioWrapper>
