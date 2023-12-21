@@ -6,9 +6,12 @@ export const BoxContent = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  max-width: 320px;
+  margin: 0 auto;
 
   @media screen and (min-width: 834px) {
     padding: 26px 27px;
+    max-width: 834px;
   }
 
   @media screen and (min-width: 1440px) {
