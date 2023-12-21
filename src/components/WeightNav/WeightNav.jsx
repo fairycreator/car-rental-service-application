@@ -76,8 +76,10 @@ export const WeightNav = () => {
 
     const handleSend = (event) => {
         event.preventDefault();
+
         let weight = Number(event.currentTarget.elements.weight.value);
         dispatch(updateWeight({weight}));
+
         console.log(weight)
         handleClose();
     }

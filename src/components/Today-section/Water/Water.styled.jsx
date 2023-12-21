@@ -65,19 +65,33 @@ export const Amount = styled.span`
   color: var(--primary-color-white);
 `;
 
-export const TrashIcon = styled.svg`
+export const ClearButton = styled.button`
   position: absolute;
   top: 12px;
   right: 12px;
   width: 20px;
   height: 20px;
-  fill: var(--primary-color-green-lite);
+  background-color: transparent;
+  border: none;
+
+  &svg {
+    fill: var(--primary-color-green-lite);
+  }
 
   @media screen and (min-width: 834px) {
     top: 24px;
     right: 24px;
   }
 `;
+
+// export const TrashIcon = styled.svg`
+//   fill: var(--primary-color-green-lite);
+
+/* @media screen and (min-width: 834px) {
+    top: 24px;
+    right: 24px;
+  } */
+// `;
 
 export const AddIcon = styled.svg`
   width: 16px;
