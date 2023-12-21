@@ -1,5 +1,20 @@
 import { styled } from 'styled-components';
 
+export const ContainerDiary = styled.div`
+  max-width: 340px;
+  @media screen and (min-width: 834px) {
+    max-width: 834px;
+  }
+`;
+
+export const ContentBlock = styled.div`
+  @media screen and (min-width: 834px) {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+`;
+
 export const Title = styled.h2`
   color: #fff;
   font-family: 'Poppins400';
@@ -20,11 +35,19 @@ export const SeeMore = styled.p`
 export const FoodBlock = styled.div`
   display: flex;
   gap: 12px;
-  align-items: center;
   flex-wrap: wrap;
+
+  @media screen and (min-width: 834px) {
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
 `;
 
 export const MealTitle = styled.h3`
+  min-width: 100px;
   color: var(--Color-Primary-White, #fff);
   /* Headline text/H3 */
   font-family: 'Poppins500';
@@ -44,11 +67,26 @@ export const MealOptions = styled.p`
   line-height: 20px; /* 142.857% */
   align-items: center;
   display: flex;
-  gap:16px
+  gap: 16px;
+  @media screen and (min-width: 834px) {
+    width: AUTO;
+  }
 `;
 export const TitleBlock = styled.div`
   display: flex;
   gap: 16px;
   align-items: center;
   margin-bottom: 8px;
+  @media screen and (min-width: 834px) {
+    margin-bottom: 0px;
+  }
+`;
+
+export const FoodBlocks = styled.div`
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  @media screen and (min-width: 834px) {
+    gap: 28px;
+  }
 `;

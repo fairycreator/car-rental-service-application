@@ -2,7 +2,10 @@ import React from 'react';
 import { MealImage } from '../Diary-planner/Planner.styled';
 import { AddMore } from '../ReacordMealPopUp/Reacord.styled';
 import {
+  ContainerDiary,
+  ContentBlock,
   FoodBlock,
+  FoodBlocks,
   MealOptions,
   MealTitle,
   SeeMore,
@@ -13,13 +16,13 @@ import {
 const DiaryMain = () => {
   const iconPath = 'src/assets/images/sprite.svg';
   return (
-    <>
+    <ContainerDiary>
       <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
         <Title>Diary</Title>
         <SeeMore>See more</SeeMore>
       </div>
-      <div style={{ display: 'flex', gap: '12px', flexDirection: 'column' }}>
-        <>
+      <FoodBlocks >
+        <ContentBlock>
           <TitleBlock>
             <MealImage src="src/assets/images/Breakfast.png" />
             <MealTitle>BreakFast</MealTitle>
@@ -41,8 +44,8 @@ const DiaryMain = () => {
               </svg>
             </MealOptions>
           </FoodBlock>
-        </>
-        <>
+        </ContentBlock>
+        <ContentBlock>
           <TitleBlock>
             <MealImage src="src/assets/images/Lunch.png" />
             <MealTitle>Lunch</MealTitle>
@@ -64,8 +67,8 @@ const DiaryMain = () => {
               </svg>
             </MealOptions>
           </FoodBlock>
-        </>
-        <>
+        </ContentBlock>
+        <ContentBlock>
           <TitleBlock>
             <MealImage src="src/assets/images/Dinner.png" />
             <MealTitle>Dinner</MealTitle>
@@ -91,8 +94,8 @@ const DiaryMain = () => {
               </svg>
             </div>
           </FoodBlock>
-        </>
-        <>
+        </ContentBlock>
+        <ContentBlock>
           <TitleBlock>
             <MealImage src="src/assets/images/Snack.png" />
             <MealTitle>Snack</MealTitle>
@@ -118,9 +121,9 @@ const DiaryMain = () => {
               </svg>
             </div>
           </FoodBlock>
-        </>
-      </div>
-    </>
+        </ContentBlock>
+      </FoodBlocks>
+    </ContainerDiary>
   );
 };
 
