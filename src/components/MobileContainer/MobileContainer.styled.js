@@ -4,8 +4,8 @@ export const IconMenu = styled.svg`
   @media screen and (max-width: 833px) {
     width: 16px;
     height: 16px;
-    position: absolute;
-    left: 120px;
+    /* position: absolute;
+    left: 120px; */
     fill: var(--primary-color-grey);
 
     &:hover {
