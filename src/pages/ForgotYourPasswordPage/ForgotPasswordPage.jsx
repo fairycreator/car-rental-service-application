@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { forgotPassword } from '../../redux/auth/authOperations';
-import Notify from 'notiflix/build/notiflix-notify-aio';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import image from '../../assets/backgroundImages/welcomepage.png';
 import {
   Container,
