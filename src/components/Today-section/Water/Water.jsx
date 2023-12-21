@@ -1,22 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../../assets/images/sprite.svg';
-import {
-  Wrapper,
-  Title,
-  ContentWrapper,
-  ProgressBar,
-  ClearButton,
-  // TrashIcon,
-  AddIcon,
-  SecondTitle,
-  Text,
-  Amount,
-  Button,
-  Span,
-  Percentage,
-} from './Water.styled';
-
 import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
 import { WaterChart } from './WaterChart';
 import {
@@ -25,6 +9,20 @@ import {
 } from '../../../redux/dailyStatistics/dailySelectors';
 import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
 import { selectUserWaterRate } from '../../../redux/auth/authSelectors';
+import {
+  Wrapper,
+  Title,
+  ContentWrapper,
+  ProgressBar,
+  ClearButton,
+  AddIcon,
+  SecondTitle,
+  Text,
+  Amount,
+  Button,
+  Span,
+  Percentage,
+} from './Water.styled';
 
 export const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
