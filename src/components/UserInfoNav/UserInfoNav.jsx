@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -10,7 +10,6 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { logOut } from '../../redux/auth/authOperations';
-import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 import sprite from 'assets/images/sprite.svg';
 import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
 
@@ -52,16 +51,15 @@ const StyledMenu = styled(Menu)({
 export const UserInfoNav = () => {
 
     const dispatch = useDispatch();
-    let isLoggedIn = useSelector(selectIsLoggedIn);
     
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+    const [menu, setMenu] = useState(null);
+    const open = Boolean(menu);
 
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        setMenu(event.currentTarget);
     };
     const handleClose = () => {
-        setAnchorEl(null);
+        setMenu(null);
     };
 
     const [openModal, setOpenModal] = useState(false);
@@ -78,7 +76,6 @@ export const UserInfoNav = () => {
     const handleLogout = () => {
         dispatch(logOut());
         handleCloseModal();
-        isLoggedIn = false;
     }
 
     return (
@@ -115,7 +112,7 @@ export const UserInfoNav = () => {
                 }}
                 
                 id="fade-menu"
-                anchorEl={anchorEl}
+                anchorEl={menu}
                 open={open}
                 onClose={handleClose}
                 TransitionComponent={Fade}

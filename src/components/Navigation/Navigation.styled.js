@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const Link = styled(NavLink)`
   font-size: 12px;
 
-  &:hover {
+  &:focus {
     color: var(--primary-color-green-lite);
   }
 

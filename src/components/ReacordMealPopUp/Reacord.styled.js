@@ -20,6 +20,7 @@ export const BackDrop = styled.div`
 
 export const ContentBlock = styled.div`
   position: relative;
+
   padding: 10px;
   width: 300px;
   height: 546px;
@@ -43,6 +44,7 @@ export const Title = styled.h2`
   font-style: normal;
   font-weight: 500;
   line-height: 30px; /* 125% */
+
   @media screen and (min-width: 834px) {
     font-size: 30px;
 font-style: normal;
@@ -52,8 +54,6 @@ line-height: 36px; 120%
 
   @media screen and (min-width: 1440px) {
   }
-
-
 `;
 
 export const RecordInputBig = styled.input`
@@ -108,6 +108,7 @@ export const InputBlock = styled.div`
   margin-top: 16px;
   /* justify-content: center;
   align-items: center; */
+
   @media screen and (min-width: 834px) {
     flex-direction: row;
     gap: 12px;
@@ -149,6 +150,7 @@ export const ButtonBlock = styled.div`
   @media screen and (min-width: 1440px) {
   }
 `;
+
 export const Button = styled.div`
   width: 256px;
   padding: 8px 10px;
