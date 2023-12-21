@@ -52,14 +52,14 @@ export const UserInfoNav = () => {
 
     const dispatch = useDispatch();
     
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+    const [menu, setMenu] = useState(null);
+    const open = Boolean(menu);
 
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        setMenu(event.currentTarget);
     };
     const handleClose = () => {
-        setAnchorEl(null);
+        setMenu(null);
     };
 
     const [openModal, setOpenModal] = useState(false);
@@ -112,7 +112,7 @@ export const UserInfoNav = () => {
                 }}
                 
                 id="fade-menu"
-                anchorEl={anchorEl}
+                anchorEl={menu}
                 open={open}
                 onClose={handleClose}
                 TransitionComponent={Fade}
