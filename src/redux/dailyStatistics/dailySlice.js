@@ -24,14 +24,14 @@ const handleAddWaterFulfilled = (state, action) => {
   state.consumedWater._id = action.payload.result._id;
 };
 
-const handleDeleteWaterFulfilled = (state, action) => {
+const handleDeleteWaterFulfilled = (state) => {
   state.isLoading = false;
   state.error = null;
 
-  const idToDelete = action.payload.result._id;
-  if (state.dailyStatistics.consumedWater._id === idToDelete) {
-    state.dailyStatistics.consumedWater = { value: 0, id: '' };
-  }
+  state.consumedWater = {
+    value: 0,
+    _id: '',
+  };
 };
 
 const consumedFood = {
