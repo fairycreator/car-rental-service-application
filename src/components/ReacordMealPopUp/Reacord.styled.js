@@ -85,13 +85,13 @@ export const RecordInputBigFirst = styled.input`
   border: 1px solid #e3ffa8;
   background: #0f0f0f;
 
-  ::placeholder {
+  /* ::placeholder {
     font-family: 'Poppins400';
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
-  }
+  } */
 
   @media screen and (min-width: 834px) {
     width: 255px;
