@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import { styled } from '@mui/material/styles';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
@@ -8,6 +9,8 @@ import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
 import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled } from './WeightNav.styled';
 import { ButtonClose, IconClose } from '../GoalNav/GoalNav.styled';
+import { selectUserWeight } from '../../redux/auth/authSelectors';
+import { updateWeight } from '../../redux/auth/authOperations';
 
 const ButtonMenu = styled(Button)({
     textTransform: 'none',
@@ -56,7 +59,12 @@ const TextFieldStyled = styled(TextField)({
 });
 
 export const WeightNav = () => {
+    const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
+    const weightUser = useSelector(selectUserWeight);
+    
+    const today = new Date(Date.now());
+    const todayDate = (today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear());
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -66,6 +74,14 @@ export const WeightNav = () => {
         setAnchorEl(null);
     };
 
+    const handleSend = (event) => {
+        event.preventDefault();
+        let weight = event.currentTarget.elements.weight.value;
+        dispatch(updateWeight(weight));
+        console.log(weight)
+        handleClose();
+    }
+    
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
@@ -81,7 +97,7 @@ export const WeightNav = () => {
                     <DivText>
                         <MainText>Weight</MainText>
                         <DivEdit>
-                            <TextWeight>65</TextWeight>
+                            <TextWeight>{weightUser}</TextWeight>
                             <Text>kg</Text>
                             <svg style={{ width: '16px', height: '16px' }}>
                                 <use href={`${sprite}#edit-2`}></use>
@@ -116,10 +132,10 @@ export const WeightNav = () => {
                     <MenuText>You can record your weight once a day</MenuText>
                     <BoxDate>
                         <MenuDay>Today</MenuDay>
-                        <MenuDate>18.12.2023</MenuDate>
+                        <MenuDate>{todayDate}</MenuDate>
                     </BoxDate>
 
-                    <FormStyled>
+                    <FormStyled onSubmit={handleSend}>
                         <InputWeight type='number' name='weight' placeholder='Enter your weight' />
                         <ButtonSend>Confirm</ButtonSend>
                     </FormStyled>
