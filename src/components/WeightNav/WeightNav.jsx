@@ -59,10 +59,12 @@ const TextFieldStyled = styled(TextField)({
 });
 
 export const WeightNav = () => {
-    const dispatch = useDispatch(); 
+    const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const weightUser = useSelector(selectUserWeight);
     
+    const today = new Date(Date.now());
+    const todayDate = (today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear());
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -74,7 +76,10 @@ export const WeightNav = () => {
 
     const handleSend = (event) => {
         event.preventDefault();
-        dispatch(updateWeight({weight : event.currentTarget.elements.weight.value}))
+        let weight = event.currentTarget.elements.weight.value;
+        dispatch(updateWeight(weight));
+        console.log(weight)
+        handleClose();
     }
     
     const open = Boolean(anchorEl);
@@ -127,7 +132,7 @@ export const WeightNav = () => {
                     <MenuText>You can record your weight once a day</MenuText>
                     <BoxDate>
                         <MenuDay>Today</MenuDay>
-                        <MenuDate>18.12.2023</MenuDate>
+                        <MenuDate>{todayDate}</MenuDate>
                     </BoxDate>
 
                     <FormStyled onSubmit={handleSend}>
