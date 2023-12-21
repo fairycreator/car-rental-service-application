@@ -1,13 +1,10 @@
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { CalendarGlobalStyles } from './Calendar.styled';
-// import { IconArrowUprapper } from '../Dashboard.styled';
-// import sprite from '../../../assets/images/sprite.svg';
-// import { Icon } from '../Icon';
+
 
 const months = [
   'January',
@@ -30,13 +27,7 @@ const NewIcon = (props) => (
   </svg>
 );
 
-export default function Calendar() {
-  const [month, setMonth] = useState('');
-
-  const handleChange = (event) => {
-    setMonth(event.target.value);
-  };
-
+export default function Calendar({ onChange }) {
   return (
     <>
       <Box
@@ -76,9 +67,9 @@ export default function Calendar() {
             IconComponent={NewIcon}
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={month}
+            value={''}
             label="Month"
-            onChange={handleChange}
+            onChange={onChange}
             sx={{
               '& .MuiSelect-select': {
                 color: '#FFFFFF',
