@@ -179,7 +179,7 @@ export const GoalNav = () => {
               aria-labelledby="demo-error-radios"
               // defaultValue={value}
               sx={{
-                gap: '16px',    
+                gap: '16px',
                 '& .MuiFormControlLabel-root .MuiFormControlLabel-label': {
                   fontFamily: 'Poppins400',
                   fontSize: '14px',
