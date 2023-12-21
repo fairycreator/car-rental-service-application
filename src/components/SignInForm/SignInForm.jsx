@@ -4,6 +4,7 @@ import { loginUser } from '../../redux/auth/authOperations';
 import { useState } from 'react';
 import signInSchema from '../../schemas/signInSchema';
 import {
+  SignInButton,
   InputStyled,
   WrapForm,
   ErrorDivStyled,
@@ -12,8 +13,7 @@ import {
   WrapperError,
   LabelWrap,
   IconWrapped,
-} from '../SignUpForm/SignUpForm.styled';
-import { SignInButton } from './SignInForm.styled';
+} from './SignInForm.styled';
 import sprite from '../../assets/images/sprite.svg';
 import validateEmail from '../../schemas/validateEmail';
 
