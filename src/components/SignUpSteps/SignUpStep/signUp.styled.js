@@ -3,20 +3,6 @@ import { NavLink } from 'react-router-dom';
 import iconeye from '../../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 
-export const SignUpContainer = styled.div`
-  margin: 0 auto;
-  padding: 10px;
-  background-color: var(--primary-color-black-one);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    padding: 10px;
-  }
-`;
-
 // Wrapper
 export const Wrapper = styled.div`
   display: flex;
@@ -173,9 +159,7 @@ export const NextButton = styled.button`
 // NavLinkStyled
 export const NavLinkStyled = styled(NavLink)`
   display: block;
-  width: 142px;
-  padding: 8px 10px 8px 0;
-  border-radius: 12px;
+  width: 60px;
   text-decoration: none;
   background: inherit;
   color: var(--color-primary-white, #fff);
@@ -267,6 +251,5 @@ export const Question = styled.p`
 
   @media screen and (min-width: 834px) {
     margin-bottom: 0;
-    padding-left: 42px;
   }
 `;

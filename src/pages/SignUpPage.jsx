@@ -47,14 +47,12 @@ const SignUpPage = () => {
     setEmail(event.target.email.value);
     setPassword(event.target.password.value);
     nextPage();
-    console.log('handleSignUp called');
   };
 
   const handleGoalSelectionStep = (values) => {
     const selectedGoal = values.goal;
     setGoal(selectedGoal);
     nextPage();
-    console.log('handleGoal called');
   };
 
   const handleSelectGender = (values) => {
@@ -64,7 +62,6 @@ const SignUpPage = () => {
     setGender(selectedGender);
     setAge(selectedAge);
     nextPage();
-    console.log('Gender called');
   };
 
   const handleBodyParameters = (values) => {
@@ -74,13 +71,12 @@ const SignUpPage = () => {
     setHeight(selectedHeight);
     setWeight(selectedWeight);
     nextPage();
-    console.log('Gender called');
   };
 
   const handleActivityLevel = (values) => {
-    const selectedActivity = values.activityLevel;
+    const selectedActivity = values.activity;
     setActivityLevel(selectedActivity);
-    console.log(selectedActivity);
+
     dispatch(
       registerUser({
         name,
@@ -94,7 +90,6 @@ const SignUpPage = () => {
         activityLevel: Number(selectedActivity),
       })
     ).then((result) => {
-      console.log(result);
       if (result.meta.requestStatus === 'fulfilled') {
         Notify.success(`Hey ${name}, you're all set! Let's get started!`);
       } else {
