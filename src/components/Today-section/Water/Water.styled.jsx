@@ -95,7 +95,7 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   padding: 8px 10px;
-  color: var(--primary-color-black-two);
+  color: var(--primary-color-black-one);
   background-color: var(--primary-color-green-lite);
   border-color: transparent;
   border-radius: 12px;
@@ -111,6 +111,7 @@ export const ProgressBarWrapper = styled.div`
   border-radius: 20px;
   padding: 8px;
   border: 1px solid var(--secondary-color-grey-one);
+  background-color: var(--primary-color-black-one);
 `;
 
 export const ProgressBar = styled.div`
@@ -118,6 +119,7 @@ export const ProgressBar = styled.div`
   width: 64px;
   border-radius: 20px;
   overflow: hidden;
+  background-color: var(--primary-color-black-one);
 `;
 
 export const Percentage = styled.p`
