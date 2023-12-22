@@ -112,4 +112,5 @@ export const DesktopContainer = styled.div`
 
 export const RecordMealBlock = styled.div`
   max-width: 676px;
+  margin-bottom: 24px;
 `;

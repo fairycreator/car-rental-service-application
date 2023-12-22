@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -12,6 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { logOut } from '../../redux/auth/authOperations';
 import sprite from 'assets/images/sprite.svg';
 import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
+import { selectUsername } from '../../redux/auth/authSelectors';
 
 const ButtonMenu = styled(Button)({
     display: 'flex',
@@ -51,7 +52,7 @@ const StyledMenu = styled(Menu)({
 export const UserInfoNav = () => {
 
     const dispatch = useDispatch();
-    
+    const username = useSelector(selectUsername)
     const [menu, setMenu] = useState(null);
     const open = Boolean(menu);
 
@@ -87,7 +88,7 @@ export const UserInfoNav = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <AvatarName>Username</AvatarName>
+                <AvatarName>{username}</AvatarName>
                 <Avatar
                     alt="User Name"
                     src="/static/images/avatar/1.jpg"

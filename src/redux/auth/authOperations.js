@@ -101,8 +101,13 @@ export const refreshUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'auth/update-profile',
   async (dataUser, thunkApi) => {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
     try {
-      const { data } = await instance.put('user/update', dataUser);
+      const { data } = await instance.put('user/update', dataUser, config);
 
       return data;
     } catch (error) {

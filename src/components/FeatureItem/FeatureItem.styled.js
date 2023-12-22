@@ -7,7 +7,7 @@ export const FeatureListItem = styled.li`
   font-weight: 400;
   line-height: 20px;
   word-wrap: break-word;
-  margin-bottom: 10px;
+ 
 
   &:last-child {
     margin-bottom: 0;
@@ -19,5 +19,15 @@ export const FeatureListItem = styled.li`
     font-size: 20px;
     vertical-align: middle;
     padding-right: 10px;
+  }
+
+  @media screen and (min-width:834px) {
+    width: calc((100% - 16px) / 2);
+
+   
+  }
+
+  @media screen and (min-width: 1440px ) {
+    width: 100%;
   }
 `;
