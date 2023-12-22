@@ -42,7 +42,7 @@ const Planner = () => {
         <RecordMealBlock>
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Breakfast image.png" />
+              <MealImage src="src/assets/images/Breakfast.png" />
               <MealTitle>Breakfast</MealTitle>
             </MealContainer>
             <MealSubscription>
@@ -64,7 +64,7 @@ const Planner = () => {
         <RecordMealBlock>
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Breakfast image.png" />
+              <MealImage src="src/assets/images/Lunch.png" />
               <MealTitle>Breakfast</MealTitle>
             </MealContainer>
             <MealSubscription>
@@ -86,7 +86,7 @@ const Planner = () => {
         <RecordMealBlock>
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Breakfast image.png" />
+              <MealImage src="src/assets/images/Dinner.png" />
               <MealTitle>Breakfast</MealTitle>
             </MealContainer>
             <MealSubscription>
@@ -108,7 +108,7 @@ const Planner = () => {
         <RecordMealBlock>
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Breakfast image.png" />
+              <MealImage src="src/assets/images/Snack.png" />
               <MealTitle>Breakfast</MealTitle>
             </MealContainer>
             <MealSubscription>

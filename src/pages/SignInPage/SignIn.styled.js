@@ -6,8 +6,6 @@ export const SignInContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  height: 100vh;
 `;
 
 export const MainContent = styled.main`

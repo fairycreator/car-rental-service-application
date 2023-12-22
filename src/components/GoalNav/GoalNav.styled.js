@@ -11,7 +11,6 @@ export const LoseFat = styled.img`
 `;
 
 export const ButtonClose = styled.button`
-  /* cursor: pointer; */
   background: 0 0;
   border: none;
   padding: 0px 0px;
@@ -20,12 +19,6 @@ export const ButtonClose = styled.button`
   right: 32px;
 `;
 
-// export const Icon = styled.use`
-//   &:hover {
-//     stroke: var(--primary-color-green-lite);
-//   }
-// `;
-
 export const IconClose = styled.svg`
   width: 16px;
   height: 16px;
@@ -33,6 +26,18 @@ export const IconClose = styled.svg`
   &:hover {
     stroke: var(--primary-color-green-lite);
   }
+`;
+
+export const IconDown = styled.svg`
+  width: 14px;
+  height: 14px;
+  fill: var(--primary-color-green-lite);
+`;
+
+export const IconRight = styled.svg`
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-green-lite);
 `;
 
 export const DivStyled = styled.div`

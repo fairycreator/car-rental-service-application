@@ -13,6 +13,11 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
 import { monthStatisticsReducer } from './dashboard/dashboardStatisticsSlice';
 
+import { recReducer } from './recomendedFoods/recSlice';
+
+import { dailyStatisticsReducer } from './dailyStatistics/dailySlice';
+
+
 const authPersistConfig = {
   key: 'auth',
   storage,
@@ -22,7 +27,11 @@ const authPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    monthStatistics: monthStatisticsReducer,
+
+    recommendedFoods: recReducer,
+
+    dailyStatistics: dailyStatisticsReducer,
+
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

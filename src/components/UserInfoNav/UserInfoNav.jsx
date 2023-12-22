@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
 import MenuItem from '@mui/material/MenuItem';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import { logOut } from '../../redux/auth/authOperations';
 import sprite from 'assets/images/sprite.svg';
 import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
+import { selectUsername } from '../../redux/auth/authSelectors';
 
 const ButtonMenu = styled(Button)({
     display: 'flex',
@@ -22,7 +28,7 @@ const ButtonMenu = styled(Button)({
 
 const StyledMenu = styled(Menu)({
     '& .MuiPaper-root': {
-        borderRadius: 12,
+        borderRadius: '12px',
         marginTop: '16px',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
@@ -44,16 +50,34 @@ const StyledMenu = styled(Menu)({
 });
 
 export const UserInfoNav = () => {
-    
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
+
+    const dispatch = useDispatch();
+    const username = useSelector(selectUsername)
+    const [menu, setMenu] = useState(null);
+    const open = Boolean(menu);
 
     const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
+        setMenu(event.currentTarget);
     };
     const handleClose = () => {
-        setAnchorEl(null);
+        setMenu(null);
     };
+
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+        handleClose();
+    };
+
+    const handleLogout = () => {
+        dispatch(logOut());
+        handleCloseModal();
+    }
 
     return (
         <Container >
@@ -64,7 +88,7 @@ export const UserInfoNav = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <AvatarName>Username</AvatarName>
+                <AvatarName>{username}</AvatarName>
                 <Avatar
                     alt="User Name"
                     src="/static/images/avatar/1.jpg"
@@ -89,21 +113,68 @@ export const UserInfoNav = () => {
                 }}
                 
                 id="fade-menu"
-                anchorEl={anchorEl}
+                anchorEl={menu}
                 open={open}
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                    onClick={handleClose}
+                >
                     <IconSetting>
                         <use href={`${sprite}#icon-setting-2`}></use>
                     </IconSetting>
                     <Link to='/settings'>Setting</Link></MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                // onClick={handleClose} перебивало окно
+                >
                     <IconLogout>
                         <use href={`${sprite}#icon-logout`}></use>
                     </IconLogout>
-                    <Link>Log out</Link></MenuItem>
+                    {/* <Link>Log out</Link> */}
+                
+                 
+                    <Link variant="outlined" onClick={handleClickOpen}>
+                        Log out
+                    </Link>
+                
+            
+                    <Dialog
+                        open={openModal}
+                        onClose={handleCloseModal}
+                        aria-labelledby="alert-dialog-title"
+                        sx={{
+                            '& .MuiPaper-root': {
+                                backgroundColor: '#0F0F0F',
+                                boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
+                                borderRadius: '12px',
+                                color: '#FFF',
+                               
+                            },
+                            '& .MuiTypography-root': {
+                                fontFamily: 'Poppins500',
+                                fontSize: 18,
+                            },
+                            '& .MuiButtonBase-root': {
+                                color: '#E3FFA8',
+                                fontFamily: 'Poppins500',
+                            }
+                        }}
+                    >
+                        <DialogTitle id="alert-dialog-title">
+                            {"Do you really want to log out?"}
+                        </DialogTitle>
+
+                        <DialogActions>
+                            <Button onClick={handleCloseModal}>Cancel</Button>
+                            <Button onClick={handleLogout} autoFocus>
+                                Log out
+                            </Button>
+                        </DialogActions>
+                    </Dialog>
+   
+                </MenuItem>
+                
             </StyledMenu>
         </Container>
     );
