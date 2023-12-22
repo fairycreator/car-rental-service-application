@@ -12,7 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { logOut } from '../../redux/auth/authOperations';
 import sprite from 'assets/images/sprite.svg';
 import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
-import { selectUsername } from '../../redux/auth/authSelectors';
+import { selectUsername, selectUserAvatar } from '../../redux/auth/authSelectors';
 
 const ButtonMenu = styled(Button)({
     display: 'flex',
@@ -52,7 +52,8 @@ const StyledMenu = styled(Menu)({
 export const UserInfoNav = () => {
 
     const dispatch = useDispatch();
-    const username = useSelector(selectUsername)
+    const username = useSelector(selectUsername);
+    const userAvatar = useSelector(selectUserAvatar);
     const [menu, setMenu] = useState(null);
     const open = Boolean(menu);
 
@@ -90,8 +91,8 @@ export const UserInfoNav = () => {
             >
                 <AvatarName>{username}</AvatarName>
                 <Avatar
-                    alt="User Name"
-                    src="/static/images/avatar/1.jpg"
+                    alt={username}
+                    src={userAvatar}
                     sx={{ width: 24, height: 24 }}
                 />
                 {open ? <IconDown>
