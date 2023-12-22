@@ -1,11 +1,10 @@
-function validateEmail(value) {
-  let error;
-  if (!value) {
-    error = 'Required';
-  } else if (!/^[\w-.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i.test(value)) {
-    error = 'Invalid email address';
-  }
-  return error;
-}
+import * as Yup from 'yup';
 
-export default validateEmail;
+const validateEmailSchema = Yup.object().shape({
+  email: Yup.string()
+    .required('Required')
+    .email('Invalid email address')
+    .matches(/^[\w-.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/i, 'Invalid email address'),
+});
+
+export default validateEmailSchema;

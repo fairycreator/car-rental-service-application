@@ -7,11 +7,12 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation, Link } from 'react-router-dom';
 import { Formik, useFormik } from 'formik';
 import { validationSchema } from '../../../schemas/profileUpdateSchema';
+import { selectUserData } from '../../../redux/auth/authSelectors';
 import image from '../../../assets/images/settings-page-image.png';
-import defaultAvatar from '../../../assets/images/default-avatar.png';
 import sprite from '../../../assets/images/sprite.svg';
 import {
   PageWrapper,
@@ -36,32 +37,23 @@ import {
   DownloadSpan,
 } from './ProfileSetting.styled';
 
-const showImage = (data) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(data);
-  function isFileImage(data) {
-    return data && data['type'].split('/')[0] === 'image';
-  }
-  reader.onload = () => {
-    isFileImage(data) ? reader.result : '/default.svg';
-  };
-  // console.log(data);
-  // console.log(reader.result);
-  return reader.result;
-};
+const fd = new FormData();
 
 export const ProfileSetting = () => {
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/main');
+  const currentUserData = useSelector(selectUserData);
+  const { name, avatar, age, gender, height, weight, activityLevel } =
+    currentUserData;
 
   const initialValues = {
-    name: 'test',
+    name,
     image: '',
-    age: 18,
-    gender: 'male',
-    height: 10,
-    weight: 10,
-    activity: 1.2,
+    age,
+    gender,
+    height,
+    weight,
+    activity: activityLevel,
   };
 
   const formik = useFormik({
@@ -69,7 +61,16 @@ export const ProfileSetting = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       formik.values.activity = Number(values.activity);
-      console.log(values);
+      if (formik.values.image === '') {
+        fd.append('avatar', avatar, name);
+      } else {
+        fd.append('avatar', formik.values.image, formik.values.image.name);
+      }
+      // formik.values.image = URL.createObjectURL(formik.values.image);
+      formik.values.image = fd;
+      console.log(formik.values.image);
+      console.log(avatar);
+      console.log(formik.values);
     },
   });
 
@@ -98,15 +99,15 @@ export const ProfileSetting = () => {
             <LabelInput>
               Your photo
               <InputWrapper>
-                {formik.values.image ? (
+                {formik.values.image !== '' ? (
                   <Avatar
-                    src={showImage(formik.values.image)}
+                    src={URL.createObjectURL(formik.values.image)}
                     alt="user avatar"
                     file={formik.values.image}
                   />
                 ) : (
                   <Avatar
-                    src={defaultAvatar}
+                    src={avatar}
                     alt="user avatar"
                     file={formik.values.image}
                   />

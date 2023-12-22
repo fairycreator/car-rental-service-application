@@ -27,7 +27,8 @@ export const registerUser = createAsyncThunk(
   async (dataUser, thunkApi) => {
     try {
       const { data } = await instance.post('auth/signup', dataUser);
-      token.set(data.token);
+      instance.defaults.headers['Authorization'] = `Bearer ${token}`;
+      // const { token } = thunkApi.getState().auth;
 
       return data;
     } catch (error) {

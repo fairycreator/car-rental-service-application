@@ -18,7 +18,6 @@ export const validationSchema = Yup.object().shape({
     .max(20, 'Too long name')
     .required('Name should be filled'),
   image: Yup.mixed()
-    .required('Required')
     .test('is-valid-type', 'Not a valid image type', (value) =>
       isValidFileType(value && value.name.toLowerCase(), 'image')
     )
@@ -30,16 +29,21 @@ export const validationSchema = Yup.object().shape({
   age: Yup.number('Enter correct number')
     .positive('Age should be positive')
     .integer('Age should be integer')
-    .min(18, 'Your should be older')
+    .min(16, 'Incorrect data for calculation')
+    .max(120, 'Are you serious?')
     .required('Age should be filled'),
   gender: Yup.string().oneOf(['male', 'female']).required(),
   height: Yup.number('Enter correct number')
     .positive('Height should be positive')
     .integer('Height should be integer')
+    .min(140, 'Incorrect data for calculation')
+    .max(250, 'Incorrect data for calculation')
     .required('Height should be filled'),
   weight: Yup.number('Enter correct number')
     .positive('Height should be positive')
     .integer('Height should be integer')
+    .min(40, 'Incorrect data for calculation')
+    .max(200, 'Incorrect data for calculation')
     .required('Height should be filled'),
   activity: Yup.number().oneOf([1.2, 1.375, 1.55, 1.725, 1.9]).required(),
 });
