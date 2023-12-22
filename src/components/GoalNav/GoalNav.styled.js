@@ -20,11 +20,15 @@ export const ButtonClose = styled.button`
 `;
 
 export const IconClose = styled.svg`
-  width: 16px;
-  height: 16px;
-  fill: var(--primary-color-grey);
-  &:hover {
-    stroke: var(--primary-color-green-lite);
+  display: none;
+  @media screen and (min-width: 834px) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    }
   }
 `;
 
