@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { CalendarGlobalStyles } from './Calendar.styled';
-
+import { theme } from '../../../GlobalStyle';
 
 const months = [
   'January',
@@ -32,8 +32,13 @@ export default function Calendar({ onChange }) {
     <>
       <Box
         sx={{
-          minWidth: 120,
+          minWidth: 116,
+          [theme.breakpoints.up('tablet')]: {
+            minWidth: 140,
+          },
+          paddingRight: '0px',
           border: 'none',
+          padding: '0px',
           '& .MuiOutlinedInput-notchedOutline': {
             border: 'none',
           },
@@ -55,6 +60,10 @@ export default function Calendar({ onChange }) {
               fontSize: '24px',
               lineHeight: '1.25',
               top: '-20px',
+              left: '-16px',
+              [theme.breakpoints.up('tablet')]: {
+                fontSize: '30px',
+              },
               '&.Mui-focused': {
                 color: '#FFFFFF',
                 fontSize: '24px',
@@ -78,7 +87,11 @@ export default function Calendar({ onChange }) {
               },
               '& .MuiSelect-icon ': {
                 fill: '#e3ffa8',
-                right: '-10px',
+                right: '0px',
+                [theme.breakpoints.up('tablet')]: {
+                  top: '8px',
+                  right:'2px',
+                },
               },
             }}
           >
@@ -90,6 +103,9 @@ export default function Calendar({ onChange }) {
                   color: '#B6B6B6',
                   fontFamily: 'Poppins400',
                   fontWeight: '400',
+                  paddingLeft: '16px',
+                  paddingTop: '4px',
+                  paddingBottom: '4px',
                   backgroundColor: '#0F0F0F',
                   fontSize: '14px',
                   lineHeight: '1.4',

@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
 import { useSelector } from 'react-redux';
 import { selectWeightMonthStatistics } from '../../../redux/dashboard/dashboardSelectors';
+import { theme } from '../../../GlobalStyle';
 
 
 const date = new Date();
@@ -51,6 +52,14 @@ export const WeightTable = () => {
           borderRadius: '12px',
           paddingLeft: '10px',
           paddingRight: '10px',
+          [theme.breakpoints.up('tablet')]: {
+            paddingLeft: '20px',
+            paddingRight: '20px',
+          },
+          [theme.breakpoints.up('desktop')]: {
+            paddingLeft: '10px',
+            paddingRight: '10px',
+          },
           '&::-webkit-scrollbar': {
             height: '8px',
           },
@@ -70,7 +79,7 @@ export const WeightTable = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               {weight?.map((item, index) => (
-                <TableCell key={item+index} component="th" scope="row">
+                <TableCell key={item + index} component="th" scope="row">
                   {item}
                 </TableCell>
               ))}

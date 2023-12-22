@@ -35,6 +35,10 @@ export const PrevBtn = styled.div`
       fill: #e3ffa8;
     }
   }
+  @media screen and (min-width: 834px) {
+    max-width: 24px;
+    max-height: 24px;
+  }
 `;
 
 export const LinkBtnItem = styled(Link)`
@@ -95,8 +99,8 @@ export const Value = styled.h2`
   font-size: 18px;
 
   @media screen and (min-width: 834px) {
-  font-size: 22px;
-  line-height: 1.5;
+    font-size: 22px;
+    line-height: 1.5;
   }
 `;
 
