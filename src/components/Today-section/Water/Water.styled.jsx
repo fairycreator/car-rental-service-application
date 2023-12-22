@@ -67,13 +67,24 @@ export const Amount = styled.span`
 
 export const DeleteButton = styled.button`
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 12px;
   right: 12px;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   background-color: transparent;
-  border: none;
+  border-color: transparent;
+  border-radius: 100%;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active {
+    background-color: var(--secondary-color-grey-one);
+  }
 
   &svg {
     fill: var(--primary-color-green-lite);
@@ -89,6 +100,13 @@ export const AddIcon = styled.svg`
   width: 16px;
   height: 16px;
   fill: var(--primary-color-black-two);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active {
+    fill: var(--primary-color-white);
+  }
 `;
 
 export const Button = styled.button`
@@ -102,6 +120,18 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+
+  transition:
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active {
+    border-color: var(--primary-color-green-lite);
+    background-color: transparent;
+    color: var(--primary-color-white);
+  }
 `;
 
 export const ProgressBarWrapper = styled.div`
