@@ -14,7 +14,6 @@ import {
   Title,
   ContentWrapper,
   ProgressBar,
-  DeleteButton,
   AddIcon,
   SecondTitle,
   Text,
@@ -23,6 +22,7 @@ import {
   Span,
   Percentage,
   ProgressBarWrapper,
+  DeleteIcon,
 } from './Water.styled';
 
 export const Water = () => {
@@ -49,16 +49,15 @@ export const Water = () => {
     <Wrapper>
       <Title>Water</Title>
       <ContentWrapper>
-        <DeleteButton
-          type="button"
+        <DeleteIcon
+          width="20px"
+          height="20px"
           onClick={() => {
             dispatch(deleteWater(_id));
           }}
         >
-          <svg width="20px" height="20px">
-            <use href={`${sprite}#trash-delete`}></use>
-          </svg>
-        </DeleteButton>
+          <use href={`${sprite}#trash-delete`}></use>
+        </DeleteIcon>
         <ProgressBarWrapper>
           <ProgressBar>
             <WaterChart waterIntake={waterPercentage} />

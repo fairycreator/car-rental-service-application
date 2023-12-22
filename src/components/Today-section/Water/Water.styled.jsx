@@ -65,36 +65,82 @@ export const Amount = styled.span`
   color: var(--primary-color-white);
 `;
 
-export const DeleteButton = styled.button`
+export const DeleteIcon = styled.svg`
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   top: 12px;
   right: 12px;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  background-color: transparent;
-  border-color: transparent;
-  border-radius: 100%;
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-green-lite);
 
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-  &:hover,
-  &:active {
-    background-color: var(--secondary-color-grey-one);
-  }
-
-  &svg {
-    fill: var(--primary-color-green-lite);
-  }
-
-  @media screen and (min-width: 834px) {
-    top: 24px;
-    right: 24px;
-  }
+  /* @media screen and (min-width: 834px) {
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    } */
+  /* } */
 `;
+
+// export const DeleteIcon = styled.button`
+//   position: absolute;
+//   /* display: flex;
+//   justify-content: center;
+//   align-items: center; */
+//   top: 12px;
+//   right: 12px;
+//   width: 30px;
+//   height: 30px;
+//   padding: 0;
+//   background-color: transparent;
+//   border-color: transparent;
+//   border-radius: 100%;
+
+//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+//   fill: var(--primary-color-green-lite);
+
+//   &:hover,
+//   &:active {
+//     background-color: var(--secondary-color-grey-one);
+//   }
+
+//   @media screen and (min-width: 834px) {
+//     top: 24px;
+//     right: 24px;
+//   }
+// `;
+// export const DeleteButton = styled.button`
+//   position: absolute;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   top: 12px;
+//   right: 12px;
+//   width: 30px;
+//   height: 30px;
+//   padding: 0;
+//   background-color: transparent;
+//   border-color: transparent;
+//   border-radius: 100%;
+
+//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+//   &:hover,
+//   &:active {
+//     background-color: var(--secondary-color-grey-one);
+//   }
+
+//   &svg {
+//     fill: var(--primary-color-green-lite);
+//   }
+
+//   @media screen and (min-width: 834px) {
+//     top: 24px;
+//     right: 24px;
+//   }
+// `;
 
 export const AddIcon = styled.svg`
   width: 16px;
