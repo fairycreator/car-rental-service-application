@@ -25,7 +25,6 @@ export const AddWaterModal = ({ setIsModalOpen }) => {
     };
 
     dispatch(addWater(value));
-    // dispatch(addWater(inputValue));
   };
 
   return (
