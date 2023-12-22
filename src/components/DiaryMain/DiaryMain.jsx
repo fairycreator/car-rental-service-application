@@ -21,7 +21,7 @@ const DiaryMain = () => {
         <Title>Diary</Title>
         <SeeMore>See more</SeeMore>
       </div>
-      <FoodBlocks >
+      <FoodBlocks>
         <ContentBlock>
           <TitleBlock>
             <MealImage src="src/assets/images/Breakfast.png" />
