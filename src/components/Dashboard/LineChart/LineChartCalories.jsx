@@ -10,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { selectCaloriesMonthStatistics } from '../../../redux/dashboard/dashboardSelectors';
+import { selectCaloriesMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
 import { useSelector } from 'react-redux';
 
 ChartJS.register(
@@ -129,22 +129,25 @@ export const LineChartCalories = () => {
     new Date(item.date).getDate()
   );
 
-  for (let i = 0; i < daysInMonth; i++) {
-    if (caloriesFromBack) {
-      if (arrDayFromBack.includes(i + 1)) {
-        let item = caloriesFromBack?.find(
-          (item) => new Date(item.date).getDate() === i + 1
-        );
-        calories.push(item.value);
+    for (let i = 0; i < daysInMonth; i++) {
+      if (caloriesFromBack) {
+        if (arrDayFromBack.includes(i + 1)) {
+          let item = caloriesFromBack?.find(
+            (item) => new Date(item.date).getDate() === i + 1
+          );
+          calories.push(item.value);
+        } else {
+          calories.push(zeroCalories);
+        }
+        labels.push(i + 1);
       } else {
         calories.push(zeroCalories);
+        labels.push(i + 1);
       }
-      labels.push(i + 1);
-    } else {
-      calories.push(zeroCalories);
-      labels.push(i + 1);
     }
-  }
+    if (caloriesFromBack?.length === 0) {
+      calories = null;
+    }
   return (
     <Line
       options={options}

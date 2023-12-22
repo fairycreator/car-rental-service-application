@@ -11,11 +11,12 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/authSlice';
-import { monthStatisticsReducer } from './dashboard/dashboardStatisticsSlice';
 
 import { recReducer } from './recomendedFoods/recSlice';
 
 import { dailyStatisticsReducer } from './dailyStatistics/dailySlice';
+
+import { monthStatisticsReducer } from './monthStatistics/dashboardStatisticsSlice';
 
 
 const authPersistConfig = {

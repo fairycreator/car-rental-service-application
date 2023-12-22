@@ -1,9 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-//test
-axios.defaults.baseURL = 'https://658346b34d1ee97c6bcdc353.mockapi.io';
-// axios.defaults.baseURL = 'https://healthy-life-backend-b6ck.onrender.com/api/user';
+axios.defaults.baseURL = 'https://healthy-life-backend-b6ck.onrender.com/api/user';
 
 const TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ODNmYmY4MzJlNmUzN2EwZmYyMDczYyIsImlhdCI6MTcwMzE0ODUzNiwiZXhwIjoyMDE4NzI0NTM2fQ.pjD5xg6406AEQvTOvMBOeg7p3DTHs1w6a0WVZ7iZ5Gc';

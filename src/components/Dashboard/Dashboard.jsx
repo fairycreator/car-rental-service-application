@@ -22,7 +22,7 @@ import { LineChartCalories } from './LineChart/LineChartCalories';
 import { LineChartWater } from './LineChart/LineChartWater';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getMonthStatistics } from '../../redux/dashboard/dashboardOperations';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCaloriesMonthStatistics,
@@ -30,7 +30,8 @@ import {
   selectIsLoading,
   selectWaterMonthStatistics,
   selectWeightMonthStatistics,
-} from '../../redux/dashboard/dashboardSelectors';
+} from "../../redux/monthStatistics/dashboardSelectors";
+import { getMonthStatistics } from '../../redux/monthStatistics/dashboardOperations';
 
 const months = [
   'January',
@@ -69,12 +70,15 @@ const dispatch = useDispatch();
   const water = useSelector(selectWaterMonthStatistics);
   const weight = useSelector(selectWeightMonthStatistics);
 
+
+
   function gerAvarageValue(arr) {
-    const totalScore = arr?.reduce((total, arr) => {
-      return total + arr.value;
-    }, 0);
-    const averageScore = totalScore / arr?.length;
-    return Math.round(averageScore);
+    if (arr?.length === 0) return 0;
+      const totalScore = arr?.reduce((total, arr) => {
+        return total + arr.value;
+      }, 0);
+      const averageScore = totalScore / arr?.length;
+      return Math.round(averageScore);
   }
 
   const isLoading = useSelector(selectIsLoading);

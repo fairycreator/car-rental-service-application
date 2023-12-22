@@ -11,7 +11,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
-import { selectWaterMonthStatistics } from '../../../redux/dashboard/dashboardSelectors';
+import { selectWaterMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
 
 ChartJS.register(
   CategoryScale,
@@ -152,6 +152,9 @@ export const LineChartWater = () => {
       labels.push(i + 1);
     }
   }
+   if (waterFromBack?.length === 0) {
+     water = null;
+   }
   return (
     <Line
       options={options}

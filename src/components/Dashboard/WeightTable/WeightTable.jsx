@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 
 import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
 import { useSelector } from 'react-redux';
-import { selectWeightMonthStatistics } from '../../../redux/dashboard/dashboardSelectors';
+import { selectWeightMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
 import { theme } from '../../../GlobalStyle';
 
 
@@ -25,18 +25,26 @@ export const WeightTable = () => {
   const weightFromBack = useSelector(selectWeightMonthStatistics);
   let days = [];
   let weight = [];
-  let prevWeight = 45;
-  const arrDayFromBack = weightFromBack?.flatMap((arr) => Number(arr.day));
   
-
+  const arrDayFromBack = weightFromBack?.flatMap((item) =>
+    new Date(item.date).getDate()
+  );
+  let prevWeight = 0;
+  if (weightFromBack?.length > 0) {
+  prevWeight = weightFromBack[0].value;
+}
+  
   for (let i = 0; i < daysInMonth; i++) {
     if (weightFromBack) {
       if (arrDayFromBack.includes(i + 1)) {
-        let item = weightFromBack?.find((item) => Number(item.day) === i + 1);
+        let item = weightFromBack?.find(
+          (item) => new Date(item.date).getDate() === i + 1
+        );
         weight.push(item.value);
         prevWeight = item.value;
       } else {
         weight.push(prevWeight);
+        //  weight.push(' ');
       }
       days.push(i + 1);
     } else {
@@ -79,7 +87,7 @@ export const WeightTable = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               {weight?.map((item, index) => (
-                <TableCell key={item + index} component="th" scope="row">
+                <TableCell key={index} component="th" scope="row">
                   {item}
                 </TableCell>
               ))}

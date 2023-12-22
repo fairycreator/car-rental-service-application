@@ -18,6 +18,4 @@ export const CalendarGlobalStyles = createGlobalStyle`
      padding-top: 10px;
      padding-bottom: 10px;
      background-color: #0F0F0F;
-  }
-
-  `;
+  }`;
