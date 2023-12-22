@@ -1,4 +1,5 @@
 import { useMediaQuery } from 'react-responsive';
+import { theme } from '../../GlobalStyle/';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { styled } from '@mui/material/styles';
@@ -64,12 +65,27 @@ const StyledMenu = styled(Menu)({
     marginTop: '26px',
     backgroundColor: '#0F0F0F',
     boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
+    [theme.breakpoints.down('tablet')]: {
+      width: '100vw',
+      height: '100vh',
+      marginTop: '60px',
+      maxHeight: '100%',
+      maxWidth: '100%',
+      boxShadow: 'none',
+      backgroundColor: '#050505',
+      position: 'static',
+    },
   },
   '& .MuiList-root': {
     width: '392px',
     height: '352px',
     padding: '20px 0px 40px 24px',
-    position: 'relative'
+    position: 'relative',
+    [theme.breakpoints.down('tablet')]: {
+      width: '320px',
+      padding: '24px 10px',
+      margin: '0 auto',
+    }, 
   },
 });
 
