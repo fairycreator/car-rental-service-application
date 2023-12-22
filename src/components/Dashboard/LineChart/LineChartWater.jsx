@@ -40,8 +40,8 @@ const options = {
     point: {
       backgroundColor: '#E3FFA8',
       borderWidth: 1,
-      radius: 5,
-      hoverRadius: 4,
+      radius: 0.5,
+      hoverRadius: 5,
     },
     line: {
       backgroundColor: '#E3FFA8',
@@ -56,17 +56,41 @@ const options = {
     },
     tooltip: {
       backgroundColor: '#0F0F0F',
-
+      titleColor: '#FFFFFF',
+      bodyColor: '#B6B6B6',
+      bodyAlign: 'center',
+      caretSize: 0,
+      cornerRadius: 8,
+      padding: {
+        top: 8,
+        right: 6,
+        bottom: 8,
+        left: 6,
+      },
+      titleMarginBottom: 2,
+      borderColor: 'rgba(255, 255, 255, 0.1)',
+      borderWidth: 3,
       enabled: true,
       displayColors: false,
       usePointStyle: true,
+      titleFont: {
+        family: 'Poppins500',
+        size: 32,
+        lineHeight: 1.18,
+        weight: 'normal',
+      },
+      bodyFont: {
+        family: 'Poppins400',
+        size: 14,
+        lineHeight: 1.4,
+        weight: 'normal',
+      },
+      xAlign: 'left',
+      yAlign: 'bottom',
       callbacks: {
-        // To change title in tooltip
         title: (data) => {
           return data[0].parsed.y;
         },
-
-        // To change label in tooltip
         label: () => {
           return 'milliliters';
         },
@@ -96,36 +120,38 @@ const options = {
   },
 };
 
-
 let labels = [];
 
-for (let i = 0; i < 31; i++){
+for (let i = 0; i < 31; i++) {
   labels.push(i + 1);
 }
 
 export const LineChartWater = () => {
-    const waterFromBack = useSelector(selectWaterMonthStatistics);
-    console.log('waterFromBack', waterFromBack);
-    let labels = [];
-    let water = [];
-    let zeroWater = 0;
-    const arrDayFromBack = waterFromBack?.flatMap((arr) => Number(arr.day));
+  const waterFromBack = useSelector(selectWaterMonthStatistics);
+  console.log('waterFromBack', waterFromBack);
+  let labels = [];
+  let water = [];
+  let zeroWater = 0;
+  const arrDayFromBack = waterFromBack?.flatMap((item) =>
+    new Date(item.date).getDate()
+  );
 
-    for (let i = 0; i < daysInMonth; i++) {
-      if (waterFromBack) {
-        if (arrDayFromBack.includes(i + 1)) {
-          let item = waterFromBack?.find((item) => Number(item.day) === i + 1);
-          water.push(item.value);
-        } else {
-          water.push(zeroWater);
-          // water.push('null');
-        }
-        labels.push(i + 1);
+  for (let i = 0; i < daysInMonth; i++) {
+    if (waterFromBack) {
+      if (arrDayFromBack.includes(i + 1)) {
+        let item = waterFromBack?.find(
+          (item) => new Date(item.date).getDate() === i + 1
+        );
+        water.push(item.value);
       } else {
         water.push(zeroWater);
-        labels.push(i + 1);
       }
+      labels.push(i + 1);
+    } else {
+      water.push(zeroWater);
+      labels.push(i + 1);
     }
+  }
   return (
     <Line
       options={options}

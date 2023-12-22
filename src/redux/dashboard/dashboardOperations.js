@@ -7,13 +7,10 @@ axios.defaults.baseURL = 'https://658346b34d1ee97c6bcdc353.mockapi.io';
 
 export const getMonthStatistics = createAsyncThunk(
   'monthStatistics/getMonthStatistics',
-  async (queryMonth, thuncAPI) => {
+  async (body, thuncAPI) => {
     try {
-      const response = await axios.get('/statistics', {
-        params: {
-          queryMonth: queryMonth,
-        },
-      });
+      const response = await axios.get('/statistics', body);
+      console.log('response.data', response.data);
       return response.data;
     } catch (error) {
       return thuncAPI.rejectWithValue(error.message);

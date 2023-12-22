@@ -54,10 +54,11 @@ export default function Calendar({ onChange }) {
               fontWeight: '500',
               fontSize: '24px',
               lineHeight: '1.25',
+              top: '-20px',
               '&.Mui-focused': {
                 color: '#FFFFFF',
                 fontSize: '24px',
-                transform: 'translate(14px, -9px) scale(0.0)',
+                transform: 'translate(14px, 9px) scale(1)',
               },
             }}
           >
@@ -73,11 +74,11 @@ export default function Calendar({ onChange }) {
             sx={{
               '& .MuiSelect-select': {
                 color: '#FFFFFF',
+                padding: '0px',
               },
               '& .MuiSelect-icon ': {
                 fill: '#e3ffa8',
                 right: '-10px',
-                top: '0px',
               },
             }}
           >

@@ -3,9 +3,10 @@ export const handlePending = (state) => {
 };
 
 export const handleFulfilledGetMonthStatistics = (state, { payload }) => {
-  state.calories = payload[0].statistics.calories;
-  state.water = payload[0].statistics.water;
-  state.weight = payload[0].statistics.weight;
+  state.calories = payload[0].caloriesMonth;
+  state.water = payload[0].waterMonth;
+  state.weight = payload[0].weightMonth;
+  console.log('state.calories ', state.calories);
   state.isLoading = false;
   state.error = '';
 };

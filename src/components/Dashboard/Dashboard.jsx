@@ -20,7 +20,7 @@ import {
 import { WeightTable } from './WeightTable/WeightTable';
 import { LineChartCalories } from './LineChart/LineChartCalories';
 import { LineChartWater } from './LineChart/LineChartWater';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMonthStatistics } from '../../redux/dashboard/dashboardOperations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -68,30 +68,33 @@ export const Dashboard = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const queryMonth = searchParams.get('queryMonth');
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const selectMonth = {
+  //   month: months.indexOf(month)+1,
+  // };
+  // console.log('selectMonth', selectMonth);
 
   useEffect(() => {
-    async function getFilms() {
+    async function getStatistics() {
       try {
-        if (!queryMonth) return;
-        dispatch(getMonthStatistics(cutQuery(queryMonth)));
+        if (!month) return;
+        dispatch(getMonthStatistics({ month: String(months.indexOf(month) + 1)}));
       } catch (error) {
         console.log('error', error);
       }
     }
-    getFilms();
-  }, [queryMonth, dispatch]);
+    getStatistics();
+  }, [month, dispatch]);
 
   const handleChange = (e) => {
-    const select = e.target.value;
-    console.log('select', select);
-    setSearchParams({ queryMonth: `${Date.now()}/${select}` });
-    setMonth(select);
+    const month = e.target.value;
+    console.log('select', month);
+    // setSearchParams({ queryMonth: `${Date.now()}/${select}` });
+    setMonth(month);
     // setSearchParams('');
   };
 
-  const cutQuery = (month) => month.slice(month.indexOf('/') + 1, month.length);
+  // const cutQuery = (month) => month.slice(month.indexOf('/') + 1, month.length);
   const location = useLocation();
   const backLink = location?.state?.from ?? '/';
   return (
