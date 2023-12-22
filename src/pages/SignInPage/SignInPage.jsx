@@ -1,72 +1,113 @@
-import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import image from '../../assets/backgroundImages/welcomepage.png';
-import SignInForm from '../../components/SignInForm/SignInForm';
+
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Formik, Form } from 'formik';
+import { Link } from 'react-router-dom';
+import { loginUser } from '../../redux/auth/authOperations';
+import signInSchema from '../../schemas/signInSchema';
+import sprite from '../../assets/images/sprite.svg';
 import {
-  SignInContainer,
-  MainContent,
+  Wrapper,
+  Content,
   SignUpBox,
-  SignUpTitle,
-  LoginMessage,
-  SignUpPrompt,
-  SignUpPromptText,
-  SignUpLink,
-  ForgotPasswordText,
-  Message,
+  Title,
+  Subtitle,
+  QuestionTrumb,
+  Question,
   Image,
+  NextButton,
+  Input,
+  WrapForm,
+  ErrorDivStyled,
+  SvgIconEye,
+  ForgotPasswordText,
+  // SvgIconCheckBox,
+  // WrapperError,
+  LabelWrap,
+  IconWrapped,
+  NavLinkStyled,
 } from './SignIn.styled';
-// import axios from 'axios';
 
-// const instance = axios.create({
-//   baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api/',
-// });
+import image from '../../assets/backgroundImages/welcomepage.png';
 
-// const verifyEmail = async (verifyToken, setSuccessMessage, setErrorMessage) => {
-//   try {
-//     const { data } = await instance.get(`auth/verify/${verifyToken}`);
-//     setSuccessMessage(`${data.message}! Use your credentials to login`);
-//   } catch (error) {
-//     const errorMessage =
-//       error.response && error.response.data.message
-//         ? `Error when verifying email: ${error.response.data.message}`
-//         : 'Error when verifying email: An unknown error occurred.';
-//     setErrorMessage(errorMessage);
-//   }
-// };
+const initialValues = {
+  email: '',
+  password: '',
+};
 
-const SignIn = () => {
-  const { verificationToken } = useParams();
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+const SignInForm = () => {
+  const [toggleIcon, setToggleIcon] = useState(`${sprite}#icon-eye-off`);
+  const [type, setType] = useState('password');
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   if (verificationToken) {
-  //     verifyEmail(verificationToken, setSuccessMessage, setErrorMessage);
-  //   }
-  // }, [verificationToken]);
+  const handleSubmit = (values, actions) => {
+    dispatch(loginUser(values));
+    actions.setSubmitting(false);
+    actions.resetForm();
+  };
+
+  const togglePassInput = () => {
+    setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
+    setToggleIcon((prevIcon) =>
+      prevIcon === `${sprite}#icon-eye-off`
+        ? `${sprite}#icon-eye`
+        : `${sprite}#icon-eye-off`
+    );
+  };
 
   return (
-    <SignInContainer>
-      <MainContent>
-        {successMessage && <Message type="success">{successMessage}</Message>}
-        {errorMessage && <Message type="error">{errorMessage}</Message>}
-        <Image src={image} alt="Activity trtacker" />
+    <Formik
+      initialValues={initialValues}
+      validationSchema={signInSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors, touched }) => (
+        <Form autoComplete="off">
+          <WrapForm>
+            <LabelWrap>
+              <Input type="email" name="email" placeholder="Email" />
+              <ErrorDivStyled>
+                {touched.email && errors.email && errors.email}
+              </ErrorDivStyled>
+            </LabelWrap>
+            <LabelWrap>
+              <Input type={type} name="password" placeholder="Password" />
+              <IconWrapped onClick={togglePassInput}>
+                <SvgIconEye>
+                  <use xlinkHref={toggleIcon} />
+                </SvgIconEye>
+              </IconWrapped>
+              <ErrorDivStyled>
+                {touched.password && errors.password && errors.password}
+              </ErrorDivStyled>
+            </LabelWrap>
+            <NextButton type="submit">Sign In</NextButton>
+            <Link to="/forgot-password">
+              <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
+            </Link>
+          </WrapForm>
+        </Form>
+      )}
+    </Formik>
+  );
+};
+
+const SignIn = () => {
+  return (
+    <Wrapper>
+      <Content>
+        <Image src={image} alt="Activity tracker" />
         <SignUpBox>
-          <SignUpTitle>Sign in</SignUpTitle>
-          <LoginMessage>You need to login to use the service</LoginMessage>
+          <Title>Sign in</Title>
+          <Subtitle>You need to login to use the service</Subtitle>
         </SignUpBox>
         <SignInForm />
-        <Link to="/forgot-password">
-          <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
-        </Link>
-        <SignUpPrompt>
-          <SignUpPromptText>If you do not have an account yet</SignUpPromptText>
-          <Link to="/signup">
-            <SignUpLink>Sign up</SignUpLink>
-          </Link>
-        </SignUpPrompt>
-      </MainContent>
-    </SignInContainer>
+        <QuestionTrumb>
+          <Question>If you do not have an account yet</Question>
+          <NavLinkStyled to="/signup">Sign up</NavLinkStyled>
+        </QuestionTrumb>
+      </Content>
+    </Wrapper>
   );
 };
 
