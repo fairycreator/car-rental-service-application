@@ -36,6 +36,10 @@ const handleDeleteWaterFulfilled = (state) => {
 };
 
 const consumedFood = {
+  totalCalories: 0,
+  totalCarbs: 0,
+  totalProtein: 0,
+  totalFat: 0,
   breakfast: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
   lunch: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
   dinner: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
