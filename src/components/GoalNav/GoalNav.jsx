@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { styled } from '@mui/material/styles';
@@ -25,10 +26,11 @@ import {
   MenuText,
   Text,
   IconClose,
-  ButtonClose
+  IconDown,
+  ButtonClose,
+  IconRight
 } from './GoalNav.styled';
 import sprite from 'assets/images/sprite.svg';
-import { IconDown } from '../UserInfoNav/UserInfoNav.styled';
 
 const ButtonMenu = styled(Button)({
   display: 'flex',
@@ -72,6 +74,8 @@ const StyledMenu = styled(Menu)({
 });
 
 export const GoalNav = () => {
+  const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
+
   const isGender = useSelector(selectUserGender);
   const userGoal = useSelector(selectUserGoal);
 
@@ -134,15 +138,19 @@ export const GoalNav = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <Text>{value}</Text>
 
-            {open ? (
-              <IconDown>
-                <use href={`${sprite}#icon-arrow-up`}></use>
-              </IconDown>
-            ) : (
-              <IconDown>
-                <use href={`${sprite}#icon-arrow-down`}></use>
-              </IconDown>
-            )}
+            {mobileVersion ? (<IconRight>
+              <use href={`${sprite}#icon-arrowright`}></use>
+            </IconRight>) :
+              (open ? (
+                <IconDown>
+                  <use href={`${sprite}#icon-arrow-up`}></use>
+                </IconDown>
+              ) : (
+                <IconDown>
+                  <use href={`${sprite}#icon-arrow-down`}></use>
+                </IconDown>
+              ))}
+            
           </div>
         </DivStyled>
       </ButtonMenu>

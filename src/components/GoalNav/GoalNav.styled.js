@@ -28,6 +28,18 @@ export const IconClose = styled.svg`
   }
 `;
 
+export const IconDown = styled.svg`
+  width: 14px;
+  height: 14px;
+  fill: var(--primary-color-green-lite);
+`;
+
+export const IconRight = styled.svg`
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-green-lite);
+`;
+
 export const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
