@@ -112,13 +112,20 @@ export const Button = styled.button`
   line-height: 1.42;
 `;
 
-export const ProgressBar = styled.div`
+export const ProgressBarWrapper = styled.div`
   position: relative;
   height: 192px;
   width: 80px;
   border-radius: 20px;
   padding: 8px;
   border: 1px solid var(--secondary-color-grey-one);
+`;
+
+export const ProgressBar = styled.div`
+  height: 176px;
+  width: 64px;
+  border-radius: 20px;
+  overflow: hidden;
 `;
 
 export const Percentage = styled.p`

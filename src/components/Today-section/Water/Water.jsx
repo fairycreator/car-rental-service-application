@@ -22,6 +22,7 @@ import {
   Button,
   Span,
   Percentage,
+  ProgressBarWrapper,
 } from './Water.styled';
 
 export const Water = () => {
@@ -55,10 +56,12 @@ export const Water = () => {
             <use href={`${sprite}#trash-delete`}></use>
           </svg>
         </ClearButton>
-        <ProgressBar>
-          <WaterChart waterIntake={waterPercentage} />
-          <Percentage>{`${waterPercentage}%`}</Percentage>
-        </ProgressBar>
+        <ProgressBarWrapper>
+          <ProgressBar>
+            <WaterChart waterIntake={waterPercentage} />
+            <Percentage>{`${waterPercentage}%`}</Percentage>
+          </ProgressBar>
+        </ProgressBarWrapper>
         <div>
           <SecondTitle>Water consumption</SecondTitle>
 
