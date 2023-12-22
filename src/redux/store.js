@@ -32,6 +32,7 @@ export const store = configureStore({
 
     dailyStatistics: dailyStatisticsReducer,
 
+    monthStatistics: monthStatisticsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

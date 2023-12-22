@@ -20,7 +20,7 @@ import {
 import { WeightTable } from './WeightTable/WeightTable';
 import { LineChartCalories } from './LineChart/LineChartCalories';
 import { LineChartWater } from './LineChart/LineChartWater';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMonthStatistics } from '../../redux/dashboard/dashboardOperations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -52,7 +52,19 @@ let currentMonth = months[date.getMonth()];
 console.log('currentMonth', currentMonth);
 
 export const Dashboard = () => {
-  const [month, setMonth] = useState(currentMonth);
+const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryMonth = searchParams.get('queryMonth');
+
+
+  const cutQuery = (month) => {
+    if (!month) return;
+    if (month.indexOf('/') === -1) return month;
+      return month.slice(month.indexOf('/') + 1, month.length);
+  };
+
+  const [month, setMonth] = useState(cutQuery(queryMonth) ?? currentMonth);
+  console.log('month', month);
   const calories = useSelector(selectCaloriesMonthStatistics);
   const water = useSelector(selectWaterMonthStatistics);
   const weight = useSelector(selectWeightMonthStatistics);
@@ -67,34 +79,35 @@ export const Dashboard = () => {
 
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const dispatch = useDispatch();
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const selectMonth = {
-  //   month: months.indexOf(month)+1,
-  // };
-  // console.log('selectMonth', selectMonth);
+  
 
   useEffect(() => {
     async function getStatistics() {
       try {
-        if (!month) return;
-        dispatch(getMonthStatistics({ month: String(months.indexOf(month) + 1)}));
+        if (!queryMonth) {
+          dispatch(getMonthStatistics(months.indexOf(cutQuery(month)) + 1));
+        }
+        else {
+          dispatch(getMonthStatistics(months.indexOf(cutQuery(queryMonth)) + 1));
+        }
       } catch (error) {
         console.log('error', error);
       }
     }
     getStatistics();
-  }, [month, dispatch]);
+  }, [month, queryMonth, dispatch]);
 
   const handleChange = (e) => {
-    const month = e.target.value;
-    console.log('select', month);
-    // setSearchParams({ queryMonth: `${Date.now()}/${select}` });
-    setMonth(month);
-    // setSearchParams('');
+   
+    const select = e.target.value;
+    console.log('select', select);
+   
+    setSearchParams({ queryMonth: `${Date.now()}/${select}` });
+     setMonth(select);
   };
 
-  // const cutQuery = (month) => month.slice(month.indexOf('/') + 1, month.length);
+ 
+  
   const location = useLocation();
   const backLink = location?.state?.from ?? '/';
   return (
@@ -124,9 +137,7 @@ export const Dashboard = () => {
                   <Value> Calories </Value>
                   <Text>
                     Average value:{' '}
-                    <AverageValue>
-                      {gerAvarageValue(calories)} cal
-                    </AverageValue>
+                    <AverageValue>{gerAvarageValue(calories)} cal</AverageValue>
                   </Text>
                 </ValueWrapper>
                 <LineChartCalories />
