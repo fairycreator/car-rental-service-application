@@ -46,10 +46,24 @@ export const SubmitBtn = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+  outline: none;
   background-color: var(--primary-color-green-lite);
   border-color: transparent;
   border-radius: 12px;
+
   color: var(--primary-color-black-two);
+
+  transition:
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active {
+    border-color: var(--primary-color-green-lite);
+    background-color: transparent;
+    color: var(--primary-color-white);
+  }
 `;
 
 export const Title = styled.h2`
@@ -84,4 +98,9 @@ export const CancelBtn = styled.button`
   color: var(--primary-color-grey);
   background-color: transparent;
   border: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 `;
