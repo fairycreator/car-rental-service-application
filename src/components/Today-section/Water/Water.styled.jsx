@@ -85,15 +85,6 @@ export const DeleteButton = styled.button`
   }
 `;
 
-// export const TrashIcon = styled.svg`
-//   fill: var(--primary-color-green-lite);
-
-/* @media screen and (min-width: 834px) {
-    top: 24px;
-    right: 24px;
-  } */
-// `;
-
 export const AddIcon = styled.svg`
   width: 16px;
   height: 16px;
