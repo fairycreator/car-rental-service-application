@@ -12,6 +12,7 @@ import { useLocation, Link } from 'react-router-dom';
 import { Formik, useFormik } from 'formik';
 import { validationSchema } from '../../../schemas/profileUpdateSchema';
 import { selectUserData } from '../../../redux/auth/authSelectors';
+// import { updateUser } from '../../../redux/auth/authOperations';
 import image from '../../../assets/images/settings-page-image.png';
 import sprite from '../../../assets/images/sprite.svg';
 import {
@@ -37,9 +38,10 @@ import {
   DownloadSpan,
 } from './ProfileSetting.styled';
 
-const fd = new FormData();
+let selectedImage;
 
 export const ProfileSetting = () => {
+  // const dispatch = useDispatch();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/main');
   const currentUserData = useSelector(selectUserData);
@@ -48,29 +50,37 @@ export const ProfileSetting = () => {
 
   const initialValues = {
     name,
-    image: '',
+    avatar: '',
     age,
     gender,
     height,
     weight,
-    activity: activityLevel,
+    activityLevel,
   };
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      formik.values.activity = Number(values.activity);
-      if (formik.values.image === '') {
-        fd.append('avatar', avatar, name);
-      } else {
-        fd.append('avatar', formik.values.image, formik.values.image.name);
+      formik.values.activityLevel = Number(values.activityLevel);
+
+      let formData = new FormData();
+      if (selectedImage) {
+        formData.append('avatar', formik.values.avatar);
       }
-      // formik.values.image = URL.createObjectURL(formik.values.image);
-      formik.values.image = fd;
-      console.log(formik.values.image);
-      console.log(avatar);
-      console.log(formik.values);
+      formData.append('name', formik.values.name);
+      formData.append('age', formik.values.age);
+      formData.append('gender', formik.values.gender);
+      formData.append('height', formik.values.height);
+      formData.append('weight', formik.values.weight);
+      formData.append('activityLevel', formik.values.activityLevel);
+
+      for (let pair of formData.entries()) {
+        console.log(pair[0] + ', ' + pair[1]);
+        selectedImage = null;
+      }
+
+      // dispatch(updateUser(formData));
     },
   });
 
@@ -99,37 +109,36 @@ export const ProfileSetting = () => {
             <LabelInput>
               Your photo
               <InputWrapper>
-                {formik.values.image !== '' ? (
-                  <Avatar
-                    src={URL.createObjectURL(formik.values.image)}
-                    alt="user avatar"
-                    file={formik.values.image}
-                  />
-                ) : (
-                  <Avatar
-                    src={avatar}
-                    alt="user avatar"
-                    file={formik.values.image}
-                  />
-                )}
-                <DownloadButton type="button" htmlFor="image">
+                <Avatar
+                  src={
+                    !selectedImage
+                      ? avatar
+                      : URL.createObjectURL(formik.values.avatar)
+                  }
+                  alt="user avatar"
+                  file={formik.values.avatar}
+                />
+                <DownloadButton type="button" htmlFor="avatar">
                   <InputStyled
-                    id="image"
-                    name="image"
+                    id="avatar"
+                    name="avatar"
                     type="file"
                     accept="image/png, .svg, .jpg, .gif, .jpeg, .webp"
                     onChange={(e) => {
-                      if (e.currentTarget.files) {
-                        formik.setFieldValue('image', e.currentTarget.files[0]);
+                      if (!e.currentTarget.files) {
+                        // toastError('No image selected')
+                        return;
                       }
+                      selectedImage = e.currentTarget.files[0];
+                      formik.setFieldValue('avatar', selectedImage);
                     }}
                   />
                   <IconWrapper>
                     <use href={`${sprite}#icon-direct-inbox`} />
                   </IconWrapper>
                   <DownloadSpan>
-                    {formik.values.image.name
-                      ? formik.values.image.name
+                    {selectedImage
+                      ? formik.values.avatar.name
                       : 'Download new photo'}
                   </DownloadSpan>
                 </DownloadButton>
@@ -214,16 +223,16 @@ export const ProfileSetting = () => {
               <ErrorMessageStyled name="weight" component="span" />
             </LabelInput>
             <FormControl sx={{ gap: '12px' }}>
-              <FormLabel id="activity" sx={formLabelStyled}>
+              <FormLabel id="activityLevel" sx={formLabelStyled}>
                 Your activity
               </FormLabel>
               <RadioGroup
                 row
                 sx={{ gap: '16px' }}
-                aria-labelledby="activity"
-                name="activity"
+                aria-labelledby="activityLevel"
+                name="activityLevel"
                 type="number"
-                value={formik.values.activity}
+                value={formik.values.activityLevel}
                 onChange={formik.handleChange}
               >
                 <FormControlLabel
@@ -259,11 +268,12 @@ export const ProfileSetting = () => {
                   times a day and include strength exercises in your training
                   program"
                 />
-                {formik.errors.activity && formik.touched.activity && (
-                  <ErrorMessageStyled id="feedback" name="activity">
-                    {formik.errors.activity}
-                  </ErrorMessageStyled>
-                )}
+                {formik.errors.activityLevel &&
+                  formik.touched.activityLevel && (
+                    <ErrorMessageStyled id="feedback" name="activityLevel">
+                      {formik.errors.activityLevel}
+                    </ErrorMessageStyled>
+                  )}
               </RadioGroup>
             </FormControl>
             <ButtonGroup aria-label="button group" sx={buttonGroupStyled}>

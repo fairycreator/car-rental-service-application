@@ -1,8 +1,8 @@
-// import { useSelector } from 'react-redux';
-// import {
-//   selectUserBMRRate,
-//   selectUserWaterRate,
-// } from '../../../redux/auth/authSelectors';
+import { useSelector } from 'react-redux';
+import {
+  selectUserBMRRate,
+  selectUserWaterRate,
+} from '../../../redux/auth/authSelectors';
 import sprite from '../../../assets/images/sprite.svg';
 import {
   Wrapper,
@@ -17,11 +17,8 @@ import {
 } from './DailyGoal.styled';
 
 export const DailyGoal = () => {
-  // const userBMRRate = useSelector(selectUserBMRRate);
-  // const userWaterRate = useSelector(selectUserWaterRate);
-
-  const userBMRRate = 1700;
-  const userWaterRate = 1050;
+  const userBMRRate = useSelector(selectUserBMRRate);
+  const userWaterRate = useSelector(selectUserWaterRate);
 
   return (
     <Wrapper>

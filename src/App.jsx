@@ -25,7 +25,6 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -101,12 +100,12 @@ function App() {
         <Route
           path="*"
           element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
+            // <RestrictedRoute redirectTo="/main" component={<MainPage />} />
+            <WelcomePage />
           }
         />
       </Route>
     </Routes>
   );
-  
 }
 export default App;

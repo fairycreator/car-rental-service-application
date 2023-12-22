@@ -1,4 +1,6 @@
+import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
+import { theme } from '../../GlobalStyle/';
 import { useSelector, useDispatch } from "react-redux";
 import { styled } from '@mui/material/styles';
 import Popover from '@mui/material/Popover';
@@ -7,8 +9,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
-import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled } from './WeightNav.styled';
-import { ButtonClose, IconClose } from '../GoalNav/GoalNav.styled';
+import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel } from './WeightNav.styled';
+import { ButtonClose, IconClose} from '../GoalNav/GoalNav.styled';
 import { selectUserWeight } from '../../redux/auth/authSelectors';
 import { updateWeight } from '../../redux/auth/authOperations';
 
@@ -26,7 +28,6 @@ const ButtonMenu = styled(Button)({
 });
 
 const PopoverStyled = styled(Popover)({
-    
     '& .MuiPaper-root': {
         position: 'relative',
         width: '392px',
@@ -36,9 +37,22 @@ const PopoverStyled = styled(Popover)({
         marginLeft: '-10px',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
+        [theme.breakpoints.down('tablet')]: {
+            marginTop: '60px',
+            minHeight: '100%',
+            minWidth: '100%',
+            boxShadow: 'none',
+            backgroundColor: '#050505',
+            marginLeft: '16px',
+        },
     },
     '& .MuiTypography-root': {
         padding: '20px 24px 40px 24px',
+        [theme.breakpoints.down('tablet')]: {
+            width: '320px',
+            padding: '24px 10px',
+            margin: '0 auto',
+        },
     },
 });
 
@@ -55,10 +69,12 @@ const TextFieldStyled = styled(TextField)({
     '& .MuiOutlinedInput-input': {
         borderColor: '#E3FFA8',
         borderRadius: 12,
-    }
+    },
 });
 
 export const WeightNav = () => {
+    const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
+
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const weightUser = useSelector(selectUserWeight);
@@ -78,7 +94,7 @@ export const WeightNav = () => {
         event.preventDefault();
 
         let weight = Number(event.currentTarget.elements.weight.value);
-        dispatch(updateWeight({weight}));
+        dispatch(updateWeight({ weight }));
 
         handleClose();
     }
@@ -139,7 +155,10 @@ export const WeightNav = () => {
                     <FormStyled onSubmit={handleSend}>
                         <InputWeight type='number' name='weight' placeholder='Enter your weight' />
                         <ButtonSend>Confirm</ButtonSend>
+                         
                     </FormStyled>
+                    {mobileVersion ? (<ButtonCancel>Cancel</ButtonCancel>) :
+                        undefined}
 
                 </Typography>
 
