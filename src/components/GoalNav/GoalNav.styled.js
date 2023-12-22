@@ -20,12 +20,28 @@ export const ButtonClose = styled.button`
 `;
 
 export const IconClose = styled.svg`
+  display: none;
+  @media screen and (min-width: 834px) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    }
+  }
+`;
+
+export const IconDown = styled.svg`
+  width: 14px;
+  height: 14px;
+  fill: var(--primary-color-green-lite);
+`;
+
+export const IconRight = styled.svg`
   width: 16px;
   height: 16px;
-  fill: var(--primary-color-grey);
-  &:hover {
-    stroke: var(--primary-color-green-lite);
-  }
+  fill: var(--primary-color-green-lite);
 `;
 
 export const DivStyled = styled.div`

@@ -12,7 +12,7 @@ export const DesktopContainer = styled.div`
     gap: 80px;
   }
 `;
-// Test
+
 export const Box = styled.div`
   display: flex;
   align-items: center;
