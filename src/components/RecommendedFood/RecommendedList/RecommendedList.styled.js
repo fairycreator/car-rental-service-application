@@ -91,6 +91,12 @@ font-size: 16px;
 font-weight: 500;
 line-height: 0.7;
 color: var(--primary-color-grey );
+&:hover,
+  &:focus {
+    color:var(--primary-color-green-lite);
+    
+  }
+
 `
 
 export const Image = styled.svg`
@@ -99,13 +105,21 @@ height: 16px;
 fill: var(--primary-color-grey);
 align-items: center;
 
+&:hover,
+  &:focus {
+    fill :var(--primary-color-green-lite);
+    
+  }
+
 `
 export const RecLinkWrapper = styled.div`
 display: flex ; 
 gap: 6px;
 align-items: center;
 padding: 3px;
-
+ 
+transition: color, var(--transition-dur-and-func);
+transition: fill , var(--transition-dur-and-func);
 `
 
 
