@@ -65,12 +65,13 @@ export const Amount = styled.span`
   color: var(--primary-color-white);
 `;
 
-export const ClearButton = styled.button`
+export const DeleteButton = styled.button`
   position: absolute;
   top: 12px;
   right: 12px;
   width: 20px;
   height: 20px;
+  padding: 0;
   background-color: transparent;
   border: none;
 
