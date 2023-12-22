@@ -39,7 +39,11 @@ export const Water = () => {
       ? Math.round((waterFilled * 100) / waterGoal)
       : 100;
 
-  const left = waterGoal - waterFilled;
+  let left = waterGoal - waterFilled;
+
+  if (waterFilled > waterGoal) {
+    left = 0;
+  }
 
   return (
     <Wrapper>
