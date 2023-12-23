@@ -133,7 +133,7 @@ export const Buttons = styled.div`
   }
 `;
 
-/*export const StyledActionButton = styled.button`
+export const StyledActionButton = styled.button`
   display: inline-flex;
   min-width: 142px;
   padding: 8px 10px;
