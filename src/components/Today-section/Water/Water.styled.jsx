@@ -67,20 +67,21 @@ export const Amount = styled.span`
 
 export const DeleteIcon = styled.svg`
   position: absolute;
+  cursor: pointer;
   top: 12px;
   right: 12px;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   fill: var(--primary-color-green-lite);
 
-  /* @media screen and (min-width: 834px) {
-    width: 16px;
-    height: 16px;
+  @media screen and (min-width: 834px) {
+    top: 24px;
+    right: 24px;
     fill: var(--primary-color-grey);
     &:hover {
       stroke: var(--primary-color-green-lite);
-    } */
-  /* } */
+    }
+  }
 `;
 
 // export const DeleteIcon = styled.button`
