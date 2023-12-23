@@ -31,7 +31,7 @@ function App() {
         <Route
           index
           element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
+            <RestrictedRoute redirectTo="/main" component={<WelcomePage/>} />
           }
         />
         <Route
