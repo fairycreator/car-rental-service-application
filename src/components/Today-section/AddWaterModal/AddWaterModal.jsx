@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { addWater } from '../../../redux/dailyStatistics/dailyOperations';
 import { useDispatch } from 'react-redux';
+import { addWater } from '../../../redux/dailyStatistics/dailyOperations';
 import {
   Backdrop,
   Modal,
@@ -17,7 +17,6 @@ export const AddWaterModal = ({ setIsModalOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const value = {
       value: inputValue,
     };
@@ -39,6 +38,7 @@ export const AddWaterModal = ({ setIsModalOpen }) => {
               placeholder="Enter milliliters"
               onChange={(e) => setInputValue(Number(e.target.value))}
               value={inputValue ? inputValue : ''}
+              min={1}
             />
           </label>
           <SubmitBtn type="submit">Confirm</SubmitBtn>
