@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import iconeye from '../../assets/images/icons/eye.svg';
+import iconeyeoff from '../../assets/images/icons/eye-off.svg';
 
 // Wrapper
 export const Wrapper = styled.div`
@@ -100,9 +102,8 @@ export const Image = styled.img`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 592px; // Desktop width
-    height: 588px; // Desktop height
-    margin-right: 104px; // Add right margin if needed to separate from the form
+    width: 592px;
+    height: 588px;
   }
 `;
 
@@ -162,40 +163,57 @@ export const NextButton = styled.button`
     width: 212px;
   }
 `;
+// Checkbox
+export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
+  position: absolute;
+  appearance: none;
+  cursor: pointer;
+  right: 14px;
+  top: 14px;
 
-// background-color: var(--primary-color-green-lite);
-//   color: var(--primary-color-black-two);
-//   padding: 8px 10px;
-//   border-radius: 12px;
-//   border: none;
-//   width: 122px;
-//   height: 36px;
-//   text-align: center;
-//   font-weight: 500;
-//   transition: background-color, var(--transition-dur-and-func);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 2px);
+    width: 16px;
+    height: 16px;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-primary-black-2, #0f0f0f);
+    background-image: url(${iconeyeoff}#eye-off);
+  }
 
-//   &:hover,
-//   &:focus {
-//     background-color: var(--primary-color-lite-green);
-//   }
+  &:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 2px);
+    width: 16px;
+    height: 16px;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-primary-black-2, #0f0f0f);
+    background-image: url(${iconeye}#eye);
+    visibility: visible;
+  }
 
-//   @media screen and (min-width: 834px) {
-//     width: 212px;
-//   }
-// `;
+  @media screen and (max-width: 834px) {
+    top: 50%;
+    left: 50%;
+  }
+`;
 
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
   display: flex;
-  flex-direction: column; // Stack text and link vertically
-  align-items: center; // Center align items for smaller screens
+  flex-direction: column;
+  align-items: center;
   margin-top: 54px;
   color: var(--color-primary-grey, #b6b6b6);
 
   @media screen and (min-width: 834px) {
-    flex-direction: row; // Set back to row for larger screens
-    justify-content: space-between; // Center horizontally
-    margin-top: 220px; // Increase margin-top for desktop view
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 220px;
     gap: 16px;
   }
 
@@ -256,9 +274,10 @@ export const WrapperError = styled.div`
 `;
 
 export const LabelWrap = styled.label`
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: flex-start;
   gap: 20px;
 `;
 

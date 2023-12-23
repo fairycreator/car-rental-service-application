@@ -20,21 +20,27 @@ export const SignUpContainer = styled.div`
 
 // Wrapper
 export const Wrapper = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--primary-color-black-one);
   display: flex;
-  align-items: center;
   flex-direction: column;
-  transition: width 0.5s ease;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 834px) {
-    padding: 40px 0;
+    padding: 10px;
   }
 
   @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    margin: 0 auto;
     flex-direction: row;
-    column-gap: 104px;
-    align-items: end;
-    padding-left: 116px;
-    padding-right: 116px;
+    gap: 104px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 72px;
   }
 `;
 
@@ -85,7 +91,7 @@ export const Subtitle = styled.h2`
   margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
-    width: 444px;
+    width: 430px;
     text-align: center;
     font-size: 22px;
     line-height: 1.45;
@@ -200,9 +206,17 @@ export const NavLinkStyled = styled(NavLink)`
 
 // Content
 export const Content = styled.div`
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+
+  @media screen and (min-width: 834px) {
+    align-items: center;
+    gap: 80px;
+  }
   @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: column;
+    padding-top: 80px;
     align-items: flex-start;
   }
 `;

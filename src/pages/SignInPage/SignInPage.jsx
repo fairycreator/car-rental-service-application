@@ -18,13 +18,14 @@ import {
   Input,
   WrapForm,
   ErrorDivStyled,
-  SvgIconEye,
+  // SvgIconEye,
   ForgotPasswordText,
   // SvgIconCheckBox,
   // WrapperError,
   LabelWrap,
   // IconWrapped,
   NavLinkStyled,
+  Checkbox,
 } from './SignIn.styled';
 
 import image from '../../assets/backgroundImages/welcomepage.png';
@@ -45,15 +46,23 @@ const SignInForm = () => {
     actions.resetForm();
   };
 
-  const togglePassInput = () => {
-    setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-    setToggleIcon((prevIcon) =>
-      prevIcon === `${sprite}#icon-eye-off`
-        ? `${sprite}#icon-eye`
-        : `${sprite}#icon-eye-off`
-    );
-  };
+  // const togglePassInput = () => {
+  //   setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
+  //   setToggleIcon((prevIcon) =>
+  //     prevIcon === `${sprite}#icon-eye-off`
+  //       ? `${sprite}#icon-eye`
+  //       : `${sprite}#icon-eye-off`
+  //   );
+  // };
 
+  const passwordToggle = () => {
+    const svgIcon = document.getElementById('myInput');
+    if (svgIcon.type === 'password') {
+      svgIcon.type = 'text';
+    } else {
+      svgIcon.type = 'password';
+    }
+  };
   return (
     <Formik
       initialValues={initialValues}
@@ -70,12 +79,21 @@ const SignInForm = () => {
               </ErrorDivStyled>
             </LabelWrap>
             <LabelWrap>
-              <Input type={type} name="password" placeholder="Password" />
+              <Input
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="myInput"
+                onChange={(e) => password.onChange(e)}
+                onBlur={(e) => password.onBlur(e)}
+                autoComplete="off"
+              />
               {/* <IconWrapped onClick={togglePassInput}>
                 <SvgIconEye>
                   <use xlinkHref={toggleIcon} />
                 </SvgIconEye>
               </IconWrapped> */}
+              <Checkbox type="checkbox" onChange={passwordToggle} />
               <ErrorDivStyled>
                 {touched.password && errors.password && errors.password}
               </ErrorDivStyled>
