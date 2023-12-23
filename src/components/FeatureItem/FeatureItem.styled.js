@@ -19,12 +19,4 @@ export const FeatureListItem = styled.li`
     vertical-align: middle;
     padding-right: 8px;
   }
-/* 
-  @media screen and (min-width: 834px) {
-    width: calc((100% - 16px) / 2);
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 100%;
-  } */
 `;

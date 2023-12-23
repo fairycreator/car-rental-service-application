@@ -147,45 +147,16 @@ export const Buttons = styled.div`
   cursor: pointer;
   transition: border 0.3s var(--transition-dur-and-func);
   align-items: center;
-  background-color: var(--primary-color-lite-green);
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-
-  & .div-wrapper {
-    align-items: center;
-    display: inline-flex;
-    flex: 0 0 auto;
-    gap: 8px;
-    position: relative;
-  }
-
-  & .text-wrapper {
-    color: var(--primary-color-black-two);
-    font-family: var(--button-text-1-font-family);
-    font-size: var(--button-text-1-font-size);
-    font-style: var(--button-text-1-font-style);
-    font-weight: var(--button-text-1-font-weight);
-    letter-spacing: var(--button-text-1-letter-spacing);
-    line-height: var(--button-text-1-line-height);
-    margin-top: -1px;
-    position: relative;
-    text-align: center;
-    width: 122px; }
-
-
- 
+  gap: 16px;
 
   @media screen and (min-width: 834px) {
-    min-width: 192px;
-    padding: 16px 60px;
-    font-size: 20px;
+    justify-content: center;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 16px 60px;
+    justify-content: flex-start;
   }
-`;*/
+`;
 
 export const WelcomePrimaryBtn = styled.button`
   background-color: var(--primary-color-green-lite);
@@ -201,7 +172,7 @@ export const WelcomePrimaryBtn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
   }
 
   @media screen and (min-width: 834px) {
@@ -223,7 +194,8 @@ export const WelcomeOutlinedBtn = styled.button`
 
   &:hover,
   &:focus {
-    border-color: var(--primary-color-green-lite);
+    border-color: var(--secondary-color-yellow);
+    color: var(--secondary-color-yellow);
   }
 `;
 
@@ -258,17 +230,18 @@ export const FeatureList = styled.ul`
 
   @media screen and (min-width: 1440px) {
     flex-direction: column;
-  }
-  :nth-child(1) {
-    width: 100%;
-  }
-  :nth-child(2) {
-    width: 100%;
-  }
-  :nth-child(3) {
-    width: 100%;
-  }
-  :nth-child(4) {
-    width: 100%;
+
+    :nth-child(1) {
+      width: 100%;
+    }
+    :nth-child(2) {
+      width: 100%;
+    }
+    :nth-child(3) {
+      width: 100%;
+    }
+    :nth-child(4) {
+      width: 100%;
+    }
   }
 `;

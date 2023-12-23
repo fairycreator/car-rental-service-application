@@ -79,7 +79,8 @@ export const ProfileSetting = () => {
         console.log(pair[0] + ', ' + pair[1]);
         selectedImage = null;
       }
-
+      // console.log(avatar);
+      // console.log(formik.values);
       // dispatch(updateUser(formData));
     },
   });
