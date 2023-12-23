@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import image from '../../../assets/backgroundImages/welcomepage.png';
 import useInput from '../../../hooks/useInput';
-// import { passwordToggle } from './utils/';
 import { signUpSchema } from '../../../schemas/signUpSchema';
 import { validateForm } from './utils/validateForm';
 import iconeye from '../../../assets/images/icons/eye.svg';

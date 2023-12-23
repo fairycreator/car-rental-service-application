@@ -119,14 +119,6 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 1.43;
 
-  /* &.inputError {
-    border: 2px solid #e74a3b;
-  }
-
-  &.inputValid {
-    border: 2px solid #3cbc81;
-  } */
-
   &::placeholder {
     color: var(--color-primary-grey);
     font-size: 14px;
