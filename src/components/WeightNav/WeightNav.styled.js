@@ -146,3 +146,25 @@ export const ButtonCancel = styled.button`
   width: 300px;
   height: 36px;
 `;
+
+export const ButtonClose = styled.button`
+  background: 0 0;
+  border: none;
+  padding: 0px 0px;
+  position: absolute;
+  top: 20px;
+  right: 32px;
+`;
+
+export const IconClose = styled.svg`
+  display: none;
+  @media screen and (min-width: 834px) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    }
+  }
+`;

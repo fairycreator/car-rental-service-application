@@ -9,8 +9,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
-import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel } from './WeightNav.styled';
-import { ButtonClose, IconClose} from '../GoalNav/GoalNav.styled';
+import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel, ButtonClose, IconClose } from './WeightNav.styled';
 import { selectUserWeight } from '../../redux/auth/authSelectors';
 import { updateWeight } from '../../redux/auth/authOperations';
 
@@ -28,23 +27,27 @@ const ButtonMenu = styled(Button)({
 });
 
 const PopoverStyled = styled(Popover)({
+    transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
     '& .MuiPaper-root': {
         position: 'relative',
         width: '392px',
         height: '200px',
         borderRadius: 12,
         marginTop: '26px',
-        marginLeft: '-10px',
+        marginLeft: '-126px',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
         [theme.breakpoints.down('tablet')]: {
-            marginTop: '60px',
+            marginTop: '76px',
             minHeight: '100%',
             minWidth: '100%',
             boxShadow: 'none',
             backgroundColor: '#050505',
             marginLeft: '16px',
         },
+        [theme.breakpoints.only('desktop')]: {
+    marginLeft: '-20px',
+  },
     },
     '& .MuiTypography-root': {
         padding: '20px 24px 40px 24px',
