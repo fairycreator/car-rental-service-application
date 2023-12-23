@@ -10,10 +10,8 @@ import {
   Input,
   CancelBtn,
 } from './AddWaterModal.styled';
-// import { selectConsumedWaterValue } from '../../../redux/dailyStatistics/dailySelectors';
 
 export const AddWaterModal = ({ setIsModalOpen }) => {
-  // const consumedWaterValue = useSelector(selectConsumedWaterValue);
   const [inputValue, setInputValue] = useState(0);
   const dispatch = useDispatch();
 
