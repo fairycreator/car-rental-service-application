@@ -240,7 +240,7 @@ export const buttonStyled = {
 };
 
 export const ErrorMessageStyled = styled.div`
-  color: red;
+  color: #e74a3b;
   font-family: 'Poppins400';
   font-size: 12px;
   margin-left: 4px;

@@ -1,8 +1,14 @@
 import * as Yup from 'yup';
 
-const signInSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required!'),
-  password: Yup.string().min(6, 'Too Short!').required('Required!'),
+export const signInSchema = Yup.object().shape({
+  email: Yup.string()
+    .trim('Cannot include leading and trailing spaces')
+    .email('Invalid email')
+    .required('Required!'),
+  password: Yup.string()
+    .trim('Cannot include leading and trailing spaces')
+    .min(6, 'Too Short!')
+    .required('Required!'),
 });
 
 export default signInSchema;
