@@ -9,12 +9,12 @@ import {
   WrapForm,
   ErrorDivStyled,
   SvgIconEye,
-  SvgIconCheckBox,
   WrapperError,
   LabelWrap,
   IconWrapped,
 } from './SignInForm.styled';
-import sprite from '../../assets/images/sprite.svg';
+import iconeye from '../../assets/images/icons/eye.svg';
+import iconeyeoff from '../../assets/images/icons/eye-off.svg';
 import validateEmail from '../../schemas/validateEmail';
 
 const initialValues = {
@@ -23,8 +23,7 @@ const initialValues = {
 };
 
 const SignInForm = () => {
-  const [toggleIcon, setToggleIcon] = useState(`${sprite}#icon-eye-off`);
-  const [type, setType] = useState('password');
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
@@ -33,13 +32,7 @@ const SignInForm = () => {
   };
 
   const togglePassInput = () => {
-    if (type === 'password') {
-      setType('text');
-      setToggleIcon(`${sprite}#icon-eye`);
-    } else {
-      setType('password');
-      setToggleIcon(`${sprite}#icon-eye-off`);
-    }
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -64,68 +57,52 @@ const SignInForm = () => {
         return (
           <Form autoComplete="off">
             <WrapForm>
-              <div>
-                <LabelWrap>
-                  <InputStyled
-                    border={borderEmailColor}
-                    type="text"
-                    name="email"
-                    validate={validateEmail}
-                    placeholder="Email"
-                  />
-                </LabelWrap>
+              <LabelWrap>
+                <InputStyled
+                  border={borderEmailColor}
+                  type={showPassword ? 'text' : 'password'}
+                  name="email"
+                  validate={validateEmail}
+                  placeholder="Email"
+                />
+              </LabelWrap>
 
-                {(errors.email && touched.email) ||
-                (!errors.email && touched.email) ? (
-                  <WrapperError>
-                    <SvgIconCheckBox
-                      fill={!errors.email && touched.email ? '#3cbc81' : null}
-                    >
-                      <use href={`${sprite}#icon-checkbox`} />
-                    </SvgIconCheckBox>
-                    <ErrorDivStyled
-                      color={!errors.email && touched.email ? '#3cbc81' : null}
-                    >
-                      {errors.email ? errors.email : 'Success email'}
-                    </ErrorDivStyled>
-                  </WrapperError>
-                ) : null}
-              </div>
+              {(errors.email && touched.email) ||
+              (!errors.email && touched.email) ? (
+                <WrapperError>
+                  <ErrorDivStyled
+                    color={!errors.email && touched.email ? '#3cbc81' : null}
+                  >
+                    {errors.email ? errors.email : 'Success email'}
+                  </ErrorDivStyled>
+                </WrapperError>
+              ) : null}
 
-              <div>
-                <LabelWrap>
-                  <InputStyled
-                    border={borderPasswordColor}
-                    type={type}
-                    name="password"
-                    placeholder="Password"
-                  />
-                  <IconWrapped>
-                    <SvgIconEye onClick={togglePassInput}>
-                      <use href={toggleIcon} />
-                    </SvgIconEye>
-                  </IconWrapped>
-                </LabelWrap>
-                {(errors.password && touched.password) ||
-                (!errors.password && touched.password) ? (
-                  <WrapperError>
-                    <SvgIconCheckBox
-                      fill={
-                        !errors.password && touched.password ? '#3cbc81' : null
-                      }
-                    >
-                      <use href={`${sprite}#icon-checkbox`} />
-                    </SvgIconCheckBox>
-                    <ErrorDivStyled
-                      color={
-                        !errors.password && touched.password ? '#3cbc81' : null
-                      }
-                    >
-                      {errors.password ? errors.password : 'Success password'}
-                    </ErrorDivStyled>
-                  </WrapperError>
-                ) : null}
-              </div>
+              <LabelWrap>
+                <InputStyled
+                  border={borderPasswordColor}
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                />
+                <IconWrapped>
+                  <SvgIconEye onClick={togglePassInput}>
+                    <image href={showPassword ? iconeyeoff : iconeye} />
+                  </SvgIconEye>
+                </IconWrapped>
+              </LabelWrap>
+              {(errors.password && touched.password) ||
+              (!errors.password && touched.password) ? (
+                <WrapperError>
+                  <ErrorDivStyled
+                    color={
+                      !errors.password && touched.password ? '#3cbc81' : null
+                    }
+                  >
+                    {errors.password ? errors.password : 'Success password'}
+                  </ErrorDivStyled>
+                </WrapperError>
+              ) : null}
             </WrapForm>
 
             <SignInButton type="submit">Sign In</SignInButton>
