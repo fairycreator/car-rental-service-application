@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addFood } from '../../redux/dailyStatistics/dailyOperations';
 import {
   MealContainer,
@@ -21,26 +21,29 @@ import {
 export const Record = ({ isOpen, type }) => {
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
+
+  
+
   const [name, setName] = useState('');
-  const [colories, setColories] = useState('');
+  const [calories, setColories] = useState('');
   const [carbogidrate, setCarbogidrate] = useState('');
   const [protein, setProtein] = useState('');
   const [fat, setFat] = useState('');
   const arr = {
-    typeFood: 'dinner',
+    typeFood: type,
     userFood: [
       {
-        name: '123 test',
-        calories: '50',
-        nutrition: { carbogidrate: '1', protein: '2', fat: '3' },
+        name,
+        calories,
+        nutrition: { carbogidrate, protein, fat },
       },
     ],
   };
 
-  console.log(JSON.stringify(arr));
   const formHandler = (e) => {
     e.preventDefault();
-    dispatch(addFood(JSON.stringify(arr)));
+    dispatch(addFood(arr));
+    isOpen(false);
   };
 
   return (
@@ -91,7 +94,7 @@ export const Record = ({ isOpen, type }) => {
                 onChange={(e) => {
                   setColories(e.target.value);
                 }}
-                value={colories}
+                value={calories}
                 placeholder="Calories"
               />
               <svg

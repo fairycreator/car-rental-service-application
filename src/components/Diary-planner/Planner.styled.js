@@ -86,7 +86,9 @@ export const MealSubText = styled.p`
 `;
 
 export const MealDashbord = styled.div`
+  overflow: auto;
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   padding: 16px 12px;
   height: 232px;
@@ -126,5 +128,21 @@ export const Numeration = styled.p`
   font-style: normal;
   font-weight: 600;
   line-height: 20px; /* 142.857% */
- 
+`;
+
+export const RenderContainer = styled.div`
+  min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+`;
+export const RenderContainerItem = styled.p`
+  color: var(--Color-Primary-White, #fff);
+  /* Body text/1 */
+  font-family: 'Poppins400';
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+  max-height: 20px;
 `;
