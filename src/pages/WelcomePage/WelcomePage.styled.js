@@ -7,14 +7,15 @@ export const Container = styled.div`
   gap: 24px;
   color: var(--primary-color-white);
   max-width: 320px;
-  height: 100vh;
   margin: 0 auto;
   padding-top: 8px;
+  padding-bottom: 40px;
 
   @media screen and (min-width: 834px) {
     max-width: 834px;
     gap: 80px;
     padding-top: 16px;
+    padding-bottom: 286px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -22,10 +23,11 @@ export const Container = styled.div`
     margin: 0 auto;
     flex-direction: row;
     gap: 104px;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-start;
 
-    padding: 20px 150px;
+    padding-top: 20px;
+    padding-bottom: 72px;
   }
 `;
 
@@ -53,7 +55,6 @@ export const MainContent = styled.div`
   gap: 40px;
 
   @media screen and (min-width: 834px) {
-    width: 444px;
     align-items: center;
     gap: 80px;
   }
@@ -90,6 +91,11 @@ export const Title = styled.h2`
 
   @media screen and (min-width: 834px) {
     font-size: 30px;
+    padding-right: 20px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-right: 0px;
   }
 `;
 
@@ -103,9 +109,9 @@ export const Description = styled.p`
 
   @media screen and (min-width: 834px) {
     font-size: 22px;
-    line-height: 1.4;
+    line-height: 1.45;
     text-align: center;
-    max-width: 444px;
+    max-width: 430px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -127,60 +133,6 @@ export const Buttons = styled.div`
   }
 `;
 
-/*export const StyledActionButton = styled.button`
-  display: inline-flex;
-  min-width: 142px;
-  padding: 8px 10px;
-  text-align: center;
-  font-family: 'Poppins500';
-  font-size: var(--main-font-size);
-  line-height: var(--main-line-height);
-  letter-spacing: var(--main-letter-spacing);
-  color: var(--primary-color-black-two);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: border 0.3s var(--transition-dur-and-func);
-  align-items: center;
-  background-color: var(--primary-color-lite-green);
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-
-  & .div-wrapper {
-    align-items: center;
-    display: inline-flex;
-    flex: 0 0 auto;
-    gap: 8px;
-    position: relative;
-  }
-
-  & .text-wrapper {
-    color: var(--primary-color-black-two);
-    font-family: var(--button-text-1-font-family);
-    font-size: var(--button-text-1-font-size);
-    font-style: var(--button-text-1-font-style);
-    font-weight: var(--button-text-1-font-weight);
-    letter-spacing: var(--button-text-1-letter-spacing);
-    line-height: var(--button-text-1-line-height);
-    margin-top: -1px;
-    position: relative;
-    text-align: center;
-    width: 122px; }
-
-
- 
-
-  @media screen and (min-width: 834px) {
-    min-width: 192px;
-    padding: 16px 60px;
-    font-size: 20px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding: 16px 60px;
-  }
-`;*/
-
 export const WelcomePrimaryBtn = styled.button`
   background-color: var(--primary-color-green-lite);
   color: var(--primary-color-black-two);
@@ -198,7 +150,7 @@ export const WelcomePrimaryBtn = styled.button`
   }
 
   @media screen and (min-width: 834px) {
-    width: 192px;
+    width: 212px;
   }
 `;
 
@@ -233,6 +185,7 @@ export const FeatureList = styled.ul`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    max-width: 444px;
 
     :nth-child(1) {
       width: 250px;
