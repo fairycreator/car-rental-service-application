@@ -19,7 +19,7 @@ import {
   NextButton,
   QuestionTrumb,
   Question,
-  NavLinkStyled,
+  LinkStyled,
   ErrorMsg,
   IconWrapped,
 } from './signUp.styled';
@@ -110,7 +110,7 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
         </Form>
         <QuestionTrumb>
           <Question>Do you already have an account?</Question>
-          <NavLinkStyled to="/signin">Sign in</NavLinkStyled>
+          <LinkStyled to="/signin">Sign in</LinkStyled>
         </QuestionTrumb>
       </Content>
     </Wrapper>
