@@ -15,7 +15,6 @@ import {
 } from './SignInForm.styled';
 import iconeye from '../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../assets/images/icons/eye-off.svg';
-import validateEmail from '../../schemas/validateEmail';
 
 const initialValues = {
   email: '',
@@ -60,9 +59,9 @@ const SignInForm = () => {
               <LabelWrap>
                 <InputStyled
                   border={borderEmailColor}
-                  type={showPassword ? 'text' : 'password'}
+                  type="text"
                   name="email"
-                  validate={validateEmail}
+                  validate={signInSchema}
                   placeholder="Email"
                 />
               </LabelWrap>
@@ -73,7 +72,7 @@ const SignInForm = () => {
                   <ErrorDivStyled
                     color={!errors.email && touched.email ? '#3cbc81' : null}
                   >
-                    {errors.email ? errors.email : 'Success email'}
+                    {errors.email ? errors.email : 'Email is valid'}
                   </ErrorDivStyled>
                 </WrapperError>
               ) : null}
@@ -99,7 +98,7 @@ const SignInForm = () => {
                       !errors.password && touched.password ? '#3cbc81' : null
                     }
                   >
-                    {errors.password ? errors.password : 'Success password'}
+                    {errors.password ? errors.password : 'Password is secure'}
                   </ErrorDivStyled>
                 </WrapperError>
               ) : null}
