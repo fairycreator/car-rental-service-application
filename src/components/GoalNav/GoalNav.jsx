@@ -71,9 +71,9 @@ const StyledMenu = styled(Menu)({
     backgroundColor: '#0F0F0F',
     boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
     [theme.breakpoints.down('tablet')]: {
+      height: '100vh',
       marginTop: '60px',
-      minHeight: '100%',
-      minWidth: '100%',
+      maxWidth: '100vw',
       boxShadow: 'none',
       backgroundColor: '#050505',
       position: 'static',
