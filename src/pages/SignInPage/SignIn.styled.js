@@ -113,11 +113,12 @@ export const Input = styled.input`
   width: 100%;
   padding: 8px 10px;
   border-radius: 12px;
-  border: 2px solid var(--color-primary-green-lite, #e3ffa8);
+  border: ${(props) => props.$border};
   background: var(--color-primary-black-2, #0f0f0f);
   color: var(--primary-color-grey, #b6b6b6);
   font-size: 14px;
   line-height: 1.43;
+  margin-bottom: 20px;
 
   &.inputError {
     border: 2px solid #e74a3b;
@@ -257,7 +258,6 @@ export const WrapForm = styled.div`
 export const ErrorDivStyled = styled.div`
   font-size: 12px;
   color: var(--secondary-color-pink);
-  margin-top: 4px;
 `;
 
 export const SvgIconEye = styled.svg`

@@ -35,6 +35,7 @@ import {
 import { getMonthStatistics } from '../../redux/monthStatistics/dashboardOperations';
 import { months } from '../../helpers/dashboard/common';
 import { getAvarageValue } from '../../helpers/dashboard/getAvarageValue';
+import { getAvarageValueCalories } from '../../helpers/dashboard/getAvarageValueCalories'
 import { cutQuery } from '../../helpers/dashboard/cutQuery';
 
 const date = new Date();
@@ -107,7 +108,7 @@ export const Dashboard = () => {
                   <Value> Calories </Value>
                   <Text>
                     Average value:{' '}
-                    <AverageValue>{getAvarageValue(calories)} cal</AverageValue>
+                    <AverageValue>{getAvarageValueCalories(calories)} cal</AverageValue>
                   </Text>
                 </ValueWrapper>
                 <LineChartsBox>

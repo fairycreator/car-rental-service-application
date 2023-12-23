@@ -8,6 +8,7 @@ import SelectGender from '../components/SignUpSteps/AgeGenderStep/SignUpGender';
 import BodyParameters from '../components/SignUpSteps/BodyParametersStep/SignUpBodyParams';
 import ActivityLevel from '../components/SignUpSteps/ActivityStep/SignUpActivity';
 import { SignUpContainer } from '../components/SignUpSteps/SignUpStep/signUp.styled';
+import { signUpSchema } from '../schemas/signUpSchema';
 
 Notify.init({
   showOnlyTheLastOne: true,
@@ -41,14 +42,30 @@ const SignUpPage = () => {
 
   const dispatch = useDispatch();
 
-  const handleSignUp = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault();
-    setName(event.target.name.value);
-    setEmail(event.target.email.value);
-    setPassword(event.target.password.value);
-    nextPage();
-  };
+    const formData = {
+      name: event.target.name.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+    };
 
+    try {
+      // Validate the form data using Yup
+      await signUpSchema.validate(formData, { abortEarly: false });
+
+      // Set state with form data after validation is successful
+      setName(formData.name);
+      setEmail(formData.email);
+      setPassword(formData.password);
+
+      // Proceed to the next page
+      nextPage();
+    } catch (err) {
+      // Display error messages if validation fails
+      Notify.failure(err.errors.join(', '));
+    }
+  };
   const handleGoalSelectionStep = (values) => {
     const selectedGoal = values.goal;
     setGoal(selectedGoal);
