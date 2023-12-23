@@ -145,6 +145,10 @@ export const ButtonCancel = styled.button`
   margin-top: 12px;
   width: 300px;
   height: 36px;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 `;
 
 export const ButtonClose = styled.button`
