@@ -39,7 +39,6 @@ export const Wrapper = styled.div`
     gap: 104px;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 20px;
     padding-bottom: 72px;
   }
 `;
@@ -166,41 +165,30 @@ export const NextButton = styled.button`
   font-weight: 500;
   line-height: 1.43;
   transition: background-color, var(--transition-dur-and-func);
-  margin-bottom: 47px;
   &:hover,
   &:focus {
     background-color: var(--primary-color-lite-green);
   }
 
   @media screen and (min-width: 834px) {
-    width: 380px;
-    margin-bottom: 238px;
+    width: 100%;
   }
 
   @media screen and (min-width: 1440px) {
     width: 212px;
-    margin-bottom: 208px;
   }
 `;
 
 // NavLinkStyled
 export const NavLinkStyled = styled(NavLink)`
-  display: block;
-  width: 60px;
-  text-decoration: none;
-  background: inherit;
   color: var(--color-primary-white, #fff);
-  text-align: start;
   font-size: 14px;
-  font-weight: 500;
   line-height: 1.43;
-
-  @media screen and (min-width: 834px) {
-    width: 192px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
+  text-decoration: none;
+  font-weight: 500;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 `;
 
@@ -270,10 +258,21 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 54px;
+  color: var(--color-primary-grey, #b6b6b6);
+
   @media screen and (min-width: 834px) {
-    display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 220px;
     gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 364px;
   }
 `;
 
@@ -282,9 +281,20 @@ export const Question = styled.p`
   color: var(--color-primary-grey, #b6b6b6);
   font-size: 14px;
   line-height: 1.43;
-  margin-bottom: 16px;
 
   @media screen and (min-width: 834px) {
     margin-bottom: 0;
+  }
+`;
+
+export const ForgotPasswordText = styled.p`
+  line-height: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 20px;
   }
 `;

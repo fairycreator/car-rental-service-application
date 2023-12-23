@@ -163,6 +163,7 @@ export const NextButton = styled.button`
     width: 212px;
   }
 `;
+
 // Checkbox
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   position: absolute;
