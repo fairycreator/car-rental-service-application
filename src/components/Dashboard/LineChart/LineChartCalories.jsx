@@ -13,7 +13,8 @@ import {
 import { Line } from 'react-chartjs-2';
 
 import { selectCaloriesMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
-import { printChart } from '../../../helpers/dashboard/printChart';
+import { printChartCalories } from '../../../helpers/dashboard/printChartCalories';
+
 
 
 ChartJS.register(
@@ -114,7 +115,7 @@ const options = {
 
 export const LineChartCalories = ({ month }) => {
   const caloriesFromBack = useSelector(selectCaloriesMonthStatistics);
-  const newArrOfCalories = printChart(caloriesFromBack, month);
+  const newArrOfCalories = printChartCalories(caloriesFromBack, month);
   const labels = newArrOfCalories.days;
   const calories = newArrOfCalories.values;
 

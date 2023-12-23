@@ -9,11 +9,12 @@ import { theme } from '../../../GlobalStyle';
 import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
 
 import { selectWeightMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
-import { printTable } from '../../../helpers/dashboard/printTable';
+import { printTableWeight } from '../../../helpers/dashboard/printTableWeight';
+
 
 export const WeightTable = ({ month }) => {
   const weightFromBack = useSelector(selectWeightMonthStatistics);
-  const newArrOfWeight = printTable(weightFromBack, month);
+  const newArrOfWeight = printTableWeight(weightFromBack, month);
   let days = newArrOfWeight.days;
   let weight = newArrOfWeight.values;
 
