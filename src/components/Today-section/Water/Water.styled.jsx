@@ -84,65 +84,6 @@ export const DeleteIcon = styled.svg`
   }
 `;
 
-// export const DeleteIcon = styled.button`
-//   position: absolute;
-//   /* display: flex;
-//   justify-content: center;
-//   align-items: center; */
-//   top: 12px;
-//   right: 12px;
-//   width: 30px;
-//   height: 30px;
-//   padding: 0;
-//   background-color: transparent;
-//   border-color: transparent;
-//   border-radius: 100%;
-
-//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-//   fill: var(--primary-color-green-lite);
-
-//   &:hover,
-//   &:active {
-//     background-color: var(--secondary-color-grey-one);
-//   }
-
-//   @media screen and (min-width: 834px) {
-//     top: 24px;
-//     right: 24px;
-//   }
-// `;
-// export const DeleteButton = styled.button`
-//   position: absolute;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   top: 12px;
-//   right: 12px;
-//   width: 30px;
-//   height: 30px;
-//   padding: 0;
-//   background-color: transparent;
-//   border-color: transparent;
-//   border-radius: 100%;
-
-//   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-//   &:hover,
-//   &:active {
-//     background-color: var(--secondary-color-grey-one);
-//   }
-
-//   &svg {
-//     fill: var(--primary-color-green-lite);
-//   }
-
-//   @media screen and (min-width: 834px) {
-//     top: 24px;
-//     right: 24px;
-//   }
-// `;
-
 export const AddIcon = styled.svg`
   width: 16px;
   height: 16px;
@@ -168,16 +109,10 @@ export const Button = styled.button`
   font-weight: 500;
   line-height: 1.42;
 
-  transition:
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:active {
-    border-color: var(--primary-color-green-lite);
-    background-color: transparent;
-    color: var(--primary-color-white);
+  &:hover {
+    background-color: var(--secondary-color-yellow);
   }
 `;
 
