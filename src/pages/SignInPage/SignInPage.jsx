@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../../redux/auth/authOperations';
-import signInSchema from '../../schemas/signInSchema';
+import { signInSchema } from '../../schemas/signInSchema';
 import validateEmail from '../../schemas/validateEmail';
 import {
   Wrapper,
