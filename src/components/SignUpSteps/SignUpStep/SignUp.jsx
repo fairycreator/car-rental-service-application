@@ -43,25 +43,13 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
     return '1px solid var(--primary-color-green-lite)';
   };
 
-  const { value: nameVal, setError: setNameError } = name;
-  const { value: emailVal, setError: setEmailError } = email;
-  const { value: passwordVal, setError: setPasswordError } = password;
+  const { value: nameVal } = name;
+  const { value: emailVal } = email;
+  const { value: passwordVal } = password;
 
   useEffect(() => {
-    validateForm(
-      { value: nameVal, setError: setNameError },
-      { value: emailVal, setError: setEmailError },
-      { value: passwordVal, setError: setPasswordError },
-      setIsFormValid
-    );
-  }, [
-    nameVal,
-    emailVal,
-    passwordVal,
-    setNameError,
-    setEmailError,
-    setPasswordError,
-  ]);
+    validateForm(nameVal, emailVal, passwordVal, setIsFormValid);
+  }, [nameVal, emailVal, passwordVal, setIsFormValid]);
 
   return (
     <Wrapper>
