@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const signUpSchema = Yup.object().shape({
+export const signUpSchema = Yup.object().shape({
   // Validation for the name field
   name: Yup.string()
     .min(2, 'Name is too short (minimum 2 characters)')
@@ -44,5 +44,3 @@ const signUpSchema = Yup.object().shape({
   //   .min(1, 'Activity level must be at least 1')
   //   .required('Activity level is required'),
 });
-
-export default signUpSchema;

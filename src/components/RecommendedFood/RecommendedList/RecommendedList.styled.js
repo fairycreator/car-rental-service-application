@@ -3,6 +3,9 @@ import { NavLink } from "react-router-dom";
 
 
 export const RecPageContentWrapper = styled.div`
+display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 padding: 16px 10px;
 
 @media screen and (min-width: 834px){
@@ -30,6 +33,7 @@ align-items: center;
 @media screen and (min-width: 1440px){
   flex-direction: row;
   gap: 44px;  
+  align-items: flex-start;
 }
 
 `
@@ -37,11 +41,11 @@ export const RecPageTitle = styled.h2`
 font-size: 24px;
 font-style: normal;
 font-weight: 500;
-line-height: 0.8 ;
+line-height: 1.3 ;
 
 @media screen  and (min-width: 834px){
   font-size: 30px;
-  line-height: 0.8 ;
+  line-height: 1.2 ;
 }
  
 
@@ -69,14 +73,29 @@ padding-top: 20px;
 display: flex;
 flex-direction: column;
 align-items: flex-start;
+flex-wrap: wrap;
 gap: 16px;
+
+
+@media screen and (min-width: 834px) {
+ max-width: 780px;
+}
+
+@media screen and (min-width: 1440px) {
+  max-width: 676px;
+}
 `
 
 export const RecListTitle = styled.h2`
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
-line-height: 0.7 ;
+line-height: 1.3 ;
+
+@media screen and (min-width: 834px) {
+  font-size: 22px;
+  line-height: 1.4;
+}
 
 
 
@@ -89,7 +108,7 @@ justify-content: center;
 align-items: center;
 font-size: 16px;
 font-weight: 500;
-line-height: 0.7;
+line-height: 1.3;
 color: var(--primary-color-grey );
 &:hover,
   &:focus {
@@ -136,4 +155,32 @@ flex-wrap: wrap;
     align-items: center;
   
 }
+`
+export const Btnwrapp = styled.div`
+margin: 0 auto;
+padding: 30px 0;
+`
+
+export const SeeMoreBtn = styled.button`
+
+  background-color: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: none;
+  width: 122px;
+  height: 36px;
+  text-align: center;
+  font-weight: 500;
+  transition: background-color, var(--transition-dur-and-func);
+
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
+
+  @media screen and (min-width: 834px) {
+    width: 212px;
+  }
+
 `

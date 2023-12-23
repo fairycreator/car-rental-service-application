@@ -33,19 +33,22 @@ display: flex;
 flex-direction: column;
 align-items: flex-start;
 gap: 2px;
+
 `
 export const CardTitle = styled.h3`
 font-size: 18px;
 font-style: normal;
 font-weight: 500;
-line-height: 0.75;
-margin-bottom: 2px;
+line-height: 1.3;
+
+width: 150px;
 `
 
 export const CardCalloriesWrapper = styled.div`
 display: flex;
 align-items: flex-start;
 gap: 6px;
+width: 140px;
 `
 
 export const CardWeight = styled.p`

@@ -1,26 +1,34 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { useSelector } from 'react-redux';
-// import { selectUserToken } from '../auth/authSelectors';
 
 export const instance = axios.create({
   baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api',
 });
 
-// export const getDailyStatistics = createAsyncThunk(
-//   'dailyStatistics/getCurrent',
-//   async (_, thunkAPI) => {
-//     try {
-//       const response = await instance.get('/user/dailyStatistics');
-//       return response.data;
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const getDailyWater = createAsyncThunk(
+  'dailyWaterStatistics/getDailyWater',
+  async (_, thunkAPI) => {
+    try {
+      const { token } = thunkAPI.getState().auth;
+      instance.defaults.headers['Authorization'] = `Bearer ${token}`;
+      const response = await instance.get('/user/water-intake');
+      if (response.data.waterIntakeRecord === null) {
+        return {
+          waterIntakeRecord: {
+            value: 0,
+            _id: '',
+          },
+        };
+      }
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 export const addWater = createAsyncThunk(
-  'dailyStatistics/addWater',
+  'dailyWaterStatistics/addWater',
   async (water, thunkAPI) => {
     try {
       const { token } = thunkAPI.getState().auth;
@@ -34,7 +42,7 @@ export const addWater = createAsyncThunk(
 );
 
 export const deleteWater = createAsyncThunk(
-  'dailyStatistics/deleteWater',
+  'dailyWaterStatistics/deleteWater',
   async (_id, thunkAPI) => {
     try {
       const { token } = thunkAPI.getState().auth;
