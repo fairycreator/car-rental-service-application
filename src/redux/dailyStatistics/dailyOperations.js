@@ -12,9 +12,7 @@ export const getDailyWater = createAsyncThunk(
       const { token } = thunkAPI.getState().auth;
       instance.defaults.headers['Authorization'] = `Bearer ${token}`;
       const response = await instance.get('/user/water-intake');
-      console.log(response);
       if (response.data.waterIntakeRecord === null) {
-        console.log('lskdjkdls');
         return {
           waterIntakeRecord: {
             value: 0,
@@ -36,7 +34,6 @@ export const addWater = createAsyncThunk(
       const { token } = thunkAPI.getState().auth;
       instance.defaults.headers['Authorization'] = `Bearer ${token}`;
       const response = await instance.post('/user/water-intake', water);
-      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
