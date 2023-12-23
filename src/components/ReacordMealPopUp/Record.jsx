@@ -16,7 +16,7 @@ import {
   Title,
 } from './Reacord.styled';
 
-export const Record = () => {
+export const Record = ({ isOpen }) => {
   const iconPath = 'src/assets/images/sprite.svg';
   return (
     <BackDrop>
@@ -53,6 +53,7 @@ export const Record = () => {
         <ButtonBlock>
           <Button>Confirm</Button>
           <button
+            onClick={() => isOpen(false)}
             style={{
               textAlign: 'center',
               background: 'transparent',

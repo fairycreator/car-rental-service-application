@@ -1,4 +1,7 @@
 // import '../assets/fonts/Poppins-SemiBold.ttf';
+import { useState } from 'react';
+import { AddMore } from '../ReacordMealPopUp/Reacord.styled';
+import { Record } from '../ReacordMealPopUp/Record';
 import {
   Container,
   DesktopContainer,
@@ -8,12 +11,14 @@ import {
   MealSubscription,
   MealSubText,
   MealTitle,
+  Numeration,
   RecordMealBlock,
   Title,
   Wrapper,
 } from './Planner.styled';
 
 const Planner = () => {
+  const [isOpen, setOpen] = useState(false);
   const iconPath = 'src/assets/images/sprite.svg';
   return (
     <Container>
@@ -38,6 +43,7 @@ const Planner = () => {
         </svg>
         <Title>Diary</Title>
       </div>
+      {isOpen ? <Record isOpen={setOpen} /> : null}
       <DesktopContainer>
         <RecordMealBlock>
           <Wrapper>
@@ -59,7 +65,29 @@ const Planner = () => {
               </div>
             </MealSubscription>
           </Wrapper>
-          <MealDashbord style={{ marginTop: '20px' }} />
+          <MealDashbord style={{ marginTop: '20px' }}>
+            <Numeration>1</Numeration>
+            <div
+              style={{
+                width: '170px',
+                flexDirection: 'row-reverse',
+                display: 'flex',
+                gap: '8px',
+              }}
+            >
+              <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
+              <svg
+                style={{
+                  display: 'inline-block',
+                  width: '20px',
+                  height: ' 20px',
+                  fill: 'white',
+                }}
+              >
+                <use href={`${iconPath}#icon-add-converted`}></use>
+              </svg>
+            </div>
+          </MealDashbord>
         </RecordMealBlock>
         <RecordMealBlock>
           <Wrapper>

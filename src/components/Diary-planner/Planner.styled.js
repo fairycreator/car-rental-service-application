@@ -86,6 +86,9 @@ export const MealSubText = styled.p`
 `;
 
 export const MealDashbord = styled.div`
+  display: flex;
+  gap: 16px;
+  padding: 16px 12px;
   height: 232px;
   background: #0f0f0f;
   /* background: #fff; */
@@ -113,4 +116,14 @@ export const DesktopContainer = styled.div`
 export const RecordMealBlock = styled.div`
   max-width: 676px;
   margin-bottom: 24px;
+`;
+
+export const Numeration = styled.p`
+  color: #fff;
+  text-align: center;
+  font-family: "Poppins600";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
 `;

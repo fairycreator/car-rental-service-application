@@ -52,7 +52,7 @@ export const RecordInputBig = styled.input`
   border: 1px solid #e3ffa8;
   background: #0f0f0f;
 
-  ::placeholder {
+  ?::placeholder {
     font-family: 'Poppins400';
     font-size: 14px;
     font-style: normal;
