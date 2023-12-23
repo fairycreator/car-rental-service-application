@@ -88,7 +88,7 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
           <Label>
             <Input
               style={{ border: getBorderColor(name.touched, name.error) }}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Password"
               value={password.value}
