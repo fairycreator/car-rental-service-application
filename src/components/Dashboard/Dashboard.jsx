@@ -23,6 +23,7 @@ import {
   PrevBtn,
   LinkBtnItem,
   LineChartsBox,
+  Scroll,
 } from './Dashboard.styled';
 
 import {
@@ -35,7 +36,7 @@ import {
 import { getMonthStatistics } from '../../redux/monthStatistics/dashboardOperations';
 import { months } from '../../helpers/dashboard/common';
 import { getAvarageValue } from '../../helpers/dashboard/getAvarageValue';
-import { getAvarageValueCalories } from '../../helpers/dashboard/getAvarageValueCalories'
+import { getAvarageValueCalories } from '../../helpers/dashboard/getAvarageValueCalories';
 import { cutQuery } from '../../helpers/dashboard/cutQuery';
 
 const date = new Date();
@@ -108,12 +109,20 @@ export const Dashboard = () => {
                   <Value> Calories </Value>
                   <Text>
                     Average value:{' '}
-                    <AverageValue>{getAvarageValueCalories(calories)} cal</AverageValue>
+                    <AverageValue>
+                      {getAvarageValueCalories(calories)} cal
+                    </AverageValue>
                   </Text>
                 </ValueWrapper>
-                <LineChartsBox>
-                  <LineChartCalories month={month} />
-                </LineChartsBox>
+                <Scroll
+                  style={{
+                    overflowX: 'auto',
+                  }}
+                >
+                  <LineChartsBox>
+                    <LineChartCalories month={month} />
+                  </LineChartsBox>
+                </Scroll>
               </ChartWrapper>
               <ChartWrapper>
                 <ValueWrapper>
@@ -123,9 +132,11 @@ export const Dashboard = () => {
                     <AverageValue>{getAvarageValue(water)} ml</AverageValue>
                   </Text>
                 </ValueWrapper>
-                <LineChartsBox>
-                  <LineChartWater month={month} />
-                </LineChartsBox>
+                <Scroll style={{ overflowX: 'auto' }}>
+                  <LineChartsBox>
+                    <LineChartWater month={month} />
+                  </LineChartsBox>
+                </Scroll>
               </ChartWrapper>
             </LineChartsWrapper>
             <ChartWrapper>

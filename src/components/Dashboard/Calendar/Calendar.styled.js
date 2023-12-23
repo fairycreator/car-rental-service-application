@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const CalendarGlobalStyles = createGlobalStyle`
-  .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper.MuiPaper-elevation {
+  .MuiPaper-root.MuiMenu-paper {
     background-color: #0F0F0F;
     border-radius: 12px;
     width: 212px;
@@ -14,8 +14,12 @@ export const CalendarGlobalStyles = createGlobalStyle`
     width: 0;
   }
 }
-  .css-6hp17o-MuiList-root-MuiMenu-list.MuiList-padding {
+  .MuiList-root {
      padding-top: 10px;
      padding-bottom: 10px;
-     background-color: #0F0F0F;
-  }`;
+  }
+
+   .MuiMenu-list {
+    background-color: #0F0F0F;
+  }
+`;

@@ -15,6 +15,8 @@ import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from '
 import { selectUsername, selectUserAvatar } from '../../redux/auth/authSelectors';
 
 const ButtonMenu = styled(Button)({
+    width: '130px',
+    justifyContent: 'flex-end',
     display: 'flex',
     gap: '4px',
     boxShadow: 'none',
@@ -78,7 +80,7 @@ export const UserInfoNav = () => {
     const handleLogout = () => {
         dispatch(logOut());
         handleCloseModal();
-    }
+    };
 
     return (
         <Container >
@@ -119,27 +121,20 @@ export const UserInfoNav = () => {
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem
-                    onClick={handleClose}
-                >
+                <MenuItem onClick={handleClose}>
                     <IconSetting>
                         <use href={`${sprite}#icon-setting-2`}></use>
                     </IconSetting>
                     <Link to='/settings'>Setting</Link></MenuItem>
                 <MenuItem
-                // onClick={handleClose} перебивало окно
                 >
                     <IconLogout>
                         <use href={`${sprite}#icon-logout`}></use>
-                    </IconLogout>
-                    {/* <Link>Log out</Link> */}
-                
-                 
+                    </IconLogout>     
                     <Link variant="outlined" onClick={handleClickOpen}>
                         Log out
                     </Link>
                 
-            
                     <Dialog
                         open={openModal}
                         onClose={handleCloseModal}
