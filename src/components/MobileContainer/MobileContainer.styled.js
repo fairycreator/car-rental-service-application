@@ -33,10 +33,6 @@ export const IconClose = styled.svg`
   }
 `;
 
-/* @media screen and (min-width: 834px) {
-    display: none;
-  } */
-
 export const MobileMenu = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,4 +47,8 @@ export const MobileMenu = styled.div`
   border-radius: 12px;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.2);
   background-color: var(--primary-color-black-two);
+`;
+
+export const DivLogo = styled.div`
+  display: flex;
 `;

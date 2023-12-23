@@ -97,6 +97,9 @@ export const ButtonSend = styled.button`
   font-family: 'Poppins500', sans-serif;
   border: none;
   transition: var(--transition-dur-and-func);
+  &:hover {
+    background-color: var(--secondary-color-yellow);
+  }
   @media screen and (min-width: 834px) {
     width: 166px;
   }
@@ -145,4 +148,30 @@ export const ButtonCancel = styled.button`
   margin-top: 12px;
   width: 300px;
   height: 36px;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+`;
+
+export const ButtonClose = styled.button`
+  background: 0 0;
+  border: none;
+  padding: 0px 0px;
+  position: absolute;
+  top: 20px;
+  right: 32px;
+`;
+
+export const IconClose = styled.svg`
+  display: none;
+  @media screen and (min-width: 834px) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    }
+  }
 `;
