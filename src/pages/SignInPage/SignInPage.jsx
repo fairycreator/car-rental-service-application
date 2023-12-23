@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import { Link } from 'react-router-dom';
 import { loginUser } from '../../redux/auth/authOperations';
-import signInSchema from '../../schemas/signInSchema';
-import sprite from '../../assets/images/sprite.svg';
+import { signInSchema } from '../../schemas/signInSchema';
+import validateEmail from '../../schemas/validateEmail';
 import {
   Wrapper,
   Content,
@@ -18,12 +18,8 @@ import {
   Input,
   WrapForm,
   ErrorDivStyled,
-  // SvgIconEye,
   ForgotPasswordText,
-  // SvgIconCheckBox,
-  // WrapperError,
   LabelWrap,
-  // IconWrapped,
   NavLinkStyled,
   Checkbox,
 } from './SignIn.styled';
@@ -36,75 +32,72 @@ const initialValues = {
 };
 
 const SignInForm = () => {
-  const [toggleIcon, setToggleIcon] = useState(`${sprite}#icon-eye-off`);
-  const [type, setType] = useState('password');
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (values, actions) => {
     dispatch(loginUser(values));
-    actions.setSubmitting(false);
     actions.resetForm();
   };
 
-  // const togglePassInput = () => {
-  //   setType((prevType) => (prevType === 'password' ? 'text' : 'password'));
-  //   setToggleIcon((prevIcon) =>
-  //     prevIcon === `${sprite}#icon-eye-off`
-  //       ? `${sprite}#icon-eye`
-  //       : `${sprite}#icon-eye-off`
-  //   );
-  // };
-
-  const passwordToggle = () => {
-    const svgIcon = document.getElementById('myInput');
-    if (svgIcon.type === 'password') {
-      svgIcon.type = 'text';
-    } else {
-      svgIcon.type = 'password';
-    }
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={signInSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched }) => (
-        <Form autoComplete="off">
-          <WrapForm>
-            <LabelWrap>
-              <Input type="email" name="email" placeholder="Email" />
+      {({ errors, touched }) => {
+        const borderEmailColor = touched.email
+          ? errors.email
+            ? '1px solid #e74a3b'
+            : '1px solid #3cbc81'
+          : '1px solid var(--primary-color-green-lite)';
+        const borderPasswordColor = touched.password
+          ? errors.password
+            ? '1px solid #e74a3b'
+            : '1px solid #3cbc81'
+          : '1px solid var(--primary-color-green-lite)';
+
+        return (
+          <Form autoComplete="off">
+            <WrapForm>
+              <LabelWrap>
+                <Input
+                  $border={borderEmailColor}
+                  type="text"
+                  name="email"
+                  validate={validateEmail}
+                  placeholder="Email"
+                />
+              </LabelWrap>
               <ErrorDivStyled>
                 {touched.email && errors.email && errors.email}
               </ErrorDivStyled>
-            </LabelWrap>
-            <LabelWrap>
-              <Input
-                type="password"
-                name="password"
-                placeholder="Password"
-                id="myInput"
-                onChange={(e) => password.onChange(e)}
-                onBlur={(e) => password.onBlur(e)}
-                autoComplete="off"
-              />
-              {/* <IconWrapped onClick={togglePassInput}>
-                <SvgIconEye>
-                  <use xlinkHref={toggleIcon} />
-                </SvgIconEye>
-              </IconWrapped> */}
-              <Checkbox type="checkbox" onChange={passwordToggle} />
+              <LabelWrap>
+                <Input
+                  $border={borderPasswordColor}
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  autoComplete="off"
+                />
+                <Checkbox type="checkbox" onChange={togglePasswordVisibility} />
+              </LabelWrap>
               <ErrorDivStyled>
                 {touched.password && errors.password && errors.password}
               </ErrorDivStyled>
-            </LabelWrap>
-            <NextButton type="submit">Sign In</NextButton>
-            <Link to="/forgot-password">
-              <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
-            </Link>
-          </WrapForm>
-        </Form>
-      )}
+              <NextButton type="submit">Sign In</NextButton>
+              <Link to="/forgot-password">
+                <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
+              </Link>
+            </WrapForm>
+          </Form>
+        );
+      }}
     </Formik>
   );
 };
