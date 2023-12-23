@@ -11,7 +11,7 @@ import {
 const monthStatisticsInitialState = {
   colories: [],
   water: [],
-  waight: [],
+  weight: [],
   isLoading: false,
   error: null,
 };

@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +11,10 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+
 import { selectCaloriesMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
-import { useSelector } from 'react-redux';
+import { printChart } from '../../../helpers/dashboard/printChart';
+
 
 ChartJS.register(
   CategoryScale,
@@ -23,17 +26,6 @@ ChartJS.register(
   Filler,
   Legend
 );
-
-const date = new Date();
-const currentYear = date.getFullYear();
-const currentMonth = date.getMonth() + 1;
-const currentDay = date.getDate();
-
-function getDaysInMonth(year, month) {
-  return new Date(year, month, 0).getDate();
-}
-const daysInMonth = getDaysInMonth(currentYear, currentMonth);
-console.log(daysInMonth);
 
 const options = {
   elements: {
@@ -120,34 +112,12 @@ const options = {
   },
 };
 
-export const LineChartCalories = () => {
+export const LineChartCalories = ({ month }) => {
   const caloriesFromBack = useSelector(selectCaloriesMonthStatistics);
-  let labels = [];
-  let calories = [];
-  let zeroCalories = 0;
-  const arrDayFromBack = caloriesFromBack?.flatMap((item) =>
-    new Date(item.date).getDate()
-  );
+  const newArrOfCalories = printChart(caloriesFromBack, month);
+  const labels = newArrOfCalories.labels;
+  const calories = newArrOfCalories.values;
 
-    for (let i = 0; i < daysInMonth; i++) {
-      if (caloriesFromBack) {
-        if (arrDayFromBack.includes(i + 1)) {
-          let item = caloriesFromBack?.find(
-            (item) => new Date(item.date).getDate() === i + 1
-          );
-          calories.push(item.value);
-        } else {
-          calories.push(zeroCalories);
-        }
-        labels.push(i + 1);
-      } else {
-        calories.push(zeroCalories);
-        labels.push(i + 1);
-      }
-    }
-    if (caloriesFromBack?.length === 0) {
-      calories = null;
-    }
   return (
     <Line
       options={options}

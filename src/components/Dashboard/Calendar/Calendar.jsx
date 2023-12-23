@@ -3,23 +3,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { CalendarGlobalStyles } from './Calendar.styled';
-import { theme } from '../../../GlobalStyle';
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import { theme } from '../../../GlobalStyle';
+import { CalendarGlobalStyles } from './Calendar.styled';
+import { months } from '../../../helpers/dashboard/common';
+
 
 const NewIcon = (props) => (
   <svg {...props} width="16" height="16" fill="red" viewBox="0 0 32 32">

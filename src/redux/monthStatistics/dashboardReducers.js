@@ -6,7 +6,6 @@ export const handleFulfilledGetMonthStatistics = (state, { payload }) => {
   state.calories = payload.caloriesMonth;
   state.water = payload.waterMonth;
   state.weight = payload.weightMonth;
-  console.log('state.calories ', state.calories);
   state.isLoading = false;
   state.error = '';
 };
@@ -17,7 +16,9 @@ export const handleRejected = (state, { payload }) => {
 };
 
 // export const handleStatisticsLogoutFulfilled = (state) => {
-//   state.items = [];
+//   state.calories = [];
+//   state.water = [];
+//   state.weight = [];
 //   state.isLoading = false;
 //   state.error = '';
 // };

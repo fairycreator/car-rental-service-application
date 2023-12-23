@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,8 +11,9 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { useSelector } from 'react-redux';
+
 import { selectWaterMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
+import { printChart } from '../../../helpers/dashboard/printChart';
 
 ChartJS.register(
   CategoryScale,
@@ -23,17 +25,6 @@ ChartJS.register(
   Filler,
   Legend
 );
-
-const date = new Date();
-const currentYear = date.getFullYear();
-const currentMonth = date.getMonth() + 1;
-const currentDay = date.getDate();
-
-function getDaysInMonth(year, month) {
-  return new Date(year, month, 0).getDate();
-}
-const daysInMonth = getDaysInMonth(currentYear, currentMonth);
-console.log(daysInMonth);
 
 const options = {
   elements: {
@@ -126,35 +117,12 @@ for (let i = 0; i < 31; i++) {
   labels.push(i + 1);
 }
 
-export const LineChartWater = () => {
+export const LineChartWater = ({ month }) => {
   const waterFromBack = useSelector(selectWaterMonthStatistics);
-  console.log('waterFromBack', waterFromBack);
-  let labels = [];
-  let water = [];
-  let zeroWater = 0;
-  const arrDayFromBack = waterFromBack?.flatMap((item) =>
-    new Date(item.date).getDate()
-  );
+  const newArrOfWater = printChart(waterFromBack, month);
+  const labels = newArrOfWater.labels;
+  const water = newArrOfWater.values;
 
-  for (let i = 0; i < daysInMonth; i++) {
-    if (waterFromBack) {
-      if (arrDayFromBack.includes(i + 1)) {
-        let item = waterFromBack?.find(
-          (item) => new Date(item.date).getDate() === i + 1
-        );
-        water.push(item.value);
-      } else {
-        water.push(zeroWater);
-      }
-      labels.push(i + 1);
-    } else {
-      water.push(zeroWater);
-      labels.push(i + 1);
-    }
-  }
-   if (waterFromBack?.length === 0) {
-     water = null;
-   }
   return (
     <Line
       options={options}
