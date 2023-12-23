@@ -48,3 +48,14 @@ export const deleteWater = createAsyncThunk(
     }
   }
 );
+
+export const addFood = createAsyncThunk(
+  'dailyStatisticsFood/addFood',
+  async (food, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
+
+    const response = await instance.post('/user/food-intake', food);
+    return response.data;
+  }
+);

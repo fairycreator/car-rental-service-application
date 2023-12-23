@@ -121,9 +121,10 @@ export const RecordMealBlock = styled.div`
 export const Numeration = styled.p`
   color: #fff;
   text-align: center;
-  font-family: "Poppins600";
+  font-family: 'Poppins600';
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 20px; /* 142.857% */
+ 
 `;

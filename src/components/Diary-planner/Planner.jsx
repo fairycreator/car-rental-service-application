@@ -20,6 +20,7 @@ import {
 const Planner = () => {
   const [isOpen, setOpen] = useState(false);
   const iconPath = 'src/assets/images/sprite.svg';
+  const [foodType, setFoodType] = useState('');
   return (
     <Container>
       <div
@@ -43,7 +44,7 @@ const Planner = () => {
         </svg>
         <Title>Diary</Title>
       </div>
-      {isOpen ? <Record isOpen={setOpen} /> : null}
+      {isOpen ? <Record isOpen={setOpen} type={foodType} /> : null}
       <DesktopContainer>
         <RecordMealBlock>
           <Wrapper>
@@ -65,7 +66,10 @@ const Planner = () => {
               </div>
             </MealSubscription>
           </Wrapper>
-          <MealDashbord style={{ marginTop: '20px' }}>
+          <MealDashbord
+            style={{ marginTop: '20px' }}
+            onClick={() => setFoodType('breakfast')}
+          >
             <Numeration>1</Numeration>
             <div
               style={{
@@ -73,6 +77,7 @@ const Planner = () => {
                 flexDirection: 'row-reverse',
                 display: 'flex',
                 gap: '8px',
+                maxHeight: '20px',
               }}
             >
               <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
@@ -93,7 +98,7 @@ const Planner = () => {
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
               <MealImage src="src/assets/images/Lunch.png" />
-              <MealTitle>Breakfast</MealTitle>
+              <MealTitle>Dinner</MealTitle>
             </MealContainer>
             <MealSubscription>
               <MealSubText>Carbonohidrates: 11.2</MealSubText>
@@ -109,13 +114,39 @@ const Planner = () => {
               </div>
             </MealSubscription>
           </Wrapper>
-          <MealDashbord style={{ marginTop: '20px' }} />
+          <MealDashbord
+            style={{ marginTop: '20px' }}
+            onClick={() => setFoodType('lunch')}
+          >
+              <Numeration>1</Numeration>
+            <div
+              style={{
+                width: '170px',
+                flexDirection: 'row-reverse',
+                display: 'flex',
+                gap: '8px',
+                maxHeight: '20px',
+              }}
+            >
+              <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
+              <svg
+                style={{
+                  display: 'inline-block',
+                  width: '20px',
+                  height: ' 20px',
+                  fill: 'white',
+                }}
+              >
+                <use href={`${iconPath}#icon-add-converted`}></use>
+              </svg>
+            </div>
+          </MealDashbord>
         </RecordMealBlock>
         <RecordMealBlock>
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
               <MealImage src="src/assets/images/Dinner.png" />
-              <MealTitle>Breakfast</MealTitle>
+              <MealTitle>Lunch</MealTitle>
             </MealContainer>
             <MealSubscription>
               <MealSubText>Carbonohidrates: 11.2</MealSubText>
@@ -131,13 +162,39 @@ const Planner = () => {
               </div>
             </MealSubscription>
           </Wrapper>
-          <MealDashbord style={{ marginTop: '20px' }} />
+          <MealDashbord
+            style={{ marginTop: '20px' }}
+            onClick={() => setFoodType('dinenr')}
+          >
+              <Numeration>1</Numeration>
+            <div
+              style={{
+                width: '170px',
+                flexDirection: 'row-reverse',
+                display: 'flex',
+                gap: '8px',
+                maxHeight: '20px',
+              }}
+            >
+              <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
+              <svg
+                style={{
+                  display: 'inline-block',
+                  width: '20px',
+                  height: ' 20px',
+                  fill: 'white',
+                }}
+              >
+                <use href={`${iconPath}#icon-add-converted`}></use>
+              </svg>
+            </div>
+          </MealDashbord>
         </RecordMealBlock>
         <RecordMealBlock>
           <Wrapper>
             <MealContainer style={{ alignItems: 'center' }}>
               <MealImage src="src/assets/images/Snack.png" />
-              <MealTitle>Breakfast</MealTitle>
+              <MealTitle>Sneak</MealTitle>
             </MealContainer>
             <MealSubscription>
               <MealSubText>Carbonohidrates: 11.2</MealSubText>
@@ -153,7 +210,31 @@ const Planner = () => {
               </div>
             </MealSubscription>
           </Wrapper>
-          <MealDashbord style={{ marginTop: '20px' }} />
+          <MealDashbord
+            style={{ marginTop: '20px' }}
+            onClick={() => setFoodType('snack')}
+          >  <Numeration>1</Numeration>
+          <div
+            style={{
+              width: '170px',
+              flexDirection: 'row-reverse',
+              display: 'flex',
+              gap: '8px',
+              maxHeight: '20px',
+            }}
+          >
+            <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
+            <svg
+              style={{
+                display: 'inline-block',
+                width: '20px',
+                height: ' 20px',
+                fill: 'white',
+              }}
+            >
+              <use href={`${iconPath}#icon-add-converted`}></use>
+            </svg>
+          </div></MealDashbord>
         </RecordMealBlock>
       </DesktopContainer>
     </Container>
