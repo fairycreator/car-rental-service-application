@@ -56,7 +56,7 @@ const ButtonList = styled(Button)({
   color: '#0F0F0F',
   fontFamily: 'Poppins500',
   '&:hover': {
-    backgroundColor: '#E3FFA8',
+    backgroundColor: '#FFF3B7',
     border: 'transparent',
   },
   [theme.breakpoints.down('tablet')]: {
