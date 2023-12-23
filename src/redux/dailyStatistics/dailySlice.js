@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { getCurrentStatistics } from './dailyOperations';
-import { addWater, deleteWater } from './dailyOperations';
+import { getDailyWater, addWater, deleteWater } from './dailyOperations';
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -9,14 +8,14 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-  console.log(action.payload);
 };
 
-// const handleGetCurrentFulfilled = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.consumedFood = action.payload;
-// };
+const handleGetDailyWaterFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.consumedWater.value = action.payload.waterIntakeRecord.value;
+  state.consumedWater._id = action.payload.waterIntakeRecord._id;
+};
 
 const handleAddWaterFulfilled = (state, action) => {
   state.isLoading = false;
@@ -35,36 +34,24 @@ const handleDeleteWaterFulfilled = (state) => {
   };
 };
 
-const consumedFood = {
-  totalCalories: 0,
-  totalCarbs: 0,
-  totalProtein: 0,
-  totalFat: 0,
-  breakfast: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
-  lunch: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
-  dinner: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
-  snack: [{ name: '', carbs: 0, protein: 0, fat: 0, calories: 0 }],
-};
-
 const initialState = {
   consumedWater: {
     value: 0,
     _id: '',
   },
-  consumedFood,
   isLoading: false,
   error: null,
 };
 
-const dailyStatisticsSlice = createSlice({
-  name: 'dailyStatistics',
+const dailyWaterStatisticsSlice = createSlice({
+  name: 'dailyWaterStatistics',
   initialState,
 
   extraReducers: (builder) =>
     builder
-      // .addCase(getCurrentStatistics.pending, handlePending)
-      // .addCase(getCurrentStatistics.fulfilled, handleGetCurrentFulfilled)
-      // .addCase(getCurrentStatistics.rejected, handleRejected)
+      .addCase(getDailyWater.pending, handlePending)
+      .addCase(getDailyWater.fulfilled, handleGetDailyWaterFulfilled)
+      .addCase(getDailyWater.rejected, handleRejected)
       .addCase(addWater.pending, handlePending)
       .addCase(addWater.fulfilled, handleAddWaterFulfilled)
       .addCase(addWater.rejected, handleRejected)
@@ -73,4 +60,4 @@ const dailyStatisticsSlice = createSlice({
       .addCase(deleteWater.rejected, handleRejected),
 });
 
-export const dailyStatisticsReducer = dailyStatisticsSlice.reducer;
+export const dailyWaterStatisticsReducer = dailyWaterStatisticsSlice.reducer;
