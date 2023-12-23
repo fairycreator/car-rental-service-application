@@ -2,75 +2,190 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 
 export const HealthWrapper = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #000; // Assuming a black background as in the image
-  color: #fff; // White text color
-  height: 100vh; // Full viewport height
-  padding: 20px;
+
+  @media screen and (min-width: 834px) {
+    padding: 10px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    margin: 0 auto;
+    flex-direction: row;
+    gap: 104px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 72px;
+  }
 `;
 
 export const Image = styled.img`
-  max-width: 100%;
-  margin-bottom: 2rem; // Space below the image
+  height: 296px;
+  width: 300px;
+  background: transparent;
+
+  @media screen and (min-width: 834px) {
+    width: 380px;
+    height: 376px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 592px;
+    height: 588px;
+  }
 `;
 
 export const HealthContent = styled.div`
-  width: 100%;
-  max-width: 320px; // Container max width
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+
+  @media screen and (min-width: 834px) {
+    align-items: center;
+    gap: 80px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding-top: 80px;
+    align-items: flex-start;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 2rem; // Title font size
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 0.5rem;
+  color: var(--color-primary-white, #fff);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  margin-top: 24px;
+
+  @media screen and (min-width: 834px) {
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.2;
+    margin-top: 60px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    text-align: start;
+  }
 `;
 
 export const Subtitle = styled.p`
-  font-size: 1rem; // Subtitle font size
-  text-align: center;
-  margin-bottom: 2rem; // Space above the form fields
+  color: var(--color-primary-gray, #b6b6b6);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-bottom: 24px;
+
+  @media screen and (min-width: 834px) {
+    width: 444px;
+    text-align: center;
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  @media screen and (min-width: 1440px) {
+    text-align: start;
+  }
 `;
 
 export const FormLabel = styled.label`
-  font-size: 1rem; // Label font size
-  margin-bottom: 0.5rem;
+  color: var(--primary-color-white, #fff);
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 500;
 `;
 
 export const InputStyled = styled(Field)`
-  background-color: #222; // Input background
-  border: none;
-  border-radius: 4px;
-  color: #fff; // Input text color
-  margin-bottom: 1rem; // Space between inputs
-  padding: 0.5rem;
+  position: relative;
   width: 100%;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--color-primary-green-lite, #e3ffa8);
+  background: var(--color-primary-black-2, #0f0f0f);
+  color: var(--primary-color-grey, #b6b6b6);
+  font-size: 14px;
+  line-height: 1.43;
+  margin-top: 12px;
+  margin-bottom: 24px;
+
+  &.inputError {
+    border: 2px solid #e74a3b;
+  }
+
+  &.inputValid {
+    border: 2px solid #3cbc81;
+  }
 
   &::placeholder {
-    color: #555; // Placeholder text color
+    color: var(--color-primary-grey);
+    font-size: 14px;
+    line-height: 1.43;
   }
 `;
 
 export const NextButton = styled.button`
-  background-color: var(
-    --primary-color-green-lite
-  ); // Bright green color for the button
-  color: #000; // Text color for button
-  border: none;
-  border-radius: 4px;
-  padding: 0.5rem;
-  font-weight: bold;
+  display: block;
   width: 100%;
-  margin-bottom: 1rem; // Space below the button
+  padding: 8px 10px;
+  margin-top: 16px;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  background: var(--color-primary-green-lite, #e3ffa8);
+  color: var(--color-primary-black-2, #0f0f0f);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
+
+  @media screen and (min-width: 834px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
 `;
 
 export const BackButton = styled.button`
-  background: none;
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 20px;
+  border-radius: 12px;
   border: none;
-  color: #fff; // Text color as in the design
-  font-size: 1rem;
-  margin-top: 1rem;
+  text-decoration: none;
+  background: transparent;
+  color: #b6b6b6;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
+
+  @media screen and (min-width: 834px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
 `;

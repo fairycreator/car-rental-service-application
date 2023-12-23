@@ -14,10 +14,9 @@ import { authReducer } from './auth/authSlice';
 
 import { recReducer } from './recomendedFoods/recSlice';
 
-import { dailyStatisticsReducer } from './dailyStatistics/dailySlice';
+import { dailyWaterStatisticsReducer } from './dailyStatistics/dailySlice';
 
 import { monthStatisticsReducer } from './monthStatistics/dashboardStatisticsSlice';
-
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,7 +30,7 @@ export const store = configureStore({
 
     recommendedFoods: recReducer,
 
-    dailyStatistics: dailyStatisticsReducer,
+    dailyWaterStatistics: dailyWaterStatisticsReducer,
 
     monthStatistics: monthStatisticsReducer,
   },

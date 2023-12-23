@@ -32,7 +32,6 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
         <Form onSubmit={onForm}>
           <Label>
             <Input
-              // className={cssValidName(name)}
               type="text"
               name="name"
               placeholder="Name"
@@ -45,7 +44,6 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
           </Label>
           <Label>
             <Input
-              // className={cssValidEmail(email)}
               type="email"
               name="email"
               placeholder="E-mail"
@@ -58,7 +56,6 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
           </Label>
           <Label>
             <Input
-              // className={cssValidPassword(password)}
               type="password"
               name="password"
               placeholder="Password"
