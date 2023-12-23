@@ -19,24 +19,24 @@ import {
 const WelcomePage = () => {
   return (
     <Container>
-      <Image src={image} alt="Activity trtacker" />
+      <Image src={image} alt="Activity tracker" />
       <MainContent>
         <TittleButtonWrap>
           <TittleWrap>
-        <Title>Set goals and achieve them</Title>
-        <Description>
-          The service will help you set goals and follow them.
+            <Title>Set goals and achieve them</Title>
+            <Description>
+              The service will help you set goals and follow them.
             </Description>
-            </TittleWrap>
-        <Buttons>
-          <Link to="/signin">
-            <WelcomePrimaryBtn>Sign in</WelcomePrimaryBtn>
-          </Link>
-          <Link to="/signup">
-            <WelcomeOutlinedBtn>Sign up</WelcomeOutlinedBtn>
-          </Link>
+          </TittleWrap>
+          <Buttons>
+            <Link to="/signin">
+              <WelcomePrimaryBtn>Sign in</WelcomePrimaryBtn>
+            </Link>
+            <Link to="/signup">
+              <WelcomeOutlinedBtn>Sign up</WelcomeOutlinedBtn>
+            </Link>
           </Buttons>
-          </TittleButtonWrap>
+        </TittleButtonWrap>
         <FeatureList>
           <FeatureItem>Set goals</FeatureItem>
           <FeatureItem>Watch your calories</FeatureItem>
