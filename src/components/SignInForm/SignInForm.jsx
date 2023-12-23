@@ -7,7 +7,7 @@ import {
   SignInButton,
   InputStyled,
   WrapForm,
-  ErrorDivStyled,
+  ErrorMsg,
   SvgIconEye,
   WrapperError,
   LabelWrap,
@@ -69,11 +69,11 @@ const SignInForm = () => {
               {(errors.email && touched.email) ||
               (!errors.email && touched.email) ? (
                 <WrapperError>
-                  <ErrorDivStyled
+                  <ErrorMsg
                     color={!errors.email && touched.email ? '#3cbc81' : null}
                   >
                     {errors.email ? errors.email : 'Email is valid'}
-                  </ErrorDivStyled>
+                  </ErrorMsg>
                 </WrapperError>
               ) : null}
 
@@ -93,13 +93,13 @@ const SignInForm = () => {
               {(errors.password && touched.password) ||
               (!errors.password && touched.password) ? (
                 <WrapperError>
-                  <ErrorDivStyled
+                  <ErrorMsg
                     color={
                       !errors.password && touched.password ? '#3cbc81' : null
                     }
                   >
                     {errors.password ? errors.password : 'Password is secure'}
-                  </ErrorDivStyled>
+                  </ErrorMsg>
                 </WrapperError>
               ) : null}
             </WrapForm>

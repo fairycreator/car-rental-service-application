@@ -3,6 +3,16 @@ import { NavLink } from 'react-router-dom';
 import iconeye from '../../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 
+const colors = {
+  text: '#FFFFFF',
+  inputBorder: '#45FFBC',
+  inputBorderHover: '#21CE99',
+  error: '#e74a3b',
+  success: '#3cbc81',
+  background: 'transparent',
+  iconStroke: '#FFFFFF',
+};
+
 //SignUpPageComponent
 export const SignUpContainer = styled.div`
   margin: 0 auto;
@@ -297,4 +307,31 @@ export const ForgotPasswordText = styled.p`
   @media screen and (min-width: 1440px) {
     margin-top: 20px;
   }
+`;
+
+//Errror
+export const ErrorMsg = styled.div`
+  color: ${(props) => props.color || colors.error};
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  margin-top: -10px;
+  margin-left: 9px;
+`;
+
+//Toggle
+export const SvgIconEye = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: ${colors.iconStroke};
+  cursor: pointer;
+`;
+
+export const IconWrapped = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  display: flex;
+  align-items: center;
 `;

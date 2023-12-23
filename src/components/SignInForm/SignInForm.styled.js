@@ -37,7 +37,7 @@ export const InputStyled = styled(Field)`
   }
 `;
 
-export const ErrorDivStyled = styled.div`
+export const ErrorMsg = styled.div`
   color: ${(props) => props.color || colors.error};
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
