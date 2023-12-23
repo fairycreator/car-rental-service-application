@@ -244,6 +244,7 @@ export const ForgotPasswordText = styled.p`
 
   @media screen and (min-width: 1440px) {
     margin-top: 20px;
+    width: 212px;
   }
 `;
 
@@ -280,6 +281,7 @@ export const LabelWrap = styled.label`
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
+  width: 192;
 `;
 
 export const IconWrapped = styled.div`
