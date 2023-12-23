@@ -115,7 +115,7 @@ const options = {
 export const LineChartCalories = ({ month }) => {
   const caloriesFromBack = useSelector(selectCaloriesMonthStatistics);
   const newArrOfCalories = printChart(caloriesFromBack, month);
-  const labels = newArrOfCalories.labels;
+  const labels = newArrOfCalories.days;
   const calories = newArrOfCalories.values;
 
   return (

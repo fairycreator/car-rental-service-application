@@ -1,57 +1,22 @@
+import { useSelector } from 'react-redux';
+
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 
-import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
-import { useSelector } from 'react-redux';
-import { selectWeightMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
 import { theme } from '../../../GlobalStyle';
+import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
 
+import { selectWeightMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
+import { printTable } from '../../../helpers/dashboard/printTable';
 
-const date = new Date();
-const currentYear = date.getFullYear();
-const currentMonth = date.getMonth() + 1; 
-const currentDay = date.getDate();
-
-function getDaysInMonth(year, month) {
-  return new Date(year, month, 0).getDate();
-}
-const daysInMonth = getDaysInMonth(currentYear, currentMonth);
-console.log(daysInMonth);
-
-
-export const WeightTable = () => {
+export const WeightTable = ({ month }) => {
   const weightFromBack = useSelector(selectWeightMonthStatistics);
-  let days = [];
-  let weight = [];
-  
-  const arrDayFromBack = weightFromBack?.flatMap((item) =>
-    new Date(item.date).getDate()
-  );
-  let prevWeight = 0;
-  if (weightFromBack?.length > 0) {
-  prevWeight = weightFromBack[0].value;
-}
-  
-  for (let i = 0; i < daysInMonth; i++) {
-    if (weightFromBack) {
-      if (arrDayFromBack.includes(i + 1)) {
-        let item = weightFromBack?.find(
-          (item) => new Date(item.date).getDate() === i + 1
-        );
-        weight.push(item.value);
-        prevWeight = item.value;
-      } else {
-        weight.push(prevWeight);
-        //  weight.push(' ');
-      }
-      days.push(i + 1);
-    } else {
-      weight.push(prevWeight);
-      days.push(i + 1);
-    }
-  }
+  const newArrOfWeight = printTable(weightFromBack, month);
+  let days = newArrOfWeight.days;
+  let weight = newArrOfWeight.values;
+
   return (
     <>
       <TableContainer
@@ -71,9 +36,6 @@ export const WeightTable = () => {
           '&::-webkit-scrollbar': {
             height: '8px',
           },
-          // '&::-webkit-scrollbar-track': {
-          //   '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)',
-          // },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgb(255, 255, 255, 0.1)',
             outline: '1px solid rgb(255, 255, 255, 0.1)',

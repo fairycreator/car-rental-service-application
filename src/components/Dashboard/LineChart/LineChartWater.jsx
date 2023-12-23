@@ -120,7 +120,7 @@ for (let i = 0; i < 31; i++) {
 export const LineChartWater = ({ month }) => {
   const waterFromBack = useSelector(selectWaterMonthStatistics);
   const newArrOfWater = printChart(waterFromBack, month);
-  const labels = newArrOfWater.labels;
+  const labels = newArrOfWater.days;
   const water = newArrOfWater.values;
 
   return (
