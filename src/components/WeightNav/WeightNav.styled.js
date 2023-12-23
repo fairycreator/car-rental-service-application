@@ -97,6 +97,9 @@ export const ButtonSend = styled.button`
   font-family: 'Poppins500', sans-serif;
   border: none;
   transition: var(--transition-dur-and-func);
+  &:hover {
+    background-color: var(--secondary-color-yellow);
+  }
   @media screen and (min-width: 834px) {
     width: 166px;
   }
