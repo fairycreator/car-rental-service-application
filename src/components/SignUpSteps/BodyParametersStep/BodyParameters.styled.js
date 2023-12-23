@@ -30,12 +30,10 @@ export const Image = styled.img`
   height: 296px;
   width: 300px;
   background: transparent;
-  margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
     height: 376px;
-    margin-bottom: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -66,11 +64,13 @@ export const Title = styled.h1`
   font-weight: 500;
   line-height: 1.25;
   margin-bottom: 16px;
+  margin-top: 24px;
 
   @media screen and (min-width: 834px) {
     text-align: center;
     font-size: 30px;
     line-height: 1.2;
+    margin-top: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -98,8 +98,10 @@ export const Subtitle = styled.p`
 `;
 
 export const FormLabel = styled.label`
-  font-size: 1rem; // Label font size
-  margin-bottom: 0.5rem;
+  color: var(--primary-color-white, #fff);
+  font-size: 14px;
+  line-height: 1.43;
+  font-weight: 500;
 `;
 
 export const InputStyled = styled(Field)`
@@ -112,6 +114,8 @@ export const InputStyled = styled(Field)`
   color: var(--primary-color-grey, #b6b6b6);
   font-size: 14px;
   line-height: 1.43;
+  margin-top: 12px;
+  margin-bottom: 24px;
 
   &.inputError {
     border: 2px solid #e74a3b;
@@ -132,7 +136,7 @@ export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 20px;
+  margin-top: 16px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
@@ -158,12 +162,30 @@ export const NextButton = styled.button`
 `;
 
 export const BackButton = styled.button`
+  display: block;
   width: 100%;
-  text-align: center;
+  padding: 8px 10px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  background: transparent;
   color: #b6b6b6;
+  text-align: center;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word;
+  font-weight: 500;
+  line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
+
+  @media screen and (min-width: 834px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
 `;

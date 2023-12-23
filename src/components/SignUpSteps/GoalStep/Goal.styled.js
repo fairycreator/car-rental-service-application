@@ -29,12 +29,10 @@ export const Image = styled.img`
   height: 296px;
   width: 300px;
   background: transparent;
-  margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
     height: 376px;
-    margin-bottom: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -64,11 +62,13 @@ export const GoalTitle = styled.h1`
   font-weight: 500;
   line-height: 1.25;
   margin-bottom: 16px;
+  margin-top: 24px;
 
   @media screen and (min-width: 834px) {
     text-align: center;
     font-size: 30px;
     line-height: 1.2;
+    margin-top: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -98,13 +98,13 @@ export const GoalSubtitle = styled.p`
 export const RadioWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px; // Adjust the spacing as needed
+  margin-bottom: 20px;
 `;
 
 export const RadioLabel = styled.label`
   margin-bottom: 1rem;
-  font-size: 1rem; // Adjust the font size as needed
-  line-height: 1.5; // Adjust the line height as needed
+  font-size: 1rem;
+  line-height: 1.5;
   display: flex;
   align-items: center;
 `;
@@ -139,12 +139,30 @@ export const NextButton = styled.button`
 `;
 
 export const BackButton = styled.button`
+  display: block;
   width: 100%;
-  text-align: center;
+  padding: 8px 10px;
+  margin-top: 20px;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  background: transparent;
   color: #b6b6b6;
+  text-align: center;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  line-height: 20px;
-  word-wrap: break-word;
+  font-weight: 500;
+  line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
+
+  @media screen and (min-width: 834px) {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
 `;
