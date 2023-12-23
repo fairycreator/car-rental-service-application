@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
@@ -24,7 +23,7 @@ import {
   // SvgIconCheckBox,
   // WrapperError,
   LabelWrap,
-  IconWrapped,
+  // IconWrapped,
   NavLinkStyled,
 } from './SignIn.styled';
 
@@ -72,11 +71,11 @@ const SignInForm = () => {
             </LabelWrap>
             <LabelWrap>
               <Input type={type} name="password" placeholder="Password" />
-              <IconWrapped onClick={togglePassInput}>
+              {/* <IconWrapped onClick={togglePassInput}>
                 <SvgIconEye>
                   <use xlinkHref={toggleIcon} />
                 </SvgIconEye>
-              </IconWrapped>
+              </IconWrapped> */}
               <ErrorDivStyled>
                 {touched.password && errors.password && errors.password}
               </ErrorDivStyled>
@@ -95,8 +94,8 @@ const SignInForm = () => {
 const SignIn = () => {
   return (
     <Wrapper>
+      <Image src={image} alt="Activity tracker" />
       <Content>
-        <Image src={image} alt="Activity tracker" />
         <SignUpBox>
           <Title>Sign in</Title>
           <Subtitle>You need to login to use the service</Subtitle>

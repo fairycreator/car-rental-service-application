@@ -3,6 +3,21 @@ import { NavLink } from 'react-router-dom';
 import iconeye from '../../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 
+//SignUpPageComponent
+export const SignUpContainer = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--primary-color-black-one);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+`;
+
 // Wrapper
 export const Wrapper = styled.div`
   display: flex;
@@ -134,9 +149,9 @@ export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 40px;
-  margin-bottom: 47px;
+  margin-top: 20px;
   border-radius: 12px;
+  border: none;
   text-decoration: none;
   background: var(--color-primary-green-lite, #e3ffa8);
   color: var(--color-primary-black-2, #0f0f0f);
@@ -144,6 +159,12 @@ export const NextButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  margin-bottom: 47px;
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
 
   @media screen and (min-width: 834px) {
     width: 380px;

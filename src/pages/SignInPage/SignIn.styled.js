@@ -10,27 +10,36 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 320px;
 
   @media screen and (min-width: 834px) {
     padding: 10px;
   }
 
   @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    margin: 0 auto;
     flex-direction: row;
-    column-gap: 104px;
-    align-items: end;
-    padding-left: 116px;
-    padding-right: 116px;
+    gap: 104px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 72px;
   }
 `;
 
 export const Content = styled.div`
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+
+  @media screen and (min-width: 834px) {
+    align-items: center;
+    gap: 80px;
+  }
   @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: column;
+    padding-top: 80px;
     align-items: flex-start;
-    justify-content: space-between;
   }
 `;
 
@@ -79,8 +88,9 @@ export const Subtitle = styled.h2`
 
 // Image
 export const Image = styled.img`
-  width: 300px;
   height: 296px;
+  width: 300px;
+  background: transparent;
   margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
@@ -90,9 +100,9 @@ export const Image = styled.img`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 592px;
-    height: 588px;
-    margin-bottom: 0;
+    width: 592px; // Desktop width
+    height: 588px; // Desktop height
+    margin-right: 104px; // Add right margin if needed to separate from the form
   }
 `;
 
@@ -130,6 +140,7 @@ export const NextButton = styled.button`
   padding: 8px 10px;
   margin-top: 20px;
   border-radius: 12px;
+  border: none;
   text-decoration: none;
   background: var(--color-primary-green-lite, #e3ffa8);
   color: var(--color-primary-black-2, #0f0f0f);
@@ -137,29 +148,59 @@ export const NextButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
 
   @media screen and (min-width: 834px) {
-    width: 380px;
-    margin-bottom: 238px;
+    width: 100%;
   }
 
   @media screen and (min-width: 1440px) {
     width: 212px;
-    margin-bottom: 208px;
   }
 `;
+
+// background-color: var(--primary-color-green-lite);
+//   color: var(--primary-color-black-two);
+//   padding: 8px 10px;
+//   border-radius: 12px;
+//   border: none;
+//   width: 122px;
+//   height: 36px;
+//   text-align: center;
+//   font-weight: 500;
+//   transition: background-color, var(--transition-dur-and-func);
+
+//   &:hover,
+//   &:focus {
+//     background-color: var(--primary-color-lite-green);
+//   }
+
+//   @media screen and (min-width: 834px) {
+//     width: 212px;
+//   }
+// `;
 
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  flex-direction: column; // Stack text and link vertically
+  align-items: center; // Center align items for smaller screens
   margin-top: 54px;
+  color: var(--color-primary-grey, #b6b6b6);
+
   @media screen and (min-width: 834px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: row; // Set back to row for larger screens
+    justify-content: space-between; // Center horizontally
+    margin-top: 220px; // Increase margin-top for desktop view
+    gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 364px;
   }
 `;
 
@@ -171,7 +212,6 @@ export const Question = styled.p`
 
   @media screen and (min-width: 834px) {
     margin-bottom: 0;
-    padding-left: 42px;
   }
 `;
 
@@ -181,10 +221,18 @@ export const ForgotPasswordText = styled.p`
   display: flex;
   justify-content: center;
   margin-top: 14px;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 20px;
+  }
 `;
 
 export const WrapForm = styled.div`
   width: 100%;
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+    margin: 0;
+  }
 `;
 
 export const ErrorDivStyled = styled.div`
@@ -225,22 +273,13 @@ export const IconWrapped = styled.div`
 
 // NavLinkStyled
 export const NavLinkStyled = styled(NavLink)`
-  display: block;
-  margin-right: 0;
-  width: 60px;
-  text-decoration: none;
-  background: inherit;
   color: var(--color-primary-white, #fff);
-  text-align: start;
   font-size: 14px;
-  font-weight: 500;
   line-height: 1.43;
-
-  @media screen and (min-width: 834px) {
-    width: 192px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
+  text-decoration: none;
+  font-weight: 500;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 `;
