@@ -39,16 +39,21 @@ export const InputStyled = styled(Field)`
 
 export const ErrorDivStyled = styled.div`
   color: ${(props) => props.color || colors.error};
-  margin-top: 4px;
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
   letter-spacing: var(--main-letter-spacing);
+  margin-top: -20px;
+  margin-left: 12px;
 `;
 
 export const WrapForm = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+    margin: 0;
+  }
 `;
 
 export const SvgIconEye = styled.svg`
@@ -56,13 +61,6 @@ export const SvgIconEye = styled.svg`
   height: 16px;
   stroke: ${colors.iconStroke};
   cursor: pointer;
-`;
-
-export const SvgIconCheckBox = styled.svg`
-  width: 16px;
-  height: 16px;
-  margin-top: 4px;
-  fill: ${(props) => props.fill || colors.error};
 `;
 
 export const WrapperError = styled.div`
@@ -73,7 +71,10 @@ export const WrapperError = styled.div`
 
 export const LabelWrap = styled.label`
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 `;
 
 export const IconWrapped = styled.div`
@@ -118,13 +119,13 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 1.43;
 
-  &.inputError {
+  /* &.inputError {
     border: 2px solid #e74a3b;
   }
 
   &.inputValid {
     border: 2px solid #3cbc81;
-  }
+  } */
 
   &::placeholder {
     color: var(--color-primary-grey);
@@ -139,8 +140,8 @@ export const SignInButton = styled.button`
   width: 100%;
   padding: 8px 10px;
   margin-top: 40px;
-  margin-bottom: 47px;
   border-radius: 12px;
+  border: none;
   text-decoration: none;
   background: var(--color-primary-green-lite, #e3ffa8);
   color: var(--color-primary-black-2, #0f0f0f);
@@ -148,14 +149,17 @@ export const SignInButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
 
   @media screen and (min-width: 834px) {
-    width: 380px;
-    margin-bottom: 238px;
+    width: 100%;
   }
 
   @media screen and (min-width: 1440px) {
     width: 212px;
-    margin-bottom: 208px;
   }
 `;

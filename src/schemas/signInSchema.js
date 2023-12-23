@@ -10,5 +10,3 @@ export const signInSchema = Yup.object().shape({
     .min(6, 'Too Short!')
     .required('Required!'),
 });
-
-export default signInSchema;

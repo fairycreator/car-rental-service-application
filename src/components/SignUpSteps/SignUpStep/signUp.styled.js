@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import iconeye from '../../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 
+//SignUpPageComponent
 export const SignUpContainer = styled.div`
   margin: 0 auto;
   padding: 10px;
@@ -19,21 +20,26 @@ export const SignUpContainer = styled.div`
 
 // Wrapper
 export const Wrapper = styled.div`
+  margin: 0 auto;
+  padding: 10px;
+  background-color: var(--primary-color-black-one);
   display: flex;
-  align-items: center;
   flex-direction: column;
-  transition: width 0.5s ease;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 834px) {
-    padding: 40px 0;
+    padding: 10px;
   }
 
   @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    margin: 0 auto;
     flex-direction: row;
-    column-gap: 104px;
-    align-items: end;
-    padding-left: 116px;
-    padding-right: 116px;
+    gap: 104px;
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 72px;
   }
 `;
 
@@ -84,7 +90,7 @@ export const Subtitle = styled.h2`
   margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
-    width: 444px;
+    width: 430px;
     text-align: center;
     font-size: 22px;
     line-height: 1.45;
@@ -148,9 +154,9 @@ export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 40px;
-  margin-bottom: 47px;
+  margin-top: 20px;
   border-radius: 12px;
+  border: none;
   text-decoration: none;
   background: var(--color-primary-green-lite, #e3ffa8);
   color: var(--color-primary-black-2, #0f0f0f);
@@ -158,46 +164,47 @@ export const NextButton = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.43;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color-lite-green);
+  }
 
   @media screen and (min-width: 834px) {
-    width: 380px;
-    margin-bottom: 238px;
+    width: 100%;
   }
 
   @media screen and (min-width: 1440px) {
     width: 212px;
-    margin-bottom: 208px;
   }
 `;
 
 // NavLinkStyled
 export const NavLinkStyled = styled(NavLink)`
-  display: block;
-  width: 142px;
-  padding: 8px 10px 8px 0;
-  border-radius: 12px;
-  text-decoration: none;
-  background: inherit;
   color: var(--color-primary-white, #fff);
-  text-align: start;
   font-size: 14px;
-  font-weight: 500;
   line-height: 1.43;
-
-  @media screen and (min-width: 834px) {
-    width: 192px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
+  text-decoration: none;
+  font-weight: 500;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 `;
 
 // Content
 export const Content = styled.div`
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+
+  @media screen and (min-width: 834px) {
+    align-items: center;
+    gap: 80px;
+  }
   @media screen and (min-width: 1440px) {
-    display: flex;
-    flex-direction: column;
+    padding-top: 80px;
     align-items: flex-start;
   }
 `;
@@ -251,10 +258,21 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 54px;
+  color: var(--color-primary-grey, #b6b6b6);
+
   @media screen and (min-width: 834px) {
-    display: flex;
-    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 220px;
     gap: 16px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 364px;
   }
 `;
 
@@ -263,10 +281,20 @@ export const Question = styled.p`
   color: var(--color-primary-grey, #b6b6b6);
   font-size: 14px;
   line-height: 1.43;
-  margin-bottom: 16px;
 
   @media screen and (min-width: 834px) {
     margin-bottom: 0;
-    padding-left: 42px;
+  }
+`;
+
+export const ForgotPasswordText = styled.p`
+  line-height: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 20px;
   }
 `;

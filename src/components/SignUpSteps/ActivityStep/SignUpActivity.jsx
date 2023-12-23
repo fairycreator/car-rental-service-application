@@ -14,9 +14,7 @@ import {
 } from './Activity.styled';
 
 const activitySchema = Yup.object().shape({
-  activityLevel: Yup.string().required(
-    'Selecting an activity level is required'
-  ),
+  activity: Yup.number().required('Selecting an activity level is required'),
 });
 
 function ActivityLevel({ onBackPage, onForm }) {
@@ -27,7 +25,7 @@ function ActivityLevel({ onBackPage, onForm }) {
         <Title>Your Activity</Title>
         <Subtitle>To correctly calculate calorie and water intake</Subtitle>
         <Formik
-          initialValues={{ activity: '' }}
+          initialValues={{ activityLevel: '' }}
           validationSchema={activitySchema}
           onSubmit={onForm}
         >

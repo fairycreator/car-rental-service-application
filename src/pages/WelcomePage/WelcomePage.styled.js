@@ -133,6 +133,31 @@ export const Buttons = styled.div`
   }
 `;
 
+/*export const StyledActionButton = styled.button`
+  display: inline-flex;
+  min-width: 142px;
+  padding: 8px 10px;
+  text-align: center;
+  font-family: 'Poppins500';
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  color: var(--primary-color-black-two);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border 0.3s var(--transition-dur-and-func);
+  align-items: center;
+  gap: 16px;
+
+  @media screen and (min-width: 834px) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 1440px) {
+    justify-content: flex-start;
+  }
+`;
+
 export const WelcomePrimaryBtn = styled.button`
   background-color: var(--primary-color-green-lite);
   color: var(--primary-color-black-two);
@@ -140,6 +165,7 @@ export const WelcomePrimaryBtn = styled.button`
   border-radius: 12px;
   border: none;
   width: 122px;
+  height: 36px;
   text-align: center;
   font-weight: 500;
   transition: background-color, var(--transition-dur-and-func);
@@ -161,6 +187,7 @@ export const WelcomeOutlinedBtn = styled.button`
   border-radius: 12px;
   border: 1px solid transparent;
   width: 122px;
+  height: 36px;
   text-align: center;
   font-weight: 500;
   transition: border-color, var(--transition-dur-and-func);

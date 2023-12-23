@@ -9,9 +9,16 @@ import {
 } from './FoodCard.styled';
 
 export const FoodCard = ({ title, bgColor, dailyGoal, filledValue }) => {
-  const left = (dailyGoal - filledValue).toFixed(1);
-  const percentage = Math.round((filledValue * 100) / dailyGoal);
+  let percentage = Math.round((filledValue * 100) / dailyGoal);
+  let left = (dailyGoal - filledValue).toFixed(0);
 
+  if (filledValue > dailyGoal) {
+    left = 0;
+  }
+
+  if (percentage > 100) {
+    percentage = 100;
+  }
   return (
     <Wrapper>
       <ChartWrapper>

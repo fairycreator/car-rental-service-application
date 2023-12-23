@@ -96,3 +96,20 @@ export const BtnText = styled.p`
   line-height: var(--main-line-height);
   color: var(--primary-color-black-one);
 `;
+
+export const ButtonCancel = styled.button`
+  border: none;
+  background-color: var(--primary-color-black-one);
+  color: var(--primary-color-grey);
+  font-family: 'Poppins400', sans-serif;
+  margin-top: 16px;
+  width: 300px;
+  height: 36px;
+`;
+
+export const Form = styled.form`
+  @media screen and (max-width: 833px) {
+    width: 320px;
+    padding: 24px 10px;
+  }
+`;
