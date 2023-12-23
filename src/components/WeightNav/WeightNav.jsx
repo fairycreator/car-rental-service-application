@@ -75,7 +75,7 @@ const TextFieldStyled = styled(TextField)({
     },
 });
 
-export const WeightNav = () => {
+export const WeightNav = ({setOpenModal}) => {
     const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
 
     const dispatch = useDispatch();
@@ -84,6 +84,11 @@ export const WeightNav = () => {
     
     const today = new Date(Date.now());
     const todayDate = (today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear());
+
+    const handleCancel = () => {
+        setAnchorEl(null);
+        setOpenModal(false)
+    };
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -156,11 +161,11 @@ export const WeightNav = () => {
                     </BoxDate>
 
                     <FormStyled onSubmit={handleSend}>
-                        <InputWeight type='number' name='weight' placeholder='Enter your weight' />
+                        <InputWeight type='number' name='weight' placeholder='Enter your weight'/>
                         <ButtonSend>Confirm</ButtonSend>
                          
                     </FormStyled>
-                    {mobileVersion ? (<ButtonCancel>Cancel</ButtonCancel>) :
+                    {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
                         undefined}
 
                 </Typography>
