@@ -16,6 +16,8 @@ import { recReducer } from './recomendedFoods/recSlice';
 
 import { dailyStatisticsReducer } from './dailyStatistics/dailySlice';
 
+import { monthStatisticsReducer } from './monthStatistics/dashboardStatisticsSlice';
+
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,6 +33,7 @@ export const store = configureStore({
 
     dailyStatistics: dailyStatisticsReducer,
 
+    monthStatistics: monthStatisticsReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
