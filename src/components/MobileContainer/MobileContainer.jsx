@@ -20,13 +20,14 @@ export const MobileContainer = () => {
             </DivLogo>
 
             {openModal ? (<MobileMenu>
-                <ButtonClose onClick={isOpenModal}>
+                <ButtonClose
+                    onClick={isOpenModal}>
                     <IconClose>
                         <use href={`${sprite}#icon-close-circle`}></use>
                     </IconClose>
                 </ButtonClose>
-                <GoalNav />
-                <WeightNav />
+                <GoalNav setOpenModal={setOpenModal} />
+                <WeightNav setOpenModal={setOpenModal}/>
             </MobileMenu>) : undefined}
         </>
     )
