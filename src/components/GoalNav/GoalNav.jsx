@@ -1,7 +1,7 @@
 import { useMediaQuery } from 'react-responsive';
 import { theme } from '../../GlobalStyle/';
 import { useState } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { styled } from '@mui/material/styles';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -17,6 +17,7 @@ import maintain from '../../assets/images/maintain.png';
 import loseFat_girl from '../../assets/images/loseFat_girl.png';
 import maintain_girl from '../../assets/images/maintain_girl.png';
 import gainMuscle from '../../assets/images/gainMuscle.png';
+import { updateGoal } from '../../redux/auth/authOperations';
 import {
   DivImage,
   DivStyled,
@@ -29,7 +30,9 @@ import {
   IconClose,
   IconDown,
   ButtonClose,
-  IconRight
+  IconRight,
+  ButtonCancel,
+  Form
 } from './GoalNav.styled';
 import sprite from 'assets/images/sprite.svg';
 
@@ -52,10 +55,12 @@ const ButtonList = styled(Button)({
   height: '36px',
   color: '#0F0F0F',
   fontFamily: 'Poppins500',
-
   '&:hover': {
     backgroundColor: '#E3FFA8',
     border: 'transparent',
+  },
+  [theme.breakpoints.down('tablet')]: {
+    width: '300px',
   },
 });
 
@@ -66,11 +71,9 @@ const StyledMenu = styled(Menu)({
     backgroundColor: '#0F0F0F',
     boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
     [theme.breakpoints.down('tablet')]: {
-      width: '100vw',
-      height: '100vh',
       marginTop: '60px',
-      maxHeight: '100%',
-      maxWidth: '100%',
+      minHeight: '100%',
+      minWidth: '100%',
       boxShadow: 'none',
       backgroundColor: '#050505',
       position: 'static',
@@ -83,15 +86,15 @@ const StyledMenu = styled(Menu)({
     position: 'relative',
     [theme.breakpoints.down('tablet')]: {
       width: '320px',
-      padding: '24px 10px',
+      padding: '0px 0px',
       margin: '0 auto',
-    }, 
+    },
   },
 });
 
 export const GoalNav = () => {
   const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
-
+  const dispatch = useDispatch();
   const isGender = useSelector(selectUserGender);
   const userGoal = useSelector(selectUserGoal);
 
@@ -133,6 +136,7 @@ export const GoalNav = () => {
       setCurrentImage(gainMuscle)
     }
     setValue(currentValue);
+    dispatch(updateGoal({goal: currentValue}))
     handleClose();
   };
 
@@ -188,7 +192,7 @@ export const GoalNav = () => {
           </IconClose>
         </ButtonClose>
       
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <FormControl sx={{ margin: '0px' }}>
             <FormLabel id="demo-error-radios" sx={{ marginRight: '0px' }}>
               <MenuTitle>Target selection</MenuTitle>
@@ -240,7 +244,7 @@ export const GoalNav = () => {
                     }
                   />
                 }
-                label="Lose fat"
+                label="Lose Fat"
               />
 
               <FormControlLabel
@@ -293,8 +297,12 @@ export const GoalNav = () => {
             <ButtonList type="submit" variant="outlined">
               Confirm
             </ButtonList>
+            {mobileVersion ? (<ButtonCancel>Cancel</ButtonCancel>) :
+              undefined}
+            
           </FormControl>
-        </form>
+        </Form>
+
       </StyledMenu>
     </div>
   );
