@@ -17,7 +17,6 @@ export const getMonthStatistics = createAsyncThunk(
           queryMonth: queryMonth,
         },
       });
-      console.log('response.data', response.data);
       return response.data;
     } catch (error) {
       return thuncAPI.rejectWithValue(error.message);
