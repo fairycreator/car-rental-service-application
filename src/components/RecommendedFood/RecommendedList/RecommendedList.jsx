@@ -62,10 +62,12 @@ import { useEffect, useState } from 'react';
   );
 };
 
-export const RecommendedPageList = () => {
+export const RecommendedPageList = ({ numberOfCardsToRender }) => {
     const recommendedFoods = useSelector(selectRecFoods);
       const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+
+  
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -76,7 +78,7 @@ export const RecommendedPageList = () => {
   }
     return (
         <RecList>
-            {recommendedFoods.slice(0, 10).map(item => (
+            {recommendedFoods.slice(0, numberOfCardsToRender).map(item => (
           <RecommendedCard key={item.name} {...item} />
         ))}
            
