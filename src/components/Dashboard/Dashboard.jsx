@@ -22,6 +22,7 @@ import {
   AverageValue,
   PrevBtn,
   LinkBtnItem,
+  LineChartsBox,
 } from './Dashboard.styled';
 
 import {
@@ -48,7 +49,7 @@ export const Dashboard = () => {
 
   const location = useLocation();
   const backLink = location?.state?.from ?? '/';
-  
+
   const dispatch = useDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -109,7 +110,9 @@ export const Dashboard = () => {
                     <AverageValue>{getAvarageValue(calories)} cal</AverageValue>
                   </Text>
                 </ValueWrapper>
-                <LineChartCalories month={month} />
+                <LineChartsBox>
+                  <LineChartCalories month={month} />
+                </LineChartsBox>
               </ChartWrapper>
               <ChartWrapper>
                 <ValueWrapper>
@@ -119,7 +122,9 @@ export const Dashboard = () => {
                     <AverageValue>{getAvarageValue(water)} ml</AverageValue>
                   </Text>
                 </ValueWrapper>
-                <LineChartWater month={month} />
+                <LineChartsBox>
+                  <LineChartWater month={month} />
+                </LineChartsBox>
               </ChartWrapper>
             </LineChartsWrapper>
             <ChartWrapper>

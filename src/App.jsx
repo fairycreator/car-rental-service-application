@@ -70,10 +70,7 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <RestrictedRoute
-              redirectTo="/welcome"
-              component={<DashboardPage />}
-            />
+            <PrivateRoute redirectTo="/welcome" component={<DashboardPage />} />
           }
         />
         <Route

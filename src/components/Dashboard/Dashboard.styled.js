@@ -115,3 +115,35 @@ export const AverageValue = styled.span`
   color: var(--primary-color-grey);
   margin-left: 8px;
 `;
+
+export const LineChartsBox = styled.div`
+  cursor: pointer;
+  background-color: var(--primary-color-black-two);
+  width: 676px;
+  border-radius: 12px;
+  padding-top: 24px;
+  padding-right: 30px;
+  padding-bottom: 24px;
+  padding-left: 14px;
+  /* overflow-x: scroll; */
+
+  /* ::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255, 0.1);
+    outline: 1px solid rgb(255, 255, 255, 0.1);
+    border-radius: 12px;
+  } */
+
+  @media screen and (min-width: 834px) {
+    width: 780px;
+    padding-right: 30px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 676px;
+    padding-right: 20px;
+  }
+`;
