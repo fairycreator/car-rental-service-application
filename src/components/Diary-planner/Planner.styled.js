@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const Title = styled.p`
   font-size: 24px;
-  fontWeight: : 500;
+  font-weight: 500;
   font-family: 'Poppins500';
 `;
 export const Container = styled.div`
