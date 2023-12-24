@@ -9,7 +9,7 @@ export const CalendarGlobalStyles = createGlobalStyle`
     overflow-y: scroll;
     scrollbar-width: none;
     box-shadow: 0px 4px 14px 0px  rgba(227, 255, 168, 0.2);
-
+    
     &::-webkit-scrollbar { 
     width: 0;
   }
@@ -21,5 +21,9 @@ export const CalendarGlobalStyles = createGlobalStyle`
 
    .MuiMenu-list {
     background-color: #0F0F0F;
+  }
+
+  .MuiButtonBase-root.MuiMenuItem-root{
+    min-height: 1px;
   }
 `;
