@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFood } from './dailyOperations';
+import { addFood, getFood } from './dailyOperations';
 // import { getCurrentStatistics } from './dailyOperations';
 
 const handlePending = (state) => {
@@ -9,17 +9,25 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-  console.log(action.payload);
+  console.log(action);
 };
 
-const handleAddFoodFullfiled = (state, action) => {
-  console.log('action: ', action);
+// const handleAddFoodFullfiled = (state, action) => {
+//   state.isLoading = false;
+//   state.error = null;
+//   state.consumedFood.breakfast = [...action.payload.breakfast];
+//   state.consumedFood.dinner = [...action.payload.dinner];
+//   state.consumedFood.lunch = [...action.payload.lunch];
+//   state.consumedFood.snack = [...action.payload.snack];
+// };
+
+const handeGetFoodFullfiled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedFood.breakfast = [...action.payload.breakfast];
-  state.consumedFood.dinner = [...action.payload.dinner];
-  state.consumedFood.lunch = [...action.payload.lunch];
-  state.consumedFood.snack = [...action.payload.snack];
+  state.consumedFood.breakfast = [...action.payload[0].breakfast];
+  state.consumedFood.dinner = [...action.payload[0].dinner];
+  state.consumedFood.lunch = [...action.payload[0].lunch];
+  state.consumedFood.snack = [...action.payload[0].snack];
 };
 
 // const handleDeleteWaterFulfilled = (state) => {
@@ -58,12 +66,12 @@ const dailyStatisticsSliceFood = createSlice({
       // .addCase(getCurrentStatistics.pending, handlePending)
       // .addCase(getCurrentStatistics.fulfilled, handleGetCurrentFulfilled)
       // .addCase(getCurrentStatistics.rejected, handleRejected)
-      .addCase(addFood.pending, handlePending)
-      .addCase(addFood.fulfilled, handleAddFoodFullfiled)
-      .addCase(addFood.rejected, handleRejected),
-  //   .addCase(deleteWater.pending, handlePending)
-  //   .addCase(deleteWater.fulfilled, handleDeleteWaterFulfilled)
-  //   .addCase(deleteWater.rejected, handleRejected),
+    //   .addCase(addFood.pending, handlePending)
+    //   .addCase(addFood.fulfilled, handleAddFoodFullfiled)
+    //   .addCase(addFood.rejected, handleRejected)
+      .addCase(getFood.pending, handlePending)
+      .addCase(getFood.fulfilled, handeGetFoodFullfiled)
+      .addCase(getFood.rejected, handleRejected),
 });
 
 export const dailyStatisticsReducerFood = dailyStatisticsSliceFood.reducer;
