@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Field, Form } from 'formik';
-import { hidden, theme } from '../../../GlobalStyle';
+import { hidden, theme } from '../../GlobalStyle';
 
 export const PageWrapper = styled.div`
   padding-bottom: 40px;
@@ -109,7 +109,11 @@ export const FieldStyled = styled(Field)`
 
   &:focus,
   &:hover {
-    border-color: var(--primary-color-green-lite);
+    border-color: var(--secondary-color-yellow);
+  }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
   }
 `;
 
@@ -215,7 +219,14 @@ export const buttonGroupStyled = {
   '& .MuiButtonGroup-firstButton:hover': {
     borderRadius: '12px',
     color: 'blacktwo.main',
-    backgroundColor: 'greenlite.main',
+    backgroundColor: 'yellow.main',
+    border: '1px solid transparent',
+    borderRightColor: 'transparent',
+  },
+  '& .MuiButtonGroup-firstButton:focus': {
+    borderRadius: '12px',
+    color: 'blacktwo.main',
+    backgroundColor: 'yellow.main',
     border: '1px solid transparent',
     borderRightColor: 'transparent',
   },
@@ -225,8 +236,12 @@ export const buttonGroupStyled = {
     margin: '0px',
   },
   '& .MuiButtonGroup-lastButton:hover': {
-    borderColor: 'greenlite.main',
-    color: 'greenlite.main',
+    borderColor: 'yellow.main',
+    color: 'yellow.main',
+  },
+  '& .MuiButtonGroup-lastButton:focus': {
+    borderColor: 'yellow.main',
+    color: 'yellow.main',
   },
 };
 
