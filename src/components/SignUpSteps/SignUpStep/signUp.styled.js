@@ -276,6 +276,8 @@ export const ErrorMsg = styled.div`
   letter-spacing: var(--main-letter-spacing);
   margin-top: -10px;
   margin-left: 9px;
+  font-size: 12px;
+  font-family: 'Poppins400';
 `;
 
 //Toggle

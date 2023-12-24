@@ -1,5 +1,58 @@
 import styled from 'styled-components';
+import checkedIcon from '../../../assets/images/icons/checked-icon.svg';
+import { Field } from 'formik';
 
+//Radio buttons
+
+export const CustomRadio = styled(Field)`
+  margin-right: 8px;
+  cursor: pointer;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid var(--color-primary-gray, #b6b6b6);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  position: relative;
+
+  &:checked {
+    border-color: var(--color-primary-green-lite, #e3ffa8);
+    background-image: url(${checkedIcon});
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const CustomLabel = styled.label`
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-primary-white, #fff);
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+  ${CustomRadio}:checked + & {
+    color: var(--color-primary-green-lite, #e3ffa8);
+  }
+`;
+
+export const StyledFormLabel = styled.label`
+  color: var(--color-primary-white, #fff);
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 24px;
+`;
+
+//Wrapper
 export const GoalWrapper = styled.div`
   margin: 0 auto;
   padding: 10px;
@@ -99,6 +152,17 @@ export const RadioWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: column;
+  }
 `;
 
 export const RadioLabel = styled.label`

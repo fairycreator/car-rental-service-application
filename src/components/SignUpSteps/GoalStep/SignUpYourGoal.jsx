@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import image from '../../../assets/backgroundImages/goals.png';
 import {
@@ -8,9 +8,10 @@ import {
   GoalTitle,
   GoalSubtitle,
   RadioWrapper,
-  RadioLabel,
+  CustomLabel,
   NextButton,
   BackButton,
+  CustomRadio,
 } from './Goal.styled';
 
 const goalSchema = Yup.object().shape({
@@ -18,6 +19,12 @@ const goalSchema = Yup.object().shape({
 });
 
 function GoalSelectionStep({ onForm, onBackPage }) {
+  const radioOptions = [
+    { value: 'Lose Fat', label: 'Lose Fat' },
+    { value: 'Maintain', label: 'Maintain' },
+    { value: 'Gain Muscle', label: 'Gain Muscle' },
+  ];
+
   return (
     <GoalWrapper>
       <Image src={image} alt="illustration-summer-hiking" />
@@ -34,18 +41,16 @@ function GoalSelectionStep({ onForm, onBackPage }) {
           {() => (
             <Form>
               <RadioWrapper>
-                <RadioLabel>
-                  <Field type="radio" name="goal" value="Lose Fat" />
-                  Lose Fat
-                </RadioLabel>
-                <RadioLabel>
-                  <Field type="radio" name="goal" value="Maintain" />
-                  Maintain
-                </RadioLabel>
-                <RadioLabel>
-                  <Field type="radio" name="goal" value="Gain Muscle" />
-                  Gain Muscle
-                </RadioLabel>
+                {radioOptions.map((option) => (
+                  <CustomLabel key={option.value}>
+                    <CustomRadio
+                      type="radio"
+                      name="goal"
+                      value={option.value}
+                    />
+                    {option.label}
+                  </CustomLabel>
+                ))}
               </RadioWrapper>
               <ErrorMessage name="goal" component="div" />
               <NextButton type="submit">Next</NextButton>

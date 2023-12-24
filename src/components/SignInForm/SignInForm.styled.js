@@ -44,6 +44,8 @@ export const ErrorMsg = styled.div`
   letter-spacing: var(--main-letter-spacing);
   margin-top: -20px;
   margin-left: 12px;
+  font-size: 12px;
+  font-family: 'Poppins400';
 `;
 
 export const WrapForm = styled.div`
