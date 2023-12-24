@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addWater } from '../../../redux/dailyStatistics/dailyOperations';
+import { addWater } from '../../../redux/dailyWaterStatistics/waterOperations';
 import {
   Backdrop,
   Modal,

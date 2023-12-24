@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDailyWater, addWater, deleteWater } from './dailyOperations';
+import { getDailyWater, addWater, deleteWater } from './waterOperations';
 
 const handlePending = (state) => {
   state.isLoading = true;
