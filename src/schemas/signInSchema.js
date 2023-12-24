@@ -2,9 +2,11 @@ import * as Yup from 'yup';
 
 export const signInSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Enter a valid Email*')
-    .required('Email is required!'),
+    .trim('Cannot include leading and trailing spaces')
+    .email('Invalid email')
+    .required('Required!'),
   password: Yup.string()
-    .min(6, 'Enter a valid Password*')
-    .required('Password is required!'),
+    .trim('Cannot include leading and trailing spaces')
+    .min(6, 'Too Short!')
+    .required('Required!'),
 });
