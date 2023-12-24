@@ -91,18 +91,18 @@ const authSlice = createSlice({
       })
       // updateUser
       .addCase(updateUser.fulfilled, (state, action) => {
-        state.userData.name = action.payload.user.name;
-        state.userData.gender = action.payload.user.gender;
-        state.userData.age = action.payload.user.age;
-        state.userData.avatar = action.payload.user.avatar;
-        state.userData.activityLevel = action.payload.user.activityLevel;
-        state.userData.height = action.payload.user.height;
-        state.userData.weight = action.payload.user.weight;
-        state.userData.waterRate = action.payload.user.waterRate;
-        state.userData.BMRRate = action.payload.user.BMRRate;
-        state.userData.proteinRate = action.payload.user.proteinRate;
-        state.userData.fatRate = action.payload.user.fatRate;
-        state.userData.carbsRate = action.payload.user.carbsRate;
+        state.userData.name = action.payload.name;
+        state.userData.gender = action.payload.gender;
+        state.userData.age = action.payload.age;
+        state.userData.avatar = action.payload.avatar;
+        state.userData.activityLevel = action.payload.activityLevel;
+        state.userData.height = action.payload.height;
+        state.userData.weight = action.payload.weight;
+        state.userData.waterRate = action.payload.waterRate;
+        state.userData.BMRRate = action.payload.BMRRate;
+        state.userData.proteinRate = action.payload.proteinRate;
+        state.userData.fatRate = action.payload.fatRate;
+        state.userData.carbsRate = action.payload.carbsRate;
         state.error = null;
       })
       .addCase(updateUser.rejected, (state, action) => {

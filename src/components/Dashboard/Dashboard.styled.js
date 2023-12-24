@@ -138,5 +138,7 @@ export const LineChartsBox = styled.div`
   }
 `;
 export const Scroll = styled.div`
-
+  @media screen and (max-width: 833px) {
+    width: 100vw;
+  }
 `;
