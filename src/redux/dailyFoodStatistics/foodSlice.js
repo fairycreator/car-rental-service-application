@@ -14,6 +14,7 @@ const handleRejected = (state, action) => {
 };
 
 const handleAddFoodFullfiled = (state, action) => {
+  console.log('action: ', action);
   state.isLoading = false;
   state.error = null;
   // state.consumedFood.breakfast = action.payload.breakfast;
@@ -40,23 +41,27 @@ const handleAddFoodFullfiled = (state, action) => {
 };
 
 const handeGetFoodFullfiled = (state, action) => {
-  if (action.payload.length > 0) {
+  if (action.payload.length) {
     state.isLoading = false;
     state.error = null;
-   
-
-    if (action.payload[0].breakfast.name !== '') {
+    // state.consumedFood.breakfast = action.payload[0].breakfast;
+    // state.consumedFood.dinner = action.payload[0].dinner;
+    // state.consumedFood.lunch = action.payload[0].lunch;
+    // state.consumedFood.snack = action.payload[0].snack;
+    if (action.payload[0].breakfast.length > 0) {
       state.consumedFood.breakfast = action.payload[0].breakfast;
     }
-  }
-  if (action.payload[0].dinner.name !== '') {
-    state.consumedFood.dinner = action.payload[0].breakfast;
-  }
-  if (action.payload[0].lunch.name !== '') {
-    state.consumedFood.lunch = action.payload[0].breakfast;
-  }
-  if (action.payload[0].snack.name !== '') {
-    state.consumedFood.snack = action.payload[0].breakfast;
+    if (action.payload[0].dinner.length > 0) {
+      state.consumedFood.dinner = action.payload[0].dinner;
+    }
+    if (action.payload[0].lunch.length > 0) {
+      state.consumedFood.lunch = action.payload[0].lunch;
+    }
+    if (action.payload[0].snack.length > 0) {
+      state.consumedFood.snack = action.payload[0].snack;
+    }
+  } else {
+    return;
   }
 };
 

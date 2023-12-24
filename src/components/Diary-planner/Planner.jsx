@@ -26,14 +26,13 @@ const Planner = () => {
   const selector = useSelector(
     (state) => state.dailyStatisticsFood.consumedFood
   );
-  console.log('selector: ', selector);
   const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
   const [foodType, setFoodType] = useState('');
   useEffect(() => {
     dispatch(getFood());
-  }, []);
+  }, [isOpen]);
 
   return (
     <Container>
@@ -84,7 +83,7 @@ const Planner = () => {
             style={{ marginTop: '20px' }}
             onClick={() => setFoodType('breakfast')}
           >
-            {selector.breakfast[0].name !== '' ? (
+            {selector.breakfast[0].name !== "" ? (
               selector.breakfast.map((item, index) => {
                 return (
                   <RenderContainer>
