@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Field } from 'formik';
+import { Field, ErrorMessage, Form } from 'formik';
 
 export const DivImage = styled.div`
   border: 1px solid #292928;
@@ -92,6 +92,7 @@ export const BoxDate = styled.div`
 export const ButtonSend = styled.button`
   width: 300px;
   height: 36px;
+  /* margin-top: 12px; */
   background-color: var(--primary-color-green-lite);
   border-radius: 12px;
   color: var(--primary-color-black-two);
@@ -103,6 +104,7 @@ export const ButtonSend = styled.button`
   }
   @media screen and (min-width: 834px) {
     width: 166px;
+    margin-top: 0px;
   }
 `;
 
@@ -128,16 +130,14 @@ export const InputWeight = styled(Field)`
   }
 `;
 
-export const FormStyled = styled(Form)`
+export const FormStyled = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  gap: 4px;
 
   @media screen and (min-width: 834px) {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
   }
 `;
 
@@ -174,5 +174,20 @@ export const IconClose = styled.svg`
     &:hover {
       stroke: var(--primary-color-green-lite);
     }
+  }
+`;
+
+export const ErrorMessageStyled = styled(ErrorMessage)`
+  color: #e74a3b;
+  font-family: 'Poppins400';
+  font-size: 12px;
+`;
+
+export const FormBlock = styled(Form)`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  @media screen and (min-width: 834px) {
+    flex-direction: row;
   }
 `;
