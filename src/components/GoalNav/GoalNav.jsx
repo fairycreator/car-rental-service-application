@@ -222,13 +222,18 @@ export const GoalNav = ({ setOpenModal }) => {
                 '& :hover.MuiTypography-root': {
                   color: '#B6C3FF',
                   fontFamily: 'Poppins500',
-                },
+                }
               }}
               name="quiz"
               value={value}
               onChange={handleRadioChange}
             >
-              <FormControlLabel sx={{ margin: '0px' }}
+              <FormControlLabel sx={{
+                margin: '0px',
+                // '& :hover.ZGuGI': {
+                //   borderColor: '#B6C3FF',
+                // }
+              }}
                 value="Lose Fat"
                 control={
                   <Radio
@@ -302,7 +307,7 @@ export const GoalNav = ({ setOpenModal }) => {
             <ButtonList type="submit" variant="outlined">
               Confirm
             </ButtonList>
-            {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
+            {mobileVersion ? (<ButtonCancel onClick={handleCancel} type="button">Cancel</ButtonCancel>) :
               undefined}
           </FormControl>
         </Form>
