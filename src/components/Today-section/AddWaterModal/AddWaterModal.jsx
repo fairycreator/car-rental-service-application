@@ -34,10 +34,12 @@ export const AddWaterModal = ({ isModalOpen, setIsModalOpen }) => {
 
     if (isModalOpen) {
       document.addEventListener('keydown', handleEsc);
-    }
+      document.body.style.overflow = 'hidden';
+    } else document.body.style.overflow = 'unset';
 
     return () => {
       document.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
     };
   }, [isModalOpen, setIsModalOpen]);
 
