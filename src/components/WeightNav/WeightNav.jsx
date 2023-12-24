@@ -1,18 +1,28 @@
-import { Formik } from 'formik';
 import { useMediaQuery } from 'react-responsive';
-import { useState } from 'react';
-import { theme } from '../../GlobalStyle/';
-import { useSelector, useDispatch } from "react-redux";
 import { styled } from '@mui/material/styles';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useState } from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
-import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel, ButtonClose, IconClose } from './WeightNav.styled';
+import { theme } from '../../GlobalStyle/';
+import { useSelector, useDispatch } from "react-redux";
 import { selectUserWeight } from '../../redux/auth/authSelectors';
 import { updateWeight } from '../../redux/auth/authOperations';
+import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel, ButtonClose, IconClose, ErrorMessageStyled, FormBlock } from './WeightNav.styled';
+
+const WeightSchema = Yup.object().shape({
+    weight: Yup.number('Enter correct number')
+        .positive('Weight should be positive')
+        .integer('Weight should be integer')
+        .min(40, 'Must be > 40 kg')
+        .max(200, 'Must be < 200 kg')
+        .required('Weight should be filled'),
+});
 
 const ButtonMenu = styled(Button)({
     textTransform: 'none',
@@ -57,22 +67,6 @@ const PopoverStyled = styled(Popover)({
             padding: '24px 10px',
             margin: '0 auto',
         },
-    },
-});
-
-const TextFieldStyled = styled(TextField)({
-    // width: '166px',
-    // height: '36px',
-    // borderRadius: 12,
-        
-    '& .MuiInputBase-input': {
-        padding: '0px 0px',
-        width: '166px',
-        height: '36px',
-    },
-    '& .MuiOutlinedInput-input': {
-        borderColor: '#E3FFA8',
-        borderRadius: 12,
     },
 });
 
@@ -152,16 +146,24 @@ export const WeightNav = ({ setOpenModal }) => {
 
                     <Formik
                         initialValues={{ weight: '' }}
+                        validationSchema={WeightSchema}
                         onSubmit={(values, actions) => {
                             dispatch(updateWeight({ weight: values.weight }))
                             actions.resetForm();
                             handleClose()
                         }}
                     >
-                        <FormStyled>
+                        <FormBlock>
+                            <FormStyled>
                             <InputWeight id="weight" name="weight" placeholder="Enter your weight" />
+                            <ErrorMessageStyled name="weight" component="div" />
+            
+                            </FormStyled>
+                            <div>
                             <ButtonSend type="submit">Confirm</ButtonSend>
-                        </FormStyled>
+                             </div>
+                        </FormBlock>
+                        
                     </Formik>
 
                     {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
