@@ -7,12 +7,12 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, Link } from 'react-router-dom';
 import { Formik, useFormik } from 'formik';
 import { validationSchema } from '../../../schemas/profileUpdateSchema';
 import { selectUserData } from '../../../redux/auth/authSelectors';
-// import { updateUser } from '../../../redux/auth/authOperations';
+import { updateUser } from '../../../redux/auth/authOperations';
 import image from '../../../assets/images/settings-page-image.png';
 import sprite from '../../../assets/images/sprite.svg';
 import {
@@ -41,7 +41,7 @@ import {
 let selectedImage;
 
 export const ProfileSetting = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/main');
   const currentUserData = useSelector(selectUserData);
@@ -65,9 +65,7 @@ export const ProfileSetting = () => {
       formik.values.activityLevel = Number(values.activityLevel);
 
       let formData = new FormData();
-      if (selectedImage) {
-        formData.append('avatar', formik.values.avatar);
-      }
+      formData.append('avatar', formik.values.avatar);
       formData.append('name', formik.values.name);
       formData.append('age', formik.values.age);
       formData.append('gender', formik.values.gender);
@@ -79,9 +77,8 @@ export const ProfileSetting = () => {
         console.log(pair[0] + ', ' + pair[1]);
         selectedImage = null;
       }
-      // console.log(avatar);
-      // console.log(formik.values);
-      // dispatch(updateUser(formData));
+
+      dispatch(updateUser(formData));
     },
   });
 

@@ -57,6 +57,7 @@ export const MainContent = styled.div`
   @media screen and (min-width: 834px) {
     align-items: center;
     gap: 80px;
+    width: 444px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -91,11 +92,6 @@ export const Title = styled.h2`
 
   @media screen and (min-width: 834px) {
     font-size: 30px;
-    padding-right: 20px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    padding-right: 0px;
   }
 `;
 
