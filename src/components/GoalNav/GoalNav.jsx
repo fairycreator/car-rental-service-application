@@ -92,12 +92,11 @@ const StyledMenu = styled(Menu)({
   },
 });
 
-export const GoalNav = ( {setOpenModal} ) => {
+export const GoalNav = ({ setOpenModal }) => {
   const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
   const dispatch = useDispatch();
   const isGender = useSelector(selectUserGender);
   const userGoal = useSelector(selectUserGoal);
-
 
   let imageGoal;
   if (userGoal === "Lose Fat") {
@@ -303,12 +302,11 @@ export const GoalNav = ( {setOpenModal} ) => {
             <ButtonList type="submit" variant="outlined">
               Confirm
             </ButtonList>
-            
-            
-          </FormControl>
-        </Form>
             {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
               undefined}
+          </FormControl>
+        </Form>
+          
       </StyledMenu>
     </div>
   );
