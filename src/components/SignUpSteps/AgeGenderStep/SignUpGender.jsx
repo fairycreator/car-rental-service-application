@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import image from '../../../assets/backgroundImages/genderAge.png';
 import {
@@ -8,9 +8,13 @@ import {
   Title,
   Subtitle,
   RadioWrapper,
-  RadioLabel,
+  Text,
   NextButton,
   BackButton,
+  CustomLabel,
+  CustomRadio,
+  StyledInput,
+  StyledErrorMessage,
 } from './SelectGenderAge.styled';
 
 const genderAgeSchema = Yup.object().shape({
@@ -34,30 +38,35 @@ function SelectGender({ onForm, onBackPage }) {
           validationSchema={genderAgeSchema}
           onSubmit={onForm}
         >
-          <Form>
-            <RadioWrapper>
-              <RadioLabel>
-                <Field type="radio" name="gender" value="male" />
-                Male
-              </RadioLabel>
-              <RadioLabel>
-                <Field type="radio" name="gender" value="female" />
-                Female
-              </RadioLabel>
-              <ErrorMessage name="gender" component="div" />
-            </RadioWrapper>
-
-            <RadioLabel>
-              Age
-              <Field type="number" name="age" placeholder="Enter your age" />
-              <ErrorMessage name="age" component="div" />
-            </RadioLabel>
-
-            <NextButton type="submit">Next</NextButton>
-            <BackButton type="button" onClick={onBackPage}>
-              Back
-            </BackButton>
-          </Form>
+          {() => (
+            <Form>
+              <RadioWrapper>
+                <Text>Gender</Text>
+                <CustomLabel>
+                  <CustomRadio type="radio" name="gender" value="male" />
+                  Male
+                </CustomLabel>
+                <CustomLabel>
+                  <CustomRadio type="radio" name="gender" value="female" />
+                  Female
+                </CustomLabel>
+                <ErrorMessage name="gender" component={StyledErrorMessage} />
+              </RadioWrapper>
+              <Text>Your Age</Text>
+              <CustomLabel>
+                <StyledInput
+                  type="number"
+                  name="age"
+                  placeholder="Enter your age"
+                />
+                <ErrorMessage name="age" component={StyledErrorMessage} />
+              </CustomLabel>
+              <NextButton type="submit">Next</NextButton>
+              <BackButton type="button" onClick={onBackPage}>
+                Back
+              </BackButton>
+            </Form>
+          )}
         </Formik>
       </GenderAgeContent>
     </GenderAgeWrapper>

@@ -56,6 +56,10 @@ export const StyledLink = styled(Link)`
   font-weight: 500;
   line-height: 1.42;
   color: var(--primary-color-grey);
+
+  &:hover {
+    color: var(--primary-color-green-lite);
+  }
 `;
 
 export const Icon = styled.svg`
@@ -63,4 +67,8 @@ export const Icon = styled.svg`
   width: 16px;
   height: 16px;
   fill: var(--primary-color-grey);
+
+  &:hover {
+    fill: var(--primary-color-green-lite);
+  }
 `;

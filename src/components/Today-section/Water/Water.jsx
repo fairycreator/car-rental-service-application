@@ -6,9 +6,8 @@ import { WaterChart } from './WaterChart';
 import {
   selectConsumedWaterId,
   selectConsumedWaterValue,
-  selectIsLoading,
-} from '../../../redux/dailyStatistics/dailySelectors';
-import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
+} from '../../../redux/dailyWaterStatistics/waterSelectors';
+import { deleteWater } from '../../../redux/dailyWaterStatistics/waterOperations';
 import { selectUserWaterRate } from '../../../redux/auth/authSelectors';
 import {
   Wrapper,
@@ -25,10 +24,10 @@ import {
   ProgressBarWrapper,
   DeleteIcon,
 } from './Water.styled';
+import { theme } from '../../../GlobalStyle';
 
 export const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isLoading = useSelector(selectIsLoading);
 
   const dispatch = useDispatch();
 
@@ -47,6 +46,13 @@ export const Water = () => {
     left = 0;
   }
 
+  const percentageColor = {
+    color:
+      waterPercentage > 85
+        ? `${theme.palette.greyone.main}`
+        : `${theme.palette.violet.main}`,
+  };
+
   return (
     <Wrapper>
       <Title>Water</Title>
@@ -61,25 +67,21 @@ export const Water = () => {
           <use href={`${sprite}#trash-delete`}></use>
         </DeleteIcon>
         <ProgressBarWrapper>
-          {isLoading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProgressBar>
-              <WaterChart waterIntake={waterPercentage} />
-              <Percentage>{`${waterPercentage}%`}</Percentage>
-            </ProgressBar>
-          )}
+          <ProgressBar>
+            <WaterChart waterIntake={waterPercentage} />
+            <Percentage style={percentageColor}>
+              {`${waterPercentage}%`}
+            </Percentage>
+          </ProgressBar>
         </ProgressBarWrapper>
         <div>
           <SecondTitle>Water consumption</SecondTitle>
-
           <Text>
             <Amount>{waterFilled}</Amount>ml
           </Text>
           <Text>
             <Span>left:</Span> {`${left} ml`}
           </Text>
-
           <Button type="button" onClick={() => setIsModalOpen(true)}>
             <AddIcon>
               <use href={`${sprite}#icon-add-converted`}></use>
@@ -88,7 +90,12 @@ export const Water = () => {
           </Button>
         </div>
       </ContentWrapper>
-      {isModalOpen && <AddWaterModal setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && (
+        <AddWaterModal
+          setIsModalOpen={setIsModalOpen}
+          isModalOpen={isModalOpen}
+        />
+      )}
     </Wrapper>
   );
 };

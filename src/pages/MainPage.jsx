@@ -3,8 +3,8 @@ import { fetchRecFoods } from '../redux/recomendedFoods/recOperations';
 import { useEffect } from 'react';
 import { Today } from '../components/Today-section/Today';
 import { RecommendedList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
-import { getDailyWater } from '../redux/dailyStatistics/dailyOperations';
-import Planner from '../components/Diary-planner/Planner';
+import { getDailyWater } from '../redux/dailyWaterStatistics/waterOperations';
+// import Planner from '../components/Diary-planner/Planner';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const MainPage = () => {
     <>
       <Today />
       <RecommendedList />
-      <Planner/>
+      {/* <Planner/> */}
     </>
   );
 };

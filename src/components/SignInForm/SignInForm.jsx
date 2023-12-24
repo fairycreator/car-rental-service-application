@@ -7,7 +7,7 @@ import {
   SignInButton,
   InputStyled,
   WrapForm,
-  ErrorDivStyled,
+  ErrorMsg,
   SvgIconEye,
   WrapperError,
   LabelWrap,
@@ -15,7 +15,6 @@ import {
 } from './SignInForm.styled';
 import iconeye from '../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../assets/images/icons/eye-off.svg';
-import validateEmail from '../../schemas/validateEmail';
 
 const initialValues = {
   email: '',
@@ -60,9 +59,9 @@ const SignInForm = () => {
               <LabelWrap>
                 <InputStyled
                   border={borderEmailColor}
-                  type={showPassword ? 'text' : 'password'}
+                  type="text"
                   name="email"
-                  validate={validateEmail}
+                  validate={signInSchema}
                   placeholder="Email"
                 />
               </LabelWrap>
@@ -70,11 +69,11 @@ const SignInForm = () => {
               {(errors.email && touched.email) ||
               (!errors.email && touched.email) ? (
                 <WrapperError>
-                  <ErrorDivStyled
+                  <ErrorMsg
                     color={!errors.email && touched.email ? '#3cbc81' : null}
                   >
-                    {errors.email ? errors.email : 'Success email'}
-                  </ErrorDivStyled>
+                    {errors.email ? errors.email : 'Email is valid'}
+                  </ErrorMsg>
                 </WrapperError>
               ) : null}
 
@@ -94,13 +93,13 @@ const SignInForm = () => {
               {(errors.password && touched.password) ||
               (!errors.password && touched.password) ? (
                 <WrapperError>
-                  <ErrorDivStyled
+                  <ErrorMsg
                     color={
                       !errors.password && touched.password ? '#3cbc81' : null
                     }
                   >
-                    {errors.password ? errors.password : 'Success password'}
-                  </ErrorDivStyled>
+                    {errors.password ? errors.password : 'Password is secure'}
+                  </ErrorMsg>
                 </WrapperError>
               ) : null}
             </WrapForm>

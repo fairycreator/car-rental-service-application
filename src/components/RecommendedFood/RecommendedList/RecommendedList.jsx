@@ -1,3 +1,4 @@
+import PuffLoader from "react-spinners/PuffLoader";
 import sprite from 'assets/images/sprite.svg';
 import { RecommendedCard } from "../RecommendedCard/RecommendedCard";
 import { selectRecFoods, selectIsLoading, selectError } from '../../../redux/recomendedFoods/recSelectors';
@@ -35,7 +36,8 @@ import { useEffect, useState } from 'react';
     };
   }, []);
         if (isLoading) {
-    return <div>Loading...</div>;
+    return <PuffLoader color="var(--primary-color-green-lite)" cssOverride={{ margin: '30vh auto 0 auto' }} />
+;
   }
 
   if (error) {
@@ -70,7 +72,7 @@ export const RecommendedPageList = ({ numberOfCardsToRender }) => {
   
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <PuffLoader color="var(--primary-color-green-lite)" cssOverride={{ margin: '30vh auto 0 auto' }} />
   }
 
   if (error) {
