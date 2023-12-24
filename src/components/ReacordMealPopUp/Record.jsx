@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFood } from '../../redux/dailyStatistics/dailyOperations';
+import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import {
   MealContainer,
   MealImage,
