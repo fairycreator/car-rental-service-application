@@ -139,7 +139,7 @@ export const Percentage = styled.p`
   top: 28px;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: var(--primary-color-violet);
+  /* color: var(--primary-color-violet); */
   text-align: center;
   font-size: 16px;
   font-weight: 600;
