@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
 
+const colors = {
+  text: '#FFFFFF',
+  inputBorder: '#45FFBC',
+  inputBorderHover: '#21CE99',
+  error: '#e74a3b',
+  success: '#3cbc81',
+  background: 'transparent',
+  iconStroke: '#FFFFFF',
+};
+
 export const HealthWrapper = styled.div`
   margin: 0 auto;
   padding: 10px;
@@ -149,7 +159,7 @@ export const NextButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
   }
 
   @media screen and (min-width: 834px) {
@@ -178,7 +188,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: transparent;
   }
 
   @media screen and (min-width: 834px) {
@@ -188,4 +198,16 @@ export const BackButton = styled.button`
   @media screen and (min-width: 1440px) {
     width: 212px;
   }
+`;
+
+//Error
+export const StyledErrorMessage = styled.div`
+  color: ${(props) => props.color || colors.error};
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  margin-top: -18px;
+  margin-left: 9px;
+  font-size: 12px;
+  font-family: 'Poppins400';
 `;
