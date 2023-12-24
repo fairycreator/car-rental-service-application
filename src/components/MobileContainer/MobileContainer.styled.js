@@ -41,6 +41,7 @@ export const MobileMenu = styled.div`
   top: 153px;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 5;
   width: 300px;
   height: 184px;
   padding: 24px 0px 24px 24px;
