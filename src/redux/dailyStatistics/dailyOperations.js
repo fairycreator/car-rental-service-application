@@ -67,3 +67,14 @@ export const addFood = createAsyncThunk(
     return response.data;
   }
 );
+
+export const getFood = createAsyncThunk(
+  'dailyStatisticsFood/getFood',
+  async (_,thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
+    const response = await instance.get('/user/food-intake');
+    console.log('response.data: ', response.data);
+    return response.data;
+  }
+);
