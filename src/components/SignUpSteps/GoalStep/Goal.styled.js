@@ -87,6 +87,7 @@ export const GoalWrapper = styled.div`
   }
 `;
 
+//Image
 export const Image = styled.img`
   height: 296px;
   width: 300px;
@@ -103,6 +104,7 @@ export const Image = styled.img`
   }
 `;
 
+//Content wrapper
 export const GoalContent = styled.div`
   flex-direction: column;
   justify-content: center;
