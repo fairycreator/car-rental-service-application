@@ -137,7 +137,7 @@ export const RenderContainer = styled.div`
   gap: 15px;
 `;
 export const RenderContainerItem = styled.p`
-  color: var(--Color-Primary-White, #fff);
+  color: var(--primary-color-white);
   /* Body text/1 */
   font-family: 'Poppins400';
   font-size: 14px;
