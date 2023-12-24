@@ -17,6 +17,7 @@ import { recReducer } from './recomendedFoods/recSlice';
 import { dailyWaterStatisticsReducer } from './dailyStatistics/dailySlice';
 
 import { monthStatisticsReducer } from './monthStatistics/dashboardStatisticsSlice';
+import { dailyStatisticsReducerFood } from './dailyStatistics/dialySliceFood';
 
 const authPersistConfig = {
   key: 'auth',
@@ -33,6 +34,7 @@ export const store = configureStore({
     dailyWaterStatistics: dailyWaterStatisticsReducer,
 
     monthStatistics: monthStatisticsReducer,
+    dailyFoodStat: dailyStatisticsReducerFood,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
