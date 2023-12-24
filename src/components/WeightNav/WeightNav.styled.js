@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form, Field } from 'formik';
 
 export const DivImage = styled.div`
   border: 1px solid #292928;
@@ -105,7 +106,7 @@ export const ButtonSend = styled.button`
   }
 `;
 
-export const InputWeight = styled.input`
+export const InputWeight = styled(Field)`
   width: 300px;
   height: 36px;
   padding: 8px 10px;
@@ -127,7 +128,7 @@ export const InputWeight = styled.input`
   }
 `;
 
-export const FormStyled = styled.form`
+export const FormStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
