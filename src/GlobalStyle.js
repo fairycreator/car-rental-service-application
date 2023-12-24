@@ -89,6 +89,8 @@ export const GlobalStyle = createGlobalStyle`
     src: url(${PoppinsBold}) format('truetype');
   }
 
+
+
 body {
   margin: 0;
   font-family: 'Poppins400', sans-serif;

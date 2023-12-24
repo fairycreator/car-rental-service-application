@@ -1,5 +1,16 @@
 import styled from 'styled-components';
 import { Field } from 'formik';
+import checkedIcon from '../../../assets/images/icons/checked-icon.svg';
+
+const colors = {
+  text: '#FFFFFF',
+  inputBorder: '#45FFBC',
+  inputBorderHover: '#21CE99',
+  error: '#e74a3b',
+  success: '#3cbc81',
+  background: 'transparent',
+  iconStroke: '#FFFFFF',
+};
 
 export const ActivityWrapper = styled.div`
   margin: 0 auto;
@@ -12,6 +23,7 @@ export const ActivityWrapper = styled.div`
 
   @media screen and (min-width: 834px) {
     padding: 10px;
+    align-items: flex-start;
   }
 
   @media screen and (min-width: 1440px) {
@@ -26,6 +38,7 @@ export const ActivityWrapper = styled.div`
   }
 `;
 
+//Image
 export const ActivityImage = styled.img`
   height: 296px;
   width: 300px;
@@ -58,6 +71,7 @@ export const ActivityContent = styled.div`
   }
 `;
 
+//Title
 export const Title = styled.h1`
   color: var(--color-primary-white, #fff);
   font-size: 24px;
@@ -78,6 +92,7 @@ export const Title = styled.h1`
   }
 `;
 
+//Subttile
 export const Subtitle = styled.p`
   color: var(--color-primary-gray, #b6b6b6);
   font-size: 18px;
@@ -97,21 +112,43 @@ export const Subtitle = styled.p`
   }
 `;
 
+//Radiobtn warpper
 export const RadioWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: 834px) {
+    /* Adjust to tablet screen sizes */
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align to the start or use 'space-between' for equal spacing */
+    gap: 10px; /* Add a gap for some space between the items */
+
+    > * {
+      flex: 1 1 45%; /* Each child should take up roughly half the space, adjusting for wrapping */
+      margin-bottom: 10px;
+    }
+  }
 `;
 
-export const RadioLabel = styled.label`
-  background-color: #222; /* Adjust as needed */
-  border-radius: 4px;
-  color: #fff;
-  padding: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
+// export const RadioLabel = styled.label`
+//   background-color: #222;
+//   border-radius: 4px;
+//   color: #fff;
+//   padding: 10px;
+//   margin-bottom: 10px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+
+//   @media screen and (min-width: 834px) {
+//     margin-bottom: 0;
+//     width: calc(50% - 20px); // adjust the width as necessary
+//     margin: 10px;
+//   }
+// `;
 
 export const StyledField = styled(Field)`
   accent-color: #0f0;
@@ -134,7 +171,7 @@ export const NextButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
   }
 
   @media screen and (min-width: 834px) {
@@ -163,7 +200,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: transparent;
   }
 
   @media screen and (min-width: 834px) {
@@ -173,4 +210,73 @@ export const BackButton = styled.button`
   @media screen and (min-width: 1440px) {
     width: 212px;
   }
+`;
+
+//Error
+export const StyledErrorMessage = styled.div`
+  color: ${(props) => props.color || colors.error};
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  margin-top: -18px;
+  margin-left: 9px;
+  font-size: 12px;
+  font-family: 'Poppins400';
+`;
+
+//Radio buttons
+export const CustomRadio = styled(Field)`
+  margin-right: 8px;
+  cursor: pointer;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid var(--color-primary-gray, #b6b6b6);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  position: relative;
+
+  &:checked {
+    border-color: var(--color-primary-green-lite, #e3ffa8);
+    background-image: url(${checkedIcon});
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const CustomLabel = styled.label`
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-primary-white, #fff);
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+  ${CustomRadio}:checked + & {
+    color: var(--color-primary-green-lite, #e3ffa8);
+  }
+
+  @media screen and (min-width: 834px) {
+    width: 438px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 308px;
+  }
+`;
+
+export const StyledFormLabel = styled.label`
+  color: var(--color-primary-white, #fff);
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 24px;
 `;

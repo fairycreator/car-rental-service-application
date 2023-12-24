@@ -37,13 +37,15 @@ export const InputStyled = styled(Field)`
   }
 `;
 
-export const ErrorDivStyled = styled.div`
+export const ErrorMsg = styled.div`
   color: ${(props) => props.color || colors.error};
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
   letter-spacing: var(--main-letter-spacing);
   margin-top: -20px;
   margin-left: 12px;
+  font-size: 12px;
+  font-family: 'Poppins400';
 `;
 
 export const WrapForm = styled.div`
@@ -119,14 +121,6 @@ export const Input = styled.input`
   font-size: 14px;
   line-height: 1.43;
 
-  /* &.inputError {
-    border: 2px solid #e74a3b;
-  }
-
-  &.inputValid {
-    border: 2px solid #3cbc81;
-  } */
-
   &::placeholder {
     color: var(--color-primary-grey);
     font-size: 14px;
@@ -152,7 +146,7 @@ export const SignInButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
   }
 
   @media screen and (min-width: 834px) {

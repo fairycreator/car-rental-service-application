@@ -1,5 +1,67 @@
 import styled from 'styled-components';
+import checkedIcon from '../../../assets/images/icons/checked-icon.svg';
+import { Field } from 'formik';
 
+const colors = {
+  text: '#FFFFFF',
+  inputBorder: '#45FFBC',
+  inputBorderHover: '#21CE99',
+  error: '#e74a3b',
+  success: '#3cbc81',
+  background: 'transparent',
+  iconStroke: '#FFFFFF',
+};
+
+//Radio buttons
+export const CustomRadio = styled(Field)`
+  margin-right: 8px;
+  cursor: pointer;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid var(--color-primary-gray, #b6b6b6);
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  position: relative;
+
+  &:checked {
+    border-color: var(--color-primary-green-lite, #e3ffa8);
+    background-image: url(${checkedIcon});
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const CustomLabel = styled.label`
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-primary-white, #fff);
+  font-size: 14px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+
+  ${CustomRadio}:checked + & {
+    color: var(--color-primary-green-lite, #e3ffa8);
+  }
+`;
+
+export const StyledFormLabel = styled.label`
+  color: var(--color-primary-white, #fff);
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  margin-bottom: 24px;
+`;
+
+//Wrapper
 export const GoalWrapper = styled.div`
   margin: 0 auto;
   padding: 10px;
@@ -25,6 +87,7 @@ export const GoalWrapper = styled.div`
   }
 `;
 
+//Image
 export const Image = styled.img`
   height: 296px;
   width: 300px;
@@ -41,6 +104,7 @@ export const Image = styled.img`
   }
 `;
 
+//Content wrapper
 export const GoalContent = styled.div`
   flex-direction: column;
   justify-content: center;
@@ -99,6 +163,17 @@ export const RadioWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (min-width: 834px) and (max-width: 1439px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: column;
+  }
 `;
 
 export const RadioLabel = styled.label`
@@ -126,7 +201,7 @@ export const NextButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
   }
 
   @media screen and (min-width: 834px) {
@@ -155,7 +230,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: transparent;
   }
 
   @media screen and (min-width: 834px) {
@@ -165,4 +240,16 @@ export const BackButton = styled.button`
   @media screen and (min-width: 1440px) {
     width: 212px;
   }
+`;
+
+//Error
+export const StyledErrorMessage = styled.div`
+  color: ${(props) => props.color || colors.error};
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  margin-top: -10px;
+  margin-left: 9px;
+  font-size: 12px;
+  font-family: 'Poppins400';
 `;
