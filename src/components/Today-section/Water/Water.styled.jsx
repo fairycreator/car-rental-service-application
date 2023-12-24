@@ -65,60 +65,73 @@ export const Amount = styled.span`
   color: var(--primary-color-white);
 `;
 
-export const ClearButton = styled.button`
+export const DeleteIcon = styled.svg`
   position: absolute;
+  cursor: pointer;
   top: 12px;
   right: 12px;
   width: 20px;
   height: 20px;
-  background-color: transparent;
-  border: none;
-
-  &svg {
-    fill: var(--primary-color-green-lite);
-  }
+  fill: var(--primary-color-green-lite);
 
   @media screen and (min-width: 834px) {
     top: 24px;
     right: 24px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    }
   }
 `;
-
-// export const TrashIcon = styled.svg`
-//   fill: var(--primary-color-green-lite);
-
-/* @media screen and (min-width: 834px) {
-    top: 24px;
-    right: 24px;
-  } */
-// `;
 
 export const AddIcon = styled.svg`
   width: 16px;
   height: 16px;
   fill: var(--primary-color-black-two);
+
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active {
+    fill: var(--primary-color-white);
+  }
 `;
 
 export const Button = styled.button`
   display: flex;
   align-items: center;
   padding: 8px 10px;
-  color: var(--primary-color-black-two);
+  color: var(--primary-color-black-one);
   background-color: var(--primary-color-green-lite);
   border-color: transparent;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: var(--secondary-color-yellow);
+  }
 `;
 
-export const ProgressBar = styled.div`
+export const ProgressBarWrapper = styled.div`
   position: relative;
   height: 192px;
   width: 80px;
   border-radius: 20px;
   padding: 8px;
   border: 1px solid var(--secondary-color-grey-one);
+  background-color: var(--primary-color-black-one);
+`;
+
+export const ProgressBar = styled.div`
+  height: 176px;
+  width: 64px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: var(--primary-color-black-one);
 `;
 
 export const Percentage = styled.p`

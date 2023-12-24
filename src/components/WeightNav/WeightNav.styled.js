@@ -82,11 +82,14 @@ export const BoxDate = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  @media screen and (min-width: 834px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const ButtonSend = styled.button`
-  width: 166px;
+  width: 300px;
   height: 36px;
   background-color: var(--primary-color-green-lite);
   border-radius: 12px;
@@ -94,10 +97,16 @@ export const ButtonSend = styled.button`
   font-family: 'Poppins500', sans-serif;
   border: none;
   transition: var(--transition-dur-and-func);
+  &:hover {
+    background-color: var(--secondary-color-yellow);
+  }
+  @media screen and (min-width: 834px) {
+    width: 166px;
+  }
 `;
 
 export const InputWeight = styled.input`
-  width: 166px;
+  width: 300px;
   height: 36px;
   padding: 8px 10px;
   border: 1px solid var(--primary-color-green-lite);
@@ -113,10 +122,56 @@ export const InputWeight = styled.input`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
+  @media screen and (min-width: 834px) {
+    width: 166px;
+  }
 `;
 
 export const FormStyled = styled.form`
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
+
+  @media screen and (min-width: 834px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+`;
+
+export const ButtonCancel = styled.button`
+  border: none;
+  background-color: var(--primary-color-black-one);
+  color: var(--primary-color-grey);
+  font-family: 'Poppins400', sans-serif;
+  margin-top: 12px;
+  width: 300px;
+  height: 36px;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+`;
+
+export const ButtonClose = styled.button`
+  background: 0 0;
+  border: none;
+  padding: 0px 0px;
+  position: absolute;
+  top: 20px;
+  right: 32px;
+`;
+
+export const IconClose = styled.svg`
+  display: none;
+  @media screen and (min-width: 834px) {
+    display: block;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color-grey);
+    &:hover {
+      stroke: var(--primary-color-green-lite);
+    }
+  }
 `;

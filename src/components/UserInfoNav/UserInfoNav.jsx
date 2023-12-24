@@ -12,9 +12,11 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { logOut } from '../../redux/auth/authOperations';
 import sprite from 'assets/images/sprite.svg';
 import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
-import { selectUsername } from '../../redux/auth/authSelectors';
+import { selectUsername, selectUserAvatar } from '../../redux/auth/authSelectors';
 
 const ButtonMenu = styled(Button)({
+    width: '130px',
+    justifyContent: 'flex-end',
     display: 'flex',
     gap: '4px',
     boxShadow: 'none',
@@ -52,7 +54,8 @@ const StyledMenu = styled(Menu)({
 export const UserInfoNav = () => {
 
     const dispatch = useDispatch();
-    const username = useSelector(selectUsername)
+    const username = useSelector(selectUsername);
+    const userAvatar = useSelector(selectUserAvatar);
     const [menu, setMenu] = useState(null);
     const open = Boolean(menu);
 
@@ -77,7 +80,7 @@ export const UserInfoNav = () => {
     const handleLogout = () => {
         dispatch(logOut());
         handleCloseModal();
-    }
+    };
 
     return (
         <Container >
@@ -90,8 +93,8 @@ export const UserInfoNav = () => {
             >
                 <AvatarName>{username}</AvatarName>
                 <Avatar
-                    alt="User Name"
-                    src="/static/images/avatar/1.jpg"
+                    alt={username}
+                    src={userAvatar}
                     sx={{ width: 24, height: 24 }}
                 />
                 {open ? <IconDown>
@@ -118,27 +121,20 @@ export const UserInfoNav = () => {
                 onClose={handleClose}
                 TransitionComponent={Fade}
             >
-                <MenuItem
-                    onClick={handleClose}
-                >
+                <MenuItem onClick={handleClose}>
                     <IconSetting>
                         <use href={`${sprite}#icon-setting-2`}></use>
                     </IconSetting>
                     <Link to='/settings'>Setting</Link></MenuItem>
                 <MenuItem
-                // onClick={handleClose} перебивало окно
                 >
                     <IconLogout>
                         <use href={`${sprite}#icon-logout`}></use>
-                    </IconLogout>
-                    {/* <Link>Log out</Link> */}
-                
-                 
+                    </IconLogout>     
                     <Link variant="outlined" onClick={handleClickOpen}>
                         Log out
                     </Link>
                 
-            
                     <Dialog
                         open={openModal}
                         onClose={handleCloseModal}

@@ -1,4 +1,6 @@
+import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
+import { theme } from '../../GlobalStyle/';
 import { useSelector, useDispatch } from "react-redux";
 import { styled } from '@mui/material/styles';
 import Popover from '@mui/material/Popover';
@@ -7,8 +9,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
-import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled } from './WeightNav.styled';
-import { ButtonClose, IconClose } from '../GoalNav/GoalNav.styled';
+import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel, ButtonClose, IconClose } from './WeightNav.styled';
 import { selectUserWeight } from '../../redux/auth/authSelectors';
 import { updateWeight } from '../../redux/auth/authOperations';
 
@@ -26,19 +27,35 @@ const ButtonMenu = styled(Button)({
 });
 
 const PopoverStyled = styled(Popover)({
-    
+    transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
     '& .MuiPaper-root': {
         position: 'relative',
         width: '392px',
         height: '200px',
         borderRadius: 12,
         marginTop: '26px',
-        marginLeft: '-10px',
+        marginLeft: '-126px',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
+        [theme.breakpoints.down('tablet')]: {
+            height: '100vh',
+            marginTop: '44px',
+            minWidth: '100%',
+            boxShadow: 'none',
+            backgroundColor: '#050505',
+            marginLeft: '16px',
+        },
+        [theme.breakpoints.only('desktop')]: {
+    marginLeft: '-20px',
+  },
     },
     '& .MuiTypography-root': {
         padding: '20px 24px 40px 24px',
+        [theme.breakpoints.down('tablet')]: {
+            width: '320px',
+            padding: '24px 10px',
+            margin: '0 auto',
+        },
     },
 });
 
@@ -55,16 +72,23 @@ const TextFieldStyled = styled(TextField)({
     '& .MuiOutlinedInput-input': {
         borderColor: '#E3FFA8',
         borderRadius: 12,
-    }
+    },
 });
 
-export const WeightNav = () => {
+export const WeightNav = ({setOpenModal}) => {
+    const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
+
     const dispatch = useDispatch();
     const [anchorEl, setAnchorEl] = useState(null);
     const weightUser = useSelector(selectUserWeight);
     
     const today = new Date(Date.now());
     const todayDate = (today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear());
+
+    const handleCancel = () => {
+        setAnchorEl(null);
+        setOpenModal(false)
+    };
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -78,7 +102,7 @@ export const WeightNav = () => {
         event.preventDefault();
 
         let weight = Number(event.currentTarget.elements.weight.value);
-        dispatch(updateWeight({weight}));
+        dispatch(updateWeight({ weight }));
 
         handleClose();
     }
@@ -137,9 +161,12 @@ export const WeightNav = () => {
                     </BoxDate>
 
                     <FormStyled onSubmit={handleSend}>
-                        <InputWeight type='number' name='weight' placeholder='Enter your weight' />
+                        <InputWeight type='number' name='weight' placeholder='Enter your weight'/>
                         <ButtonSend>Confirm</ButtonSend>
+                         
                     </FormStyled>
+                    {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
+                        undefined}
 
                 </Typography>
 

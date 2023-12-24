@@ -47,7 +47,10 @@ const bgCircle = {
 };
 
 export const DoughnutChart = ({ dailyGoal, filledValue, bgColor }) => {
-  const emptyValue = dailyGoal - filledValue;
+  let emptyValue = dailyGoal - filledValue;
+  if (filledValue > dailyGoal) {
+    emptyValue = 0;
+  }
 
   const data = {
     datasets: [

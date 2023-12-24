@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import sprite from '../../../assets/images/sprite.svg';
+import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
+import { WaterChart } from './WaterChart';
+import {
+  selectConsumedWaterId,
+  selectConsumedWaterValue,
+  selectIsLoading,
+} from '../../../redux/dailyStatistics/dailySelectors';
+import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
+import { selectUserWaterRate } from '../../../redux/auth/authSelectors';
 import {
   Wrapper,
   Title,
   ContentWrapper,
   ProgressBar,
-  ClearButton,
-  // TrashIcon,
   AddIcon,
   SecondTitle,
   Text,
@@ -15,49 +22,54 @@ import {
   Button,
   Span,
   Percentage,
+  ProgressBarWrapper,
+  DeleteIcon,
 } from './Water.styled';
-
-import { AddWaterModal } from '../AddWaterModal/AddWaterModal';
-import { WaterChart } from './WaterChart';
-import { selectConsumedWaterId } from '../../../redux/dailyStatistics/dailySelectors';
-import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
 
 export const Water = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const _id = useSelector(selectConsumedWaterId);
+  const isLoading = useSelector(selectIsLoading);
+
   const dispatch = useDispatch();
 
-  // дані з беку
-  const waterGoal = 1500;
-  const waterFilled = 1050;
+  const _id = useSelector(selectConsumedWaterId);
+  const waterGoal = useSelector(selectUserWaterRate);
+  const waterFilled = useSelector(selectConsumedWaterValue);
 
   const waterPercentage =
     waterFilled <= waterGoal
       ? Math.round((waterFilled * 100) / waterGoal)
       : 100;
 
-  const left = waterGoal - waterFilled;
+  let left = waterGoal - waterFilled;
+
+  if (waterFilled > waterGoal) {
+    left = 0;
+  }
 
   return (
     <Wrapper>
       <Title>Water</Title>
       <ContentWrapper>
-        <ClearButton
-          type="button"
+        <DeleteIcon
+          width="20px"
+          height="20px"
           onClick={() => {
-            console.log(_id);
             dispatch(deleteWater(_id));
           }}
-          // onClick={(e) => console.log(e.target)}
         >
-          <svg width="20px" height="20px">
-            <use href={`${sprite}#trash-delete`}></use>
-          </svg>
-        </ClearButton>
-        <ProgressBar>
-          <WaterChart waterIntake={waterPercentage} />
-          <Percentage>{`${waterPercentage}%`}</Percentage>
-        </ProgressBar>
+          <use href={`${sprite}#trash-delete`}></use>
+        </DeleteIcon>
+        <ProgressBarWrapper>
+          {isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <ProgressBar>
+              <WaterChart waterIntake={waterPercentage} />
+              <Percentage>{`${waterPercentage}%`}</Percentage>
+            </ProgressBar>
+          )}
+        </ProgressBarWrapper>
         <div>
           <SecondTitle>Water consumption</SecondTitle>
 

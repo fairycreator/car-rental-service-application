@@ -46,10 +46,18 @@ export const SubmitBtn = styled.button`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.42;
+  outline: none;
   background-color: var(--primary-color-green-lite);
   border-color: transparent;
   border-radius: 12px;
+
   color: var(--primary-color-black-two);
+
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    background-color: var(--secondary-color-yellow);
+  }
 `;
 
 export const Title = styled.h2`
@@ -68,6 +76,14 @@ export const Input = styled.input`
   background-color: transparent;
   color: var(--primary-color-white);
 
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color-green-lite);
+  }
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
   &::placeholder {
     font-size: 14px;
     font-weight: 400;
@@ -84,4 +100,9 @@ export const CancelBtn = styled.button`
   color: var(--primary-color-grey);
   background-color: transparent;
   border: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 `;
