@@ -11,6 +11,7 @@ import {
   InputStyled,
   NextButton,
   BackButton,
+  StyledErrorMessage,
 } from './BodyParameters.styled';
 
 const bodyParametersSchema = Yup.object().shape({
@@ -47,7 +48,7 @@ function BodyParameters({ onForm, onBackPage }) {
                 name="height"
                 placeholder="Enter your height (in cm)"
               />
-              <ErrorMessage name="height" component="div" />
+              <ErrorMessage name="height" component={StyledErrorMessage} />
             </FormLabel>
             <FormLabel>
               Weight
@@ -57,7 +58,7 @@ function BodyParameters({ onForm, onBackPage }) {
                 name="weight"
                 placeholder="Enter your weight (in kg)"
               />
-              <ErrorMessage name="weight" component="div" />
+              <ErrorMessage name="weight" component={StyledErrorMessage} />
             </FormLabel>
             <NextButton type="submit">Next</NextButton>
             <BackButton type="button" onClick={onBackPage}>

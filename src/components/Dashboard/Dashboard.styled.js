@@ -119,23 +119,13 @@ export const AverageValue = styled.span`
 export const LineChartsBox = styled.div`
   cursor: pointer;
   background-color: var(--primary-color-black-two);
-  width: 676px;
+  min-width: 676px;
+  min-height: 382px;
   border-radius: 12px;
   padding-top: 24px;
   padding-right: 30px;
   padding-bottom: 24px;
   padding-left: 14px;
-  /* overflow-x: scroll; */
-
-  /* ::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 255, 255, 0.1);
-    outline: 1px solid rgb(255, 255, 255, 0.1);
-    border-radius: 12px;
-  } */
 
   @media screen and (min-width: 834px) {
     width: 780px;
@@ -145,5 +135,10 @@ export const LineChartsBox = styled.div`
   @media screen and (min-width: 1440px) {
     width: 676px;
     padding-right: 20px;
+  }
+`;
+export const Scroll = styled.div`
+  @media screen and (max-width: 833px) {
+    width: 100vw;
   }
 `;

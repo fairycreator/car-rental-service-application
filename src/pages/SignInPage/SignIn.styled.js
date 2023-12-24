@@ -207,16 +207,12 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 54px;
-  color: var(--color-primary-grey, #b6b6b6);
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
 
-  @media screen and (min-width: 834px) {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 220px;
-    gap: 16px;
+  @media screen and (min-width: 1440px) {
+    justify-content: flex-start;
   }
 
   @media screen and (min-width: 1440px) {
@@ -226,13 +222,11 @@ export const QuestionTrumb = styled.div`
 
 // Question
 export const Question = styled.p`
-  color: var(--color-primary-grey, #b6b6b6);
+  color: var(--primary-color-grey);
+  font-family: 'Poppins500';
   font-size: 14px;
   line-height: 1.43;
-
-  @media screen and (min-width: 834px) {
-    margin-bottom: 0;
-  }
+  margin-bottom: 16px;
 `;
 
 export const ForgotPasswordText = styled.p`
@@ -244,6 +238,8 @@ export const ForgotPasswordText = styled.p`
 
   @media screen and (min-width: 1440px) {
     margin-top: 20px;
+    width: 212px;
+    margin-bottom: 184px;
   }
 `;
 
@@ -280,6 +276,7 @@ export const LabelWrap = styled.label`
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
+  width: 192;
 `;
 
 export const IconWrapped = styled.div`

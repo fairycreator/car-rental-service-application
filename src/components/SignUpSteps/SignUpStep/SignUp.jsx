@@ -1,6 +1,10 @@
+import { useEffect, useState } from 'react';
 import image from '../../../assets/backgroundImages/welcomepage.png';
 import useInput from '../../../hooks/useInput';
-import { passwordToggle } from './passwordToggle';
+import { signUpSchema } from '../../../schemas/signUpSchema';
+import { validateForm } from './utils/validateForm';
+import iconeye from '../../../assets/images/icons/eye.svg';
+import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 import {
   Wrapper,
   Image,
@@ -10,17 +14,41 @@ import {
   Form,
   Label,
   Input,
-  Checkbox,
+  SvgIconEye,
   NextButton,
   QuestionTrumb,
   Question,
-  NavLinkStyled,
+  LinkStyled,
+  ErrorMsg,
+  IconWrapped,
 } from './signUp.styled';
 
 const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
-  const name = useInput(nameValue, { isEmpty: true, isName: true });
-  const email = useInput(emailValue, { isEmpty: true, isEmail: true });
-  const password = useInput(passwordValue, { isEmpty: true, isPassword: true });
+  const name = useInput(nameValue, signUpSchema.fields.name);
+  const email = useInput(emailValue, signUpSchema.fields.email);
+  const password = useInput(passwordValue, signUpSchema.fields.password);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassInput = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  const getBorderColor = (touched, error) => {
+    if (error) return '1px solid #e74a3b';
+    if (touched) return '1px solid #3cbc81';
+    return '1px solid var(--primary-color-green-lite)';
+  };
+
+  const { value: nameVal } = name;
+  const { value: emailVal } = email;
+  const { value: passwordVal } = password;
+
+  useEffect(() => {
+    validateForm(nameVal, emailVal, passwordVal, setIsFormValid);
+  }, [nameVal, emailVal, passwordVal, setIsFormValid]);
 
   return (
     <Wrapper>
@@ -32,58 +60,56 @@ const SignUpForm = ({ onForm, nameValue, emailValue, passwordValue }) => {
         <Form onSubmit={onForm}>
           <Label>
             <Input
+              style={{ border: getBorderColor(name.touched, name.error) }}
               type="text"
               name="name"
               placeholder="Name"
               value={name.value}
-              onChange={(e) => name.onChange(e)}
-              onBlur={(e) => name.onBlur(e)}
+              onChange={name.onChange}
+              onBlur={name.onBlur}
               autoComplete="off"
             />
-            {/* {messageErrorName(name, 'Not valid name')} */}
           </Label>
+          {name.error && <ErrorMsg>{name.error}</ErrorMsg>}
           <Label>
             <Input
+              style={{ border: getBorderColor(name.touched, name.error) }}
               type="email"
               name="email"
               placeholder="E-mail"
               value={email.value}
-              onChange={(e) => email.onChange(e)}
-              onBlur={(e) => email.onBlur(e)}
+              onChange={email.onChange}
+              onBlur={email.onBlur}
               autoComplete="off"
             />
-            {/* {messageErrorEmail(email, 'Not valid e-mail')} */}
           </Label>
+          {email.error && <ErrorMsg>{email.error}</ErrorMsg>}
           <Label>
             <Input
-              type="password"
+              style={{ border: getBorderColor(name.touched, name.error) }}
+              type={showPassword ? 'text' : 'password'}
               name="password"
               placeholder="Password"
               value={password.value}
               id="myInput"
-              onChange={(e) => password.onChange(e)}
-              onBlur={(e) => password.onBlur(e)}
+              onChange={password.onChange}
+              onBlur={password.onBlur}
               autoComplete="off"
             />
-            {/* {messageErrorPassword(
-              password,
-              'Enter a valid Password',
-              'Password is secure'
-            )} */}
-            <Checkbox type="checkbox" onChange={passwordToggle} />
+            <IconWrapped>
+              <SvgIconEye onClick={togglePassInput}>
+                <image href={showPassword ? iconeyeoff : iconeye} />
+              </SvgIconEye>
+            </IconWrapped>
           </Label>
-          <NextButton
-            type="submit"
-            // disabled={
-            //   !name.inputValid || !password.inputValid || !email.inputValid
-            // }
-          >
+          {password.error && <ErrorMsg>{password.error}</ErrorMsg>}
+          <NextButton type="submit" disabled={!isFormValid}>
             Next
           </NextButton>
         </Form>
         <QuestionTrumb>
-          <Question> Do you already have an account?</Question>
-          <NavLinkStyled to="/signin">Sign in</NavLinkStyled>
+          <Question>Do you already have an account?</Question>
+          <LinkStyled to="/signin">Sign in</LinkStyled>
         </QuestionTrumb>
       </Content>
     </Wrapper>

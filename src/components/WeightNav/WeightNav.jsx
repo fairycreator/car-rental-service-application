@@ -1,3 +1,4 @@
+import { Formik } from 'formik';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { theme } from '../../GlobalStyle/';
@@ -9,8 +10,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
-import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel } from './WeightNav.styled';
-import { ButtonClose, IconClose} from '../GoalNav/GoalNav.styled';
+import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel, ButtonClose, IconClose } from './WeightNav.styled';
 import { selectUserWeight } from '../../redux/auth/authSelectors';
 import { updateWeight } from '../../redux/auth/authOperations';
 
@@ -28,23 +28,27 @@ const ButtonMenu = styled(Button)({
 });
 
 const PopoverStyled = styled(Popover)({
+    transition: '250ms cubic-bezier(0.4, 0, 0.2, 1)',
     '& .MuiPaper-root': {
         position: 'relative',
         width: '392px',
         height: '200px',
         borderRadius: 12,
         marginTop: '26px',
-        marginLeft: '-10px',
+        marginLeft: '-126px',
         backgroundColor: '#0F0F0F',
         boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
         [theme.breakpoints.down('tablet')]: {
-            marginTop: '60px',
-            minHeight: '100%',
+            height: '100vh',
+            marginTop: '44px',
             minWidth: '100%',
             boxShadow: 'none',
             backgroundColor: '#050505',
             marginLeft: '16px',
         },
+        [theme.breakpoints.only('desktop')]: {
+    marginLeft: '-20px',
+  },
     },
     '& .MuiTypography-root': {
         padding: '20px 24px 40px 24px',
@@ -72,7 +76,7 @@ const TextFieldStyled = styled(TextField)({
     },
 });
 
-export const WeightNav = () => {
+export const WeightNav = ({ setOpenModal }) => {
     const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
 
     const dispatch = useDispatch();
@@ -82,6 +86,11 @@ export const WeightNav = () => {
     const today = new Date(Date.now());
     const todayDate = (today.getDate() + '.' + (today.getMonth() + 1) + '.' + today.getFullYear());
 
+    const handleCancel = () => {
+        setAnchorEl(null);
+        setOpenModal(false)
+    };
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -89,22 +98,12 @@ export const WeightNav = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    const handleSend = (event) => {
-        event.preventDefault();
-
-        let weight = Number(event.currentTarget.elements.weight.value);
-        dispatch(updateWeight({ weight }));
-
-        handleClose();
-    }
     
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
     return (
         <div>
-         
             <ButtonMenu aria-describedby={id} variant="contained" onClick={handleClick}>
                 <DivMenu>
                     <DivImage>
@@ -135,7 +134,6 @@ export const WeightNav = () => {
                     horizontal: 'left',
                 }}
             >
-
                 <ButtonClose
                     onClick={handleClose}>
                     <IconClose>
@@ -152,12 +150,21 @@ export const WeightNav = () => {
                         <MenuDate>{todayDate}</MenuDate>
                     </BoxDate>
 
-                    <FormStyled onSubmit={handleSend}>
-                        <InputWeight type='number' name='weight' placeholder='Enter your weight' />
-                        <ButtonSend>Confirm</ButtonSend>
-                         
-                    </FormStyled>
-                    {mobileVersion ? (<ButtonCancel>Cancel</ButtonCancel>) :
+                    <Formik
+                        initialValues={{ weight: '' }}
+                        onSubmit={(values, actions) => {
+                            dispatch(updateWeight({ weight: values.weight }))
+                            actions.resetForm();
+                            handleClose()
+                        }}
+                    >
+                        <FormStyled>
+                            <InputWeight id="weight" name="weight" placeholder="Enter your weight" />
+                            <ButtonSend type="submit">Confirm</ButtonSend>
+                        </FormStyled>
+                    </Formik>
+
+                    {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
                         undefined}
 
                 </Typography>

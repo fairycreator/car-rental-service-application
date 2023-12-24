@@ -1,24 +1,31 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useNavigate } from 'react-router-dom';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { forgotPassword } from '../../redux/auth/authOperations';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import image from '../../assets/backgroundImages/welcomepage.png';
 import {
-  Container,
   MainContent,
   Image,
   Title,
   Description,
   SubmitButton,
-  Input,
+  FieldStyled,
   SignUpPrompt,
   SignUpPromptText,
+  ContentWrapper,
+  FormStyled,
+  SubWrapper,
+  LinkStyled,
+  ErrorMessageStyled,
 } from './ForgotYourPassword.styled';
 
 const EmailSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email').required('Required'),
+  email: Yup.string()
+    .trim('Cannot include leading and trailing spaces')
+    .email('Invalid email')
+    .required('Required'),
 });
 
 const ForgotPasswordPage = () => {
@@ -39,39 +46,49 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <Container>
-      <MainContent>
-        <Image src={image} alt="Forgot Password" />
+    <MainContent>
+      <Image src={image} alt="Forgot Password" />
+      <ContentWrapper>
         <Title>Forgot your password</Title>
         <Description>
-          Enter your email to receive password recovery instructions
+          We will send you an email with recovery instructions
         </Description>
-        <Formik
-          initialValues={{ email: '' }}
-          validationSchema={EmailSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ isSubmitting }) => (
-            <Form>
-              <Field
-                as={Input}
-                name="email"
-                type="email"
-                placeholder="E-mail"
-              />
-              <ErrorMessage name="email" component="div" />
-              <SubmitButton type="submit" disabled={isSubmitting}>
-                Send
-              </SubmitButton>
-            </Form>
-          )}
-        </Formik>
-        <SignUpPrompt>
-          <SignUpPromptText>If you do not have an account yet</SignUpPromptText>
-          <Link to="/signup">Sign up</Link>
-        </SignUpPrompt>
-      </MainContent>
-    </Container>
+        <SubWrapper>
+          <Formik
+            initialValues={{ email: '' }}
+            validationSchema={EmailSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting, errors, touched }) => {
+              const borderEmailColor = touched.email
+                ? errors.email
+                  ? '1px solid #e74a3b'
+                  : '1px solid #3cbc81'
+                : '1px solid var(--primary-color-green-lite)';
+
+              return (
+                <FormStyled>
+                  <FieldStyled
+                    border={borderEmailColor}
+                    name="email"
+                    type="email"
+                    placeholder="E-mail"
+                  />
+                  <ErrorMessageStyled name="email" component="div" />
+                  <SubmitButton type="submit" disabled={isSubmitting}>
+                    Send
+                  </SubmitButton>
+                </FormStyled>
+              );
+            }}
+          </Formik>
+          <SignUpPrompt>
+            <SignUpPromptText>Do you already have an account?</SignUpPromptText>
+            <LinkStyled to="/signin">Sign in</LinkStyled>
+          </SignUpPrompt>
+        </SubWrapper>
+      </ContentWrapper>
+    </MainContent>
   );
 };
 

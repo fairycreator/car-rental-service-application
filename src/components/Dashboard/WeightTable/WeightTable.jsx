@@ -22,6 +22,9 @@ export const WeightTable = ({ month }) => {
     <>
       <TableContainer
         sx={{
+          [theme.breakpoints.down('tablet')]: {
+            width: '100vw',
+          },
           backgroundColor: '#0F0F0F',
           borderRadius: '12px',
           paddingLeft: '10px',
@@ -35,7 +38,7 @@ export const WeightTable = ({ month }) => {
             paddingRight: '10px',
           },
           '&::-webkit-scrollbar': {
-            height: '8px',
+            height: '2px',
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgb(255, 255, 255, 0.1)',
