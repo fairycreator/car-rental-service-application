@@ -1,3 +1,4 @@
+import { Formik, Field, Form } from 'formik';
 import { useMediaQuery } from 'react-responsive';
 import { useState } from 'react';
 import { theme } from '../../GlobalStyle/';
@@ -75,7 +76,7 @@ const TextFieldStyled = styled(TextField)({
     },
 });
 
-export const WeightNav = ({setOpenModal}) => {
+export const WeightNav = ({ setOpenModal }) => {
     const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
 
     const dispatch = useDispatch();
@@ -98,14 +99,14 @@ export const WeightNav = ({setOpenModal}) => {
         setAnchorEl(null);
     };
 
-    const handleSend = (event) => {
-        event.preventDefault();
+    // const handleSend = (event) => {
+    //     event.preventDefault();
 
-        let weight = Number(event.currentTarget.elements.weight.value);
-        dispatch(updateWeight({ weight }));
+    //     let weight = Number(event.currentTarget.elements.weight.value);
+    //     dispatch(updateWeight({ weight }));
 
-        handleClose();
-    }
+    //     handleClose();
+    // }
     
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
@@ -160,11 +161,28 @@ export const WeightNav = ({setOpenModal}) => {
                         <MenuDate>{todayDate}</MenuDate>
                     </BoxDate>
 
-                    <FormStyled onSubmit={handleSend}>
+                    {/* <FormStyled onSubmit={handleSend}>
                         <InputWeight type='number' name='weight' placeholder='Enter your weight'/>
                         <ButtonSend>Confirm</ButtonSend>
                          
-                    </FormStyled>
+                    </FormStyled> */}
+
+                    <Formik
+                        initialValues={{ weight: '' }}
+                        onSubmit={(values, actions) => {
+                            dispatch(updateWeight({ weight: values.weight }))
+                            actions.resetForm();
+                            handleClose()
+                        }}
+                    >
+                        <FormStyled>
+                            {/* <label htmlFor="weight"></label> */}
+                            <InputWeight id="weight" name="weight" placeholder="Enter your weight" />
+                            <ButtonSend type="submit">Confirm</ButtonSend>
+                        </FormStyled>
+                    </Formik>
+
+
                     {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
                         undefined}
 
