@@ -47,6 +47,7 @@ const options = {
       display: false,
     },
     tooltip: {
+      events: ['click'],
       backgroundColor: '#0F0F0F',
       titleColor: '#FFFFFF',
       bodyColor: '#B6B6B6',
@@ -77,7 +78,7 @@ const options = {
         lineHeight: 1.4,
         weight: 'normal',
       },
-      xAlign: 'left',
+      xAlign: '10px',
       yAlign: 'bottom',
       callbacks: {
         title: (data) => {
@@ -101,7 +102,10 @@ const options = {
       min: 0,
       max: 3000,
       ticks: {
-        callback: (value) => `${value / 1000} L`,
+        callback: (value) => {
+          if (value > 0) return `${value / 1000} L`;
+          return 0;
+        },
         stepSize: 1000,
       },
       grid: {

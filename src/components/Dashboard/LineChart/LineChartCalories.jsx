@@ -78,8 +78,8 @@ const options = {
         lineHeight: 1.4,
         weight: 'normal',
       },
-        xAlign: 'left',
-        yAlign: 'bottom',
+      xAlign: '10px',
+      yAlign: 'bottom',
       callbacks: {
         title: (data) => {
           return data[0].parsed.y;
@@ -102,7 +102,10 @@ const options = {
       min: 0,
       max: 3000,
       ticks: {
-        callback: (value) => `${value / 1000} K`,
+        callback: (value) => {
+          if (value > 0) return `${value / 1000} K`;
+          return 0;
+        },
         stepSize: 1000,
       },
       grid: {
