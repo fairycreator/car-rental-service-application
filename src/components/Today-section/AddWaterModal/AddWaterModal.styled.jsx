@@ -53,16 +53,10 @@ export const SubmitBtn = styled.button`
 
   color: var(--primary-color-black-two);
 
-  transition:
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:active {
-    border-color: var(--primary-color-green-lite);
-    background-color: transparent;
-    color: var(--primary-color-white);
+  &:hover {
+    background-color: var(--secondary-color-yellow);
   }
 `;
 
@@ -81,6 +75,14 @@ export const Input = styled.input`
   border-radius: 12px;
   background-color: transparent;
   color: var(--primary-color-white);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color-green-lite);
+  }
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 
   &::placeholder {
     font-size: 14px;

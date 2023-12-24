@@ -9,11 +9,12 @@ import { theme } from '../../../GlobalStyle';
 import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
 
 import { selectWeightMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
-import { printTable } from '../../../helpers/dashboard/printTable';
+import { printTableWeight } from '../../../helpers/dashboard/printTableWeight';
+
 
 export const WeightTable = ({ month }) => {
   const weightFromBack = useSelector(selectWeightMonthStatistics);
-  const newArrOfWeight = printTable(weightFromBack, month);
+  const newArrOfWeight = printTableWeight(weightFromBack, month);
   let days = newArrOfWeight.days;
   let weight = newArrOfWeight.values;
 
@@ -21,6 +22,9 @@ export const WeightTable = ({ month }) => {
     <>
       <TableContainer
         sx={{
+          [theme.breakpoints.down('tablet')]: {
+            width: '100vw',
+          },
           backgroundColor: '#0F0F0F',
           borderRadius: '12px',
           paddingLeft: '10px',
@@ -34,7 +38,7 @@ export const WeightTable = ({ month }) => {
             paddingRight: '10px',
           },
           '&::-webkit-scrollbar': {
-            height: '8px',
+            height: '2px',
           },
           '&::-webkit-scrollbar-thumb': {
             backgroundColor: 'rgb(255, 255, 255, 0.1)',

@@ -13,7 +13,8 @@ import {
 import { Line } from 'react-chartjs-2';
 
 import { selectWaterMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
-import { printChart } from '../../../helpers/dashboard/printChart';
+import { printChartWater } from '../../../helpers/dashboard/printChartWater';
+
 
 ChartJS.register(
   CategoryScale,
@@ -119,7 +120,7 @@ for (let i = 0; i < 31; i++) {
 
 export const LineChartWater = ({ month }) => {
   const waterFromBack = useSelector(selectWaterMonthStatistics);
-  const newArrOfWater = printChart(waterFromBack, month);
+  const newArrOfWater = printChartWater(waterFromBack, month);
   const labels = newArrOfWater.days;
   const water = newArrOfWater.values;
 

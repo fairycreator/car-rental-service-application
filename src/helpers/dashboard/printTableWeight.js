@@ -7,7 +7,7 @@ const currentMonth = date.getMonth() + 1;
 const currentDay = date.getDate();
 
 
-export function printTable(arr, month) {
+export function printTableWeight(arr, month) {
   let days = [];
   let values = [];
   let prevWeight = 0;

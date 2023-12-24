@@ -19,7 +19,7 @@ import {
 const WelcomePage = () => {
   return (
     <Container>
-      <Image src={image} alt="Activity trtacker" />
+      <Image src={image} alt="Activity tracker" />
       <MainContent>
         <TittleButtonWrap>
           <TittleWrap>

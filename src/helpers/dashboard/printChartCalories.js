@@ -7,7 +7,7 @@ const currentMonth = date.getMonth() + 1;
 const currentDay = date.getDate();
 
 
-export function printChart(arr, month) {
+export function printChartCalories(arr, month) {
   let days = [];
   let values = [];
   let zeroCalories = 0;
@@ -18,7 +18,7 @@ export function printChart(arr, month) {
     if (arr?.length > 0) {
       if (arrDayFromBack.includes(i + 1)) {
         let item = arr?.find((item) => new Date(item.date).getDate() === i + 1);
-        values.push(item.value);
+        values.push(item.totalCalories);
       } else {
         if (currentMonth === numberOfMonth && i + 1 > currentDay) {
           values.push(null);

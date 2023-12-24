@@ -51,11 +51,16 @@ export const RecordInputBig = styled.input`
   border-radius: 12px;
   border: 1px solid #e3ffa8;
   background: #0f0f0f;
+  color: #b6b6b6;
+  font-family: 'Poppins400';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
 
-  ::placeholder {
+  &::placeholder {
+    color: #b6b6b6;
     font-family: 'Poppins400';
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 20px;
   }
@@ -73,11 +78,11 @@ export const RecordInputBigFirst = styled.input`
   border-radius: 12px;
   border: 1px solid #e3ffa8;
   background: #0f0f0f;
-
-  ::placeholder {
+  color: #b6b6b6;
+  &::placeholder {
+    color: #b6b6b6;
     font-family: 'Poppins400';
     font-size: 14px;
-    font-style: normal;
     font-weight: 400;
     line-height: 20px;
   }
@@ -120,6 +125,14 @@ export const SubInput = styled.input`
   border-radius: 12px;
   border: 1px solid #e3ffa8;
   background: #0f0f0f;
+  color: #b6b6b6;
+  &::placeholder {
+    color: #b6b6b6;
+    font-family: 'Poppins400';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
 `;
 
 export const ButtonBlock = styled.div`
@@ -139,7 +152,8 @@ export const ButtonBlock = styled.div`
   @media screen and (min-width: 1440px) {
   }
 `;
-export const Button = styled.div`
+export const Button = styled.input`
+display: block;
   width: 256px;
   padding: 8px 10px;
   border-radius: 12px;
@@ -154,6 +168,7 @@ export const Button = styled.div`
   line-height: 20px; /* 142.857% */
   margin-left: auto;
   margin-right: auto;
+  border:none;
   '
 `;
 

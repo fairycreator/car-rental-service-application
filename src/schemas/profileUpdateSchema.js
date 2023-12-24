@@ -14,6 +14,8 @@ import * as Yup from 'yup';
 
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
+    .trim('Cannot include leading and trailing spaces')
+    .strict()
     .min(2, 'Too short name')
     .max(20, 'Too long name')
     .required('Name should be filled'),
