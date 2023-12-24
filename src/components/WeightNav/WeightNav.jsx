@@ -6,7 +6,6 @@ import { useState } from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
 import { theme } from '../../GlobalStyle/';

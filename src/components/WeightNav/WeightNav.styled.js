@@ -92,7 +92,6 @@ export const BoxDate = styled.div`
 export const ButtonSend = styled.button`
   width: 300px;
   height: 36px;
-  /* margin-top: 12px; */
   background-color: var(--primary-color-green-lite);
   border-radius: 12px;
   color: var(--primary-color-black-two);
