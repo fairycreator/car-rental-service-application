@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addWater } from '../../../redux/dailyStatistics/dailyOperations';
 import {
@@ -11,7 +11,7 @@ import {
   CancelBtn,
 } from './AddWaterModal.styled';
 
-export const AddWaterModal = ({ setIsModalOpen }) => {
+export const AddWaterModal = ({ isModalOpen, setIsModalOpen }) => {
   const [inputValue, setInputValue] = useState(0);
   const dispatch = useDispatch();
 
@@ -24,6 +24,23 @@ export const AddWaterModal = ({ setIsModalOpen }) => {
     dispatch(addWater(value));
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      console.log(e);
+      if (e.code === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEsc);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, [isModalOpen, setIsModalOpen]);
 
   return (
     <Backdrop onClick={() => setIsModalOpen(false)}>

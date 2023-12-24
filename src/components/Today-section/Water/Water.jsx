@@ -90,7 +90,12 @@ export const Water = () => {
           </Button>
         </div>
       </ContentWrapper>
-      {isModalOpen && <AddWaterModal setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && (
+        <AddWaterModal
+          setIsModalOpen={setIsModalOpen}
+          isModalOpen={isModalOpen}
+        />
+      )}
     </Wrapper>
   );
 };
