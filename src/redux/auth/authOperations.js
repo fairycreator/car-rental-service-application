@@ -108,6 +108,7 @@ export const updateUser = createAsyncThunk(
     };
     try {
       const { data } = await instance.put('user/update', dataUser, config);
+      console.log(data);
 
       return data;
     } catch (error) {

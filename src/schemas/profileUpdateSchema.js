@@ -15,6 +15,7 @@ import * as Yup from 'yup';
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
     .trim('Cannot include leading and trailing spaces')
+    .strict()
     .min(2, 'Too short name')
     .max(20, 'Too long name')
     .required('Name should be filled'),
@@ -28,7 +29,6 @@ export const validationSchema = Yup.object().shape({
   //     (value) => value && value.size <= MAX_FILE_SIZE
   //   ),
   age: Yup.number('Enter correct number')
-    .trim('Cannot include leading and trailing spaces')
     .positive('Age should be positive')
     .integer('Age should be integer')
     .min(16, 'Incorrect data for calculation')
@@ -36,14 +36,12 @@ export const validationSchema = Yup.object().shape({
     .required('Age should be filled'),
   gender: Yup.string().oneOf(['male', 'female']).required(),
   height: Yup.number('Enter correct number')
-    .trim('Cannot include leading and trailing spaces')
     .positive('Height should be positive')
     .integer('Height should be integer')
     .min(140, 'Incorrect data for calculation')
     .max(250, 'Incorrect data for calculation')
     .required('Height should be filled'),
   weight: Yup.number('Enter correct number')
-    .trim('Cannot include leading and trailing spaces')
     .positive('Height should be positive')
     .integer('Height should be integer')
     .min(40, 'Incorrect data for calculation')
