@@ -6,8 +6,8 @@ import { WaterChart } from './WaterChart';
 import {
   selectConsumedWaterId,
   selectConsumedWaterValue,
-} from '../../../redux/dailyStatistics/dailySelectors';
-import { deleteWater } from '../../../redux/dailyStatistics/dailyOperations';
+} from '../../../redux/dailyWaterStatistics/waterSelectors';
+import { deleteWater } from '../../../redux/dailyWaterStatistics/waterOperations';
 import { selectUserWaterRate } from '../../../redux/auth/authSelectors';
 import {
   Wrapper,

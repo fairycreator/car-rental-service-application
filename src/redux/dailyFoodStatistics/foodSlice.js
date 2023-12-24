@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFood, getFood } from './dailyOperations';
+import { getFood } from './foodOperations';
+// import { addFood, getFood } from '../dailyStatisticsWater/waterOperations';
 // import { getCurrentStatistics } from './dailyOperations';
 
 const handlePending = (state) => {
@@ -57,7 +58,7 @@ const initialState = {
   error: null,
 };
 
-const dailyStatisticsSliceFood = createSlice({
+const dailyStatisticsFoodSlice = createSlice({
   name: 'dailyStatisticsFood',
   initialState,
 
@@ -66,12 +67,12 @@ const dailyStatisticsSliceFood = createSlice({
       // .addCase(getCurrentStatistics.pending, handlePending)
       // .addCase(getCurrentStatistics.fulfilled, handleGetCurrentFulfilled)
       // .addCase(getCurrentStatistics.rejected, handleRejected)
-    //   .addCase(addFood.pending, handlePending)
-    //   .addCase(addFood.fulfilled, handleAddFoodFullfiled)
-    //   .addCase(addFood.rejected, handleRejected)
+      //   .addCase(addFood.pending, handlePending)
+      //   .addCase(addFood.fulfilled, handleAddFoodFullfiled)
+      //   .addCase(addFood.rejected, handleRejected)
       .addCase(getFood.pending, handlePending)
       .addCase(getFood.fulfilled, handeGetFoodFullfiled)
       .addCase(getFood.rejected, handleRejected),
 });
 
-export const dailyStatisticsReducerFood = dailyStatisticsSliceFood.reducer;
+export const dailyStatisticsFoodReducer = dailyStatisticsFoodSlice.reducer;
