@@ -279,10 +279,7 @@ export const ProfileSetting = () => {
               <Button sx={buttonStyled} type="submit">
                 Save
               </Button>
-              <Button
-                sx={buttonStyled}
-                onClick={onClick={formik.handleReset}}
-              >
+              <Button sx={buttonStyled} onClick={formik.handleReset}>
                 Cancel
               </Button>
             </ButtonGroup>
