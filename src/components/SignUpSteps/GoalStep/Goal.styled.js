@@ -2,8 +2,17 @@ import styled from 'styled-components';
 import checkedIcon from '../../../assets/images/icons/checked-icon.svg';
 import { Field } from 'formik';
 
-//Radio buttons
+const colors = {
+  text: '#FFFFFF',
+  inputBorder: '#45FFBC',
+  inputBorderHover: '#21CE99',
+  error: '#e74a3b',
+  success: '#3cbc81',
+  background: 'transparent',
+  iconStroke: '#FFFFFF',
+};
 
+//Radio buttons
 export const CustomRadio = styled(Field)`
   margin-right: 8px;
   cursor: pointer;
@@ -229,4 +238,16 @@ export const BackButton = styled.button`
   @media screen and (min-width: 1440px) {
     width: 212px;
   }
+`;
+
+//Error
+export const StyledErrorMessage = styled.div`
+  color: ${(props) => props.color || colors.error};
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  margin-top: -10px;
+  margin-left: 9px;
+  font-size: 12px;
+  font-family: 'Poppins400';
 `;

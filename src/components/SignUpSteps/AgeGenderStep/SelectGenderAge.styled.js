@@ -56,17 +56,13 @@ export const Image = styled.img`
 `;
 
 export const GenderAgeContent = styled.div`
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-
-  @media screen and (min-width: 834px) {
+  @media (min-width: 834px) {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 80px;
   }
-  @media screen and (min-width: 1440px) {
-    padding-top: 80px;
+
+  @media (min-width: 1440px) {
     align-items: flex-start;
   }
 `;

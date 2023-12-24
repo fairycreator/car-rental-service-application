@@ -12,6 +12,7 @@ import {
   NextButton,
   BackButton,
   CustomRadio,
+  StyledErrorMessage,
 } from './Goal.styled';
 
 const goalSchema = Yup.object().shape({
@@ -48,7 +49,7 @@ function GoalSelectionStep({ onForm, onBackPage }) {
                   Gain Muscle
                 </CustomLabel>
               </RadioWrapper>
-              <ErrorMessage name="goal" component="div" />
+              <ErrorMessage name="goal" component={StyledErrorMessage} />
               <NextButton type="submit">Next</NextButton>
               <BackButton type="button" onClick={onBackPage}>
                 Back
