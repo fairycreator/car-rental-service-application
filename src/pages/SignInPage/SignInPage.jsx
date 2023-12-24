@@ -8,14 +8,8 @@ import {
   QuestionTrumb,
   Question,
   Image,
-  // NextButton,
-  // Input,
-  // WrapForm,
-  // ErrorDivStyled,
   ForgotPasswordText,
-  // LabelWrap,
   NavLinkStyled,
-  // Checkbox,
 } from './SignIn.styled';
 import SignInForm from '../../components/SignInForm/SignInForm';
 

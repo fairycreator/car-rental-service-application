@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import iconeye from '../../../assets/images/icons/eye.svg';
-import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
+
+const colors = {
+  text: '#FFFFFF',
+  inputBorder: '#45FFBC',
+  inputBorderHover: '#21CE99',
+  error: '#e74a3b',
+  success: '#3cbc81',
+  background: 'transparent',
+  iconStroke: '#FFFFFF',
+};
 
 //SignUpPageComponent
 export const SignUpContainer = styled.div`
   margin: 0 auto;
-  padding: 10px;
   background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
@@ -165,9 +172,15 @@ export const NextButton = styled.button`
   font-weight: 500;
   line-height: 1.43;
   transition: background-color, var(--transition-dur-and-func);
+  margin-bottom: 80px;
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
+  }
+
+  &:disabled {
+    background-color: var(--primary-color-green-lite);
+    cursor: not-allowed;
   }
 
   @media screen and (min-width: 834px) {
@@ -176,19 +189,7 @@ export const NextButton = styled.button`
 
   @media screen and (min-width: 1440px) {
     width: 212px;
-  }
-`;
-
-// NavLinkStyled
-export const NavLinkStyled = styled(NavLink)`
-  color: var(--color-primary-white, #fff);
-  font-size: 14px;
-  line-height: 1.43;
-  text-decoration: none;
-  font-weight: 500;
-  &:hover,
-  &:focus {
-    text-decoration: underline;
+    margin-bottom: 168px;
   }
 `;
 
@@ -217,58 +218,15 @@ export const Label = styled.label`
   align-items: flex-start;
 `;
 
-// Checkbox
-export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
-  position: absolute;
-  appearance: none;
-  cursor: pointer;
-  right: 14px;
-  top: 14px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: calc(100% - 2px);
-    width: 16px;
-    height: 16px;
-    transform: translate(-50%, -50%);
-    background-color: var(--color-primary-black-2, #0f0f0f);
-    background-image: url(${iconeyeoff}#eye-off);
-  }
-
-  &:checked::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: calc(100% +8px);
-    width: 16px;
-    height: 16px;
-    transform: translate(-50%, -50%);
-    background-color: var(--color-primary-black-2, #0f0f0f);
-    background-image: url(${iconeye}#eye);
-    visibility: visible;
-  }
-
-  @media screen and (max-width: 834px) {
-    top: 50%;
-    left: 55%;
-  }
-`;
-
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 54px;
-  color: var(--color-primary-grey, #b6b6b6);
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
 
-  @media screen and (min-width: 834px) {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 220px;
-    gap: 16px;
+  @media screen and (min-width: 1440px) {
+    justify-content: flex-start;
   }
 
   @media screen and (min-width: 1440px) {
@@ -278,12 +236,23 @@ export const QuestionTrumb = styled.div`
 
 // Question
 export const Question = styled.p`
-  color: var(--color-primary-grey, #b6b6b6);
+  color: var(--primary-color-grey);
+  font-family: 'Poppins500';
   font-size: 14px;
   line-height: 1.43;
+  margin-bottom: 16px;
+`;
 
-  @media screen and (min-width: 834px) {
-    margin-bottom: 0;
+// Link
+export const LinkStyled = styled(NavLink)`
+  color: var(--primary-color-white);
+  font-family: 'Poppins500';
+  font-size: 14px;
+  line-height: 1.43;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
@@ -297,4 +266,33 @@ export const ForgotPasswordText = styled.p`
   @media screen and (min-width: 1440px) {
     margin-top: 20px;
   }
+`;
+
+//Errror
+export const ErrorMsg = styled.div`
+  color: ${(props) => props.color || colors.error};
+  font-size: var(--main-font-size);
+  line-height: var(--main-line-height);
+  letter-spacing: var(--main-letter-spacing);
+  margin-top: -10px;
+  margin-left: 9px;
+  font-size: 12px;
+  font-family: 'Poppins400';
+`;
+
+//Toggle
+export const SvgIconEye = styled.svg`
+  width: 16px;
+  height: 16px;
+  stroke: ${colors.iconStroke};
+  cursor: pointer;
+`;
+
+export const IconWrapped = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
+  display: flex;
+  align-items: center;
 `;

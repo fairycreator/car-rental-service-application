@@ -51,24 +51,21 @@ const SignUpPage = () => {
     };
 
     try {
-      // Validate the form data using Yup
       await signUpSchema.validate(formData, { abortEarly: false });
 
-      // Set state with form data after validation is successful
       setName(formData.name);
       setEmail(formData.email);
       setPassword(formData.password);
 
-      // Proceed to the next page
       nextPage();
     } catch (err) {
-      // Display error messages if validation fails
       Notify.failure(err.errors.join(', '));
     }
   };
   const handleGoalSelectionStep = (values) => {
     const selectedGoal = values.goal;
     setGoal(selectedGoal);
+    console.log('Form data being sent:', values);
     nextPage();
   };
 
@@ -78,6 +75,7 @@ const SignUpPage = () => {
 
     setGender(selectedGender);
     setAge(selectedAge);
+    console.log('Form data being sent:', values);
     nextPage();
   };
 
@@ -87,6 +85,7 @@ const SignUpPage = () => {
 
     setHeight(selectedHeight);
     setWeight(selectedWeight);
+    console.log('Form data being sent:', values);
     nextPage();
   };
 

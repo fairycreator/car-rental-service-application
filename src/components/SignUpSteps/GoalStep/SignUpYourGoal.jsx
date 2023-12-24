@@ -1,4 +1,4 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import image from '../../../assets/backgroundImages/goals.png';
 import {
@@ -8,9 +8,11 @@ import {
   GoalTitle,
   GoalSubtitle,
   RadioWrapper,
-  RadioLabel,
+  CustomLabel,
   NextButton,
   BackButton,
+  CustomRadio,
+  StyledErrorMessage,
 } from './Goal.styled';
 
 const goalSchema = Yup.object().shape({
@@ -34,20 +36,20 @@ function GoalSelectionStep({ onForm, onBackPage }) {
           {() => (
             <Form>
               <RadioWrapper>
-                <RadioLabel>
-                  <Field type="radio" name="goal" value="Lose Fat" />
+                <CustomLabel>
+                  <CustomRadio type="radio" name="goal" value="Lose Fat" />
                   Lose Fat
-                </RadioLabel>
-                <RadioLabel>
-                  <Field type="radio" name="goal" value="Maintain" />
+                </CustomLabel>
+                <CustomLabel>
+                  <CustomRadio type="radio" name="goal" value="Maintain" />
                   Maintain
-                </RadioLabel>
-                <RadioLabel>
-                  <Field type="radio" name="goal" value="Gain Muscle" />
+                </CustomLabel>
+                <CustomLabel>
+                  <CustomRadio type="radio" name="goal" value="Gain Muscle" />
                   Gain Muscle
-                </RadioLabel>
+                </CustomLabel>
               </RadioWrapper>
-              <ErrorMessage name="goal" component="div" />
+              <ErrorMessage name="goal" component={StyledErrorMessage} />
               <NextButton type="submit">Next</NextButton>
               <BackButton type="button" onClick={onBackPage}>
                 Back
