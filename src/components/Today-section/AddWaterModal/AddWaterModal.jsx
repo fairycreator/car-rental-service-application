@@ -27,7 +27,6 @@ export const AddWaterModal = ({ isModalOpen, setIsModalOpen }) => {
 
   useEffect(() => {
     const handleEsc = (e) => {
-      console.log(e);
       if (e.code === 'Escape') {
         setIsModalOpen(false);
       }
