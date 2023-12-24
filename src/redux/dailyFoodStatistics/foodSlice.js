@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getFood } from './foodOperations';
+import { addFood, getFood } from './foodOperations';
 // import { addFood, getFood } from '../dailyStatisticsWater/waterOperations';
 // import { getCurrentStatistics } from './dailyOperations';
 
@@ -13,22 +13,54 @@ const handleRejected = (state, action) => {
   console.log(action);
 };
 
-// const handleAddFoodFullfiled = (state, action) => {
-//   state.isLoading = false;
-//   state.error = null;
-//   state.consumedFood.breakfast = [...action.payload.breakfast];
-//   state.consumedFood.dinner = [...action.payload.dinner];
-//   state.consumedFood.lunch = [...action.payload.lunch];
-//   state.consumedFood.snack = [...action.payload.snack];
-// };
-
-const handeGetFoodFullfiled = (state, action) => {
+const handleAddFoodFullfiled = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  state.consumedFood.breakfast = [...action.payload[0].breakfast];
-  state.consumedFood.dinner = [...action.payload[0].dinner];
-  state.consumedFood.lunch = [...action.payload[0].lunch];
-  state.consumedFood.snack = [...action.payload[0].snack];
+  // state.consumedFood.breakfast = action.payload.breakfast;
+  // state.consumedFood.dinner = action.payload.dinner;
+  // state.consumedFood.lunch = action.payload.lunch;
+  // state.consumedFood.snack = action.payload.snack;
+
+  switch (action.meta.arg.typeFood) {
+    case 'breakfast':
+      state.consumedFood.breakfast = action.payload.breakfast;
+      break;
+    case 'dinner':
+      state.consumedFood.dinner = action.payload.dinner;
+      break;
+    case 'lunch':
+      state.consumedFood.lunch = action.payload.lunch;
+      break;
+    case 'snack':
+      state.consumedFood.snack = action.payload.snack;
+      break;
+    default:
+      break;
+  }
+};
+
+const handeGetFoodFullfiled = (state, action) => {
+  if (action.payload.length > 0) {
+    state.isLoading = false;
+    state.error = null;
+    state.consumedFood.breakfast = action.payload[0].breakfast;
+    state.consumedFood.dinner = action.payload[0].dinner;
+    state.consumedFood.lunch = action.payload[0].lunch;
+    state.consumedFood.snack = action.payload[0].snack;
+
+    if (action.payload[0].breakfast.name !== '') {
+      state.consumedFood.breakfast = action.payload[0].breakfast;
+    }
+  }
+  if (action.payload[0].dinner.name !== '') {
+    state.consumedFood.dinner = action.payload[0].breakfast;
+  }
+  if (action.payload[0].lunch.name !== '') {
+    state.consumedFood.lunch = action.payload[0].breakfast;
+  }
+  if (action.payload[0].snack.name !== '') {
+    state.consumedFood.snack = action.payload[0].breakfast;
+  }
 };
 
 // const handleDeleteWaterFulfilled = (state) => {
@@ -68,7 +100,7 @@ const dailyStatisticsFoodSlice = createSlice({
       // .addCase(getCurrentStatistics.fulfilled, handleGetCurrentFulfilled)
       // .addCase(getCurrentStatistics.rejected, handleRejected)
       //   .addCase(addFood.pending, handlePending)
-      //   .addCase(addFood.fulfilled, handleAddFoodFullfiled)
+      .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       //   .addCase(addFood.rejected, handleRejected)
       .addCase(getFood.pending, handlePending)
       .addCase(getFood.fulfilled, handeGetFoodFullfiled)
