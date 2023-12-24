@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { addWater } from '../../../redux/dailyStatistics/dailyOperations';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { addWater } from '../../../redux/dailyStatistics/dailyOperations';
 import {
   Backdrop,
   Modal,
@@ -11,13 +11,12 @@ import {
   CancelBtn,
 } from './AddWaterModal.styled';
 
-export const AddWaterModal = ({ setIsModalOpen }) => {
+export const AddWaterModal = ({ isModalOpen, setIsModalOpen }) => {
   const [inputValue, setInputValue] = useState(0);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const value = {
       value: inputValue,
     };
@@ -25,6 +24,24 @@ export const AddWaterModal = ({ setIsModalOpen }) => {
     dispatch(addWater(value));
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.code === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'hidden';
+    } else document.body.style.overflow = 'unset';
+
+    return () => {
+      document.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen, setIsModalOpen]);
 
   return (
     <Backdrop onClick={() => setIsModalOpen(false)}>
@@ -39,6 +56,7 @@ export const AddWaterModal = ({ setIsModalOpen }) => {
               placeholder="Enter milliliters"
               onChange={(e) => setInputValue(Number(e.target.value))}
               value={inputValue ? inputValue : ''}
+              min={1}
             />
           </label>
           <SubmitBtn type="submit">Confirm</SubmitBtn>
