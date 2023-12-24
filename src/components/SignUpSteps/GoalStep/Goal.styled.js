@@ -190,7 +190,7 @@ export const NextButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: var(--secondary-color-yellow);
   }
 
   @media screen and (min-width: 834px) {
@@ -219,7 +219,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: var(--primary-color-lite-green);
+    background-color: transparent;
   }
 
   @media screen and (min-width: 834px) {

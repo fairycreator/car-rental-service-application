@@ -19,12 +19,6 @@ const goalSchema = Yup.object().shape({
 });
 
 function GoalSelectionStep({ onForm, onBackPage }) {
-  const radioOptions = [
-    { value: 'Lose Fat', label: 'Lose Fat' },
-    { value: 'Maintain', label: 'Maintain' },
-    { value: 'Gain Muscle', label: 'Gain Muscle' },
-  ];
-
   return (
     <GoalWrapper>
       <Image src={image} alt="illustration-summer-hiking" />
@@ -41,16 +35,18 @@ function GoalSelectionStep({ onForm, onBackPage }) {
           {() => (
             <Form>
               <RadioWrapper>
-                {radioOptions.map((option) => (
-                  <CustomLabel key={option.value}>
-                    <CustomRadio
-                      type="radio"
-                      name="goal"
-                      value={option.value}
-                    />
-                    {option.label}
-                  </CustomLabel>
-                ))}
+                <CustomLabel>
+                  <CustomRadio type="radio" name="goal" value="Lose Fat" />
+                  Lose Fat
+                </CustomLabel>
+                <CustomLabel>
+                  <CustomRadio type="radio" name="goal" value="Maintain" />
+                  Maintain
+                </CustomLabel>
+                <CustomLabel>
+                  <CustomRadio type="radio" name="goal" value="Gain Muscle" />
+                  Gain Muscle
+                </CustomLabel>
               </RadioWrapper>
               <ErrorMessage name="goal" component="div" />
               <NextButton type="submit">Next</NextButton>
