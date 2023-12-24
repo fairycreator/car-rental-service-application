@@ -43,10 +43,7 @@ const handeGetFoodFullfiled = (state, action) => {
   if (action.payload.length > 0) {
     state.isLoading = false;
     state.error = null;
-    state.consumedFood.breakfast = action.payload[0].breakfast;
-    state.consumedFood.dinner = action.payload[0].dinner;
-    state.consumedFood.lunch = action.payload[0].lunch;
-    state.consumedFood.snack = action.payload[0].snack;
+   
 
     if (action.payload[0].breakfast.name !== '') {
       state.consumedFood.breakfast = action.payload[0].breakfast;
