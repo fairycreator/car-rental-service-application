@@ -144,5 +144,5 @@ export const RenderContainerItem = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 142.857% */
-  max-height: 20px;
+  max-height: 25px;
 `;
