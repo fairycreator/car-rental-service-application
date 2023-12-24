@@ -153,9 +153,9 @@ export const WeightNav = ({ setOpenModal }) => {
                             handleClose()
                         }}
                     >
-                        <FormBlock>
+                        <FormBlock autoComplete='off' >
                             <FormStyled>
-                            <InputWeight id="weight" name="weight" placeholder="Enter your weight" />
+                            <InputWeight id="weight" type="number" name="weight" placeholder="Enter your weight"/>
                             <ErrorMessageStyled name="weight" component="div" />
             
                             </FormStyled>
