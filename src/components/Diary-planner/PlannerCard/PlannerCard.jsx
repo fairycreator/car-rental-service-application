@@ -47,7 +47,7 @@ export const PlannerCard = ({
         style={{ marginTop: '20px' }}
         onClick={() => setFoodType(`${typefood}`)}
       >
-        {meal[0].name !== '' ? (
+        {meal.length >0 ? (
           meal.map((item, index) => {
             return (
               <RenderContainer key={item._id}>
@@ -88,7 +88,7 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
-        {meal[0].name ? (
+        {meal.length > 0 ? (
           <div style={{ display: 'flex' }}>
             <Numeration>{meal.length + 1}</Numeration>
             <div

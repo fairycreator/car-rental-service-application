@@ -35,7 +35,7 @@ export const DiaryMainCard = ({
         <MealTitle>{title}</MealTitle>
       </TitleBlock>
       <FoodBlock>
-        {meal[0].name !== '' ? (
+        {meal.length > 0 ? (
           <>
             <MealOptions>Carbonohidrates: {totalCarbs}</MealOptions>
             <MealOptions>Protein: {totalProtein}</MealOptions>
