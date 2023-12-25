@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import {
   MealContainer,
@@ -21,8 +21,6 @@ import {
 export const Record = ({ isOpen, type }) => {
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
-
-  
 
   const [name, setName] = useState('');
   const [calories, setColories] = useState('');
