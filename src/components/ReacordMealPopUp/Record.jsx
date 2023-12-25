@@ -5,7 +5,7 @@ import {
   MealContainer,
   MealImage,
   MealTitle,
-} from '../Diary-planner/Planner.styled';
+} from '../Diary-planner/PlannerCard/PlannerCard.styled';
 import {
   BackDrop,
   Button,

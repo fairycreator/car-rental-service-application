@@ -10,7 +10,7 @@ import {
   RenderContainer,
   RenderContainerItem,
   Wrapper,
-} from '../Planner.styled';
+} from './PlannerCard.styled';
 
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
 const iconPath = 'src/assets/images/sprite.svg';
