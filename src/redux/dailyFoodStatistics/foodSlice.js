@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFood, getFood } from './foodOperations';
+import { addFood, deleteFood, getFood } from './foodOperations';
 
 const handlePending = (state) => {
   state.isLoading = true;
@@ -53,8 +53,12 @@ const handeGetFoodFullfiled = (state, action) => {
 };
 
 const deleteHandlerFullfilled = (state, action) => {
-
-  
+  const type = action.meta.arg.typeFood;
+  if (action.payload.message) {
+    state.consumedFood[type] = [
+      { name: '', carbs: 0, protein: 0, fat: 0, calories: 0 },
+    ];
+  }
 };
 
 const consumedFood = {
@@ -84,7 +88,8 @@ const dailyStatisticsFoodSlice = createSlice({
       .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       .addCase(getFood.pending, handlePending)
       .addCase(getFood.fulfilled, handeGetFoodFullfiled)
-      .addCase(getFood.rejected, handleRejected),
+      .addCase(getFood.rejected, handleRejected)
+      .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
 });
 
 export const dailyStatisticsFoodReducer = dailyStatisticsFoodSlice.reducer;
