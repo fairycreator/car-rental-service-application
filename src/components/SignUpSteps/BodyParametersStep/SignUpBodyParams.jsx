@@ -12,6 +12,7 @@ import {
   NextButton,
   BackButton,
   StyledErrorMessage,
+  Formstyled,
 } from './BodyParameters.styled';
 
 const bodyParametersSchema = Yup.object().shape({
@@ -40,30 +41,32 @@ function BodyParameters({ onForm, onBackPage }) {
           onSubmit={onForm}
         >
           <Form>
-            <FormLabel>
-              Height
-              <Field
-                as={InputStyled}
-                type="number"
-                name="height"
-                placeholder="Enter your height (in cm)"
-              />
-              <ErrorMessage name="height" component={StyledErrorMessage} />
-            </FormLabel>
-            <FormLabel>
-              Weight
-              <Field
-                as={InputStyled}
-                type="number"
-                name="weight"
-                placeholder="Enter your weight (in kg)"
-              />
-              <ErrorMessage name="weight" component={StyledErrorMessage} />
-            </FormLabel>
-            <NextButton type="submit">Next</NextButton>
-            <BackButton type="button" onClick={onBackPage}>
-              Back
-            </BackButton>
+            <Formstyled>
+              <FormLabel>
+                Height
+                <Field
+                  as={InputStyled}
+                  type="number"
+                  name="height"
+                  placeholder="Enter your height (in cm)"
+                />
+                <ErrorMessage name="height" component={StyledErrorMessage} />
+              </FormLabel>
+              <FormLabel>
+                Weight
+                <Field
+                  as={InputStyled}
+                  type="number"
+                  name="weight"
+                  placeholder="Enter your weight (in kg)"
+                />
+                <ErrorMessage name="weight" component={StyledErrorMessage} />
+              </FormLabel>
+              <NextButton type="submit">Next</NextButton>
+              <BackButton type="button" onClick={onBackPage}>
+                Back
+              </BackButton>
+            </Formstyled>
           </Form>
         </Formik>
       </HealthContent>
