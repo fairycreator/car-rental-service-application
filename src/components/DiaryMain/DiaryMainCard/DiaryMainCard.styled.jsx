@@ -51,3 +51,23 @@ export const TitleBlock = styled.div`
     margin-bottom: 0px;
   }
 `;
+
+export const DeleteIcon = styled.svg`
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  fill: var(--primary-color-green-lite);
+`;
+
+export const AddIcon = styled.svg`
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  fill: var(--primary-color-green-lite);
+`;
+
+export const AddMealWrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+`;

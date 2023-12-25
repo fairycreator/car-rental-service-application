@@ -6,6 +6,9 @@ import {
   MealOptions,
   MealTitle,
   TitleBlock,
+  DeleteIcon,
+  AddIcon,
+  AddMealWrap,
 } from './DiaryMainCard.styled';
 
 export const DiaryMainCard = ({
@@ -29,38 +32,18 @@ export const DiaryMainCard = ({
             <MealOptions>Protein: {totalProtein}</MealOptions>
             <MealOptions>
               Fat: {totalFat}
-              <svg
-                style={{
-                  display: 'inline-block',
-                  width: '20px',
-                  height: ' 20px',
-                  fill: 'white',
-                }}
-              >
+              <DeleteIcon>
                 <use href={`${iconPath}#trash-delete`}></use>
-              </svg>
+              </DeleteIcon>
             </MealOptions>
           </>
         ) : (
-          <div
-            style={{
-              flexDirection: 'row-reverse',
-              display: 'flex',
-              gap: '8px',
-            }}
-          >
+          <AddMealWrap>
             <AddMore>Record your meal</AddMore>
-            <svg
-              style={{
-                display: 'inline-block',
-                width: '20px',
-                height: ' 20px',
-                fill: 'white',
-              }}
-            >
+            <AddIcon>
               <use href={`${iconPath}#icon-add-converted`}></use>
-            </svg>
-          </div>
+            </AddIcon>
+          </AddMealWrap>
         )}
       </FoodBlock>
     </ContentBlock>
