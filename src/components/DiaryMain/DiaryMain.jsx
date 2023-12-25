@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectBreakfast,
@@ -21,24 +20,11 @@ import {
 } from './DiaryMain.style';
 
 const DiaryMain = () => {
-  const dispatch = useDispatch();
   const breakfast = useSelector(selectBreakfast);
   const lunch = useSelector(selectLunch);
   const snack = useSelector(selectSnack);
   const dinner = useSelector(selectDinner);
 
-  // const totalProteinsBreakfast = breakfast.reduce(
-  //   (sum, item) => sum + item.nutrition?.protein,
-  //   0
-  // );
-  // const totalFatBreakfast = breakfast.reduce(
-  //   (sum, item) => sum + item.nutrition?.fat,
-  //   0
-  // );
-  // const totalCarbsBreakfast = breakfast.reduce(
-  //   (sum, item) => sum + item.nutrition?.carbogidrate,
-  //   0
-  // );
 
   const totalFatBreakfast = breakfast.reduce(
     (sum, item) => sum + item.nutrition?.fat,
