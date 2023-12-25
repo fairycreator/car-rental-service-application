@@ -162,10 +162,8 @@ export const UserInfoNav = () => {
                         </DialogTitle>
 
                         <DialogActions>
+                            <Button onClick={handleLogout} autoFocus>Log out</Button>
                             <Button onClick={handleCloseModal}>Cancel</Button>
-                            <Button onClick={handleLogout} autoFocus>
-                                Log out
-                            </Button>
                         </DialogActions>
                     </Dialog>
    

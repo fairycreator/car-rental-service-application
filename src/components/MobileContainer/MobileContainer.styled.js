@@ -53,3 +53,16 @@ export const MobileMenu = styled.div`
 export const DivLogo = styled.div`
   display: flex;
 `;
+
+export const Backdrop = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+`;
