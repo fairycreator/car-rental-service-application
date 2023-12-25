@@ -41,9 +41,9 @@ export const PlannerCard = ({
         onClick={() => setFoodType(`${typefood}`)}
       >
         {selector[0].name !== '' ? (
-          selector.map((item, index, id) => {
+          selector.map((item, index) => {
             return (
-              <RenderContainer key={id}>
+              <RenderContainer key={item._id}>
                 <Numeration>{index + 1}</Numeration>
                 <RenderContainerItem>{item.name}</RenderContainerItem>
                 <RenderContainerItem>

@@ -4,19 +4,21 @@ import { useEffect } from 'react';
 import { Today } from '../components/Today-section/Today';
 import { RecommendedList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
 import { getDailyWater } from '../redux/dailyWaterStatistics/waterOperations';
-// import { Planner } from '../components/Diary-planner/Planner';
+import DiaryMain from '../components/DiaryMain/DiaryMain';
+import { getFood } from '../redux/dailyFoodStatistics/foodOperations';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRecFoods());
     dispatch(getDailyWater());
+    dispatch(getFood());
   }, [dispatch]);
   return (
     <>
       <Today />
+      <DiaryMain />
       <RecommendedList />
-      {/* <Planner /> */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFood } from '../../redux/dailyFoodStatistics/FoodOperations';
+import { getFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { Record } from '../ReacordMealPopUp/Record';
 import { Container, DesktopContainer, Title } from './Planner.styled';
 import { PlannerCard } from './PlannerCard/PlannerCard';
