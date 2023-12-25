@@ -1,4 +1,4 @@
-import { MealImage } from '../../Diary-planner/Planner.styled';
+import { MealImage } from '../../Diary-planner/PlannerCard/PlannerCard.styled';
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
 import {
   ContentBlock,
