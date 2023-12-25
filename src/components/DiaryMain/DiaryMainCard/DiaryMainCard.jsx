@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+import { deleteFood } from '../../../redux/dailyFoodStatistics/foodOperations';
 import { MealImage } from '../../Diary-planner/PlannerCard/PlannerCard.styled';
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
 import {
@@ -18,7 +20,13 @@ export const DiaryMainCard = ({
   totalProtein,
   totalFat,
 }) => {
+  // title.toLowerCase()
+
   const iconPath = 'src/assets/images/sprite.svg';
+  const dispatch = useDispatch();
+  const deleteMealHandler = (title) => {
+    dispatch(deleteFood(JSON.stringify({ userFood: {}, typeFood: title })));
+  };
   return (
     <ContentBlock>
       <TitleBlock>
@@ -32,7 +40,9 @@ export const DiaryMainCard = ({
             <MealOptions>Protein: {totalProtein}</MealOptions>
             <MealOptions>
               Fat: {totalFat}
-              <DeleteIcon>
+              <DeleteIcon
+                onClick={() => deleteMealHandler(title.toLowerCase())}
+              >
                 <use href={`${iconPath}#trash-delete`}></use>
               </DeleteIcon>
             </MealOptions>

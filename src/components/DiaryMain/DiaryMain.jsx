@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -71,6 +72,8 @@ const DiaryMain = () => {
     (sum, item) => sum + item.nutrition?.carbogidrate,
     0
   );
+
+ 
 
   return (
     <ContainerDiary>
