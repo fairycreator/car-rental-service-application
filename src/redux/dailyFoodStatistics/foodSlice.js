@@ -1,9 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addFood, deleteFood, getFood } from './foodOperations';
 
-const handlePending = (state) => {
-};
-
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
@@ -33,8 +30,6 @@ const handleAddFoodFullfiled = (state, action) => {
 
 const handeGetFoodFullfiled = (state, action) => {
   if (action.payload) {
-  
-
     // if (action.payload.breakfast.length > 0) {
     state.consumedFood.breakfast = action.payload[0].breakfast;
     // }
@@ -72,13 +67,18 @@ const consumedFood = {
 
 const initialState = {
   consumedFood,
- 
+  isOpen: false,
 };
 
 const dailyStatisticsFoodSlice = createSlice({
   name: 'dailyStatisticsFood',
   initialState,
 
+  reducers: {
+    openHandler(state, action) {
+      state.isOpen = action.payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
 
@@ -87,5 +87,5 @@ const dailyStatisticsFoodSlice = createSlice({
       .addCase(getFood.rejected, handleRejected)
       .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
 });
-
+export const { openHandler } = dailyStatisticsFoodSlice.actions;
 export const dailyStatisticsFoodReducer = dailyStatisticsFoodSlice.reducer;
