@@ -65,8 +65,6 @@ npm start or yarn start
 
 ## Screenshots
 
-Include screenshots of your project here.
-
 ![Welcome Page](/src/assets/images/Welcome-page.png)
 ![Main Page](/src/assets/images/Main-page.png)
 
