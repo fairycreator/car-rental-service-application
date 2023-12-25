@@ -17,8 +17,8 @@ const MainPage = () => {
   return (
     <>
       <Today />
-      <RecommendedList />
       <DiaryMain />
+      <RecommendedList />
     </>
   );
 };
