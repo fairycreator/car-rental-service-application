@@ -36,7 +36,6 @@ export const DiaryMainCard = ({
     dispatch(openHandler(true));
   };
   let type = title.toLowerCase();
-  console.log('type: ', type);
   return (
     <ContentBlock>
       {isOpen ? <Record /> : null}
