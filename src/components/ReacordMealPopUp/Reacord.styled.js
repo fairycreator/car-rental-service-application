@@ -153,7 +153,7 @@ export const ButtonBlock = styled.div`
   }
 `;
 export const Button = styled.input`
-display: block;
+  display: block;
   width: 256px;
   padding: 8px 10px;
   border-radius: 12px;
@@ -168,8 +168,7 @@ display: block;
   line-height: 20px; /* 142.857% */
   margin-left: auto;
   margin-right: auto;
-  border:none;
-  '
+  border: none;
 `;
 
 export const AddMore = styled.p`
