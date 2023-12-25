@@ -65,6 +65,7 @@ export const HealthContent = styled.div`
   @media screen and (min-width: 1440px) {
     padding-top: 80px;
     align-items: flex-start;
+    flex-direction: column;
   }
 `;
 
@@ -107,6 +108,12 @@ export const Subtitle = styled.p`
   }
 `;
 
+export const Formstyled = styled.div`
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
+`;
+
 export const FormLabel = styled.label`
   color: var(--primary-color-white, #fff);
   font-size: 14px;
@@ -139,6 +146,10 @@ export const InputStyled = styled(Field)`
     color: var(--color-primary-grey);
     font-size: 14px;
     line-height: 1.43;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
   }
 `;
 
