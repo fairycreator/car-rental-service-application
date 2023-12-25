@@ -80,9 +80,9 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
-        {selector[0].name ? (
+        {meal[0].name ? (
           <div style={{ display: 'flex' }}>
-            <Numeration>{selector.length + 1}</Numeration>
+            <Numeration>{meal.length + 1}</Numeration>
             <div
               style={{
                 width: '170px',
