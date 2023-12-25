@@ -33,14 +33,6 @@ export const WeightTable = ({ month }) => {
             paddingLeft: '10px',
             paddingRight: '10px',
           },
-          '&::-webkit-scrollbar': {
-            height: '2px',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            backgroundColor: 'rgb(255, 255, 255, 0.1)',
-            outline: '1px solid rgb(255, 255, 255, 0.1)',
-            borderRadius: '12px',
-          },
         }}
       >
         <Table sx={{ minWidth: 650 }} aria-label="simple table">

@@ -99,6 +99,10 @@ const options = {
         color: '#292928',
         weight: '1px',
       },
+      ticks: {
+        autoSkip: false,
+        maxRotation: 0,
+      },
     },
     y: {
       min: 0,
