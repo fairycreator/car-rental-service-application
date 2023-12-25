@@ -24,7 +24,7 @@ export const ContentBlock = styled.div`
   width: 300px;
   height: 546px;
   border-radius: 12px;
-  background-color: #0f0f0f;
+  background-color: var(--primary-color-black-two);
 
   @media screen and (min-width: 834px) {
     width: 756px;
@@ -37,28 +37,28 @@ export const ContentBlock = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: var(--Color-Primary-White, #fff);
+  color: var(--primary-color-white);
   font-family: 'Poppins500';
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
-  line-height: 30px; /* 125% */
+  line-height: 1.25;
 `;
 
 export const RecordInputBig = styled.input`
   width: 276px;
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #e3ffa8;
-  background: #0f0f0f;
-  color: #b6b6b6;
+  border: 1px solid var(--primary-color-green-lite);
+  background-color: var(--primary-color-black-two);
+  color: var(--primary-color-grey);
   font-family: 'Poppins400';
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 
   &::placeholder {
-    color: #b6b6b6;
+    color: var(--primary-color-grey);
     font-family: 'Poppins400';
     font-size: 14px;
     font-weight: 400;
@@ -76,11 +76,11 @@ export const RecordInputBigFirst = styled.input`
   width: 276px;
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #e3ffa8;
-  background: #0f0f0f;
-  color: #b6b6b6;
+  border: 1px solid var(--primary-color-green-lite);
+  background: var(--primary-color-black-two);
+  color: var(--primary-color-grey);
   &::placeholder {
-    color: #b6b6b6;
+    color: var(--primary-color-grey);
     font-family: 'Poppins400';
     font-size: 14px;
     font-weight: 400;
@@ -123,11 +123,11 @@ export const SubInput = styled.input`
   width: 120px;
   padding: 10px;
   border-radius: 12px;
-  border: 1px solid #e3ffa8;
-  background: #0f0f0f;
-  color: #b6b6b6;
+  border: 1px solid var(--primary-color-green-lite);
+  background: var(--primary-color-black-two);
+  color: var(--primary-color-grey);
   &::placeholder {
-    color: #b6b6b6;
+    color: var(--primary-color-grey);
     font-family: 'Poppins400';
     font-size: 14px;
     font-weight: 400;
@@ -157,25 +157,22 @@ export const Button = styled.input`
   width: 256px;
   padding: 8px 10px;
   border-radius: 12px;
-  background: var(--Color-Primary-Green-Lite, #e3ffa8);
-  color: var(--Color-Primary-Black-2, #0f0f0f);
+  background: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
   text-align: center;
   /* Button text/1 */
   font-family: 'Poppins500';
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 142.857% */
+  line-height: 1.42;
   margin-left: auto;
   margin-right: auto;
   border: none;
 `;
 
 export const AddMore = styled.p`
-  color: var(--Color-Primary-Green-Lite, #e3ffa8);
-  font-family: 'Poppins500';
-  font-size: 14px;
-  font-style: normal;
+  color: var(--primary-color-green-lite);
   font-weight: 500;
-  line-height: 20px; /* 142.857% */
+  line-height: 1.42;
 `;
