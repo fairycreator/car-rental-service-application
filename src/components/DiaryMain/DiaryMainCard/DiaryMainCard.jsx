@@ -17,6 +17,7 @@ import Breakfast from '../../../assets/images/Breakfast.png';
 import { selectOpen } from '../../../redux/dailyFoodStatistics/foodSelectors';
 import { Record } from '../../ReacordMealPopUp/Record';
 import { openHandler } from '../../../redux/dailyFoodStatistics/foodSlice';
+import { useState } from 'react';
 
 export const DiaryMainCard = ({
   meal,
@@ -34,6 +35,8 @@ export const DiaryMainCard = ({
   const onOpenHandler = () => {
     dispatch(openHandler(true));
   };
+  let type = title.toLowerCase();
+  console.log('type: ', type);
   return (
     <ContentBlock>
       {isOpen ? <Record /> : null}
