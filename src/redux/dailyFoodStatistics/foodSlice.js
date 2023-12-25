@@ -10,11 +10,9 @@ const handlePending = (state) => {
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
-  console.log(action);
 };
 
 const handleAddFoodFullfiled = (state, action) => {
-  console.log('action: ', action);
   state.isLoading = false;
   state.error = null;
   // state.consumedFood.breakfast = action.payload.breakfast;
