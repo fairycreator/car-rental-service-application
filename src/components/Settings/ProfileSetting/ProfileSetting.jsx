@@ -5,7 +5,7 @@ import {
   ContentWrapper,
   Image,
 } from './ProfileSetting.styled';
-import { ProfileSettingsCard } from '../ProfileSettingsForm/ProfileSettingsCard';
+import { ProfileSettingsCard } from '../ProfileSettingsCard/ProfileSettingsCard';
 
 export const ProfileSetting = () => {
   return (
