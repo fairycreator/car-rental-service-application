@@ -3,27 +3,34 @@ import { Link } from 'react-router-dom';
 
 export const ContainerDiary = styled.div`
   padding-top: 20px;
-  max-width: 300px;
+  width: 300px;
   @media screen and (min-width: 834px) {
-    max-width: 558px;
+    width: 558px;
   }
 `;
 
+export const TitleWrap = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: center;
+`;
+
 export const Title = styled.h2`
-  color: #fff;
-  font-family: 'Poppins400';
+  color: var(--primary-color-white);
   font-size: 18px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px; /* 133.333% */
+  line-height: 1.33;
 `;
 export const StyledLink = styled(Link)`
-  color: #b6b6b6;
-  font-family: Poppins;
+  color: var(--primary-color-grey);
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 20px; /* 142.857% */
+  line-height: 1.42;
+
+  &:hover,
+  &:focus {
+    color: var(--primary-color-green-lite);
+  }
 `;
 
 export const FoodBlocks = styled.div`

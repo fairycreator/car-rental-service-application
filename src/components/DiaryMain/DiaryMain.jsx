@@ -11,6 +11,7 @@ import {
   FoodBlocks,
   StyledLink,
   Title,
+  TitleWrap,
 } from './DiaryMain.style';
 import { DiaryMainCard } from './DiaryMainCard/DiaryMainCard';
 
@@ -73,10 +74,10 @@ const DiaryMain = () => {
 
   return (
     <ContainerDiary>
-      <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+      <TitleWrap>
         <Title>Diary</Title>
         <StyledLink to="/diary">See more</StyledLink>
-      </div>
+      </TitleWrap>
       <FoodBlocks>
         <DiaryMainCard
           meal={breakfast}
