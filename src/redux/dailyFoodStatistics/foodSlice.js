@@ -29,6 +29,11 @@ const handleAddFoodFullfiled = (state, action) => {
 };
 
 const handeGetFoodFullfiled = (state, action) => {
+  state.consumedFood.totalCalories = action.payload[0].totalCalories;
+  state.consumedFood.totalCarbs = action.payload[0].totalCarbs;
+  state.consumedFood.totalProtein = action.payload[0].totalProtein;
+  state.consumedFood.totalFat = action.payload[0].totalFat;
+
   if (action.payload) {
     // if (action.payload.breakfast.length > 0) {
     state.consumedFood.breakfast = action.payload[0].breakfast;
