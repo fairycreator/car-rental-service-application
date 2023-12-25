@@ -123,7 +123,7 @@ export const Record = ({ type }) => {
             </SubInputBlock>
           </InputBlock>
           <ButtonBlock>
-            <Button type="submit" value={'Confirm'} />
+            <Button type="submit">Confirm</Button>
             <CancelButton onClick={onCloseHandler} type="button">
               Cancel
             </CancelButton>
