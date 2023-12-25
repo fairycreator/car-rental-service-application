@@ -7,6 +7,7 @@ import {
   selectLunch,
   selectSnack,
 } from '../../redux/dailyFoodStatistics/foodSelectors';
+import { Record } from '../ReacordMealPopUp/Record';
 import {
   ContainerDiary,
   FoodBlocks,
@@ -21,7 +22,7 @@ const DiaryMain = () => {
   const lunch = useSelector(selectLunch);
   const dinner = useSelector(selectDinner);
   const snack = useSelector(selectSnack);
-  
+
   let totalFatBreakfast = 0;
   let totalProteinBreakfast = 0;
   let totalCarbsBreakfast = 0;
@@ -34,8 +35,6 @@ const DiaryMain = () => {
   let totalFatSnack = 0;
   let totalProteinSnack = 0;
   let totalCarbsSnack = 0;
-  
-  console.log('breakfast: ', breakfast);
 
   if (breakfast?.length > 0) {
     totalFatBreakfast = breakfast.reduce(
@@ -93,6 +92,7 @@ const DiaryMain = () => {
 
   return (
     <ContainerDiary>
+      {/* {isOpen ? <Record /> : null} */}
       <TitleWrap>
         <Title>Diary</Title>
         <StyledLink to="/diary">See more</StyledLink>

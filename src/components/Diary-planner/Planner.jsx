@@ -9,12 +9,12 @@ import {
   selectBreakfast,
   selectDinner,
   selectLunch,
+  selectOpen,
   selectSnack,
 } from '../../redux/dailyFoodStatistics/foodSelectors';
 
 export const Planner = () => {
   const iconPath = 'src/assets/images/sprite.svg';
-  const [isOpen, setOpen] = useState(false);
   const [foodType, setFoodType] = useState('');
   const breakfast = useSelector(selectBreakfast);
   const lunch = useSelector(selectLunch);
@@ -72,6 +72,9 @@ export const Planner = () => {
     (sum, item) => sum + item.nutrition?.carbogidrate,
     0
   );
+
+  const isOpen = useSelector(selectOpen);
+
   useEffect(() => {
     dispatch(getFood());
   }, [dispatch]);
@@ -98,7 +101,7 @@ export const Planner = () => {
         </svg>
         <Title>Diary</Title>
       </div>
-      {isOpen ? <Record isOpen={setOpen} type={foodType} /> : null}
+      {isOpen ? <Record  type={foodType} /> : null}
       <DesktopContainer>
         <PlannerCard
           totalCarbs={totalCarbsBreakfast}
@@ -107,7 +110,6 @@ export const Planner = () => {
           meal={breakfast}
           title={'Breakfast'}
           typefood={'breakfast'}
-          setOpen={setOpen}
           setFoodType={setFoodType}
         />
         <PlannerCard
@@ -117,7 +119,6 @@ export const Planner = () => {
           meal={lunch}
           title={'Lunch'}
           typefood={'lunch'}
-          setOpen={setOpen}
           setFoodType={setFoodType}
         />
         <PlannerCard
@@ -127,7 +128,6 @@ export const Planner = () => {
           meal={dinner}
           title={'Dinner'}
           typefood={'dinner'}
-          setOpen={setOpen}
           setFoodType={setFoodType}
         />
         <PlannerCard
@@ -137,7 +137,6 @@ export const Planner = () => {
           meal={snack}
           title={'Snack'}
           typefood={'snack'}
-          setOpen={setOpen}
           setFoodType={setFoodType}
         />
       </DesktopContainer>

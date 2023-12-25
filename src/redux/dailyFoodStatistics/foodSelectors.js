@@ -8,3 +8,4 @@ export const selectDinner = (state) =>
   state.dailyStatisticsFood.consumedFood.dinner;
 export const selectSnack = (state) =>
   state.dailyStatisticsFood.consumedFood.snack;
+export const selectOpen = (state) => state.dailyStatisticsFood.isOpen;
