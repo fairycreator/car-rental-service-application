@@ -16,7 +16,6 @@ import { selectCaloriesMonthStatistics } from '../../../redux/monthStatistics/da
 import { printChartCalories } from '../../../helpers/dashboard/printChartCalories';
 
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -33,7 +32,9 @@ const options = {
     point: {
       backgroundColor: '#E3FFA8',
       borderWidth: 1,
-      radius: 0.9,
+      radius: 0,
+      borderColor: '#0F0F0F',
+      hitRadius: 10,
       hoverRadius: 5,
     },
     line: {
@@ -48,6 +49,7 @@ const options = {
       display: false,
     },
     tooltip: {
+      events: ['click'],
       backgroundColor: '#0F0F0F',
       titleColor: '#FFFFFF',
       bodyColor: '#B6B6B6',

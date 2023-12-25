@@ -32,7 +32,9 @@ const options = {
     point: {
       backgroundColor: '#E3FFA8',
       borderWidth: 1,
-      radius: 0.9,
+      borderColor: '#0F0F0F',
+      radius: 0,
+      hitRadius: 10,
       hoverRadius: 5,
     },
     line: {
