@@ -84,7 +84,7 @@ const options = {
       yAlign: 'bottom',
       callbacks: {
         title: (data) => {
-          return data[0].parsed.y;
+          return data[0].formattedValue;
         },
         label: () => {
           return 'calories';
