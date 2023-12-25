@@ -21,6 +21,8 @@ import {
 } from './Reacord.styled';
 
 export const Record = ({ type }) => {
+  console.log('dailyType: ', dailyType);
+  console.log('type: ', type);
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
 
@@ -46,7 +48,7 @@ export const Record = ({ type }) => {
   const formHandler = (e) => {
     e.preventDefault();
     dispatch(addFood(arr));
-    isOpen(false);
+    onCloseHandler();
   };
 
   return (
