@@ -107,7 +107,6 @@ const DiaryMain = () => {
           <FoodBlock>
             {breakfast[0].name !== '' ? (
               <>
-              
                 <MealOptions>
                   Carbonohidrates: {totalcarbogidrateBreakfast}
                 </MealOptions>

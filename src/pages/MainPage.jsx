@@ -5,13 +5,14 @@ import { Today } from '../components/Today-section/Today';
 import { RecommendedList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
 import { getDailyWater } from '../redux/dailyWaterStatistics/waterOperations';
 import DiaryMain from '../components/DiaryMain/DiaryMain';
-import { Planner } from '../components/Diary-planner/Planner';
+import { getFood } from '../redux/dailyFoodStatistics/FoodOperations';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRecFoods());
     dispatch(getDailyWater());
+    dispatch(getFood())
   }, [dispatch]);
   return (
     <>
