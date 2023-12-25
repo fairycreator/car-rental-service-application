@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const Title = styled.p`
   font-size: 24px;
-  fontWeight: : 500;
+  font-weight: 500;
   font-family: 'Poppins500';
 `;
 export const Container = styled.div`
@@ -137,12 +137,12 @@ export const RenderContainer = styled.div`
   gap: 15px;
 `;
 export const RenderContainerItem = styled.p`
-  color: var(--Color-Primary-White, #fff);
+  color: var(--primary-color-white);
   /* Body text/1 */
   font-family: 'Poppins400';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 142.857% */
-  max-height: 20px;
+  max-height: 25px;
 `;
