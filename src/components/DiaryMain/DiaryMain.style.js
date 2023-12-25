@@ -1,4 +1,5 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const ContainerDiary = styled.div`
   padding-top: 20px;
@@ -24,7 +25,7 @@ export const Title = styled.h2`
   font-weight: 400;
   line-height: 24px; /* 133.333% */
 `;
-export const SeeMore = styled.p`
+export const StyledLink = styled(Link)`
   color: #b6b6b6;
   font-family: Poppins;
   font-size: 14px;
