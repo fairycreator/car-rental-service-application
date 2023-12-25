@@ -116,5 +116,6 @@ export const Form = styled.form`
   @media screen and (max-width: 833px) {
     width: 320px;
     padding: 24px 10px;
+    background-color: var(--primary-color-black-one);
   }
 `;
