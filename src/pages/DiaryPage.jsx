@@ -1,4 +1,4 @@
-import Planner from '../components/Diary-planner/Planner';
+import { Planner } from '../components/Diary-planner/Planner';
 
 const DiaryPage = () => {
   return (
