@@ -33,7 +33,6 @@ const handleAddFoodFullfiled = (state, action) => {
 };
 
 const handeGetFoodFullfiled = (state, action) => {
-  console.log('action: ', action.payload.snack);
   if (action.payload) {
     state.isLoading = false;
     state.error = null;
@@ -50,9 +49,12 @@ const handeGetFoodFullfiled = (state, action) => {
     if (action.payload.snack.length > 0) {
       state.consumedFood.snack = action.payload.snack;
     }
-  } else {
-    return;
   }
+};
+
+const deleteHandlerFullfilled = (state, action) => {
+
+  
 };
 
 const consumedFood = {

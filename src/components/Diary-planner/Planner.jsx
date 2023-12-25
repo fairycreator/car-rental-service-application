@@ -22,6 +22,56 @@ export const Planner = () => {
   const snack = useSelector(selectSnack);
   const dispatch = useDispatch();
 
+  const totalFatBreakfast = breakfast.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+  const totalFatDinner = dinner.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+  const totalFatLunch = lunch.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+  const totalFatSnack = snack.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+
+  const totalProteinBreakfast = breakfast.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+  const totalProteinDinner = dinner.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+  const totalProteinLunch = lunch.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+  const totalProteinSnack = snack.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+
+  const totalCarbsBreakfast = breakfast.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+  const totalCarbsDinner = dinner.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+  const totalCarbsLunch = lunch.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+  const totalCarbsSnack = snack.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
   useEffect(() => {
     dispatch(getFood());
   }, [dispatch]);
@@ -51,6 +101,9 @@ export const Planner = () => {
       {isOpen ? <Record isOpen={setOpen} type={foodType} /> : null}
       <DesktopContainer>
         <PlannerCard
+          totalCarbs={totalCarbsBreakfast}
+          totalProtein={totalProteinBreakfast}
+          totalFat={totalFatBreakfast}
           meal={breakfast}
           title={'Breakfast'}
           typefood={'breakfast'}
@@ -58,6 +111,9 @@ export const Planner = () => {
           setFoodType={setFoodType}
         />
         <PlannerCard
+          totalCarbs={totalCarbsLunch}
+          totalProtein={totalProteinLunch}
+          totalFat={totalFatLunch}
           meal={lunch}
           title={'Lunch'}
           typefood={'lunch'}
@@ -65,6 +121,9 @@ export const Planner = () => {
           setFoodType={setFoodType}
         />
         <PlannerCard
+          totalCarbs={totalCarbsDinner}
+          totalProtein={totalProteinDinner}
+          totalFat={totalFatDinner}
           meal={dinner}
           title={'Dinner'}
           typefood={'dinner'}
@@ -72,6 +131,9 @@ export const Planner = () => {
           setFoodType={setFoodType}
         />
         <PlannerCard
+          totalCarbs={totalCarbsSnack}
+          totalProtein={totalProteinSnack}
+          totalFat={totalFatSnack}
           meal={snack}
           title={'Snack'}
           typefood={'snack'}

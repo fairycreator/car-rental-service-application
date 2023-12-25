@@ -68,6 +68,8 @@ export const Record = ({ isOpen, type }) => {
               }}
             />
             <RecordInputBig
+              type={'number'}
+              min={1}
               onChange={(e) => {
                 setCarbogidrate(e.target.value);
               }}
@@ -75,6 +77,8 @@ export const Record = ({ isOpen, type }) => {
               placeholder="Carbonoh"
             />
             <RecordInputBig
+              min={1}
+              type={'number'}
               onChange={(e) => {
                 setProtein(e.target.value);
               }}
@@ -83,6 +87,8 @@ export const Record = ({ isOpen, type }) => {
             />
             <SubInputBlock>
               <SubInput
+                min={1}
+                type={'number'}
                 onChange={(e) => {
                   setFat(e.target.value);
                 }}
@@ -90,6 +96,8 @@ export const Record = ({ isOpen, type }) => {
                 placeholder="Fat"
               />
               <SubInput
+                min={1}
+                type={'number'}
                 onChange={(e) => {
                   setColories(e.target.value);
                 }}

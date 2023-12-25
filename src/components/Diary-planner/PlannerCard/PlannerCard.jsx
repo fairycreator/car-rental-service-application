@@ -21,18 +21,26 @@ export const PlannerCard = ({
   setOpen,
   setFoodType,
   typefood,
+  totalCarbs,
+  totalProtein,
+  totalFat,
+ 
 }) => {
   return (
-    <RecordMealBlock>
+    <RecordMealBlock
+     
+    >
       <Wrapper>
         <MealContainer style={{ alignItems: 'center' }}>
           <MealImage src={`src/assets/images/${title}.png`} />
           <MealTitle>{`${title}`}</MealTitle>
         </MealContainer>
         <MealSubscription>
-          <MealSubText>Carbonohidrates:</MealSubText>
-          <MealSubText>Protein:</MealSubText>
-          <MealSubText>Fat:</MealSubText>
+          <MealSubText>
+            Carbonohidrates: {!totalCarbs ? 0 : totalCarbs}
+          </MealSubText>
+          <MealSubText>Protein: {!totalProtein ? 0 : totalProtein}</MealSubText>
+          <MealSubText>Fat: {!totalFat ? 0 : totalFat}</MealSubText>
         </MealSubscription>
       </Wrapper>
       <MealDashbord
