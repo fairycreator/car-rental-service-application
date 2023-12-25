@@ -12,6 +12,8 @@ import {
   AddIcon,
   AddMealWrap,
 } from './DiaryMainCard.styled';
+import sprite from '../../../assets/images/sprite.svg';
+import Breakfast from '../../../assets/images/Breakfast.png';
 
 export const DiaryMainCard = ({
   meal,
@@ -22,15 +24,14 @@ export const DiaryMainCard = ({
 }) => {
   // title.toLowerCase()
 
-  const iconPath = 'src/assets/images/sprite.svg';
   const dispatch = useDispatch();
   const deleteMealHandler = (title) => {
-    dispatch(deleteFood(JSON.stringify({ userFood: {}, typeFood: title })));
+    dispatch(deleteFood({ userFood: {}, typeFood: title }));
   };
   return (
     <ContentBlock>
       <TitleBlock>
-        <MealImage src={`src/assets/images/${title}.png`} />
+        <MealImage src={Breakfast} />
         <MealTitle>{title}</MealTitle>
       </TitleBlock>
       <FoodBlock>
@@ -43,7 +44,7 @@ export const DiaryMainCard = ({
               <DeleteIcon
                 onClick={() => deleteMealHandler(title.toLowerCase())}
               >
-                <use href={`${iconPath}#trash-delete`}></use>
+                <use href={`${sprite}#trash-delete`}></use>
               </DeleteIcon>
             </MealOptions>
           </>
@@ -51,7 +52,7 @@ export const DiaryMainCard = ({
           <AddMealWrap>
             <AddMore>Record your meal</AddMore>
             <AddIcon>
-              <use href={`${iconPath}#icon-add-converted`}></use>
+              <use href={`${sprite}#icon-add-converted`}></use>
             </AddIcon>
           </AddMealWrap>
         )}
