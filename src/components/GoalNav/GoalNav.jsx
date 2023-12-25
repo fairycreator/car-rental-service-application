@@ -71,6 +71,7 @@ const StyledMenu = styled(Menu)({
     backgroundColor: '#0F0F0F',
     boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
     [theme.breakpoints.down('tablet')]: {
+      maxHeight: '100%',
       height: '100vh',
       marginTop: '60px',
       maxWidth: '100vw',
@@ -189,6 +190,7 @@ export const GoalNav = ({ setOpenModal }) => {
         open={open}
         onClose={handleClose}
         TransitionComponent={Fade}
+        marginThreshold={0}
       >
         <ButtonClose
           onClick={handleClose}>
