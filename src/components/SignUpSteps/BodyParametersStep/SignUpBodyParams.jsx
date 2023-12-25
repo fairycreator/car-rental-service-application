@@ -17,10 +17,14 @@ import {
 
 const bodyParametersSchema = Yup.object().shape({
   height: Yup.number()
+    .min(50, 'Height must be at least 50cm')
+    .max(250, 'Height must be less than 250cm')
     .positive('Height must be a positive number')
     .integer('Height must be an integer')
     .required('Height is required'),
   weight: Yup.number()
+    .min(30, 'Weight must be at least 30kg')
+    .max(150, 'Weight must be less than 150kg')
     .positive('Weight must be a positive number')
     .integer('Weight must be an integer')
     .required('Weight is required'),
