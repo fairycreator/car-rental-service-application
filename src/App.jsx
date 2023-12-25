@@ -1,9 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import { RestrictedRoute } from './components/Routes/RestrictedRoute.jsx';
-import { PrivateRoute } from './components/Routes/PrivateRoute.jsx';
+import { RestrictedRoute } from './pages/Routes/RestrictedRoute.jsx';
+import { PrivateRoute } from './pages/Routes/PrivateRoute.jsx';
 import { refreshUser } from './redux/auth/authOperations.js';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
@@ -31,7 +31,7 @@ function App() {
         <Route
           index
           element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage/>} />
+            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
           }
         />
         <Route
@@ -63,44 +63,29 @@ function App() {
         />
         <Route
           path="/main"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<MainPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<MainPage />} />}
         />
         <Route
           path="/dashboard"
           element={
-            <PrivateRoute redirectTo="/welcome" component={<DashboardPage />} />
+            <PrivateRoute redirectTo="/" component={<DashboardPage />} />
           }
         />
         <Route
           path="/diary"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<DiaryPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<DiaryPage />} />}
         />
         <Route
           path="/recommended-food"
           element={
-            <PrivateRoute
-              redirectTo="/welcome"
-              component={<RecommendedFoodPage />}
-            />
+            <PrivateRoute redirectTo="/" component={<RecommendedFoodPage />} />
           }
         />
         <Route
           path="/settings"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<SettingsPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<SettingsPage />} />}
         />
-        <Route
-          path="*"
-          element={
-            // <RestrictedRoute redirectTo="/main" component={<MainPage />} />
-            <WelcomePage />
-          }
-        />
+        <Route path="*" element={<Navigate replace to="/" />} />
       </Route>
     </Routes>
   );

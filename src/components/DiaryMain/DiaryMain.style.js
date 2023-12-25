@@ -1,9 +1,10 @@
 import { styled } from 'styled-components';
 
 export const ContainerDiary = styled.div`
-  max-width: 340px;
+  padding-top: 20px;
+  max-width: 300px;
   @media screen and (min-width: 834px) {
-    max-width: 834px;
+    max-width: 558px;
   }
 `;
 

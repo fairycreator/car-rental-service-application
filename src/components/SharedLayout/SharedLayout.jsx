@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
-import PuffLoader from "react-spinners/PuffLoader";
 import { Outlet } from 'react-router-dom';
 import { Header } from 'components/Header/Header';
 import { Container, AppTitle } from './SharedLayout.styled';
+import { Loader } from '../../helpers/Loader';
 
 const SharedLayout = () => {
   return (
@@ -14,9 +14,7 @@ const SharedLayout = () => {
         <section>
           <Container>
             <AppTitle>Healthy Hub</AppTitle>
-            <Suspense fallback={
-              <PuffLoader color="var(--primary-color-green-lite)" cssOverride={{ margin: '30vh auto 0 auto' }} />
-            }>
+            <Suspense fallback={<Loader />}>
               <Outlet />
             </Suspense>
           </Container>
