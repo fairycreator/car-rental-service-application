@@ -1,5 +1,9 @@
 # <Helthy_Life>
 
+This project was created using ![Create Vite](https://vitejs.dev/). To
+familiarize yourself with and configure additional features, refer to the
+documentation.
+
 ## Description
 
 <DESCRIPTION>
