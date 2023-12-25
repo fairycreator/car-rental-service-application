@@ -75,16 +75,15 @@ on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-- **Andrij Csuhran** -
-- Developing the Welcome, SignUp, and ForgotPassword pages, emphasizing
+- **Andrij Csuhran** - [MyGitHubProfile](https://github.com/fairycreator)
+- Developing the Welcome, SignIn, SignUp, and ForgotPassword pages, emphasizing
   user-friendly design and streamlined user experience.
 - Implementing a multi-step SignUp process, enhancing user engagement through
   intuitive navigation and interactive design elements.
 - Integrating Redux for robust state management, particularly for user
   authentication and data flow.
 - Crafting and maintaining Formik and Yup schemas for reliable form validation,
-  ensuring data accuracy and user-friendly
-  feedback. -[YourGitHubProfile](https://github.com/fairycreator)
+  ensuring data accuracy and user-friendly feedback.
 
 - **your name** -
 -
@@ -110,8 +109,5 @@ on our code of conduct, and the process for submitting pull requests to us.
 -
 -
 - -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
-
-<!-- See also the list of [contributors](LINK_TO_CONTRIBUTORS_PAGE) who participated
-in this project. -->
 
 ##
