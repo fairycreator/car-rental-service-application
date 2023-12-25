@@ -182,7 +182,7 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     height: 16px;
     transform: translate(-50%, -50%);
     background-color: var(--color-primary-black-2, #0f0f0f);
-    background-image: url(${iconeyeoff}#eye-off);
+    background-image: url(${iconeye}#eye-off);
   }
 
   &:checked::after {
@@ -194,7 +194,7 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     height: 16px;
     transform: translate(-50%, -50%);
     background-color: var(--color-primary-black-2, #0f0f0f);
-    background-image: url(${iconeye}#eye);
+    background-image: url(${iconeyeoff}#eye);
     visibility: visible;
   }
 

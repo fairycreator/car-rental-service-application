@@ -12,14 +12,19 @@ import {
   NextButton,
   BackButton,
   StyledErrorMessage,
+  Formstyled,
 } from './BodyParameters.styled';
 
 const bodyParametersSchema = Yup.object().shape({
   height: Yup.number()
+    .min(50, 'Height must be at least 50cm')
+    .max(250, 'Height must be less than 250cm')
     .positive('Height must be a positive number')
     .integer('Height must be an integer')
     .required('Height is required'),
   weight: Yup.number()
+    .min(30, 'Weight must be at least 30kg')
+    .max(150, 'Weight must be less than 150kg')
     .positive('Weight must be a positive number')
     .integer('Weight must be an integer')
     .required('Weight is required'),
@@ -40,30 +45,32 @@ function BodyParameters({ onForm, onBackPage }) {
           onSubmit={onForm}
         >
           <Form>
-            <FormLabel>
-              Height
-              <Field
-                as={InputStyled}
-                type="number"
-                name="height"
-                placeholder="Enter your height (in cm)"
-              />
-              <ErrorMessage name="height" component={StyledErrorMessage} />
-            </FormLabel>
-            <FormLabel>
-              Weight
-              <Field
-                as={InputStyled}
-                type="number"
-                name="weight"
-                placeholder="Enter your weight (in kg)"
-              />
-              <ErrorMessage name="weight" component={StyledErrorMessage} />
-            </FormLabel>
-            <NextButton type="submit">Next</NextButton>
-            <BackButton type="button" onClick={onBackPage}>
-              Back
-            </BackButton>
+            <Formstyled>
+              <FormLabel>
+                Height
+                <Field
+                  as={InputStyled}
+                  type="number"
+                  name="height"
+                  placeholder="Enter your height (in cm)"
+                />
+                <ErrorMessage name="height" component={StyledErrorMessage} />
+              </FormLabel>
+              <FormLabel>
+                Weight
+                <Field
+                  as={InputStyled}
+                  type="number"
+                  name="weight"
+                  placeholder="Enter your weight (in kg)"
+                />
+                <ErrorMessage name="weight" component={StyledErrorMessage} />
+              </FormLabel>
+              <NextButton type="submit">Next</NextButton>
+              <BackButton type="button" onClick={onBackPage}>
+                Back
+              </BackButton>
+            </Formstyled>
           </Form>
         </Formik>
       </HealthContent>

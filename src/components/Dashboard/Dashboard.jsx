@@ -23,7 +23,7 @@ import {
   PrevBtn,
   LinkBtnItem,
   LineChartsBox,
-  Scroll,
+  ScrollChart,
 } from './Dashboard.styled';
 
 import {
@@ -114,7 +114,7 @@ export const Dashboard = () => {
                     </AverageValue>
                   </Text>
                 </ValueWrapper>
-                <Scroll
+                <ScrollChart
                   style={{
                     overflowX: 'auto',
                   }}
@@ -122,7 +122,7 @@ export const Dashboard = () => {
                   <LineChartsBox>
                     <LineChartCalories month={month} />
                   </LineChartsBox>
-                </Scroll>
+                </ScrollChart>
               </ChartWrapper>
               <ChartWrapper>
                 <ValueWrapper>
@@ -132,11 +132,11 @@ export const Dashboard = () => {
                     <AverageValue>{getAvarageValue(water)} ml</AverageValue>
                   </Text>
                 </ValueWrapper>
-                <Scroll style={{ overflowX: 'auto' }}>
+                <ScrollChart style={{ overflowX: 'auto' }}>
                   <LineChartsBox>
                     <LineChartWater month={month} />
                   </LineChartsBox>
-                </Scroll>
+                </ScrollChart>
               </ChartWrapper>
             </LineChartsWrapper>
             <ChartWrapper>
@@ -147,7 +147,9 @@ export const Dashboard = () => {
                   <AverageValue>{getAvarageValue(weight)} kg</AverageValue>
                 </Text>
               </ValueWrapper>
-              <WeightTable month={month} />
+              <ScrollChart>
+                <WeightTable month={month} />
+              </ScrollChart>
             </ChartWrapper>
           </DashboardWrapper>
         )

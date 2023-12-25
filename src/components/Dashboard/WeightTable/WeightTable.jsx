@@ -11,7 +11,6 @@ import { CustomTableRowUp, CustomTableRowDown } from './WeightTable.styled';
 import { selectWeightMonthStatistics } from '../../../redux/monthStatistics/dashboardSelectors';
 import { printTableWeight } from '../../../helpers/dashboard/printTableWeight';
 
-
 export const WeightTable = ({ month }) => {
   const weightFromBack = useSelector(selectWeightMonthStatistics);
   const newArrOfWeight = printTableWeight(weightFromBack, month);
@@ -22,9 +21,6 @@ export const WeightTable = ({ month }) => {
     <>
       <TableContainer
         sx={{
-          [theme.breakpoints.down('tablet')]: {
-            width: '100vw',
-          },
           backgroundColor: '#0F0F0F',
           borderRadius: '12px',
           paddingLeft: '10px',

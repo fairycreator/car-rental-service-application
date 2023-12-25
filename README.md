@@ -1,108 +1,115 @@
-# React + Vite template
+# <Helthy_Life>
 
-Цей проєкт було створено за допомогою [Create Vite](https://vitejs.dev/). Для
-знайомства і налаштування додаткових можливостей
-[звернися до документації](https://vitejs.dev/guide/).
+## Description
 
-## Створення репозиторію за шаблоном
+<DESCRIPTION>
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення
-репозиторію свого проєкту. Для цього натисни на кнопку `"Use this template"` і
-обери опцію `"Create a new repository"`, як показано на зображенні.
+HealthyHub is a cutting-edge health and fitness application designed to help
+users set and achieve their wellness goals. With a focus on user-friendly design
+and comprehensive features, HealthyHub offers goal tracking, dietary management,
+exercise routines, and much more.
 
-![Creating repo from a template step 1](./src/assets/template-step-1.png)
+## Key Features
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни
-поле його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`"Create repository from template"`.
+- **Goal Setting and Tracking:** Users can set various health-related goals like
+  weight loss, muscle gain, and track their progress.
+- **Dietary Management:** Includes a food diary for meal tracking, recommended
+  food lists, and nutritional information.
+- **Exercise Routines:** Customizable workout plans based on user goals and
+  fitness levels.
+- **User Customization:** Users can customize their profiles, including personal
+  details, fitness goals, dietary preferences.
+- **Responsive Design:** Fully responsive on mobile, tablet, and desktop
+  devices.
 
-![Creating repo from a template step 2](./src/assets/template-step-2.png)
+## Technologies Used
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як показано
-на зображенні.
+- **Frontend:** React.js, Styled Components, Material-UI
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB, Swagger
+- **Others:** Redux for state management, Formik + Yup for form handling, Vite
+  for build optimization
 
-![Settings GitHub Actions permissions step 1](./src/assets/gh-actions-perm-1.png)
+## Getting Started
 
-Проскроливши сторінку до самого кінця, у секції `"Workflow permissions"` вибери
-опцію `"Read and write permissions"` і постав галочку в чекбоксі. Це необхідно
-для автоматизації процесу деплою проєкту.
+These instructions will help you set up a copy of the project on your local
+machine for development and testing purposes.
 
-![Settings GitHub Actions permissions step 2](./src/assets/gh-actions-perm-2.png)
+### Prerequisites
 
-Тепер у тебе є особистий репозиторій проєкту, зі структурою файлів і папок
-репозиторія-шаблону. Далі працюй з ним як з будь-яким іншим особистим
-репозиторієм, клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй
-їх на GitHub.
+What things you need to install the software and how to install them:
 
-## Підготовка до роботи
+- Node.js
+- npm or yarn
 
-1. Переконайся, що на комп'ютері встановлена LTS-версія Node.js.
-   [Скачай і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встановіть базові залежності проекту командою `npm install`.
-3. Запустіть режим розробки, виконавши команду `npm run dev`.
-4. Перейди в браузері за адресою, що зазначено в терміналі.
+### Installing
 
-## Деплой
+A step by step series of examples that tell you how to get a development env
+running:
 
-Продакшн версія проєкту буде автоматично збиратися і деплоїтися на GitHub Pages,
-у гілку `gh-pages`, щоразу, коли оновлюється гілка `main`. Наприклад, після
-прямого пушу або прийнятого пул-реквесту. Для цього необхідно у файлі
-`vite.config.js` відредагувати поле `base`, замінивши `react_vite` на свою назву
-репозиторію `"/your_repo_name"`, і відправити зміни на GitHub.
+1. Clone the repository
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+git clone <https://github.com/va7ul/Healthy_life.git>
 
-![GitHub Pages settings](./src/assets/repo-settings.png)
+2. Install NPM packages:
 
-### Статус деплоя
+npm install or yarn install
 
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
+3.  Run the application
 
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час збирання або деплою сталася помилка.
+npm start or yarn start
 
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і в
-випадаючому вікні перейти за посиланням `Details`.
+## Screenshots
 
-![Deployment status](./src/assets/deploy-status.png)
+Include screenshots of your project here.
 
-### Жива сторінка
+![Welcome Page](/src/assets/images/Welcome-page.png)
+![Main Page](/src/assets/images/Main-page.png)
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися за
-адресою, вказаною в налаштуваннях GitHub-репозиторію (`Settings` > `Pages`).
+## Contribution
 
-![GitHub-pages URL](./src/assets/gh-pages-url.png)
+Please read [CONTRIBUTING.md](LINK_TO_YOUR_CONTRIBUTING_GUIDELINES) for details
+on our code of conduct, and the process for submitting pull requests to us.
 
-Якщо відкривається порожня сторінка, переконайся що у вкладці `Console` немає
-помилок пов'язаних із неправильними шляхами до CSS і JS файлів проекту
-(**404**). Швидше за все найімовірніше, у тебе неправильне значення поля `base`
-у файлі `vite.config.js`.
+## Authors
 
-### Маршрутизація
+- **Andrij Csuhran** -
+- Developing the Welcome, SignUp, and ForgotPassword pages, emphasizing
+  user-friendly design and streamlined user experience.
+- Implementing a multi-step SignUp process, enhancing user engagement through
+  intuitive navigation and interactive design elements.
+- Integrating Redux for robust state management, particularly for user
+  authentication and data flow.
+- Crafting and maintaining Formik and Yup schemas for reliable form validation,
+  ensuring data accuracy and user-friendly
+  feedback. -[YourGitHubProfile](https://github.com/fairycreator)
 
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши в пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
+- **your name** -
+-
+-
+- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
 
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-### Додавання змінних в  .env
-Для зберігання конфігураційних даних, таких як API ключі, адреси серверів, порти та інші змінні використовуйте файл `.env`. Для цього необхідно з назви файлу `.env.template` видалити зайві ".template",після чого файл відповідатиме умовам файлу `.ignore` і буде зберігатися лише локально, не публікуючись на віддаленому репозиторії з метою безпеки. Задля використання змінних на GitHub-pages усі змінні, передбачені файлом .env, слід додати до файлу `.github/workflows/deploy.yml`, а також до налаштувань репозиторію. Для цього слід перейти (`Settings` > `Secrets and variables` > `Actions`)
+- **your name** -
+-
+-
+- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
 
-![Add enviroments from .env](./src/assets/secrets.png)
+- **your name** -
+-
+-
+- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
 
-## Як це працює
+- **your name** -
+-
+-
+- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
 
-1. Після кожного пушу в гілку `main` GitHub-репозиторію, запускається
-   спеціальний скрипт (GitHub Action) з файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується і
-   проходить збірку перед деплоєм. 3 Якщо всі кроки пройшли успішно, зібрана
-   продакшн-версія файлів проєкту відправляється в гілку `gh-pages`. В іншому
-   випадку, в логах виконання скрипта буде вказано в чому проблема.
+- **your name** -
+-
+-
+- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
+
+<!-- See also the list of [contributors](LINK_TO_CONTRIBUTORS_PAGE) who participated
+in this project. -->
+
+##

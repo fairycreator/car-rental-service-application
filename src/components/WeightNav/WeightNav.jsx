@@ -165,7 +165,7 @@ export const WeightNav = ({ setOpenModal }) => {
                         
                     </Formik>
 
-                    {mobileVersion ? (<ButtonCancel onClick={handleCancel}>Cancel</ButtonCancel>) :
+                    {mobileVersion ? (<ButtonCancel onClick={handleCancel} type="button">Cancel</ButtonCancel>) :
                         undefined}
 
                 </Typography>

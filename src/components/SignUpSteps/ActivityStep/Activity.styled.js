@@ -64,10 +64,12 @@ export const ActivityContent = styled.div`
   @media screen and (min-width: 834px) {
     align-items: center;
     gap: 80px;
+    width: 438px;
   }
   @media screen and (min-width: 1440px) {
     padding-top: 80px;
     align-items: flex-start;
+    width: 328px;
   }
 `;
 
@@ -89,6 +91,7 @@ export const Title = styled.h1`
 
   @media screen and (min-width: 1440px) {
     text-align: start;
+    align-items: flex-start;
   }
 `;
 
@@ -109,6 +112,7 @@ export const Subtitle = styled.p`
 
   @media screen and (min-width: 1440px) {
     text-align: start;
+    align-items: flex-start;
   }
 `;
 
@@ -123,13 +127,17 @@ export const RadioWrapper = styled.div`
     /* Adjust to tablet screen sizes */
     flex-direction: column;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Align to the start or use 'space-between' for equal spacing */
-    gap: 10px; /* Add a gap for some space between the items */
+    justify-content: flex-start;
+    gap: 10px;
 
     > * {
-      flex: 1 1 45%; /* Each child should take up roughly half the space, adjusting for wrapping */
+      flex: 1 1 45%;
       margin-bottom: 10px;
     }
+  }
+
+  @media screen and (min-width: 1440px) {
+    /* width: 308px; */
   }
 `;
 
@@ -145,7 +153,7 @@ export const RadioWrapper = styled.div`
 
 //   @media screen and (min-width: 834px) {
 //     margin-bottom: 0;
-//     width: calc(50% - 20px); // adjust the width as necessary
+//     width: calc(50% - 20px);
 //     margin: 10px;
 //   }
 // `;
@@ -226,7 +234,7 @@ export const StyledErrorMessage = styled.div`
 
 //Radio buttons
 export const CustomRadio = styled(Field)`
-  margin-right: 8px;
+  padding-left: 8px;
   cursor: pointer;
   appearance: none;
   background-color: #fff;
@@ -255,19 +263,13 @@ export const CustomLabel = styled.label`
   line-height: 24px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   margin-bottom: 16px;
+  gap: 8px;
 
   ${CustomRadio}:checked + & {
     color: var(--color-primary-green-lite, #e3ffa8);
-  }
-
-  @media screen and (min-width: 834px) {
-    width: 438px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 308px;
   }
 `;
 
