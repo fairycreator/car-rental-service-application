@@ -13,6 +13,8 @@ import {
 } from './PlannerCard.styled';
 
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
+import { useDispatch } from 'react-redux';
+import { openHandler } from '../../../redux/dailyFoodStatistics/foodSlice';
 const iconPath = 'src/assets/images/sprite.svg';
 
 export const PlannerCard = ({
@@ -24,12 +26,13 @@ export const PlannerCard = ({
   totalCarbs,
   totalProtein,
   totalFat,
- 
 }) => {
+  const dispatch = useDispatch();
+  const onOpenHandler = () => {
+    dispatch(openHandler(true));
+  };
   return (
-    <RecordMealBlock
-     
-    >
+    <RecordMealBlock>
       <Wrapper>
         <MealContainer style={{ alignItems: 'center' }}>
           <MealImage src={`src/assets/images/${title}.png`} />
@@ -47,7 +50,7 @@ export const PlannerCard = ({
         style={{ marginTop: '20px' }}
         onClick={() => setFoodType(`${typefood}`)}
       >
-        {meal[0].name !== '' ? (
+        {meal.length > 0 ? (
           meal.map((item, index) => {
             return (
               <RenderContainer key={item._id}>
@@ -75,7 +78,7 @@ export const PlannerCard = ({
               maxHeight: '20px',
             }}
           >
-            <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
+            <AddMore onClick={onOpenHandler}>Record your meal</AddMore>
             <svg
               style={{
                 display: 'inline-block',
@@ -88,7 +91,7 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
-        {meal[0].name ? (
+        {meal.length > 0 ? (
           <div style={{ display: 'flex' }}>
             <Numeration>{meal.length + 1}</Numeration>
             <div
@@ -100,7 +103,7 @@ export const PlannerCard = ({
                 maxHeight: '20px',
               }}
             >
-              <AddMore onClick={() => setOpen(true)}>Record your meal</AddMore>
+              <AddMore onClick={onOpenHandler}>Record your meal</AddMore>
               <svg
                 style={{
                   display: 'inline-block',

@@ -7,6 +7,7 @@ import {
   selectLunch,
   selectSnack,
 } from '../../redux/dailyFoodStatistics/foodSelectors';
+import { Record } from '../ReacordMealPopUp/Record';
 import {
   ContainerDiary,
   FoodBlocks,
@@ -22,58 +23,72 @@ const DiaryMain = () => {
   const dinner = useSelector(selectDinner);
   const snack = useSelector(selectSnack);
 
-  const totalFatBreakfast = breakfast.reduce(
-    (sum, item) => sum + item.nutrition?.fat,
-    0
-  );
-  const totalFatDinner = dinner.reduce(
-    (sum, item) => sum + item.nutrition?.fat,
-    0
-  );
-  const totalFatLunch = lunch.reduce(
-    (sum, item) => sum + item.nutrition?.fat,
-    0
-  );
-  const totalFatSnack = snack.reduce(
-    (sum, item) => sum + item.nutrition?.fat,
-    0
-  );
+  let totalFatBreakfast = 0;
+  let totalProteinBreakfast = 0;
+  let totalCarbsBreakfast = 0;
+  let totalFatLunch = 0;
+  let totalProteinLunch = 0;
+  let totalCarbsLunch = 0;
+  let totalProteinDinner = 0;
+  let totalCarbsDinner = 0;
+  let totalFatDinner = 0;
+  let totalFatSnack = 0;
+  let totalProteinSnack = 0;
+  let totalCarbsSnack = 0;
 
-  const totalProteinBreakfast = breakfast.reduce(
-    (sum, item) => sum + item.nutrition?.protein,
-    0
-  );
-  const totalProteinDinner = dinner.reduce(
-    (sum, item) => sum + item.nutrition?.protein,
-    0
-  );
-  const totalProteinLunch = lunch.reduce(
-    (sum, item) => sum + item.nutrition?.protein,
-    0
-  );
-  const totalProteinSnack = snack.reduce(
-    (sum, item) => sum + item.nutrition?.protein,
-    0
-  );
+  if (breakfast?.length > 0) {
+    totalFatBreakfast = breakfast.reduce(
+      (sum, item) => sum + item.nutrition?.fat,
+      0
+    );
+    totalProteinBreakfast = breakfast.reduce(
+      (sum, item) => sum + item.nutrition?.protein,
+      0
+    );
+    totalCarbsBreakfast = breakfast.reduce(
+      (sum, item) => sum + item.nutrition?.carbogidrate,
+      0
+    );
+  }
+  if (lunch?.length > 0) {
+    totalFatLunch = lunch.reduce((sum, item) => sum + item.nutrition?.fat, 0);
+    totalProteinLunch = lunch.reduce(
+      (sum, item) => sum + item.nutrition?.protein,
+      0
+    );
 
-  const totalCarbsBreakfast = breakfast.reduce(
-    (sum, item) => sum + item.nutrition?.carbogidrate,
-    0
-  );
-  const totalCarbsDinner = dinner.reduce(
-    (sum, item) => sum + item.nutrition?.carbogidrate,
-    0
-  );
-  const totalCarbsLunch = lunch.reduce(
-    (sum, item) => sum + item.nutrition?.carbogidrate,
-    0
-  );
-  const totalCarbsSnack = snack.reduce(
-    (sum, item) => sum + item.nutrition?.carbogidrate,
-    0
-  );
+    totalCarbsLunch = lunch.reduce(
+      (sum, item) => sum + item.nutrition?.carbogidrate,
+      0
+    );
+  }
 
- 
+  if (dinner?.length > 0) {
+    totalProteinDinner = dinner.reduce(
+      (sum, item) => sum + item.nutrition?.protein,
+      0
+    );
+    totalCarbsDinner = dinner.reduce(
+      (sum, item) => sum + item.nutrition?.carbogidrate,
+      0
+    );
+
+    totalFatDinner = dinner.reduce((sum, item) => sum + item.nutrition?.fat, 0);
+  }
+
+  if (snack?.length > 0) {
+    totalFatSnack = snack.reduce((sum, item) => sum + item.nutrition?.fat, 0);
+
+    totalProteinSnack = snack.reduce(
+      (sum, item) => sum + item.nutrition?.protein,
+      0
+    );
+
+    totalCarbsSnack = snack.reduce(
+      (sum, item) => sum + item.nutrition?.carbogidrate,
+      0
+    );
+  }
 
   return (
     <ContainerDiary>

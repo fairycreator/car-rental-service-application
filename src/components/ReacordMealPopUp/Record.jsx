@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
+import { openHandler } from '../../redux/dailyFoodStatistics/foodSlice';
 import {
   MealContainer,
   MealImage,
@@ -19,7 +20,7 @@ import {
   CancelButton,
 } from './Reacord.styled';
 
-export const Record = ({ isOpen, type }) => {
+export const Record = ({ type }) => {
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
 
@@ -28,6 +29,9 @@ export const Record = ({ isOpen, type }) => {
   const [carbogidrate, setCarbogidrate] = useState('');
   const [protein, setProtein] = useState('');
   const [fat, setFat] = useState('');
+  const onCloseHandler = () => {
+    dispatch(openHandler(false));
+  };
   const arr = {
     typeFood: type,
     userFood: [
@@ -42,7 +46,7 @@ export const Record = ({ isOpen, type }) => {
   const formHandler = (e) => {
     e.preventDefault();
     dispatch(addFood(arr));
-    isOpen(false);
+    onCloseHandler();
   };
 
   return (
@@ -117,8 +121,10 @@ export const Record = ({ isOpen, type }) => {
             </SubInputBlock>
           </InputBlock>
           <ButtonBlock>
-            <Button type="submit" value={'Confirm'} />
-            <CancelButton onClick={() => isOpen(false)}>Cancel</CancelButton>
+            <Button type="submit">Confirm</Button>
+            <CancelButton onClick={onCloseHandler} type="button">
+              Cancel
+            </CancelButton>
           </ButtonBlock>
         </form>
       </ContentBlock>
