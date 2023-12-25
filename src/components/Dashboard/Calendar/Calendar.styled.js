@@ -4,8 +4,6 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .MuiPaper-root.MuiMenu-paper {
     background-color: #0F0F0F;
     border-radius: 12px;
-    width: 212px;
-    height: 144px;
     overflow-y: scroll;
     scrollbar-width: none;
     box-shadow: 0px 4px 14px 0px  rgba(227, 255, 168, 0.2);
@@ -17,6 +15,8 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .MuiList-root {
      padding-top: 10px;
      padding-bottom: 10px;
+     width: 212px;
+     height: 144px;
   }
 
    .MuiMenu-list {
