@@ -137,8 +137,14 @@ export const LineChartsBox = styled.div`
     padding-right: 20px;
   }
 `;
-export const Scroll = styled.div`
+export const ScrollChart = styled.div`
   @media screen and (max-width: 833px) {
     width: 100vw;
+    position: relative;
+    padding-left: 10px;
+    left: 50%;
+    right: 50%;
+    margin-left: calc(-50vw);
+    margin-right: calc(-50vw);
   }
 `;
