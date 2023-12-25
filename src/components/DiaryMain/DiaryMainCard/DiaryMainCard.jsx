@@ -6,12 +6,11 @@ import {
   MealOptions,
   MealTitle,
   TitleBlock,
-} from '../DiaryMain.style';
+} from './DiaryMainCard.styled';
 
 export const DiaryMainCard = ({
   meal,
   title,
-
   totalCarbs,
   totalProtein,
   totalFat,
