@@ -152,7 +152,7 @@ export const ButtonBlock = styled.div`
   @media screen and (min-width: 1440px) {
   }
 `;
-export const Button = styled.input`
+export const Button = styled.button`
   display: block;
   width: 256px;
   padding: 8px 10px;
