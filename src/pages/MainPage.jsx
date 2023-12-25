@@ -4,7 +4,8 @@ import { useEffect } from 'react';
 import { Today } from '../components/Today-section/Today';
 import { RecommendedList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
 import { getDailyWater } from '../redux/dailyWaterStatistics/waterOperations';
-// import { Planner } from '../components/Diary-planner/Planner';
+import DiaryMain from '../components/DiaryMain/DiaryMain';
+import { Planner } from '../components/Diary-planner/Planner';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const MainPage = () => {
     <>
       <Today />
       <RecommendedList />
-      {/* <Planner /> */}
+      <DiaryMain />
     </>
   );
 };
