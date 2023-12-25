@@ -92,7 +92,6 @@ const DiaryMain = () => {
 
   return (
     <ContainerDiary>
-      {/* {isOpen ? <Record /> : null} */}
       <TitleWrap>
         <Title>Diary</Title>
         <StyledLink to="/diary">See more</StyledLink>
