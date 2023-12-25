@@ -6,6 +6,7 @@ import { RecommendedList } from '../components/RecommendedFood/RecommendedList/R
 import { getDailyWater } from '../redux/dailyWaterStatistics/waterOperations';
 import DiaryMain from '../components/DiaryMain/DiaryMain';
 import { getFood } from '../redux/dailyFoodStatistics/foodOperations';
+import { Container } from './MainPage.styles';
 
 const MainPage = () => {
   const dispatch = useDispatch();
@@ -17,8 +18,10 @@ const MainPage = () => {
   return (
     <>
       <Today />
-      <DiaryMain />
-      <RecommendedList />
+      <Container>
+        <DiaryMain />
+        <RecommendedList />
+      </Container>
     </>
   );
 };
