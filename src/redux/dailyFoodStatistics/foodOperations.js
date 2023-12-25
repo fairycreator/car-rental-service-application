@@ -33,7 +33,7 @@ export const deleteFood = createAsyncThunk(
     const { token } = thunkAPI.getState().auth;
     instance.defaults.headers['Authorization'] = `Bearer ${token}`;
     const response = await instance.delete(`/user/food-intake`, {
-      foodType,
+      data: { ...foodType },
     });
     console.log('response: ', response);
     return response.data;
