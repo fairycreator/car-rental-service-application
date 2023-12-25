@@ -10,15 +10,14 @@ import {
   RenderContainer,
   RenderContainerItem,
   Wrapper,
-} from '../Planner.styled';
+} from './PlannerCard.styled';
 
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
 const iconPath = 'src/assets/images/sprite.svg';
 
 export const PlannerCard = ({
-  mealPNG,
   title,
-  selector,
+  meal,
   setOpen,
   setFoodType,
   typefood,
@@ -27,7 +26,7 @@ export const PlannerCard = ({
     <RecordMealBlock>
       <Wrapper>
         <MealContainer style={{ alignItems: 'center' }}>
-          <MealImage src={`src/assets/images/${mealPNG}.png`} />
+          <MealImage src={`src/assets/images/${title}.png`} />
           <MealTitle>{`${title}`}</MealTitle>
         </MealContainer>
         <MealSubscription>
@@ -40,8 +39,8 @@ export const PlannerCard = ({
         style={{ marginTop: '20px' }}
         onClick={() => setFoodType(`${typefood}`)}
       >
-        {selector[0].name !== '' ? (
-          selector.map((item, index) => {
+        {meal[0].name !== '' ? (
+          meal.map((item, index) => {
             return (
               <RenderContainer key={item._id}>
                 <Numeration>{index + 1}</Numeration>
@@ -81,9 +80,9 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
-        {selector[0].name ? (
+        {meal[0].name ? (
           <div style={{ display: 'flex' }}>
-            <Numeration>{selector.length + 1}</Numeration>
+            <Numeration>{meal.length + 1}</Numeration>
             <div
               style={{
                 width: '170px',

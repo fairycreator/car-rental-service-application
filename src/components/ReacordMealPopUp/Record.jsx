@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import {
   MealContainer,
   MealImage,
   MealTitle,
-} from '../Diary-planner/Planner.styled';
+} from '../Diary-planner/PlannerCard/PlannerCard.styled';
 import {
   BackDrop,
   Button,
@@ -16,13 +16,12 @@ import {
   SubInput,
   SubInputBlock,
   Title,
+  CancelButton,
 } from './Reacord.styled';
 
 export const Record = ({ isOpen, type }) => {
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
-
-  
 
   const [name, setName] = useState('');
   const [calories, setColories] = useState('');
@@ -111,17 +110,7 @@ export const Record = ({ isOpen, type }) => {
           </InputBlock>
           <ButtonBlock>
             <Button type="submit" value={'Confirm'} />
-            <button
-              onClick={() => isOpen(false)}
-              style={{
-                textAlign: 'center',
-                background: 'transparent',
-                color: '#B6B6B6',
-                border: 'none',
-              }}
-            >
-              Cancel
-            </button>
+            <CancelButton onClick={() => isOpen(false)}>Cancel</CancelButton>
           </ButtonBlock>
         </form>
       </ContentBlock>

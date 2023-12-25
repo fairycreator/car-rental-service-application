@@ -51,34 +51,30 @@ export const Planner = () => {
       {isOpen ? <Record isOpen={setOpen} type={foodType} /> : null}
       <DesktopContainer>
         <PlannerCard
-          mealPNG={'Breakfast'}
+          meal={breakfast}
           title={'Breakfast'}
           typefood={'breakfast'}
-          selector={breakfast}
           setOpen={setOpen}
           setFoodType={setFoodType}
         />
         <PlannerCard
-          mealPNG={'Lunch'}
+          meal={lunch}
           title={'Lunch'}
           typefood={'lunch'}
-          selector={lunch}
           setOpen={setOpen}
           setFoodType={setFoodType}
         />
         <PlannerCard
-          mealPNG={'Dinner'}
+          meal={dinner}
           title={'Dinner'}
           typefood={'dinner'}
-          selector={dinner}
           setOpen={setOpen}
           setFoodType={setFoodType}
         />
         <PlannerCard
-          mealPNG={'Snack'}
+          meal={snack}
           title={'Snack'}
           typefood={'snack'}
-          selector={snack}
           setOpen={setOpen}
           setFoodType={setFoodType}
         />
