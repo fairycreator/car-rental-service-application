@@ -176,3 +176,10 @@ export const AddMore = styled.p`
   font-weight: 500;
   line-height: 1.42;
 `;
+
+export const CancelButton = styled.button`
+  text-align: center;
+  background-color: transparent;
+  color: var(--primary-color-grey);
+  border: none;
+`;

@@ -16,6 +16,7 @@ import {
   SubInput,
   SubInputBlock,
   Title,
+  CancelButton,
 } from './Reacord.styled';
 
 export const Record = ({ isOpen, type }) => {
@@ -109,17 +110,7 @@ export const Record = ({ isOpen, type }) => {
           </InputBlock>
           <ButtonBlock>
             <Button type="submit" value={'Confirm'} />
-            <button
-              onClick={() => isOpen(false)}
-              style={{
-                textAlign: 'center',
-                background: 'transparent',
-                color: '#B6B6B6',
-                border: 'none',
-              }}
-            >
-              Cancel
-            </button>
+            <CancelButton onClick={() => isOpen(false)}>Cancel</CancelButton>
           </ButtonBlock>
         </form>
       </ContentBlock>
