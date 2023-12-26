@@ -56,7 +56,7 @@ export const PlannerCard = ({
           </svg>
           <p>Edit</p>
         </EditWrapper>
-        {meal.length > 0 ? (
+        {meal?.length > 0 ? (
           meal.map((item, index) => {
             return (
               <RenderContainer key={item._id}>
@@ -97,7 +97,7 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
-        {meal.length > 0 ? (
+        {meal?.length > 0 ? (
           <div style={{ display: 'flex' }}>
             <Numeration>{meal.length + 1}</Numeration>
             <div
