@@ -9,6 +9,7 @@ const handleRejected = (state, action) => {
 const handleAddFoodFullfiled = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  state.consumedFood._id = action.payload?._id;
   state.consumedFood.totalCalories = action.payload?.totalCalories;
   state.consumedFood.totalCarbs = action.payload?.totalCarbs;
   state.consumedFood.totalProtein = action.payload?.totalProteins;
@@ -33,17 +34,17 @@ const handleAddFoodFullfiled = (state, action) => {
 };
 
 const handeGetFoodFullfiled = (state, action) => {
-  state.consumedFood.cardID = action.payload[0]?._id;
-  state.consumedFood.totalCalories = action.payload[0]?.totalCalories;
-  state.consumedFood.totalCarbs = action.payload[0]?.totalCarbs;
-  state.consumedFood.totalProtein = action.payload[0]?.totalProteins;
-  state.consumedFood.totalFat = action.payload[0]?.totalFats;
+  state.consumedFood._id = action.payload?._id;
+  state.consumedFood.totalCalories = action.payload?.totalCalories;
+  state.consumedFood.totalCarbs = action.payload?.totalCarbs;
+  state.consumedFood.totalProtein = action.payload?.totalProteins;
+  state.consumedFood.totalFat = action.payload?.totalFats;
 
   if (action.payload) {
-    state.consumedFood.breakfast = action.payload[0]?.breakfast;
-    state.consumedFood.dinner = action.payload[0]?.dinner;
-    state.consumedFood.lunch = action.payload[0]?.lunch;
-    state.consumedFood.snack = action.payload[0]?.snack;
+    state.consumedFood.breakfast = action.payload.breakfast;
+    state.consumedFood.dinner = action.payload.dinner;
+    state.consumedFood.lunch = action.payload.lunch;
+    state.consumedFood.snack = action.payload.snack;
   }
 };
 
@@ -92,8 +93,8 @@ const dailyStatisticsFoodSlice = createSlice({
   extraReducers: (builder) =>
     builder
 
-      .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       .addCase(getFood.fulfilled, handeGetFoodFullfiled)
+      .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       .addCase(updateFood.fulfilled, handleUpdateFoodFullfiled)
       .addCase(getFood.rejected, handleRejected)
       .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
