@@ -22,53 +22,53 @@ export const Planner = () => {
   const snack = useSelector(selectSnack);
   const dispatch = useDispatch();
 
-  const totalFatBreakfast = breakfast.reduce(
+  const totalFatBreakfast = breakfast?.reduce(
     (sum, item) => sum + item.nutrition?.fat,
     0
   );
-  const totalFatDinner = dinner.reduce(
+  const totalFatDinner = dinner?.reduce(
     (sum, item) => sum + item.nutrition?.fat,
     0
   );
-  const totalFatLunch = lunch.reduce(
+  const totalFatLunch = lunch?.reduce(
     (sum, item) => sum + item.nutrition?.fat,
     0
   );
-  const totalFatSnack = snack.reduce(
+  const totalFatSnack = snack?.reduce(
     (sum, item) => sum + item.nutrition?.fat,
     0
   );
 
-  const totalProteinBreakfast = breakfast.reduce(
+  const totalProteinBreakfast = breakfast?.reduce(
     (sum, item) => sum + item.nutrition?.protein,
     0
   );
-  const totalProteinDinner = dinner.reduce(
+  const totalProteinDinner = dinner?.reduce(
     (sum, item) => sum + item.nutrition?.protein,
     0
   );
-  const totalProteinLunch = lunch.reduce(
+  const totalProteinLunch = lunch?.reduce(
     (sum, item) => sum + item.nutrition?.protein,
     0
   );
-  const totalProteinSnack = snack.reduce(
+  const totalProteinSnack = snack?.reduce(
     (sum, item) => sum + item.nutrition?.protein,
     0
   );
 
-  const totalCarbsBreakfast = breakfast.reduce(
+  const totalCarbsBreakfast = breakfast?.reduce(
     (sum, item) => sum + item.nutrition?.carbogidrate,
     0
   );
-  const totalCarbsDinner = dinner.reduce(
+  const totalCarbsDinner = dinner?.reduce(
     (sum, item) => sum + item.nutrition?.carbogidrate,
     0
   );
-  const totalCarbsLunch = lunch.reduce(
+  const totalCarbsLunch = lunch?.reduce(
     (sum, item) => sum + item.nutrition?.carbogidrate,
     0
   );
-  const totalCarbsSnack = snack.reduce(
+  const totalCarbsSnack = snack?.reduce(
     (sum, item) => sum + item.nutrition?.carbogidrate,
     0
   );
@@ -101,7 +101,7 @@ export const Planner = () => {
         </svg>
         <Title>Diary</Title>
       </div>
-      {isOpen ? <Record  type={foodType} /> : null}
+      {isOpen ? <Record type={foodType} /> : null}
       <DesktopContainer>
         <PlannerCard
           totalCarbs={totalCarbsBreakfast}

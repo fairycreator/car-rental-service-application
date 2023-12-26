@@ -21,9 +21,6 @@ import {
 } from './Reacord.styled';
 
 export const Record = ({ type, secondType }) => {
-  console.log('type: ', type);
-  console.log('secondType: ', secondType);
-
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
 
