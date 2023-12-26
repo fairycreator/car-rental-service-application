@@ -56,7 +56,7 @@ export const Food = () => {
             bgColor={caloriesChartBgColor}
           />
           <ChartInfo>
-            <Amount>{totalCalories}</Amount>
+            <Amount>{totalCalories ? totalCalories : 0}</Amount>
             <Text>calories</Text>
           </ChartInfo>
         </Calories>
