@@ -4,7 +4,7 @@ export const MealContainer = styled.div`
   display: flex;
   gap: 12px;
   @media screen and (min-width: 834px) {
-    margin-right: 126px;
+    margin-right: 100px;
   }
   @media screen and (min-width: 1440px) {
     margin-right: 159px;
@@ -12,10 +12,11 @@ export const MealContainer = styled.div`
 `;
 
 export const MealDashbord = styled.div`
+  margin-top: 12px;
   overflow: auto;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 16px;
   padding: 16px 12px;
   height: 232px;
   background: #0f0f0f;
@@ -63,7 +64,7 @@ export const MealSubscription = styled.div`
 export const MealSubTextMain = styled.p`
   font-size: 14px;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 12px;
   width: 100%;
   @media screen and (min-width: 834px) {
     margin-top: 0px;
@@ -77,7 +78,7 @@ export const MealSubTextMain = styled.p`
 export const MealSubText = styled.p`
   font-size: 14px;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 12px;
 
   @media screen and (min-width: 834px) {
     margin-top: 0px;
@@ -110,10 +111,12 @@ export const RecordMealBlock = styled.div`
 `;
 
 export const RenderContainer = styled.div`
+  position: relative;
   min-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  row-gap: 8px;
+  column-gap: 12px;
 `;
 
 export const RenderContainerItemName = styled.p`
@@ -127,7 +130,7 @@ export const RenderContainerItemName = styled.p`
   line-height: 20px; /* 142.857% */
 
   @media screen and (min-width: 834px) {
-    width: auto;
+    width: 105px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -135,6 +138,7 @@ export const RenderContainerItemName = styled.p`
 `;
 
 export const RenderContainerItem = styled.p`
+  margin-left: 20px;
   color: var(--primary-color-white);
   /* Body text/1 */
   font-family: 'Poppins400';
@@ -143,14 +147,19 @@ export const RenderContainerItem = styled.p`
   font-weight: 400;
   line-height: 20px; /* 142.857% */
   max-height: 25px;
+  @media screen and (min-width: 834px) {
+    min-width: 80px;
+    position: relative;
+    left: 120px;
+  }
 `;
 
-export const NutrWrap = styled.div`
-  margin-left: 20px;
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-`;
+// export const NutrWrap = styled.div`
+//   display: flex;
+//   @media screen and (min-width: 834px) {
+//     gap: 32px;
+//   }
+// `;
 
 export const Wrapper = styled.div`
   @media screen and (min-width: 834px) {
@@ -168,8 +177,11 @@ export const EditWrapper = styled.div`
   display: flex;
   gap: 6px;
   height: 20px;
-  /* position: absolute; */
-  top: 14px;
-  right: 14px;
-  color: var(--primary-color-green-lite);
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  @media screen and (min-width: 834px) {
+    /* position: static; */
+    top: 0px;
+  }
 `;
