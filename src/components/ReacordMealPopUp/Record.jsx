@@ -20,7 +20,6 @@ import {
   CancelButton,
 } from './Reacord.styled';
 
-
 export const Record = ({ type, secondType }) => {
   console.log('type: ', type);
   console.log('secondType: ', secondType);
@@ -64,7 +63,7 @@ export const Record = ({ type, secondType }) => {
           }}
         >
           <MealImage src="src/assets/images/Breakfast.png" />
-          <MealTitle>Breakfast</MealTitle>
+          <MealTitle>{secondType === undefined ? secondType : type}</MealTitle>
         </MealContainer>
         <form onSubmit={formHandler}>
           <InputBlock>

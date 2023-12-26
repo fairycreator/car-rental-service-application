@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addFood, deleteFood, getFood } from './foodOperations';
+import { addFood, deleteFood, getFood, updateFood } from './foodOperations';
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -29,23 +29,24 @@ const handleAddFoodFullfiled = (state, action) => {
 };
 
 const handeGetFoodFullfiled = (state, action) => {
-  state.consumedFood.totalCalories = action.payload[0].totalCalories;
-  state.consumedFood.totalCarbs = action.payload[0].totalCarbs;
-  state.consumedFood.totalProtein = action.payload[0].totalProtein;
-  state.consumedFood.totalFat = action.payload[0].totalFat;
+  state.consumedFood.cardID = action.payload[0]?._id;
+  state.consumedFood.totalCalories = action.payload[0]?.totalCalories;
+  state.consumedFood.totalCarbs = action.payload[0]?.totalCarbs;
+  state.consumedFood.totalProtein = action.payload[0]?.totalProteins;
+  state.consumedFood.totalFat = action.payload[0]?.totalFats;
 
   if (action.payload) {
     // if (action.payload.breakfast.length > 0) {
-    state.consumedFood.breakfast = action.payload[0].breakfast;
+    state.consumedFood.breakfast = action.payload[0]?.breakfast;
     // }
     // if (action.payload.dinner.length > 0) {
-    state.consumedFood.dinner = action.payload[0].dinner;
+    state.consumedFood.dinner = action.payload[0]?.dinner;
     // }
     // if (action.payload.lunch.length > 0) {
-    state.consumedFood.lunch = action.payload[0].lunch;
+    state.consumedFood.lunch = action.payload[0]?.lunch;
     // }
     // if (action.payload.snack.length > 0) {
-    state.consumedFood.snack = action.payload[0].snack;
+    state.consumedFood.snack = action.payload[0]?.snack;
     // }
   }
 };
@@ -59,7 +60,15 @@ const deleteHandlerFullfilled = (state, action) => {
   }
 };
 
+const handleUpdateFoodFullfiled = (state, action) => {
+  state.consumedFood.breakfast = action.payload[0]?.breakfast;
+  state.consumedFood.dinner = action.payload[0]?.dinner;
+  state.consumedFood.lunch = action.payload[0]?.lunch;
+  state.consumedFood.snack = action.payload[0]?.snack;
+};
+
 const consumedFood = {
+  _id: '',
   totalCalories: 0,
   totalCarbs: 0,
   totalProtein: 0,
@@ -89,6 +98,7 @@ const dailyStatisticsFoodSlice = createSlice({
 
       .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       .addCase(getFood.fulfilled, handeGetFoodFullfiled)
+      .addCase(updateFood.fulfilled, handleUpdateFoodFullfiled)
       .addCase(getFood.rejected, handleRejected)
       .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
 });

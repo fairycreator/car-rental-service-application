@@ -14,8 +14,8 @@ export const MealContainer = styled.div`
 export const MealDashbord = styled.div`
   overflow: auto;
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  flex-direction: column;
+  gap: 40px;
   padding: 16px 12px;
   height: 232px;
   background: #0f0f0f;
@@ -23,9 +23,12 @@ export const MealDashbord = styled.div`
   /* borderRadius: 52px; */
   border-radius: 13px;
   max-width: 300px;
+  position: relative;
   /* width: 834px; */
   @media screen and (min-width: 834px) {
     max-width: 780px;
+    padding: 32px 14px;
+    gap: 32px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -115,4 +118,14 @@ export const Wrapper = styled.div`
     /* display: flex;
     flex-wrap: wrap; */
   }
+`;
+
+export const EditWrapper = styled.div`
+  display: flex;
+  gap: 6px;
+  height: 20px;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  color: var(--primary-color-green-lite);
 `;
