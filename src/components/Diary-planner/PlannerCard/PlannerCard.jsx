@@ -10,17 +10,17 @@ import {
   RenderContainer,
   RenderContainerItem,
   Wrapper,
+  EditWrapper,
 } from './PlannerCard.styled';
 
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
 import { useDispatch } from 'react-redux';
 import { openHandler } from '../../../redux/dailyFoodStatistics/foodSlice';
-const iconPath = 'src/assets/images/sprite.svg';
+import sprite from '../../../assets/images/sprite.svg';
 
 export const PlannerCard = ({
   title,
   meal,
-  setOpen,
   setFoodType,
   typefood,
   totalCarbs,
@@ -50,6 +50,12 @@ export const PlannerCard = ({
         style={{ marginTop: '20px' }}
         onClick={() => setFoodType(`${typefood}`)}
       >
+        <EditWrapper>
+          <svg style={{ width: '16px', height: '16px' }}>
+            <use href={`${sprite}#edit-2`}></use>
+          </svg>
+          <p>Edit</p>
+        </EditWrapper>
         {meal.length > 0 ? (
           meal.map((item, index) => {
             return (
@@ -87,7 +93,7 @@ export const PlannerCard = ({
                 fill: 'white',
               }}
             >
-              <use href={`${iconPath}#icon-add-converted`}></use>
+              <use href={`${sprite}#icon-add-converted`}></use>
             </svg>
           </div>
         )}
@@ -112,7 +118,7 @@ export const PlannerCard = ({
                   fill: 'white',
                 }}
               >
-                <use href={`${iconPath}#icon-add-converted`}></use>
+                <use href={`${sprite}#icon-add-converted`}></use>
               </svg>
             </div>
           </div>

@@ -41,20 +41,18 @@ export const ProfileSettingsCard = () => {
   const { name, avatar, age, gender, height, weight, activityLevel } =
     currentUserData;
 
-  const getInitialValues = () => {
-    return {
-      name,
-      avatar: avatar,
-      age,
-      gender,
-      height,
-      weight,
-      activityLevel,
-    };
+  const initialValues = {
+    name,
+    avatar: avatar,
+    age,
+    gender,
+    height,
+    weight,
+    activityLevel,
   };
 
   const formik = useFormik({
-    initialValues: getInitialValues(),
+    initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: (values) => {
       formik.values.activityLevel = Number(values.activityLevel);
@@ -67,13 +65,6 @@ export const ProfileSettingsCard = () => {
       formData.append('height', formik.values.height);
       formData.append('weight', formik.values.weight);
       formData.append('activityLevel', formik.values.activityLevel);
-
-      // забрати!!!!
-    //   for (let pair of formData.entries()) {
-    //     console.log(pair[0] + ', ' + pair[1]);
-    //     selectedImage = null;
-    //   }
-      //
 
       dispatch(updateUser(formData));
     },

@@ -38,4 +38,13 @@ export const deleteFood = createAsyncThunk(
   }
 );
 
+export const updateFood = createAsyncThunk(
+  'dailyStatisticsFood/updateFood',
+  async ({ id, food }, thunkAPI) => {
+    const { token } = thunkAPI.getState().auth;
+    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
 
+    const response = await instance.put(`/user/food-intake/${id}`, food);
+    return response.data;
+  }
+);

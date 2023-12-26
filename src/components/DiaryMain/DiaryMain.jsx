@@ -16,6 +16,12 @@ import {
   TitleWrap,
 } from './DiaryMain.style';
 import { DiaryMainCard } from './DiaryMainCard/DiaryMainCard';
+import Breakfast from '../../assets/images/Breakfast.png';
+import Dinner from '../../assets/images/Dinner.png';
+import Lunch from '../../assets/images/Lunch.png';
+import Snack from '../../assets/images/Snack.png';
+
+const cardImg = [Breakfast, Lunch, Dinner, Snack];
 
 const DiaryMain = () => {
   const breakfast = useSelector(selectBreakfast);
@@ -28,6 +34,7 @@ const DiaryMain = () => {
     dinner,
     snack,
   };
+
   const allFood = ['breakfast', 'lunch', 'dinner', 'snack'];
   // console.log('totalFood: ', totalFood);
 
@@ -128,10 +135,9 @@ const DiaryMain = () => {
         <StyledLink to="/diary">See more</StyledLink>
       </TitleWrap>
       <FoodBlocks>
-        {allFood.map((item) => {
+        {allFood.map((item, i) => {
           return (
             <DiaryMainCard
-             
               key={item}
               meal={totalFood[item]}
               typefood={item}
@@ -139,34 +145,10 @@ const DiaryMain = () => {
               totalCarbs={totalNutriation[item].carbs}
               totalProtein={totalNutriation[item].protein}
               totalFat={totalNutriation[item].fat}
+              src={cardImg[i]}
             />
           );
         })}
-
-        {/* <DiaryMainCard
-          typefood={'lunch'}
-          meal={lunch}
-          title="Lunch"
-          totalCarbs={totalCarbsLunch}
-          totalProtein={totalProteinLunch}
-          totalFat={totalFatLunch}
-        />
-        <DiaryMainCard
-          typefood={'dinner'}
-          meal={dinner}
-          title="Dinner"
-          totalCarbs={totalCarbsDinner}
-          totalProtein={totalProteinDinner}
-          totalFat={totalFatDinner}
-        />
-        <DiaryMainCard
-          typefood={'snack'}
-          meal={snack}
-          title="Snack"
-          totalCarbs={totalCarbsSnack}
-          totalProtein={totalProteinSnack}
-          totalFat={totalFatSnack}
-        /> */}
       </FoodBlocks>
     </ContainerDiary>
   );

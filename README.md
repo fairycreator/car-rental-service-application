@@ -1,4 +1,4 @@
-# <Helthy_Life>
+# Helthy_Life
 
 ## Description
 
@@ -84,30 +84,34 @@ on our code of conduct, and the process for submitting pull requests to us.
   ensuring data accuracy and user-friendly
   feedback. -[YourGitHubProfile](https://github.com/fairycreator)
 
-- **your name** -
+- **Rita Oleksenko** -
 -
 -
-- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
+- -[YourGitHubProfile](https://github.com/1evanter)
 
-- **your name** -
+- **Petro Kasperskyi** -
 -
 -
-- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
+- -[YourGitHubProfile](https://github.com/PetroKasperskyi)
 
-- **your name** -
+- **Victor name** -
 -
 -
-- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
+- -[YourGitHubProfile](https://github.com/M1seryy)
 
-- **your name** -
+- **Natalya Materinskaya** -
 -
 -
-- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
+- -[YourGitHubProfile](https://github.com/NatalyaMaterinskaya)
 
-- **your name** -
+- **Vorontsova Yulia** -
 -
 -
-- -[YourGitHubProfile](LINK_TO_YOUR_GitHub_Profile)
+- -[YourGitHubProfile](https://github.com/VorontsovaYulia)
+
+- **[Vasyl Podvirnyi](https://github.com/va7ul)**
+-
+-
 
 <!-- See also the list of [contributors](LINK_TO_CONTRIBUTORS_PAGE) who participated
 in this project. -->
