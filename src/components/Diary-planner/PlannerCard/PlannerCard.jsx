@@ -58,29 +58,27 @@ export const PlannerCard = ({
         style={{ marginTop: '20px' }}
         onClick={() => setFoodType(`${typefood}`)}
       >
-        <EditWrapper>
-          <svg style={{ width: '16px', height: '16px' }}>
-            <use href={`${sprite}#edit-2`}></use>
-          </svg>
-          <p>Edit</p>
-        </EditWrapper>
         {meal?.length > 0 ? (
           meal.map((item, index) => {
             return (
               <RenderContainer key={item._id}>
                 <Numeration>{index + 1}</Numeration>
-                <RenderContainerItemName>{item.name}</RenderContainerItemName>
-                <NutrWrap>
-                  <RenderContainerItem>
-                    Carbs: {item.nutrition.carbogidrate}
-                  </RenderContainerItem>
-                  <RenderContainerItem>
-                    Protein: {item.nutrition.protein}
-                  </RenderContainerItem>
-                  <RenderContainerItem>
-                    Fat: {item.nutrition.fat}
-                  </RenderContainerItem>
-                </NutrWrap>
+                <RenderContainerItem>{item.name}</RenderContainerItem>
+                <RenderContainerItem>
+                  Carbs: {item.nutrition.carbogidrate}
+                </RenderContainerItem>
+                <RenderContainerItem>
+                  Protein: {item.nutrition.protein}
+                </RenderContainerItem>
+                <RenderContainerItem>
+                  Fat: {item.nutrition.fat}
+                </RenderContainerItem>
+                <EditWrapper>
+                  <svg style={{ width: '16px', height: '16px' }}>
+                    <use href={`${sprite}#edit-2`}></use>
+                  </svg>
+                  <p>Edit</p>
+                </EditWrapper>
               </RenderContainer>
             );
           })
