@@ -4,7 +4,7 @@ export const MealContainer = styled.div`
   display: flex;
   gap: 12px;
   @media screen and (min-width: 834px) {
-    margin-right: 196px;
+    margin-right: 126px;
   }
   @media screen and (min-width: 1440px) {
     margin-right: 159px;
@@ -156,7 +156,6 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 834px) {
     /* width: 834px; */
     display: flex;
-    justify-content: space-between;
   }
 
   @media screen and (min-width: 1440px) {
