@@ -25,21 +25,22 @@ export const DiaryMainCard = ({
   totalCarbs,
   totalProtein,
   totalFat,
+  typefood,
 }) => {
-  // title.toLowerCase()
   const dispatch = useDispatch();
   const deleteMealHandler = (title) => {
     dispatch(deleteFood({ userFood: {}, typeFood: title }));
   };
   let isOpen = useSelector(selectOpen);
-  const onOpenHandler = () => {
+  // console.log('e: ', );
+  const onOpenHandler = (e) => {
+    const element = document.getElementById(typefood);
+    // element.dataset.type = typefood;
     dispatch(openHandler(true));
   };
-  let type = title.toLowerCase();
-  console.log('type: ', type);
   return (
     <ContentBlock>
-      {isOpen ? <Record /> : null}
+      {isOpen ? <Record secondType={typefood} /> : null}
       <TitleBlock>
         <MealImage src={Breakfast} />
         <MealTitle>{title}</MealTitle>
@@ -59,7 +60,11 @@ export const DiaryMainCard = ({
             </MealOptions>
           </>
         ) : (
-          <AddMealWrap onClick={onOpenHandler}>
+          <AddMealWrap
+            id={typefood}
+            data-site={typefood}
+            onClick={onOpenHandler}
+          >
             <AddMore>Record your meal</AddMore>
             <AddIcon>
               <use href={`${sprite}#icon-add-converted`}></use>

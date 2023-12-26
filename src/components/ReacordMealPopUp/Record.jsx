@@ -20,9 +20,9 @@ import {
   CancelButton,
 } from './Reacord.styled';
 
-export const Record = ({ type }) => {
-  console.log('dailyType: ', dailyType);
+export const Record = ({ type, secondType }) => {
   console.log('type: ', type);
+  console.log('secondType: ', secondType);
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
 
@@ -35,7 +35,7 @@ export const Record = ({ type }) => {
     dispatch(openHandler(false));
   };
   const arr = {
-    typeFood: type,
+    typeFood: type === undefined ? secondType : type,
     userFood: [
       {
         name,
