@@ -85,7 +85,7 @@ export const Planner = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '5px',
-          marginBottom: '20px',
+          marginBottom: '16px',
         }}
       >
         <svg

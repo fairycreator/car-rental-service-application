@@ -12,7 +12,6 @@ import {
   RenderContainerItemName,
   Wrapper,
   EditWrapper,
-  NutrWrap,
   MealSubTextMain,
   MealSubWrapper,
 } from './PlannerCard.styled';
@@ -54,32 +53,31 @@ export const PlannerCard = ({
           </MealSubWrapper>
         </MealSubscription>
       </Wrapper>
-      <MealDashbord
-        style={{ marginTop: '20px' }}
-        onClick={() => setFoodType(`${typefood}`)}
-      >
+      <MealDashbord onClick={() => setFoodType(`${typefood}`)}>
         {meal?.length > 0 ? (
           meal.map((item, index) => {
             return (
-              <RenderContainer key={item._id}>
-                <Numeration>{index + 1}</Numeration>
-                <RenderContainerItem>{item.name}</RenderContainerItem>
-                <RenderContainerItem>
-                  Carbs: {item.nutrition.carbogidrate}
-                </RenderContainerItem>
-                <RenderContainerItem>
-                  Protein: {item.nutrition.protein}
-                </RenderContainerItem>
-                <RenderContainerItem>
-                  Fat: {item.nutrition.fat}
-                </RenderContainerItem>
+              <div style={{ position: 'relative' }}>
+                <RenderContainer key={item._id}>
+                  <Numeration>{index + 1}</Numeration>
+                  <RenderContainerItemName>{item.name}</RenderContainerItemName>
+                  <RenderContainerItem>
+                    Carbs: {item.nutrition.carbogidrate}
+                  </RenderContainerItem>
+                  <RenderContainerItem>
+                    Protein: {item.nutrition.protein}
+                  </RenderContainerItem>
+                  <RenderContainerItem>
+                    Fat: {item.nutrition.fat}
+                  </RenderContainerItem>
+                </RenderContainer>
                 <EditWrapper>
                   <svg style={{ width: '16px', height: '16px' }}>
                     <use href={`${sprite}#edit-2`}></use>
                   </svg>
                   <p>Edit</p>
                 </EditWrapper>
-              </RenderContainer>
+              </div>
             );
           })
         ) : (
