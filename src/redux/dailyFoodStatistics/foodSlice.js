@@ -49,6 +49,12 @@ const handeGetFoodFullfiled = (state, action) => {
 };
 
 const deleteHandlerFullfilled = (state, action) => {
+  state.consumedFood._id = action.payload?.resultTotal._id;
+  state.consumedFood.totalCalories = action.payload?.resultTotal.totalCalories;
+  state.consumedFood.totalCarbs = action.payload?.resultTotal.totalCarbs;
+  state.consumedFood.totalProtein = action.payload?.resultTotal.totalProteins;
+  state.consumedFood.totalFat = action.payload?.resultTotal.totalFats;
+
   const type = action.meta.arg.typeFood;
   if (action.payload.message) {
     state.consumedFood[type] = [];

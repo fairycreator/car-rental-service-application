@@ -15,9 +15,9 @@ import {
   CancelButton,
 } from './Reacord.styled';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
-// import { AddIcon } from './MealPopUpModal.styled';
+import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
 import { ModalInput } from '../ModalInput/ModalInput';
-// import sprite from '../../assets/images/sprite.svg';
+import sprite from '../../assets/images/sprite.svg';
 
 const customStyles = {
   content: {
@@ -51,7 +51,7 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const [protein, setProtein] = useState('');
   const [fat, setFat] = useState('');
 
-  //   const [inputCounter, setInputCounter] = useState([1]);
+  const [inputCounter, setInputCounter] = useState([1]);
 
   const arr = {
     typeFood: typefood,
@@ -70,15 +70,15 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
     closeModal();
   };
 
-  //   const foodArray = [inputCounter];
+  const foodArray = [inputCounter];
 
-  // const handleAddMore = () => {
-  //   setInputCounter((prevstate) => {
-  //     console.log(prevstate);
-  //     const index = prevstate.lenght - 1;
-  //     [...prevstate, prevstate[index] + 1];
-  //   });
-  // };
+  const handleAddMore = () => {
+    setInputCounter((prevstate) => {
+      console.log(prevstate);
+      const index = prevstate.lenght - 1;
+      [...prevstate, prevstate[index] + 1];
+    });
+  };
 
   return (
     <Modal isOpen={stateModal} onRequestClose={closeModal} style={customStyles}>
@@ -96,30 +96,30 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
           </MealTitle>
         </MealContainer>
         <form onSubmit={formHandler}>
-          {/* {foodArray.map((item, index) => {
-            return ( */}
-          <ModalInput
-            // key={index}
-            setName={setName}
-            setColories={setColories}
-            setCarbogidrate={setCarbogidrate}
-            setProtein={setProtein}
-            setFat={setFat}
-            name={name}
-            calories={calories}
-            carbogidrate={carbogidrate}
-            protein={protein}
-            fat={fat}
-          />
-          {/* );
-          })} */}
+          {foodArray.map((item, index) => {
+            return (
+              <ModalInput
+                key={index}
+                setName={setName}
+                setColories={setColories}
+                setCarbogidrate={setCarbogidrate}
+                setProtein={setProtein}
+                setFat={setFat}
+                name={name}
+                calories={calories}
+                carbogidrate={carbogidrate}
+                protein={protein}
+                fat={fat}
+              />
+            );
+          })}
 
-          {/* <Button onClick={handleAddMore} type="button">
+          <ButtonAdd onClick={handleAddMore} type="button">
             <AddIcon>
               <use href={`${sprite}#icon-add-converted`}></use>
             </AddIcon>
             Add more
-          </Button> */}
+          </ButtonAdd>
 
           <ButtonBlock>
             <Button type="submit">Confirm</Button>
