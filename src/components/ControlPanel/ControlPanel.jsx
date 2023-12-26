@@ -4,14 +4,12 @@ import { UserInfoNav } from "../UserInfoNav/UserInfoNav";
 import { WeightNav } from "../WeightNav/WeightNav";
 import { DesktopContainer, Box } from "./ControlPanel.styled";
 import { MobileContainer } from '../MobileContainer/MobileContainer';
-// import { Logo } from '../Logo/Logo';
 
 export const ControlPanel = () => {
     const mobileVersion = useMediaQuery({ query: '(max-width:833px)' });
     
     return (
         <Box>
-            {/* <Logo /> */}
             {mobileVersion ? (
                 <MobileContainer />
             ) : (
@@ -20,6 +18,6 @@ export const ControlPanel = () => {
                     <WeightNav />
                 </DesktopContainer>)}
             <UserInfoNav />
-        </Box>  
-    )
+        </Box>
+    );
 };

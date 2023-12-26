@@ -1,7 +1,4 @@
 import { useMediaQuery } from 'react-responsive';
-import { theme } from '../../GlobalStyle/';
-import { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
 import { styled } from '@mui/material/styles';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -11,12 +8,16 @@ import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import Fade from '@mui/material/Fade';
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from 'react';
+import { theme } from '../../GlobalStyle/';
 import { selectUserGender, selectUserGoal } from '../../redux/auth/authSelectors';
 import loseFat from '../../assets/images/loseFat.png';
 import maintain from '../../assets/images/maintain.png';
 import loseFat_girl from '../../assets/images/loseFat_girl.png';
 import maintain_girl from '../../assets/images/maintain_girl.png';
 import gainMuscle from '../../assets/images/gainMuscle.png';
+import sprite from 'assets/images/sprite.svg';
 import { updateGoal } from '../../redux/auth/authOperations';
 import {
   DivImage,
@@ -34,7 +35,6 @@ import {
   ButtonCancel,
   Form
 } from './GoalNav.styled';
-import sprite from 'assets/images/sprite.svg';
 
 const ButtonMenu = styled(Button)({
   display: 'flex',
@@ -101,14 +101,14 @@ export const GoalNav = ({ setOpenModal }) => {
 
   let imageGoal;
   if (userGoal === "Lose Fat") {
-    isGender === "male" ? imageGoal = loseFat : imageGoal = loseFat_girl
+    isGender === "male" ? imageGoal = loseFat : imageGoal = loseFat_girl;
   } else if (userGoal === "Maintain") {
-    isGender === "male" ? imageGoal = maintain : imageGoal = maintain_girl
+    isGender === "male" ? imageGoal = maintain : imageGoal = maintain_girl;
   } else if (userGoal === "Gain Muscle") {
-    imageGoal = gainMuscle
+    imageGoal = gainMuscle;
   };
 
-  const [currentImage, setCurrentImage] = useState(imageGoal)
+  const [currentImage, setCurrentImage] = useState(imageGoal);
   const [value, setValue] = useState(userGoal);
   const [currentValue, setCurrentValue] = useState(userGoal);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -117,7 +117,7 @@ export const GoalNav = ({ setOpenModal }) => {
   const handleCancel = () => {
     setAnchorEl(null);
     setOpenModal(false)
-  }
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -133,16 +133,16 @@ export const GoalNav = ({ setOpenModal }) => {
     event.preventDefault();
 
     if (currentValue === 'Lose Fat') {
-      setCurrentImage(isGender === "male" ? loseFat : loseFat_girl)
+      setCurrentImage(isGender === "male" ? loseFat : loseFat_girl);
 
     } else if (currentValue === 'Maintain') {
-      setCurrentImage(isGender === "male" ? maintain : maintain_girl)
+      setCurrentImage(isGender === "male" ? maintain : maintain_girl);
 
     } else if (currentValue === 'Gain Muscle') {
-      setCurrentImage(gainMuscle)
+      setCurrentImage(gainMuscle);
     }
     setValue(currentValue);
-    dispatch(updateGoal({ goal: currentValue }))
+    dispatch(updateGoal({ goal: currentValue }));
     handleClose();
   };
 
@@ -212,7 +212,6 @@ export const GoalNav = ({ setOpenModal }) => {
             </FormLabel>
             <RadioGroup
               aria-labelledby="demo-error-radios"
-              // defaultValue={value}
               sx={{
                 gap: '16px',
                 '& .MuiFormControlLabel-root .MuiFormControlLabel-label': {
@@ -230,20 +229,11 @@ export const GoalNav = ({ setOpenModal }) => {
               value={value}
               onChange={handleRadioChange}
             >
-              <FormControlLabel sx={{
-                margin: '0px',
-                // '& :hover.ZGuGI': {
-                //   borderColor: '#B6C3FF',
-                // }
-              }}
+              <FormControlLabel sx={{ margin: '0px' }}
                 value="Lose Fat"
                 control={
                   <Radio
-                    sx={{
-                      padding: '0px',
-                      width: '40px',
-                      height: '40px',
-                    }}
+                    sx={{ padding: '0px' }}
                     icon={
                       <DivImage>
                         <LoseFat src={isGender === "male" ? loseFat : loseFat_girl} alt="Lose fat" />
@@ -263,10 +253,7 @@ export const GoalNav = ({ setOpenModal }) => {
                 sx={{ margin: '0px' }}
                 value="Maintain"
                 control={
-                  <Radio
-                    sx={{
-                      padding: '0px',
-                    }}
+                  <Radio sx={{ padding: '0px' }}
                     icon={
                       <DivImage>
                         <LoseFat src={isGender === "male" ? maintain : maintain_girl} alt="Maintain" />
@@ -287,9 +274,7 @@ export const GoalNav = ({ setOpenModal }) => {
                 value="Gain Muscle"
                 control={
                   <Radio
-                    sx={{
-                      padding: '0px',
-                    }}
+                    sx={{ padding: '0px' }}
                     icon={
                       <DivImage>
                         <LoseFat src={gainMuscle} alt="Gain muscle" />
