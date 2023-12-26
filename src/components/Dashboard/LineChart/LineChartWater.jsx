@@ -84,7 +84,7 @@ const options = {
       yAlign: 'bottom',
       callbacks: {
         title: (data) => {
-          return data[0].parsed.y;
+          return data[0].formattedValue;
         },
         label: () => {
           return 'milliliters';
@@ -98,6 +98,10 @@ const options = {
       grid: {
         color: '#292928',
         weight: '1px',
+      },
+      ticks: {
+        autoSkip: false,
+        maxRotation: 0,
       },
     },
     y: {

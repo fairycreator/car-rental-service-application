@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import PuffLoader from 'react-spinners/PuffLoader';
 
 import Calendar from './Calendar/Calendar';
 import sprite from '../../assets/images/sprite.svg';
@@ -85,8 +86,10 @@ export const Dashboard = () => {
   return (
     <>
       {isLoading ? (
-        // <Loader />
-        <p>Oops! Loading.....</p>
+        <PuffLoader
+          color="var(--primary-color-green-lite)"
+          cssOverride={{ margin: '40vh auto 0 auto' }}
+        />
       ) : (
         !error && (
           <DashboardWrapper>
