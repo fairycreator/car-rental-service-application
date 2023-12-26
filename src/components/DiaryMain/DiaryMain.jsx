@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import {
@@ -7,7 +7,7 @@ import {
   selectLunch,
   selectSnack,
 } from '../../redux/dailyFoodStatistics/foodSelectors';
-import { Record } from '../ReacordMealPopUp/Record';
+// import { Record } from '../ReacordMealPopUp/Record';
 import {
   ContainerDiary,
   FoodBlocks,
