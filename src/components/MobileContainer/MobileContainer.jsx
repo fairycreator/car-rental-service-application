@@ -50,7 +50,7 @@ export const MobileContainer = () => {
                         <WeightNav setOpenModal={setOpenModal} />
                     </MobileMenu>
                 </Backdrop>
-            ) : undefined} 
+            ) : undefined}
         </>
-    )
+    );
 };

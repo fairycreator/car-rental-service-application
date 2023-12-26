@@ -1,18 +1,18 @@
 import { useMediaQuery } from 'react-responsive';
-import { styled } from '@mui/material/styles';
-import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Formik } from 'formik';
+import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import sprite from 'assets/images/sprite.svg';
 import Weight from '../../assets/images/Weight.png';
 import { theme } from '../../GlobalStyle/';
 import { useSelector, useDispatch } from "react-redux";
 import { selectUserWeight } from '../../redux/auth/authSelectors';
 import { updateWeight } from '../../redux/auth/authOperations';
 import { DivEdit, DivImage, DivMenu, DivText, MainText, MenuDay, MenuText, MenuTitle, MenuDate, Text, TextWeight, BoxDate, ButtonSend, InputWeight, FormStyled, ButtonCancel, ButtonClose, IconClose, ErrorMessageStyled, FormBlock } from './WeightNav.styled';
+import sprite from 'assets/images/sprite.svg';
 
 const WeightSchema = Yup.object().shape({
     weight: Yup.number('Enter correct number')
@@ -154,13 +154,13 @@ export const WeightNav = ({ setOpenModal }) => {
                     >
                         <FormBlock autoComplete='off' >
                             <FormStyled>
-                            <InputWeight id="weight" type="number" name="weight" placeholder="Enter your weight"/>
-                            <ErrorMessageStyled name="weight" component="div" />
+                                <InputWeight id="weight" type="number" name="weight" placeholder="Enter your weight" />
+                                <ErrorMessageStyled name="weight" component="div" />
             
                             </FormStyled>
                             <div>
-                            <ButtonSend type="submit">Confirm</ButtonSend>
-                             </div>
+                                <ButtonSend type="submit">Confirm</ButtonSend>
+                            </div>
                         </FormBlock>
                         
                     </Formik>

@@ -1,10 +1,10 @@
 
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
+import { BoxContent, ContainerNav } from "./Header.styled";
 import { Logo } from "../Logo/Logo";
 import { ControlPanel } from "../ControlPanel/ControlPanel";
 import { Navigation } from "../Navigation/Navigation";
-import { BoxContent, ContainerNav } from "./Header.styled";
+import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 
 export const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -17,5 +17,5 @@ export const Header = () => {
           <ControlPanel /> : <Navigation />}
       </BoxContent>
     </ContainerNav>
-  )
+  );
 };
