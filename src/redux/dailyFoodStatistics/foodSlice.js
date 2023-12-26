@@ -9,6 +9,10 @@ const handleRejected = (state, action) => {
 const handleAddFoodFullfiled = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  state.consumedFood.totalCalories = action.payload?.totalCalories;
+  state.consumedFood.totalCarbs = action.payload?.totalCarbs;
+  state.consumedFood.totalProtein = action.payload?.totalProteins;
+  state.consumedFood.totalFat = action.payload?.totalFats;
 
   switch (action.meta.arg.typeFood) {
     case 'breakfast':
@@ -36,18 +40,10 @@ const handeGetFoodFullfiled = (state, action) => {
   state.consumedFood.totalFat = action.payload[0]?.totalFats;
 
   if (action.payload) {
-    // if (action.payload.breakfast.length > 0) {
     state.consumedFood.breakfast = action.payload[0]?.breakfast;
-    // }
-    // if (action.payload.dinner.length > 0) {
     state.consumedFood.dinner = action.payload[0]?.dinner;
-    // }
-    // if (action.payload.lunch.length > 0) {
     state.consumedFood.lunch = action.payload[0]?.lunch;
-    // }
-    // if (action.payload.snack.length > 0) {
     state.consumedFood.snack = action.payload[0]?.snack;
-    // }
   }
 };
 
