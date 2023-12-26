@@ -38,6 +38,9 @@ export const DiaryMainCard = ({
     // element.dataset.type = typefood;
     dispatch(openHandler(true));
   };
+
+  let type = title.toLowerCase();
+
   return (
     <ContentBlock>
       {isOpen ? <Record secondType={typefood} /> : null}
