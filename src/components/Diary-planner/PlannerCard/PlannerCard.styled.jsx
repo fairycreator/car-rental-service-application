@@ -43,7 +43,9 @@ export const MealImage = styled.img`
 `;
 
 export const MealSubscription = styled.div`
-  width: 178px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   @media screen and (min-width: 834px) {
     width: 100%;
     display: flex;
@@ -58,6 +60,19 @@ export const MealSubscription = styled.div`
     justify-content: center;
   }
 `;
+export const MealSubTextMain = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+  width: 100%;
+  @media screen and (min-width: 834px) {
+    margin-top: 0px;
+    width: auto;
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
 
 export const MealSubText = styled.p`
   font-size: 14px;
@@ -70,6 +85,11 @@ export const MealSubText = styled.p`
 
   @media screen and (min-width: 1440px) {
   }
+`;
+
+export const MealSubWrapper = styled.div`
+  display: flex;
+  gap: 20px;
 `;
 
 export const MealTitle = styled.p`
@@ -96,15 +116,40 @@ export const RenderContainer = styled.div`
   gap: 15px;
 `;
 
-export const RenderContainerItem = styled.p`
+export const RenderContainerItemName = styled.p`
   color: var(--primary-color-white);
+  width: calc(100% - 30px);
   /* Body text/1 */
   font-family: 'Poppins400';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 142.857% */
+
+  @media screen and (min-width: 834px) {
+    width: auto;
+  }
+
+  @media screen and (min-width: 1440px) {
+  }
+`;
+
+export const RenderContainerItem = styled.p`
+  color: var(--primary-color-white);
+  /* Body text/1 */
+  font-family: 'Poppins400';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
   max-height: 25px;
+`;
+
+export const NutrWrap = styled.div`
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
 `;
 
 export const Wrapper = styled.div`

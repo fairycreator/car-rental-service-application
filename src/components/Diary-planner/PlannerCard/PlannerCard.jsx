@@ -9,8 +9,12 @@ import {
   RecordMealBlock,
   RenderContainer,
   RenderContainerItem,
+  RenderContainerItemName,
   Wrapper,
   EditWrapper,
+  NutrWrap,
+  MealSubTextMain,
+  MealSubWrapper,
 } from './PlannerCard.styled';
 
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
@@ -39,11 +43,15 @@ export const PlannerCard = ({
           <MealTitle>{`${title}`}</MealTitle>
         </MealContainer>
         <MealSubscription>
-          <MealSubText>
+          <MealSubTextMain>
             Carbonohidrates: {!totalCarbs ? 0 : totalCarbs}
-          </MealSubText>
-          <MealSubText>Protein: {!totalProtein ? 0 : totalProtein}</MealSubText>
-          <MealSubText>Fat: {!totalFat ? 0 : totalFat}</MealSubText>
+          </MealSubTextMain>
+          <MealSubWrapper>
+            <MealSubText>
+              Protein: {!totalProtein ? 0 : totalProtein}
+            </MealSubText>
+            <MealSubText>Fat: {!totalFat ? 0 : totalFat}</MealSubText>
+          </MealSubWrapper>
         </MealSubscription>
       </Wrapper>
       <MealDashbord
@@ -61,16 +69,18 @@ export const PlannerCard = ({
             return (
               <RenderContainer key={item._id}>
                 <Numeration>{index + 1}</Numeration>
-                <RenderContainerItem>{item.name}</RenderContainerItem>
-                <RenderContainerItem>
-                  Carbs: {item.nutrition.carbogidrate}
-                </RenderContainerItem>
-                <RenderContainerItem>
-                  Protein: {item.nutrition.protein}
-                </RenderContainerItem>
-                <RenderContainerItem>
-                  Fat: {item.nutrition.fat}
-                </RenderContainerItem>
+                <RenderContainerItemName>{item.name}</RenderContainerItemName>
+                <NutrWrap>
+                  <RenderContainerItem>
+                    Carbs: {item.nutrition.carbogidrate}
+                  </RenderContainerItem>
+                  <RenderContainerItem>
+                    Protein: {item.nutrition.protein}
+                  </RenderContainerItem>
+                  <RenderContainerItem>
+                    Fat: {item.nutrition.fat}
+                  </RenderContainerItem>
+                </NutrWrap>
               </RenderContainer>
             );
           })
