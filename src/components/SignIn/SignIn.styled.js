@@ -258,7 +258,7 @@ export const NavLinkStyled = styled(Link)`
 
   &:hover,
   &:focus {
-    text-decoration: underline;
+    color: var(--primary-color-green-lite);
   }
 `;
 
