@@ -10,11 +10,11 @@ import {
   StyledLink,
   NavLinkStyled,
 } from './SignIn.styled';
-import SignInForm from '../../components/SignInForm/SignInForm';
+import SignInForm from './SignInForm/SignInForm';
 
 import image from '../../assets/backgroundImages/welcomepage.png';
 
-const SignIn = () => {
+export const SignIn = () => {
   return (
     <Wrapper>
       <Image src={image} alt="Activity tracker" />
@@ -33,5 +33,3 @@ const SignIn = () => {
     </Wrapper>
   );
 };
-
-export default SignIn;

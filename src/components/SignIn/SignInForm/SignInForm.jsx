@@ -1,8 +1,8 @@
 import { Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../redux/auth/authOperations';
+import { loginUser } from '../../../redux/auth/authOperations';
 import { useState } from 'react';
-import { signInSchema } from '../../schemas/signInSchema';
+import { signInSchema } from '../../../schemas/signInSchema';
 import {
   SignInButton,
   InputStyled,
@@ -13,8 +13,8 @@ import {
   IconWrapped,
   WrapForm,
 } from './SignInForm.styled';
-import iconeye from '../../assets/images/icons/eye.svg';
-import iconeyeoff from '../../assets/images/icons/eye-off.svg';
+import iconeye from '../../../assets/images/icons/eye.svg';
+import iconeyeoff from '../../../assets/images/icons/eye-off.svg';
 
 const initialValues = {
   email: '',
