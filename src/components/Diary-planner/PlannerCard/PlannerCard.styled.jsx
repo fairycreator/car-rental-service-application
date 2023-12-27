@@ -4,7 +4,7 @@ export const MealContainer = styled.div`
   display: flex;
   gap: 12px;
   @media screen and (min-width: 834px) {
-    margin-right: 100px;
+    margin-right: 150px;
   }
   @media screen and (min-width: 1440px) {
     margin-right: 159px;
@@ -30,6 +30,7 @@ export const MealDashbord = styled.div`
     max-width: 780px;
     padding: 32px 14px;
     gap: 32px;
+    margin-top: 6px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -106,8 +107,16 @@ export const Numeration = styled.p`
 `;
 
 export const RecordMealBlock = styled.div`
-  max-width: 676px;
-  margin-bottom: 24px;
+  max-width: 780px;
+  margin-bottom: 27px;
+
+  @media screen and (min-width: 834px) {
+    margin-bottom: 24px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 676px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const RenderContainer = styled.div`
