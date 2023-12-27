@@ -57,8 +57,8 @@ export const PlannerCard = ({
         {meal?.length > 0 ? (
           meal.map((item, index) => {
             return (
-              <div style={{ position: 'relative' }}>
-                <RenderContainer key={item._id}>
+              <div key={item._id} style={{ position: 'relative' }}>
+                <RenderContainer>
                   <Numeration>{index + 1}</Numeration>
                   <RenderContainerItemName>{item.name}</RenderContainerItemName>
                   <RenderContainerItem>

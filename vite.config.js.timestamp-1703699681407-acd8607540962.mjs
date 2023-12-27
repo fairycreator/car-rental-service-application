@@ -1,0 +1,20 @@
+// vite.config.js
+import { defineConfig } from "file:///D:/Full%20Stack%20Developer/GitHub/Projects/Healthy_life/node_modules/vite/dist/node/index.js";
+import react from "file:///D:/Full%20Stack%20Developer/GitHub/Projects/Healthy_life/node_modules/@vitejs/plugin-react-swc/index.mjs";
+import svgr from "file:///D:/Full%20Stack%20Developer/GitHub/Projects/Healthy_life/node_modules/vite-plugin-svgr/dist/index.js";
+var vite_config_default = defineConfig({
+  plugins: [react(), svgr()],
+  resolve: {
+    alias: {
+      src: "/src",
+      components: "/src/components",
+      pages: "/src/pages",
+      assets: "/src/assets"
+    }
+  },
+  base: "/Healthy_life/"
+});
+export {
+  vite_config_default as default
+};
+//# sourceMappingURL=data:application/json;base64,ewogICJ2ZXJzaW9uIjogMywKICAic291cmNlcyI6IFsidml0ZS5jb25maWcuanMiXSwKICAic291cmNlc0NvbnRlbnQiOiBbImNvbnN0IF9fdml0ZV9pbmplY3RlZF9vcmlnaW5hbF9kaXJuYW1lID0gXCJEOlxcXFxGdWxsIFN0YWNrIERldmVsb3BlclxcXFxHaXRIdWJcXFxcUHJvamVjdHNcXFxcSGVhbHRoeV9saWZlXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ZpbGVuYW1lID0gXCJEOlxcXFxGdWxsIFN0YWNrIERldmVsb3BlclxcXFxHaXRIdWJcXFxcUHJvamVjdHNcXFxcSGVhbHRoeV9saWZlXFxcXHZpdGUuY29uZmlnLmpzXCI7Y29uc3QgX192aXRlX2luamVjdGVkX29yaWdpbmFsX2ltcG9ydF9tZXRhX3VybCA9IFwiZmlsZTovLy9EOi9GdWxsJTIwU3RhY2slMjBEZXZlbG9wZXIvR2l0SHViL1Byb2plY3RzL0hlYWx0aHlfbGlmZS92aXRlLmNvbmZpZy5qc1wiO2ltcG9ydCB7IGRlZmluZUNvbmZpZyB9IGZyb20gXCJ2aXRlXCI7XHJcbmltcG9ydCByZWFjdCBmcm9tIFwiQHZpdGVqcy9wbHVnaW4tcmVhY3Qtc3djXCI7XHJcbmltcG9ydCBzdmdyIGZyb20gJ3ZpdGUtcGx1Z2luLXN2Z3InO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHtcclxuICAgICAgcGx1Z2luczogW3JlYWN0KCksIHN2Z3IoKV0sXHJcbiAgICAgIHJlc29sdmU6IHtcclxuICAgICAgICBhbGlhczoge1xyXG4gICAgICAgICAgc3JjOiAnL3NyYycsXHJcbiAgICAgICAgICBjb21wb25lbnRzOiAnL3NyYy9jb21wb25lbnRzJyxcclxuICAgICAgICAgIHBhZ2VzOiAnL3NyYy9wYWdlcycsXHJcbiAgICAgICAgICBhc3NldHM6ICcvc3JjL2Fzc2V0cydcclxuICAgICAgICB9LFxyXG4gICAgICB9LFxyXG4gICAgICBiYXNlOiAnL0hlYWx0aHlfbGlmZS8nLFxyXG4gICAgfSk7Il0sCiAgIm1hcHBpbmdzIjogIjtBQUE0VixTQUFTLG9CQUFvQjtBQUN6WCxPQUFPLFdBQVc7QUFDbEIsT0FBTyxVQUFVO0FBRWpCLElBQU8sc0JBQVEsYUFBYTtBQUFBLEVBQ3RCLFNBQVMsQ0FBQyxNQUFNLEdBQUcsS0FBSyxDQUFDO0FBQUEsRUFDekIsU0FBUztBQUFBLElBQ1AsT0FBTztBQUFBLE1BQ0wsS0FBSztBQUFBLE1BQ0wsWUFBWTtBQUFBLE1BQ1osT0FBTztBQUFBLE1BQ1AsUUFBUTtBQUFBLElBQ1Y7QUFBQSxFQUNGO0FBQUEsRUFDQSxNQUFNO0FBQ1IsQ0FBQzsiLAogICJuYW1lcyI6IFtdCn0K
