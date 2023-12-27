@@ -1,98 +1,69 @@
 import { useDispatch } from 'react-redux';
 import sprite from '../../assets/images/sprite.svg';
-import {
-  InputBlock,
-  RecordInputBig,
-  SubInput,
-  SubInputBlock,
-} from './ModalInput.styled';
-import { deleteInputHandler } from '../../redux/dailyFoodStatistics/foodSlice';
+import { InputBlock, RecordInputBig } from './ModalInput.styled';
 
 export const ModalInput = ({
-  setName,
-  setColories,
-  setCarbogidrate,
-  setProtein,
-  setFat,
-  name,
-  calories,
-  carbogidrate,
-  protein,
-  fat,
+  // setName,
+  // setColories,
+  // setCarbogidrate,
+  // setProtein,
+  // setFat,
+  // name,
+  // calories,
+  // carbogidrate,
+  // protein,
+  // fat,
   dataIndex,
+  handleDeleteInput,
+  resetForm,
 }) => {
-  const dispatch = useDispatch();
-  const handleDeleteInput = (e) => {
-    const index = e.currentTarget.dataset.set;
-    if (index === '0') {
-      setName('');
-      setColories('');
-      setCarbogidrate('');
-      setProtein('');
-      setFat('');
-      return;
-    }
-    dispatch(deleteInputHandler(index));
-  };
   return (
     <InputBlock>
       <RecordInputBig
-        value={name}
+        id="name"
+        name="name"
         placeholder="The name of the product or dish"
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
       />
       <RecordInputBig
-        type={'number'}
+        id="carbogidrate"
+        name="carbogidrate"
+        placeholder="Carbonoh."
+        type="number"
         min={1}
-        onChange={(e) => {
-          setCarbogidrate(e.target.value);
-        }}
-        value={carbogidrate}
-        placeholder="Carbonoh"
       />
       <RecordInputBig
-        min={1}
-        type={'number'}
-        onChange={(e) => {
-          setProtein(e.target.value);
-        }}
-        value={protein}
+        id="protein"
+        name="protein"
         placeholder="Protein"
+        min={1}
+        type="number"
       />
-      <SubInputBlock>
-        <SubInput
-          min={1}
-          type={'number'}
-          onChange={(e) => {
-            setFat(e.target.value);
-          }}
-          value={fat}
-          placeholder="Fat"
-        />
-        <SubInput
-          min={1}
-          type={'number'}
-          onChange={(e) => {
-            setColories(e.target.value);
-          }}
-          value={calories}
-          placeholder="Calories"
-        />
-        <svg
-          style={{
-            display: 'inline-block',
-            width: '20px',
-            height: ' 20px',
-            fill: 'white',
-          }}
-          data-set={dataIndex}
-          onClick={handleDeleteInput}
-        >
-          <use href={`${sprite}#trash-delete`}></use>
-        </svg>
-      </SubInputBlock>
+      <RecordInputBig
+        id="fat"
+        name="fat"
+        placeholder="Fat"
+        min={1}
+        type="number"
+      />
+      <RecordInputBig
+        id="calories"
+        name="calories"
+        placeholder="Calories"
+        min={1}
+        type="number"
+      />
+      <svg
+        style={{
+          display: 'inline-block',
+          width: '20px',
+          height: ' 20px',
+          fill: 'white',
+        }}
+        data-set={dataIndex}
+        onClick={(e) => handleDeleteInput(e, resetForm)}
+      >
+        <use href={`${sprite}#trash-delete`}></use>
+      </svg>
     </InputBlock>
   );
 };
