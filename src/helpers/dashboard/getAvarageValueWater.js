@@ -1,4 +1,4 @@
-export function getAvarageValue(arr) {
+export function getAvarageValueWater(arr) {
   if (arr?.length === 0) return 0;
   const totalScore = arr?.reduce((total, arr) => {
     return total + arr.value;
