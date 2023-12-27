@@ -17,3 +17,5 @@ export const selectTotalProtein = (state) =>
   state.dailyStatisticsFood.consumedFood.totalProtein;
 export const selectTotalFat = (state) =>
   state.dailyStatisticsFood.consumedFood.totalFat;
+export const selectInputCounter = (state) =>
+  state.dailyStatisticsFood.inputCounter;

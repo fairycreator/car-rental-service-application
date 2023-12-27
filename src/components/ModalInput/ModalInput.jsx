@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import sprite from '../../assets/images/sprite.svg';
 import {
   InputBlock,
@@ -5,6 +6,7 @@ import {
   SubInput,
   SubInputBlock,
 } from './ModalInput.styled';
+import { deleteInputHandler } from '../../redux/dailyFoodStatistics/foodSlice';
 
 export const ModalInput = ({
   setName,
@@ -17,7 +19,21 @@ export const ModalInput = ({
   carbogidrate,
   protein,
   fat,
+  dataIndex,
 }) => {
+  const dispatch = useDispatch();
+  const handleDeleteInput = (e) => {
+    const index = e.currentTarget.dataset.set;
+    if (index === '0') {
+      setName('');
+      setColories('');
+      setCarbogidrate('');
+      setProtein('');
+      setFat('');
+      return;
+    }
+    dispatch(deleteInputHandler(index));
+  };
   return (
     <InputBlock>
       <RecordInputBig
@@ -71,6 +87,8 @@ export const ModalInput = ({
             height: ' 20px',
             fill: 'white',
           }}
+          data-set={dataIndex}
+          onClick={handleDeleteInput}
         >
           <use href={`${sprite}#trash-delete`}></use>
         </svg>

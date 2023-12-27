@@ -84,6 +84,7 @@ const consumedFood = {
 
 const initialState = {
   consumedFood,
+  inputCounter: [1],
   isOpen: false,
 };
 
@@ -95,6 +96,12 @@ const dailyStatisticsFoodSlice = createSlice({
     openHandler(state, action) {
       state.isOpen = action.payload;
     },
+    addInputHandler(state, action) {
+      state.inputCounter.push(action.payload);
+    },
+    deleteInputHandler(state, action) {
+      state.inputCounter.splice(action.payload, 1);
+    },
   },
   extraReducers: (builder) =>
     builder
@@ -105,5 +112,6 @@ const dailyStatisticsFoodSlice = createSlice({
       .addCase(getFood.rejected, handleRejected)
       .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
 });
-export const { openHandler } = dailyStatisticsFoodSlice.actions;
+export const { openHandler, addInputHandler, deleteInputHandler } =
+  dailyStatisticsFoodSlice.actions;
 export const dailyStatisticsFoodReducer = dailyStatisticsFoodSlice.reducer;
