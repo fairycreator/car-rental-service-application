@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   MealContainer,
@@ -18,6 +18,8 @@ import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
 import { ModalInput } from '../ModalInput/ModalInput';
 import sprite from '../../assets/images/sprite.svg';
+import { selectInputCounter } from '../../redux/dailyFoodStatistics/foodSelectors';
+import { addInputHandler } from '../../redux/dailyFoodStatistics/foodSlice';
 
 const customStyles = {
   content: {
@@ -51,7 +53,7 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const [protein, setProtein] = useState('');
   const [fat, setFat] = useState('');
 
-  const [inputCounter, setInputCounter] = useState([1]);
+  let inputCounter = useSelector(selectInputCounter);
 
   const arr = {
     typeFood: typefood,
@@ -70,14 +72,10 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
     closeModal();
   };
 
-  const foodArray = [inputCounter];
-
   const handleAddMore = () => {
-    setInputCounter((prevstate) => {
-      console.log(prevstate);
-      const index = prevstate.lenght - 1;
-      [...prevstate, prevstate[index] + 1];
-    });
+    const index = inputCounter.length - 1;
+    const counter = inputCounter[index] + 1;
+    dispatch(addInputHandler(counter));
   };
 
   return (
@@ -96,10 +94,11 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
           </MealTitle>
         </MealContainer>
         <form onSubmit={formHandler}>
-          {foodArray.map((item, index) => {
+          {inputCounter.map((item, index) => {
             return (
               <ModalInput
                 key={index}
+                dataIndex={index}
                 setName={setName}
                 setColories={setColories}
                 setCarbogidrate={setCarbogidrate}
