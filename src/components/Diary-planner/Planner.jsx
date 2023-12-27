@@ -1,30 +1,83 @@
-// import '../assets/fonts/Poppins-SemiBold.ttf';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { AddMore } from '../ReacordMealPopUp/Reacord.styled';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { Record } from '../ReacordMealPopUp/Record';
-import {
-  Container,
-  DesktopContainer,
-  MealContainer,
-  MealDashbord,
-  MealImage,
-  MealSubscription,
-  MealSubText,
-  MealTitle,
-  Numeration,
-  RecordMealBlock,
-  RenderContainer,
-  RenderContainerItem,
-  Title,
-  Wrapper,
-} from './Planner.styled';
+import { Container, DesktopContainer, Title } from './Planner.styled';
+import { PlannerCard } from './PlannerCard/PlannerCard';
 
-const Planner = () => {
-  const selector = useSelector((state) => state.dailyFoodStat.consumedFood);
-  const [isOpen, setOpen] = useState(false);
+import {
+  selectBreakfast,
+  selectDinner,
+  selectLunch,
+  selectOpen,
+  selectSnack,
+} from '../../redux/dailyFoodStatistics/foodSelectors';
+
+export const Planner = () => {
   const iconPath = 'src/assets/images/sprite.svg';
   const [foodType, setFoodType] = useState('');
+  const breakfast = useSelector(selectBreakfast);
+  const lunch = useSelector(selectLunch);
+  const dinner = useSelector(selectDinner);
+  const snack = useSelector(selectSnack);
+  const dispatch = useDispatch();
+
+  const totalFatBreakfast = breakfast?.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+  const totalFatDinner = dinner?.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+  const totalFatLunch = lunch?.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+  const totalFatSnack = snack?.reduce(
+    (sum, item) => sum + item.nutrition?.fat,
+    0
+  );
+
+  const totalProteinBreakfast = breakfast?.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+  const totalProteinDinner = dinner?.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+  const totalProteinLunch = lunch?.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+  const totalProteinSnack = snack?.reduce(
+    (sum, item) => sum + item.nutrition?.protein,
+    0
+  );
+
+  const totalCarbsBreakfast = breakfast?.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+  const totalCarbsDinner = dinner?.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+  const totalCarbsLunch = lunch?.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+  const totalCarbsSnack = snack?.reduce(
+    (sum, item) => sum + item.nutrition?.carbogidrate,
+    0
+  );
+
+  const isOpen = useSelector(selectOpen);
+
+  useEffect(() => {
+    dispatch(getFood());
+  }, [dispatch]);
   return (
     <Container>
       <div
@@ -32,7 +85,8 @@ const Planner = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '5px',
-          marginBottom: '20px',
+          marginBottom: '16px',
+          maxWidth: '1372px',
         }}
       >
         <svg
@@ -48,297 +102,45 @@ const Planner = () => {
         </svg>
         <Title>Diary</Title>
       </div>
-      {isOpen ? <Record isOpen={setOpen} type={foodType} /> : null}
+      {isOpen ? <Record type={foodType} /> : null}
       <DesktopContainer>
-        <RecordMealBlock>
-          <Wrapper>
-            <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Breakfast.png" />
-              <MealTitle>Breakfast</MealTitle>
-            </MealContainer>
-            <MealSubscription>
-              <MealSubText>Carbonohidrates: 11.2</MealSubText>
-              <div
-                style={{
-                  display: 'flex',
-                  //   marginTop: '12px',
-                  gap: '20px',
-                }}
-              >
-                <MealSubText>Protein: 23.1</MealSubText>
-                <MealSubText> Fat: 14</MealSubText>
-              </div>
-            </MealSubscription>
-          </Wrapper>
-          <MealDashbord
-            style={{ marginTop: '20px' }}
-            onClick={() => setFoodType('breakfast')}
-          >
-            {selector.breakfast[0].name ? (
-              selector.breakfast.map((item, index) => {
-                return (
-                  <RenderContainer>
-                    <Numeration>{index + 1}</Numeration>
-                    <RenderContainerItem>
-                      {selector.breakfast[index].name}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                   Carbs:   {selector.breakfast[index].nutrition.carbogidrate}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                    Protein:  {selector.breakfast[index].nutrition.protein}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                     Fat: {selector.breakfast[index].nutrition.fat}
-                    </RenderContainerItem>
-                  </RenderContainer>
-                );
-              })
-            ) : (
-              <div
-                style={{
-                  width: '170px',
-                  flexDirection: 'row-reverse',
-                  display: 'flex',
-                  gap: '8px',
-                  maxHeight: '20px',
-                }}
-              >
-                <AddMore onClick={() => setOpen(true)}>
-                  Record your meal
-                </AddMore>
-                <svg
-                  style={{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: ' 20px',
-                    fill: 'white',
-                  }}
-                >
-                  <use href={`${iconPath}#icon-add-converted`}></use>
-                </svg>
-              </div>
-            )}
-
-            
-          </MealDashbord>
-        </RecordMealBlock>
-        <RecordMealBlock>
-          <Wrapper>
-            <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Lunch.png" />
-              <MealTitle>Dinner</MealTitle>
-            </MealContainer>
-            <MealSubscription>
-              <MealSubText>Carbonohidrates: 11.2</MealSubText>
-              <div
-                style={{
-                  display: 'flex',
-                  //   marginTop: '12px',
-                  gap: '20px',
-                }}
-              >
-                <MealSubText>Protein: 23.1</MealSubText>
-                <MealSubText> Fat: 14</MealSubText>
-              </div>
-            </MealSubscription>
-          </Wrapper>
-          <MealDashbord
-            style={{ marginTop: '20px' }}
-            onClick={() => setFoodType('lunch')}
-          >
-            {selector.lunch[0].name ? (
-              selector.lunch.map((item, index) => {
-                return (
-                  <RenderContainer>
-                    <Numeration>{index + 1}</Numeration>
-                    <RenderContainerItem>
-                      {selector.lunch[index].name}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                   Carbs:   {selector.lunch[index].nutrition.carbogidrate}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                    Protein:  {selector.lunch[index].nutrition.protein}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                     Fat: {selector.lunch[index].nutrition.fat}
-                    </RenderContainerItem>
-                  </RenderContainer>
-                );
-              })
-            ) : (
-              <div
-                style={{
-                  width: '170px',
-                  flexDirection: 'row-reverse',
-                  display: 'flex',
-                  gap: '8px',
-                  maxHeight: '20px',
-                }}
-              >
-                <AddMore onClick={() => setOpen(true)}>
-                  Record your meal
-                </AddMore>
-                <svg
-                  style={{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: ' 20px',
-                    fill: 'white',
-                  }}
-                >
-                  <use href={`${iconPath}#icon-add-converted`}></use>
-                </svg>
-              </div>
-            )}
-          </MealDashbord>
-        </RecordMealBlock>
-        <RecordMealBlock>
-          <Wrapper>
-            <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Dinner.png" />
-              <MealTitle>Lunch</MealTitle>
-            </MealContainer>
-            <MealSubscription>
-              <MealSubText>Carbonohidrates: 11.2</MealSubText>
-              <div
-                style={{
-                  display: 'flex',
-                  //   marginTop: '12px',
-                  gap: '20px',
-                }}
-              >
-                <MealSubText>Protein: 23.1</MealSubText>
-                <MealSubText> Fat: 14</MealSubText>
-              </div>
-            </MealSubscription>
-          </Wrapper>
-          <MealDashbord
-            style={{ marginTop: '20px' }}
-            onClick={() => setFoodType('dinner')}
-          >
-            {/* {selector.dinner[0].name ? (
-              selector.dinner.map((item, index) => {
-                return (
-                  <RenderContainer>
-                    <Numeration>{index + 1}</Numeration>
-                    <RenderContainerItem>
-                      {selector.dinner[index].name}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                   Carbs:   {selector.dinner[index].nutrition.carbogidrate}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                    Protein:  {selector.dinner[index].nutrition.protein}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                     Fat: {selector.dinner[index].nutrition.fat}
-                    </RenderContainerItem>
-                  </RenderContainer>
-                );
-              })
-            ) : (
-              <div
-                style={{
-                  width: '170px',
-                  flexDirection: 'row-reverse',
-                  display: 'flex',
-                  gap: '8px',
-                  maxHeight: '20px',
-                }}
-              >
-                <AddMore onClick={() => setOpen(true)}>
-                  Record your meal
-                </AddMore>
-                <svg
-                  style={{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: ' 20px',
-                    fill: 'white',
-                  }}
-                >
-                  <use href={`${iconPath}#icon-add-converted`}></use>
-                </svg>
-              </div>
-            )} */}
-          </MealDashbord>
-        </RecordMealBlock>
-        <RecordMealBlock>
-          <Wrapper>
-            <MealContainer style={{ alignItems: 'center' }}>
-              <MealImage src="src/assets/images/Snack.png" />
-              <MealTitle>Sneak</MealTitle>
-            </MealContainer>
-            <MealSubscription>
-              <MealSubText>Carbonohidrates: 11.2</MealSubText>
-              <div
-                style={{
-                  display: 'flex',
-                  //   marginTop: '12px',
-                  gap: '20px',
-                }}
-              >
-                <MealSubText>Protein: 23.1</MealSubText>
-                <MealSubText> Fat: 14</MealSubText>
-              </div>
-            </MealSubscription>
-          </Wrapper>
-          <MealDashbord
-            style={{ marginTop: '20px' }}
-            onClick={() => setFoodType('snack')}
-          >
-            {/* {selector.snack[0].name ? (
-              selector.snack.map((item, index) => {
-                return (
-                  <RenderContainer>
-                    <Numeration>{index + 1}</Numeration>
-                    <RenderContainerItem>
-                      {selector.snack[index].name}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                   Carbs:   {selector.snack[index].nutrition.carbogidrate}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                    Protein:  {selector.snack[index].nutrition.protein}
-                    </RenderContainerItem>
-                    <RenderContainerItem>
-                     Fat: {selector.snack[index].nutrition.fat}
-                    </RenderContainerItem>
-                  </RenderContainer>
-                );
-              })
-            ) : (
-              <div
-                style={{
-                  width: '170px',
-                  flexDirection: 'row-reverse',
-                  display: 'flex',
-                  gap: '8px',
-                  maxHeight: '20px',
-                }}
-              >
-                <AddMore onClick={() => setOpen(true)}>
-                  Record your meal
-                </AddMore>
-                <svg
-                  style={{
-                    display: 'inline-block',
-                    width: '20px',
-                    height: ' 20px',
-                    fill: 'white',
-                  }}
-                >
-                  <use href={`${iconPath}#icon-add-converted`}></use>
-                </svg>
-              </div>
-            )} */}
-          </MealDashbord>
-        </RecordMealBlock>
+        <PlannerCard
+          totalCarbs={totalCarbsBreakfast}
+          totalProtein={totalProteinBreakfast}
+          totalFat={totalFatBreakfast}
+          meal={breakfast}
+          title={'Breakfast'}
+          typefood={'breakfast'}
+          setFoodType={setFoodType}
+        />
+        <PlannerCard
+          totalCarbs={totalCarbsLunch}
+          totalProtein={totalProteinLunch}
+          totalFat={totalFatLunch}
+          meal={lunch}
+          title={'Lunch'}
+          typefood={'lunch'}
+          setFoodType={setFoodType}
+        />
+        <PlannerCard
+          totalCarbs={totalCarbsDinner}
+          totalProtein={totalProteinDinner}
+          totalFat={totalFatDinner}
+          meal={dinner}
+          title={'Dinner'}
+          typefood={'dinner'}
+          setFoodType={setFoodType}
+        />
+        <PlannerCard
+          totalCarbs={totalCarbsSnack}
+          totalProtein={totalProteinSnack}
+          totalFat={totalFatSnack}
+          meal={snack}
+          title={'Snack'}
+          typefood={'snack'}
+          setFoodType={setFoodType}
+        />
       </DesktopContainer>
     </Container>
   );
 };
-
-export default Planner;

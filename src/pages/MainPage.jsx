@@ -3,20 +3,25 @@ import { fetchRecFoods } from '../redux/recomendedFoods/recOperations';
 import { useEffect } from 'react';
 import { Today } from '../components/Today-section/Today';
 import { RecommendedList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
-import { getDailyWater } from '../redux/dailyStatistics/dailyOperations';
-import Planner from '../components/Diary-planner/Planner';
+import { getDailyWater } from '../redux/dailyWaterStatistics/waterOperations';
+import DiaryMain from '../components/DiaryMain/DiaryMain';
+import { getFood } from '../redux/dailyFoodStatistics/foodOperations';
+import { Container } from './MainPage.styles';
 
 const MainPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRecFoods());
     dispatch(getDailyWater());
+    dispatch(getFood());
   }, [dispatch]);
   return (
     <>
       <Today />
-      <RecommendedList />
-      <Planner/>
+      <Container>
+        <DiaryMain />
+        <RecommendedList />
+      </Container>
     </>
   );
 };

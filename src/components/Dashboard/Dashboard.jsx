@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import PuffLoader from 'react-spinners/PuffLoader';
 
 import Calendar from './Calendar/Calendar';
 import sprite from '../../assets/images/sprite.svg';
@@ -23,7 +24,7 @@ import {
   PrevBtn,
   LinkBtnItem,
   LineChartsBox,
-  Scroll,
+  ScrollChart,
 } from './Dashboard.styled';
 
 import {
@@ -85,8 +86,10 @@ export const Dashboard = () => {
   return (
     <>
       {isLoading ? (
-        // <Loader />
-        <p>Oops! Loading.....</p>
+        <PuffLoader
+          color="var(--primary-color-green-lite)"
+          cssOverride={{ margin: '40vh auto 0 auto' }}
+        />
       ) : (
         !error && (
           <DashboardWrapper>
@@ -114,7 +117,7 @@ export const Dashboard = () => {
                     </AverageValue>
                   </Text>
                 </ValueWrapper>
-                <Scroll
+                <ScrollChart
                   style={{
                     overflowX: 'auto',
                   }}
@@ -122,7 +125,7 @@ export const Dashboard = () => {
                   <LineChartsBox>
                     <LineChartCalories month={month} />
                   </LineChartsBox>
-                </Scroll>
+                </ScrollChart>
               </ChartWrapper>
               <ChartWrapper>
                 <ValueWrapper>
@@ -132,11 +135,11 @@ export const Dashboard = () => {
                     <AverageValue>{getAvarageValue(water)} ml</AverageValue>
                   </Text>
                 </ValueWrapper>
-                <Scroll style={{ overflowX: 'auto' }}>
+                <ScrollChart style={{ overflowX: 'auto' }}>
                   <LineChartsBox>
                     <LineChartWater month={month} />
                   </LineChartsBox>
-                </Scroll>
+                </ScrollChart>
               </ChartWrapper>
             </LineChartsWrapper>
             <ChartWrapper>
@@ -147,7 +150,9 @@ export const Dashboard = () => {
                   <AverageValue>{getAvarageValue(weight)} kg</AverageValue>
                 </Text>
               </ValueWrapper>
-              <WeightTable month={month} />
+              <ScrollChart>
+                <WeightTable month={month} />
+              </ScrollChart>
             </ChartWrapper>
           </DashboardWrapper>
         )

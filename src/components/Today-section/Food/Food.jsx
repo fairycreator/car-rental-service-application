@@ -20,6 +20,12 @@ import {
   Amount,
   Text,
 } from './Food.styled';
+import {
+  selectTotalCalories,
+  selectTotalCarbs,
+  selectTotalFat,
+  selectTotalProtein,
+} from '../../../redux/dailyFoodStatistics/foodSelectors';
 
 export const Food = () => {
   const caloriesChartBgColor = `${theme.palette.litegreen.main}`;
@@ -34,10 +40,10 @@ export const Food = () => {
 
   // дані з беку
 
-  const caloriesCurrent = 1360;
-  const carbsFilled = 136;
-  const proteinFilled = 119.5;
-  const fatFilled = 38.8;
+  const totalCalories = useSelector(selectTotalCalories);
+  const totalCarbs = useSelector(selectTotalCarbs);
+  const totalProtein = useSelector(selectTotalProtein);
+  const totalFat = useSelector(selectTotalFat);
 
   return (
     <Wrapper>
@@ -46,11 +52,11 @@ export const Food = () => {
         <Calories>
           <DoughnutChart
             dailyGoal={caloriesGoal}
-            filledValue={caloriesCurrent}
+            filledValue={totalCalories}
             bgColor={caloriesChartBgColor}
           />
           <ChartInfo>
-            <Amount>{caloriesCurrent}</Amount>
+            <Amount>{totalCalories ? totalCalories : 0}</Amount>
             <Text>calories</Text>
           </ChartInfo>
         </Calories>
@@ -61,7 +67,7 @@ export const Food = () => {
               title="Carbonohidrates"
               bgColor={carbsColor}
               dailyGoal={carbsGoal}
-              filledValue={carbsFilled}
+              filledValue={totalCarbs}
             />
           </Item>
           <Item>
@@ -69,7 +75,7 @@ export const Food = () => {
               title="Protein"
               bgColor={proteinColor}
               dailyGoal={proteinGoal}
-              filledValue={proteinFilled}
+              filledValue={totalProtein}
             />
           </Item>
           <Item>
@@ -77,7 +83,7 @@ export const Food = () => {
               title="Fat"
               bgColor={fatColor}
               dailyGoal={fatGoal}
-              filledValue={fatFilled}
+              filledValue={totalFat}
             />
           </Item>
         </List>

@@ -15,10 +15,10 @@ export const handleRejected = (state, { payload }) => {
   state.error = payload;
 };
 
-// export const handleStatisticsLogoutFulfilled = (state) => {
-//   state.calories = [];
-//   state.water = [];
-//   state.weight = [];
-//   state.isLoading = false;
-//   state.error = '';
-// };
+export const handleStatisticsLogoutFulfilled = (state) => {
+  state.calories = [];
+  state.water = [];
+  state.weight = [];
+  state.isLoading = false;
+  state.error = '';
+};

@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 export const RecPageContentWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -150,4 +152,43 @@ export const SeeMoreBtn = styled.button`
   @media screen and (min-width: 834px) {
     width: 212px;
   }
+`;
+
+export const StyledSwiper = styled(Swiper)`
+  .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    border-radius: 50%;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: #ffffff;
+  }
+
+  .swiper-pagination {
+    bottom: 16px;
+    top: auto;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .swiper-grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .swiper-slide {
+    width: auto;
+    height: auto;
+  }
+`;
+
+export const StyledSwiperSlide = styled(SwiperSlide)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 `;

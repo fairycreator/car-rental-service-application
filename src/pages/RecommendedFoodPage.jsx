@@ -1,49 +1,52 @@
-import image from '../assets/images/recommendedPage.png'
-import { RecImage, RecPageContentWrapper, RecPageWrapper, RecPageTitle, SeeMoreBtn, Btnwrapp } from '../components/RecommendedFood/RecommendedList/RecommendedList.styled';
+import image from '../assets/images/recommendedPage.png';
+import {
+  RecImage,
+  RecPageContentWrapper,
+  RecPageWrapper,
+  RecPageTitle,
+} from '../components/RecommendedFood/RecommendedList/RecommendedList.styled';
 import { RecommendedPageList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
-import { useState } from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import { fetchRecFoods } from '../redux/recomendedFoods/recOperations';
-import { selectRecFoods } from '../redux/recomendedFoods/recSelectors';
+// import { useState } from 'react';
+// import { useDispatch, useSelector} from 'react-redux';
+// import { fetchRecFoods } from '../redux/recomendedFoods/recOperations';
+// import { selectRecFoods } from '../redux/recomendedFoods/recSelectors';
 
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 const RecommendedFoodPage = () => {
- 
-  const dispatch = useDispatch();
+  // SeeMoreBtn, Btnwrapp;
+  // numberOfCardsToRender = { numberOfCardsToRender };
 
-  const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(10);
-  
-    useEffect(() => {
-    dispatch(fetchRecFoods());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
 
-  const recommendedFoods = useSelector(selectRecFoods);
-  const [page, setPage] = useState(0);
+  // const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(10);
 
-  const count = Math.floor((recommendedFoods.length) / 10)
-  
-    const handleSeeMoreClick = () => {
-    
-      setNumberOfCardsToRender((prevNumberOfCards) => prevNumberOfCards + 10);
-      setPage(page + 1);
-  };
-  
-    
+  //   useEffect(() => {
+  //   dispatch(fetchRecFoods());
+  // }, [dispatch]);
+
+  // const recommendedFoods = useSelector(selectRecFoods);
+  // const [page, setPage] = useState(0);
+
+  // const count = Math.floor((recommendedFoods.length) / 10)
+
+  //   const handleSeeMoreClick = () => {
+
+  //     setNumberOfCardsToRender((prevNumberOfCards) => prevNumberOfCards + 10);
+  //     setPage(page + 1);
+  // };
+
   return (
     <RecPageContentWrapper>
-    <RecPageTitle>Recommented food</RecPageTitle>
-    <RecPageWrapper>
-    <RecImage src={image} alt="Page image"></RecImage>
-        <RecommendedPageList numberOfCardsToRender={numberOfCardsToRender} />
-       
+      <RecPageTitle>Recommented food</RecPageTitle>
+      <RecPageWrapper>
+        <RecImage src={image} alt="Page image"></RecImage>
+        <RecommendedPageList />
       </RecPageWrapper>
-      <Btnwrapp>
+      {/* <Btnwrapp>
         {page !== count ? (<SeeMoreBtn onClick={handleSeeMoreClick}>Load more</SeeMoreBtn>) : undefined}
-      </Btnwrapp>
-      
+      </Btnwrapp> */}
     </RecPageContentWrapper>
-)
-
+  );
 };
 
- export default RecommendedFoodPage;
+export default RecommendedFoodPage;

@@ -16,7 +16,6 @@ import { selectCaloriesMonthStatistics } from '../../../redux/monthStatistics/da
 import { printChartCalories } from '../../../helpers/dashboard/printChartCalories';
 
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -33,7 +32,9 @@ const options = {
     point: {
       backgroundColor: '#E3FFA8',
       borderWidth: 1,
-      radius: 0.9,
+      radius: 0,
+      borderColor: '#0F0F0F',
+      hitRadius: 10,
       hoverRadius: 5,
     },
     line: {
@@ -48,6 +49,7 @@ const options = {
       display: false,
     },
     tooltip: {
+      events: ['click'],
       backgroundColor: '#0F0F0F',
       titleColor: '#FFFFFF',
       bodyColor: '#B6B6B6',
@@ -78,11 +80,11 @@ const options = {
         lineHeight: 1.4,
         weight: 'normal',
       },
-        xAlign: 'left',
-        yAlign: 'bottom',
+      xAlign: '10px',
+      yAlign: 'bottom',
       callbacks: {
         title: (data) => {
-          return data[0].parsed.y;
+          return data[0].formattedValue;
         },
         label: () => {
           return 'calories';
@@ -97,12 +99,19 @@ const options = {
         color: '#292928',
         weight: '1px',
       },
+      ticks: {
+        autoSkip: false,
+        maxRotation: 0,
+      },
     },
     y: {
       min: 0,
       max: 3000,
       ticks: {
-        callback: (value) => `${value / 1000} K`,
+        callback: (value) => {
+          if (value > 0) return `${value / 1000} K`;
+          return 0;
+        },
         stepSize: 1000,
       },
       grid: {

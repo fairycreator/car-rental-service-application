@@ -4,12 +4,13 @@ import {
   handlePending,
   handleRejected,
   handleFulfilledGetMonthStatistics,
+  handleStatisticsLogoutFulfilled,
 } from './dashboardReducers';
 
-// import { logOut } from './auth/authOperations';
+import { logOut } from '../auth/authOperations';
 
 const monthStatisticsInitialState = {
-  colories: [],
+  calories: [],
   water: [],
   weight: [],
   isLoading: false,
@@ -23,8 +24,8 @@ const monthStatisticsSlice = createSlice({
     builder
       .addCase(getMonthStatistics.pending, handlePending)
       .addCase(getMonthStatistics.fulfilled, handleFulfilledGetMonthStatistics)
-      .addCase(getMonthStatistics.rejected, handleRejected);
-    //   .addCase(logOut.fulfilled, handleStatisticsLogoutFulfilled)
+      .addCase(getMonthStatistics.rejected, handleRejected)
+      .addCase(logOut.fulfilled, handleStatisticsLogoutFulfilled)
   },
 });
 

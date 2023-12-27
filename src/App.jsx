@@ -1,10 +1,12 @@
-import { Route, Routes } from 'react-router-dom';
+import PuffLoader from "react-spinners/PuffLoader";
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import { RestrictedRoute } from './components/Routes/RestrictedRoute.jsx';
-import { PrivateRoute } from './components/Routes/PrivateRoute.jsx';
+import { RestrictedRoute } from './pages/Routes/RestrictedRoute.jsx';
+import { PrivateRoute } from './pages/Routes/PrivateRoute.jsx';
 import { refreshUser } from './redux/auth/authOperations.js';
+import { selectIsRefreshing } from "./redux/auth/authSelectors.js";
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
 const SignUpPage = lazy(() => import('pages/SignUpPage.jsx'));
@@ -20,18 +22,21 @@ const SettingsPage = lazy(() => import('pages/SettingsPage'));
 
 function App() {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <PuffLoader color="var(--primary-color-green-lite)" cssOverride={{ margin: '30vh auto 0 auto' }} />
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route
           index
           element={
-            <RestrictedRoute redirectTo="/main" component={<WelcomePage/>} />
+            <RestrictedRoute redirectTo="/main" component={<WelcomePage />} />
           }
         />
         <Route
@@ -63,46 +68,31 @@ function App() {
         />
         <Route
           path="/main"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<MainPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<MainPage />} />}
         />
         <Route
           path="/dashboard"
           element={
-            <PrivateRoute redirectTo="/welcome" component={<DashboardPage />} />
+            <PrivateRoute redirectTo="/" component={<DashboardPage />} />
           }
         />
         <Route
           path="/diary"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<DiaryPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<DiaryPage />} />}
         />
         <Route
           path="/recommended-food"
           element={
-            <PrivateRoute
-              redirectTo="/welcome"
-              component={<RecommendedFoodPage />}
-            />
+            <PrivateRoute redirectTo="/" component={<RecommendedFoodPage />} />
           }
         />
         <Route
           path="/settings"
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<SettingsPage />} />
-          }
+          element={<PrivateRoute redirectTo="/" component={<SettingsPage />} />}
         />
-        <Route
-          path="*"
-          element={
-            // <RestrictedRoute redirectTo="/main" component={<MainPage />} />
-            <WelcomePage />
-          }
-        />
+        <Route path="*" element={<Navigate replace to="/" />} />
       </Route>
     </Routes>
   );
-}
+};
 export default App;

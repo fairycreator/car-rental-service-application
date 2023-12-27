@@ -14,10 +14,10 @@ import { authReducer } from './auth/authSlice';
 
 import { recReducer } from './recomendedFoods/recSlice';
 
-import { dailyWaterStatisticsReducer } from './dailyStatistics/dailySlice';
+import { dailyWaterStatisticsReducer } from './dailyWaterStatistics/waterSlice';
 
 import { monthStatisticsReducer } from './monthStatistics/dashboardStatisticsSlice';
-import { dailyStatisticsReducerFood } from './dailyStatistics/dialySliceFood';
+import { dailyStatisticsFoodReducer } from './dailyFoodStatistics/foodSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -34,7 +34,7 @@ export const store = configureStore({
     dailyWaterStatistics: dailyWaterStatisticsReducer,
 
     monthStatistics: monthStatisticsReducer,
-    dailyFoodStat: dailyStatisticsReducerFood,
+    dailyStatisticsFood: dailyStatisticsFoodReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

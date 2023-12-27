@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addFood } from '../../redux/dailyStatistics/dailyOperations';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
+import { openHandler } from '../../redux/dailyFoodStatistics/foodSlice';
 import {
   MealContainer,
   MealImage,
   MealTitle,
-} from '../Diary-planner/Planner.styled';
+} from '../Diary-planner/PlannerCard/PlannerCard.styled';
 import {
   BackDrop,
   Button,
@@ -16,21 +17,23 @@ import {
   SubInput,
   SubInputBlock,
   Title,
+  CancelButton,
 } from './Reacord.styled';
 
-export const Record = ({ isOpen, type }) => {
+export const Record = ({ type, secondType }) => {
   const dispatch = useDispatch();
   const iconPath = 'src/assets/images/sprite.svg';
-
-  
 
   const [name, setName] = useState('');
   const [calories, setColories] = useState('');
   const [carbogidrate, setCarbogidrate] = useState('');
   const [protein, setProtein] = useState('');
   const [fat, setFat] = useState('');
+  const onCloseHandler = () => {
+    dispatch(openHandler(false));
+  };
   const arr = {
-    typeFood: type,
+    typeFood: type === undefined ? secondType : type,
     userFood: [
       {
         name,
@@ -43,7 +46,7 @@ export const Record = ({ isOpen, type }) => {
   const formHandler = (e) => {
     e.preventDefault();
     dispatch(addFood(arr));
-    isOpen(false);
+    onCloseHandler();
   };
 
   return (
@@ -57,7 +60,7 @@ export const Record = ({ isOpen, type }) => {
           }}
         >
           <MealImage src="src/assets/images/Breakfast.png" />
-          <MealTitle>Breakfast</MealTitle>
+          <MealTitle>{secondType === undefined ? secondType : type}</MealTitle>
         </MealContainer>
         <form onSubmit={formHandler}>
           <InputBlock>
@@ -69,6 +72,8 @@ export const Record = ({ isOpen, type }) => {
               }}
             />
             <RecordInputBig
+              type={'number'}
+              min={1}
               onChange={(e) => {
                 setCarbogidrate(e.target.value);
               }}
@@ -76,6 +81,8 @@ export const Record = ({ isOpen, type }) => {
               placeholder="Carbonoh"
             />
             <RecordInputBig
+              min={1}
+              type={'number'}
               onChange={(e) => {
                 setProtein(e.target.value);
               }}
@@ -84,6 +91,8 @@ export const Record = ({ isOpen, type }) => {
             />
             <SubInputBlock>
               <SubInput
+                min={1}
+                type={'number'}
                 onChange={(e) => {
                   setFat(e.target.value);
                 }}
@@ -91,6 +100,8 @@ export const Record = ({ isOpen, type }) => {
                 placeholder="Fat"
               />
               <SubInput
+                min={1}
+                type={'number'}
                 onChange={(e) => {
                   setColories(e.target.value);
                 }}
@@ -110,18 +121,10 @@ export const Record = ({ isOpen, type }) => {
             </SubInputBlock>
           </InputBlock>
           <ButtonBlock>
-            <Button type="submit" value={'Confirm'} />
-            <button
-              onClick={() => isOpen(false)}
-              style={{
-                textAlign: 'center',
-                background: 'transparent',
-                color: '#B6B6B6',
-                border: 'none',
-              }}
-            >
+            <Button type="submit">Confirm</Button>
+            <CancelButton onClick={onCloseHandler} type="button">
               Cancel
-            </button>
+            </CancelButton>
           </ButtonBlock>
         </form>
       </ContentBlock>

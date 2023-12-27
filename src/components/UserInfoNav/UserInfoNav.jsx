@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -9,10 +7,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../redux/auth/authOperations';
-import sprite from 'assets/images/sprite.svg';
-import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
 import { selectUsername, selectUserAvatar } from '../../redux/auth/authSelectors';
+import { IconSetting, IconLogout, Link, IconDown, AvatarName, Container } from './UserInfoNav.styled';
+import sprite from 'assets/images/sprite.svg';
 
 const ButtonMenu = styled(Button)({
     width: '130px',
@@ -130,7 +130,7 @@ export const UserInfoNav = () => {
                 >
                     <IconLogout>
                         <use href={`${sprite}#icon-logout`}></use>
-                    </IconLogout>     
+                    </IconLogout>
                     <Link variant="outlined" onClick={handleClickOpen}>
                         Log out
                     </Link>
@@ -145,7 +145,6 @@ export const UserInfoNav = () => {
                                 boxShadow: '0px 4px 14px 0px rgba(227, 255, 168, 0.20)',
                                 borderRadius: '12px',
                                 color: '#FFF',
-                               
                             },
                             '& .MuiTypography-root': {
                                 fontFamily: 'Poppins500',
@@ -162,10 +161,8 @@ export const UserInfoNav = () => {
                         </DialogTitle>
 
                         <DialogActions>
+                            <Button onClick={handleLogout} autoFocus>Log out</Button>
                             <Button onClick={handleCloseModal}>Cancel</Button>
-                            <Button onClick={handleLogout} autoFocus>
-                                Log out
-                            </Button>
                         </DialogActions>
                     </Dialog>
    
