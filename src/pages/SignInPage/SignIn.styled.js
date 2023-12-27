@@ -1,65 +1,70 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import iconeye from '../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../assets/images/icons/eye-off.svg';
 
 // Wrapper
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  padding: 10px;
-  background-color: var(--primary-color-black-one);
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 
   @media screen and (min-width: 834px) {
-    padding: 10px;
+    gap: 60px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    margin: 0 auto;
+    /* max-width: 1440px; */
+    /* margin: 0 auto; */
     flex-direction: row;
     gap: 104px;
     justify-content: center;
     align-items: flex-start;
     padding-top: 20px;
-    padding-bottom: 72px;
   }
 `;
 
 export const Content = styled.div`
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
 
   @media screen and (min-width: 834px) {
     align-items: center;
-    gap: 80px;
   }
   @media screen and (min-width: 1440px) {
-    padding-top: 80px;
+    margin-top: 80px;
     align-items: flex-start;
   }
 `;
 
 //Title & Subtitile
 export const SignUpBox = styled.div`
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  justify-content: center;
   margin-bottom: 24px;
+
+  @media screen and (min-width: 834px) {
+    align-items: center;
+  }
+
+  @media screen and (min-width: 1440px) {
+    align-items: flex-start;
+  }
 `;
 
-export const Title = styled.h1`
-  color: var(--color-primary-white, #fff);
+export const Title = styled.h2`
+  color: var(--primary-color-white);
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
-  margin-bottom: 16px;
 
   @media screen and (min-width: 834px) {
-    text-align: center;
     font-size: 30px;
     line-height: 1.2;
   }
@@ -69,16 +74,13 @@ export const Title = styled.h1`
   }
 `;
 
-export const Subtitle = styled.h2`
-  color: var(--color-primary-gray, #b6b6b6);
+export const Subtitle = styled.h3`
+  color: var(--primary-color-grey);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
-  margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
-    width: 444px;
-    text-align: center;
     font-size: 22px;
     line-height: 1.45;
   }
@@ -93,12 +95,10 @@ export const Image = styled.img`
   height: 296px;
   width: 300px;
   background: transparent;
-  margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
     height: 376px;
-    margin-bottom: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -114,8 +114,8 @@ export const Input = styled.input`
   padding: 8px 10px;
   border-radius: 12px;
   border: ${(props) => props.$border};
-  background: var(--color-primary-black-2, #0f0f0f);
-  color: var(--primary-color-grey, #b6b6b6);
+  background: var(--primary-color-black-two);
+  color: var(--primary-color-grey);
   font-size: 14px;
   line-height: 1.43;
   margin-bottom: 20px;
@@ -144,8 +144,8 @@ export const NextButton = styled.button`
   border-radius: 12px;
   border: none;
   text-decoration: none;
-  background: var(--color-primary-green-lite, #e3ffa8);
-  color: var(--color-primary-black-2, #0f0f0f);
+  background: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -181,7 +181,7 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     width: 16px;
     height: 16px;
     transform: translate(-50%, -50%);
-    background-color: var(--color-primary-black-2, #0f0f0f);
+    background-color: var(--primary-color-black-two);
     background-image: url(${iconeye}#eye-off);
   }
 
@@ -193,7 +193,7 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     width: 16px;
     height: 16px;
     transform: translate(-50%, -50%);
-    background-color: var(--color-primary-black-2, #0f0f0f);
+    background-color: var(--primary-color-black-two);
     background-image: url(${iconeyeoff}#eye);
     visibility: visible;
   }
@@ -204,42 +204,61 @@ export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 
+export const StyledLink = styled(Link)`
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+  text-align: center;
+  line-height: 1.42;
+
+  color: var(--primary-color-grey);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 20px;
+    justify-content: center;
+    width: 212px;
+  }
+`;
+
 // QuestionTrumb
 export const QuestionTrumb = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
-  width: 100%;
-
-  @media screen and (min-width: 1440px) {
-    justify-content: flex-start;
+  margin-top: 54px;
+  margin-bottom: 40px;
+  @media screen and (min-width: 834px) {
+    gap: 16px;
   }
-
   @media screen and (min-width: 1440px) {
-    max-width: 364px;
+    margin-top: 145px;
+    justify-content: flex-start;
   }
 `;
 
 // Question
 export const Question = styled.p`
   color: var(--primary-color-grey);
-  font-family: 'Poppins500';
   font-size: 14px;
-  line-height: 1.43;
-  margin-bottom: 16px;
+  line-height: 1.42;
+  font-weight: 400;
+  flex-shrink: 0;
 `;
 
-export const ForgotPasswordText = styled.p`
-  line-height: 20px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
+// NavLinkStyled
+export const NavLinkStyled = styled(Link)`
+  color: var(--primary-color-white);
+  line-height: 1.42;
+  font-weight: 500;
+  flex-shrink: 0;
 
-  @media screen and (min-width: 1440px) {
-    margin-top: 20px;
-    width: 212px;
-    margin-bottom: 184px;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
   }
 `;
 
@@ -286,17 +305,4 @@ export const IconWrapped = styled.div`
   transform: translateY(-50%);
   display: flex;
   align-items: center;
-`;
-
-// NavLinkStyled
-export const NavLinkStyled = styled(NavLink)`
-  color: var(--color-primary-white, #fff);
-  font-size: 14px;
-  line-height: 1.43;
-  text-decoration: none;
-  font-weight: 500;
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
 `;
