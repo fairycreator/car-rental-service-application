@@ -1,4 +1,4 @@
-import { Formik, Form } from 'formik';
+import { Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../redux/auth/authOperations';
 import { useState } from 'react';
@@ -6,12 +6,12 @@ import { signInSchema } from '../../schemas/signInSchema';
 import {
   SignInButton,
   InputStyled,
-  WrapForm,
   ErrorMsg,
   SvgIconEye,
   WrapperError,
   LabelWrap,
   IconWrapped,
+  WrapForm,
 } from './SignInForm.styled';
 import iconeye from '../../assets/images/icons/eye.svg';
 import iconeyeoff from '../../assets/images/icons/eye-off.svg';
@@ -102,9 +102,9 @@ const SignInForm = () => {
                   </ErrorMsg>
                 </WrapperError>
               ) : null}
-            </WrapForm>
 
-            <SignInButton type="submit">Sign In</SignInButton>
+              <SignInButton type="submit">Sign In</SignInButton>
+            </WrapForm>
           </Form>
         );
       }}
