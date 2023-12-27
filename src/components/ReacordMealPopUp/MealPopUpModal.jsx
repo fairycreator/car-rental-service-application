@@ -19,7 +19,11 @@ import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
 import { ModalInput } from '../ModalInput/ModalInput';
 import sprite from '../../assets/images/sprite.svg';
 import { selectInputCounter } from '../../redux/dailyFoodStatistics/foodSelectors';
-import { addInputHandler } from '../../redux/dailyFoodStatistics/foodSlice';
+import {
+  addInputHandler,
+  deleteInputHandler,
+} from '../../redux/dailyFoodStatistics/foodSlice';
+import { Formik, Form } from 'formik';
 
 const customStyles = {
   content: {
@@ -47,35 +51,38 @@ Modal.setAppElement('#root');
 export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [calories, setColories] = useState('');
-  const [carbogidrate, setCarbogidrate] = useState('');
-  const [protein, setProtein] = useState('');
-  const [fat, setFat] = useState('');
+  // const [name, setName] = useState('');
+  // const [calories, setColories] = useState('');
+  // const [carbogidrate, setCarbogidrate] = useState('');
+  // const [protein, setProtein] = useState('');
+  // const [fat, setFat] = useState('');
 
   let inputCounter = useSelector(selectInputCounter);
 
   const arr = {
     typeFood: typefood,
     userFood: [
-      {
-        name,
-        calories,
-        nutrition: { carbogidrate, protein, fat },
-      },
+      // {
+      //   name,
+      //   calories,
+      //   nutrition: { carbogidrate, protein, fat },
+      // },
     ],
-  };
-
-  const formHandler = (e) => {
-    e.preventDefault();
-    dispatch(addFood(arr));
-    closeModal();
   };
 
   const handleAddMore = () => {
     const index = inputCounter.length - 1;
     const counter = inputCounter[index] + 1;
     dispatch(addInputHandler(counter));
+  };
+
+  const handleDeleteInput = (e, resetForm) => {
+    const index = e.currentTarget.dataset.set;
+    if (index === '0') {
+      resetForm();
+      return;
+    }
+    dispatch(deleteInputHandler(index));
   };
 
   return (
@@ -93,40 +100,51 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
             {/* {secondType === undefined ? secondType : type} */}
           </MealTitle>
         </MealContainer>
-        <form onSubmit={formHandler}>
-          {inputCounter.map((item, index) => {
-            return (
-              <ModalInput
-                key={index}
-                dataIndex={index}
-                setName={setName}
-                setColories={setColories}
-                setCarbogidrate={setCarbogidrate}
-                setProtein={setProtein}
-                setFat={setFat}
-                name={name}
-                calories={calories}
-                carbogidrate={carbogidrate}
-                protein={protein}
-                fat={fat}
-              />
-            );
-          })}
-
-          <ButtonAdd onClick={handleAddMore} type="button">
-            <AddIcon>
-              <use href={`${sprite}#icon-add-converted`}></use>
-            </AddIcon>
-            Add more
-          </ButtonAdd>
-
-          <ButtonBlock>
-            <Button type="submit">Confirm</Button>
-            <CancelButton onClick={closeModal} type="button">
-              Cancel
-            </CancelButton>
-          </ButtonBlock>
-        </form>
+        {inputCounter.map((item, i) => {
+          return (
+            <Formik
+              key={i}
+              initialValues={{
+                name: '',
+                carbogidrate: '',
+                protein: '',
+                fat: '',
+                calories: '',
+                productId: '',
+              }}
+              onSubmit={(values, { resetForm }) => {
+                console.log(values);
+                dispatch(addFood(arr));
+                closeModal();
+                resetForm();
+              }}
+            >
+              {({ resetForm }) => {
+                return (
+                  <Form>
+                    <ModalInput
+                      dataIndex={i}
+                      handleDeleteInput={handleDeleteInput}
+                      resetForm={resetForm}
+                    />
+                    <ButtonBlock>
+                      <Button type="submit">Confirm</Button>
+                      <CancelButton onClick={closeModal} type="button">
+                        Cancel
+                      </CancelButton>
+                    </ButtonBlock>
+                  </Form>
+                );
+              }}
+            </Formik>
+          );
+        })}
+        <ButtonAdd onClick={handleAddMore} type="button">
+          <AddIcon>
+            <use href={`${sprite}#icon-add-converted`}></use>
+          </AddIcon>
+          Add more
+        </ButtonAdd>
       </ContentBlock>
     </Modal>
   );

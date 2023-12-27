@@ -1,6 +1,7 @@
+import { Field } from 'formik';
 import { styled } from 'styled-components';
 
-export const RecordInputBig = styled.input`
+export const RecordInputBig = styled(Field)`
   width: 276px;
   padding: 12px;
   border-radius: 12px;
