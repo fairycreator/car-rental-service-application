@@ -46,24 +46,30 @@ Modal.setAppElement('#root');
 export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const dispatch = useDispatch();
 
-  const arr = {
-    typeFood: typefood,
-    userFood: [
-      // {
-      //   name,
-      //   calories,
-      //   nutrition: { carbogidrate, protein, fat },
-      // },
-    ],
-  };
-
   const initialCard = {
     name: '',
     carbogidrate: '',
     protein: '',
     fat: '',
     calories: '',
-    productId: '',
+  };
+
+  const sendProducts = (values) => {
+    let arr = {
+      typeFood: typefood,
+      userFood: values.products.map((product) => ({
+        name: product.name,
+        calories: product.calories,
+        nutrition: {
+          carbogidrate: product.carbogidrate,
+          protein: product.protein,
+          fat: product.fat,
+        },
+      })),
+    };
+
+    dispatch(addFood(arr));
+    closeModal();
   };
 
   return (
@@ -84,11 +90,7 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
 
         <Formik
           initialValues={{ products: [initialCard] }}
-          onSubmit={(values) =>
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-            }, 500)
-          }
+          onSubmit={(values) => sendProducts(values)}
         >
           {({ values }) => (
             <Form>
