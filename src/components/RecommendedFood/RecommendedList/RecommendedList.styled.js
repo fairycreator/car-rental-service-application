@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const RecPageContentWrapper = styled.div`
@@ -155,26 +154,6 @@ export const SeeMoreBtn = styled.button`
 `;
 
 export const StyledSwiper = styled(Swiper)`
-  .swiper-pagination-bullet {
-    background: rgba(255, 255, 255, 0.5);
-    width: 12px;
-    height: 12px;
-    opacity: 1;
-    border-radius: 50%;
-  }
-
-  .swiper-pagination-bullet-active {
-    background: #ffffff;
-  }
-
-  .swiper-pagination {
-    bottom: 16px;
-    top: auto;
-    left: 0;
-    width: 100%;
-    text-align: center;
-  }
-
   .swiper-grid {
     display: flex;
     flex-wrap: wrap;
@@ -191,4 +170,41 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
   justify-content: center;
   align-items: center;
   height: 100%;
+`;
+
+export const CustomPagination = styled.div`
+  & .swiper-pagination {
+    position: static !important;
+    text-align: center;
+    transition: 300ms opacity;
+    transform: translate3d(0, 0, 0);
+    z-index: 10;
+    margin-bottom: 20px !important;
+  }
+
+  & .swiper-pagination .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.1) !important;
+    width: 12px !important;
+    height: 12px !important;
+    opacity: 1 !important;
+    border-radius: 50% !important;
+    margin: 0 4px !important;
+  }
+
+  & .swiper-pagination .swiper-pagination-bullet-active {
+    background: #ffffff !important;
+  }
+
+  .my-bullet {
+    background: rgba(255, 255, 255, 0.2) !important;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 4px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.7);
+    }
+  }
 `;

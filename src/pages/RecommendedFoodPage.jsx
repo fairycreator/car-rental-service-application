@@ -4,47 +4,51 @@ import {
   RecPageContentWrapper,
   RecPageWrapper,
   RecPageTitle,
+  SeeMoreBtn,
+  Btnwrapp,
 } from '../components/RecommendedFood/RecommendedList/RecommendedList.styled';
 import { RecommendedPageList } from '../components/RecommendedFood/RecommendedList/RecommendedList';
-// import { useState } from 'react';
-// import { useDispatch, useSelector} from 'react-redux';
-// import { fetchRecFoods } from '../redux/recomendedFoods/recOperations';
-// import { selectRecFoods } from '../redux/recomendedFoods/recSelectors';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRecFoods } from '../redux/recomendedFoods/recOperations';
+import { selectRecFoods } from '../redux/recomendedFoods/recSelectors';
+import { useMediaQuery } from 'react-responsive';
 
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
+
 const RecommendedFoodPage = () => {
-  // SeeMoreBtn, Btnwrapp;
-  // numberOfCardsToRender = { numberOfCardsToRender };
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
+  const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(10);
+  const isNotDesktop = useMediaQuery({ maxWidth: 1440 });
+  useEffect(() => {
+    dispatch(fetchRecFoods());
+  }, [dispatch]);
 
-  // const [numberOfCardsToRender, setNumberOfCardsToRender] = useState(10);
+  const recommendedFoods = useSelector(selectRecFoods);
+  const [page, setPage] = useState(0);
 
-  //   useEffect(() => {
-  //   dispatch(fetchRecFoods());
-  // }, [dispatch]);
+  const count = Math.floor(recommendedFoods.length / 10);
 
-  // const recommendedFoods = useSelector(selectRecFoods);
-  // const [page, setPage] = useState(0);
-
-  // const count = Math.floor((recommendedFoods.length) / 10)
-
-  //   const handleSeeMoreClick = () => {
-
-  //     setNumberOfCardsToRender((prevNumberOfCards) => prevNumberOfCards + 10);
-  //     setPage(page + 1);
-  // };
+  const handleSeeMoreClick = () => {
+    setNumberOfCardsToRender((prevNumberOfCards) => prevNumberOfCards + 10);
+    setPage(page + 1);
+  };
 
   return (
     <RecPageContentWrapper>
-      <RecPageTitle>Recommented food</RecPageTitle>
+      <RecPageTitle>Recommended food</RecPageTitle>
       <RecPageWrapper>
-        <RecImage src={image} alt="Page image"></RecImage>
-        <RecommendedPageList />
+        <RecImage src={image} alt="Page image" />
+        <RecommendedPageList numberOfCardsToRender={numberOfCardsToRender} />
       </RecPageWrapper>
-      {/* <Btnwrapp>
-        {page !== count ? (<SeeMoreBtn onClick={handleSeeMoreClick}>Load more</SeeMoreBtn>) : undefined}
-      </Btnwrapp> */}
+      {isNotDesktop && (
+        <Btnwrapp>
+          {page !== count && (
+            <SeeMoreBtn onClick={handleSeeMoreClick}>Load more</SeeMoreBtn>
+          )}
+        </Btnwrapp>
+      )}
     </RecPageContentWrapper>
   );
 };
