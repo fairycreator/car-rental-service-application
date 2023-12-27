@@ -16,7 +16,7 @@ export const RecCard = styled.li`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 100%;
+    width: 320px;
   }
 `;
 
