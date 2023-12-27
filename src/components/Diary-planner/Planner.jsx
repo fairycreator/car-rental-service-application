@@ -86,6 +86,7 @@ export const Planner = () => {
           alignItems: 'center',
           gap: '5px',
           marginBottom: '16px',
+          maxWidth: '1372px',
         }}
       >
         <svg

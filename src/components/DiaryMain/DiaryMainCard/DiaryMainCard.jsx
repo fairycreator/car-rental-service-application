@@ -11,6 +11,8 @@ import {
   DeleteIcon,
   AddIcon,
   AddMealWrap,
+  MealOptionsSecond,
+  MealOptionsTrird,
 } from './DiaryMainCard.styled';
 import sprite from '../../../assets/images/sprite.svg';
 import { selectOpen } from '../../../redux/dailyFoodStatistics/foodSelectors';
@@ -64,15 +66,15 @@ export const DiaryMainCard = ({
         {meal?.length > 0 ? (
           <>
             <MealOptions>Carbonohidrates: {totalCarbs}</MealOptions>
-            <MealOptions>Protein: {totalProtein}</MealOptions>
-            <MealOptions>
+            <MealOptionsSecond>Protein: {totalProtein}</MealOptionsSecond>
+            <MealOptionsTrird>
               Fat: {totalFat}
+            </MealOptionsTrird>
               <DeleteIcon
                 onClick={() => deleteMealHandler(title.toLowerCase())}
               >
                 <use href={`${sprite}#trash-delete`}></use>
               </DeleteIcon>
-            </MealOptions>
           </>
         ) : (
           <AddMealWrap id={typefood} data-site={typefood} onClick={openModal}>

@@ -108,14 +108,11 @@ export const Numeration = styled.p`
 
 export const RecordMealBlock = styled.div`
   max-width: 780px;
-  margin-bottom: 27px;
 
   @media screen and (min-width: 834px) {
-    margin-bottom: 24px;
   }
   @media screen and (min-width: 1440px) {
     max-width: 676px;
-    margin-bottom: 20px;
   }
 `;
 
