@@ -1,18 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://healthy-life-backend-b6ck.onrender.com/api/';
 
-export const instance = axios.create({
-  baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api/user',
-});
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 export const getMonthStatistics = createAsyncThunk(
   'monthStatistics/getMonthStatistics',
   async (queryMonth, thuncAPI) => {
     try {
-        const { token } = thuncAPI.getState().auth;
-        instance.defaults.headers['Authorization'] = `Bearer ${token}`;
-      const response = await instance.get('/statistics', {
+      const { token } = thuncAPI.getState().auth;
+      console.log(token);
+      setAuthHeader(token);
+      const response = await axios.get('user/statistics', {
         params: {
           queryMonth: queryMonth,
         },

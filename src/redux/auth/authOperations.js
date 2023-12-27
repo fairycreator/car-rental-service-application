@@ -1,17 +1,16 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const instance = axios.create({
-  baseURL: 'https://healthy-life-backend-b6ck.onrender.com/api/',
-});
+axios.defaults.baseURL = 'https://healthy-life-backend-b6ck.onrender.com/api/';
 
-export const token = {
-  set: (token) => {
-    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
-  },
-  clear: () => {
-    instance.defaults.headers['Authorization'] = '';
-  },
+// Utility to add JWT
+const setAuthHeader = (token) => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+// Utility to remove JWT
+const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
 };
 
 const handleError = (error) => {
@@ -26,9 +25,8 @@ export const registerUser = createAsyncThunk(
   'auth/signup',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.post('auth/signup', dataUser);
-      instance.defaults.headers['Authorization'] = `Bearer ${token}`;
-      // const { token } = thunkApi.getState().auth;
+      const { data } = await axios.post('auth/signup', dataUser);
+      setAuthHeader(data.token);
 
       return data;
     } catch (error) {
@@ -42,8 +40,8 @@ export const loginUser = createAsyncThunk(
   'auth/signin',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.post('auth/signin', dataUser);
-      token.set(data.token);
+      const { data } = await axios.post('auth/signin', dataUser);
+      setAuthHeader(data.token);
 
       return data;
     } catch (error) {
@@ -55,10 +53,8 @@ export const loginUser = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
   try {
-    const { token } = thunkAPI.getState().auth;
-    instance.defaults.headers['Authorization'] = `Bearer ${token}`;
-    await instance.post('auth/signout');
-    instance.defaults.headers['Authorization'] = '';
+    await axios.post('auth/signout');
+    clearAuthHeader();
   } catch (error) {
     const errorMessage = handleError(error);
     return thunkAPI.rejectWithValue(errorMessage);
@@ -69,7 +65,7 @@ export const forgotPassword = createAsyncThunk(
   'auth/forgot-password',
   async (dataUser, thunkAPI) => {
     try {
-      await instance.post('auth/forgot-password', dataUser);
+      await axios.post('auth/forgot-password', dataUser);
 
       console.log('Password send');
     } catch (error) {
@@ -88,8 +84,8 @@ export const refreshUser = createAsyncThunk(
     }
 
     try {
-      instance.defaults.headers['Authorization'] = `Bearer ${token}`;
-      const { data } = await instance.get('user/current');
+      setAuthHeader(token);
+      const { data } = await axios.get('user/current');
       return data;
     } catch (error) {
       const errorMessage = handleError(error);
@@ -107,8 +103,7 @@ export const updateUser = createAsyncThunk(
       },
     };
     try {
-      const { data } = await instance.put('user/update', dataUser, config);
-      console.log(data);
+      const { data } = await axios.put('user/update', dataUser, config);
 
       return data;
     } catch (error) {
@@ -122,7 +117,7 @@ export const updateGoal = createAsyncThunk(
   'auth/update-goal',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.put('user/goal', dataUser);
+      const { data } = await axios.put('user/goal', dataUser);
 
       return data;
     } catch (error) {
@@ -136,7 +131,7 @@ export const updateWeight = createAsyncThunk(
   'auth/update-weight',
   async (dataUser, thunkApi) => {
     try {
-      const { data } = await instance.post('user/weight', dataUser);
+      const { data } = await axios.post('user/weight', dataUser);
 
       return data;
     } catch (error) {
