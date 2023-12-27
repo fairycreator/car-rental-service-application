@@ -22,7 +22,7 @@ export const WrapForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
   @media screen and (min-width: 834px) {
     width: 380px;
   }
@@ -137,7 +137,7 @@ export const SignInButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 40px;
+  margin-top: 20px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
