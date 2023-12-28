@@ -31,7 +31,7 @@ export function printChartCalories(arr, month) {
       days.push(i + 1);
     }
   }
-  if (arr?.length === 0 || arr[0]?.totalCalories === 0) {
+  if (arr?.length === 0) {
     values = null;
   }
   const newArr = { values, days };

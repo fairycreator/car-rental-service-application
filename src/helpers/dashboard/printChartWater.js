@@ -6,7 +6,6 @@ const currentYear = date.getFullYear();
 const currentMonth = date.getMonth() + 1;
 const currentDay = date.getDate();
 
-
 export function printChartWater(arr, month) {
   let days = [];
   let values = [];
@@ -27,11 +26,20 @@ export function printChartWater(arr, month) {
         }
       }
       days.push(i + 1);
-    } else {
+    } else if (currentMonth !== numberOfMonth) {
       days.push(i + 1);
     }
   }
-  if (arr?.length === 0) {
+  if (arr?.length === 0 && currentMonth === numberOfMonth) {
+    for (let i = 0; i < currentDay; i++) {
+      values.push(zeroCalories);
+    }
+
+    for (let i = 0; i < daysInMonth; i++) {
+      days.push(i + 1);
+    }
+  }
+  if (arr?.length === 0 && currentMonth !== numberOfMonth) {
     values = null;
   }
   const newArr = { values, days };
