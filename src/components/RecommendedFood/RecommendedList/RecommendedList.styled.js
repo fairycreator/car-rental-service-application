@@ -51,7 +51,7 @@ export const RecImage = styled.img`
   }
 `;
 export const RecForMainWrapper = styled.div`
-  padding-top: 20px;
+  /* padding-top: 20px; */
   display: flex;
   flex-direction: column;
   align-items: flex-start;

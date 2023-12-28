@@ -182,8 +182,9 @@ export const NextButton = styled.button`
   }
 
   &:disabled {
-    background-color: var(--primary-color-green-lite);
+    background-color: var(--primary-color-green-lite) !important;
     cursor: not-allowed;
+    opacity: 0.6;
   }
 `;
 
