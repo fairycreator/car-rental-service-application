@@ -20,6 +20,8 @@ import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
 import { useDispatch } from 'react-redux';
 import { openHandler } from '../../../redux/dailyFoodStatistics/foodSlice';
 import sprite from '../../../assets/images/sprite.svg';
+import { MealPopUpModal } from '../../ReacordMealPopUp/MealPopUpModal';
+import { useState } from 'react';
 
 export const PlannerCard = ({
   title,
@@ -38,9 +40,12 @@ export const PlannerCard = ({
 }) => {
   const dispatch = useDispatch();
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   const onOpenEditHandler = (e) => {
     const id = e.currentTarget.dataset.set;
-    // const foodtype = `${typefood}`;
     const selectedMeal = meal.find((item) => item._id === id);
     setName(selectedMeal.name);
     setCalories(selectedMeal.calories);
@@ -99,7 +104,8 @@ export const PlannerCard = ({
             );
           })
         ) : (
-          <div
+          <button
+            onClick={openModal}
             style={{
               width: '170px',
               flexDirection: 'row-reverse',
@@ -119,13 +125,14 @@ export const PlannerCard = ({
             >
               <use href={`${sprite}#icon-add-converted`}></use>
             </svg>
-          </div>
+          </button>
         )}
 
         {meal?.length > 0 ? (
           <div style={{ display: 'flex' }}>
             <Numeration>{meal.length + 1}</Numeration>
-            <div
+            <button
+              onClick={openModal}
               style={{
                 width: '170px',
                 flexDirection: 'row-reverse',
@@ -145,9 +152,14 @@ export const PlannerCard = ({
               >
                 <use href={`${sprite}#icon-add-converted`}></use>
               </svg>
-            </div>
+            </button>
           </div>
         ) : null}
+        <MealPopUpModal
+          closeModal={closeModal}
+          stateModal={isModalOpen}
+          typefood={typefood}
+        />
       </MealDashbord>
     </RecordMealBlock>
   );
