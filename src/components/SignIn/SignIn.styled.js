@@ -5,7 +5,6 @@ import iconeyeoff from '../../assets/images/icons/eye-off.svg';
 
 // Wrapper
 export const Wrapper = styled.div`
-  /* margin: 0 auto; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,8 +16,6 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    /* max-width: 1440px; */
-    /* margin: 0 auto; */
     flex-direction: row;
     gap: 104px;
     justify-content: center;
