@@ -16,8 +16,13 @@ import {
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
 import sprite from '../../assets/images/sprite.svg';
+import breakfast from '../../assets/images/Breakfast.png';
+import dinner from '../../assets/images/Dinner.png';
+import lunch from '../../assets/images/Lunch.png';
+import snack from '../../assets/images/Snack.png';
 import { Formik, Form, FieldArray } from 'formik';
 import { InputBlock, RecordInputBig } from '../ModalInput/ModalInput.styled';
+import { capitalize } from '@mui/material';
 
 const customStyles = {
   content: {
@@ -44,6 +49,7 @@ Modal.setAppElement('#root');
 
 export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const dispatch = useDispatch();
+  const cardImg = [breakfast, dinner, lunch, snack];
 
   const initialCard = {
     name: '',
@@ -81,10 +87,9 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
             marginTop: '24px',
           }}
         >
-          <MealImage src="src/assets/images/Breakfast.png" />
-          <MealTitle>
-            {/* {secondType === undefined ? secondType : type} */}
-          </MealTitle>
+          {/* виправити картинки!!!!!! */}
+          <MealImage src={cardImg[typefood]} alt={typefood} />
+          <MealTitle>{capitalize(typefood)}</MealTitle>
         </MealContainer>
 
         <Formik
