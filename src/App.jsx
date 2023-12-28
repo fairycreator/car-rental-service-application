@@ -1,4 +1,4 @@
-import PuffLoader from "react-spinners/PuffLoader";
+import PuffLoader from 'react-spinners/PuffLoader';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,11 +6,11 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { RestrictedRoute } from './pages/Routes/RestrictedRoute.jsx';
 import { PrivateRoute } from './pages/Routes/PrivateRoute.jsx';
 import { refreshUser } from './redux/auth/authOperations.js';
-import { selectIsRefreshing } from "./redux/auth/authSelectors.js";
+import { selectIsRefreshing } from './redux/auth/authSelectors.js';
 
 const WelcomePage = lazy(() => import('pages/WelcomePage/WelcomePage.jsx'));
 const SignUpPage = lazy(() => import('pages/SignUpPage.jsx'));
-const SignInPage = lazy(() => import('pages/SignInPage/SignInPage.jsx'));
+const SignInPage = lazy(() => import('pages/SignInPage.jsx'));
 const ForgotPasswordPage = lazy(() =>
   import('pages/ForgotYourPasswordPage/ForgotPasswordPage.jsx')
 );
@@ -29,7 +29,10 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <PuffLoader color="var(--primary-color-green-lite)" cssOverride={{ margin: '30vh auto 0 auto' }} />
+    <PuffLoader
+      color="var(--primary-color-green-lite)"
+      cssOverride={{ margin: '30vh auto 0 auto' }}
+    />
   ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
@@ -94,5 +97,5 @@ function App() {
       </Route>
     </Routes>
   );
-};
+}
 export default App;

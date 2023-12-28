@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   Wrapper,
   Content,
@@ -8,14 +7,14 @@ import {
   QuestionTrumb,
   Question,
   Image,
-  ForgotPasswordText,
+  StyledLink,
   NavLinkStyled,
 } from './SignIn.styled';
-import SignInForm from '../../components/SignInForm/SignInForm';
+import SignInForm from './SignInForm/SignInForm';
 
 import image from '../../assets/backgroundImages/welcomepage.png';
 
-const SignIn = () => {
+export const SignIn = () => {
   return (
     <Wrapper>
       <Image src={image} alt="Activity tracker" />
@@ -25,16 +24,12 @@ const SignIn = () => {
           <Subtitle>You need to login to use the service</Subtitle>
         </SignUpBox>
         <SignInForm />
-        <Link to="/forgot-password">
-          <ForgotPasswordText>Forgot your password?</ForgotPasswordText>
-        </Link>
+        <StyledLink>Forgot your password?</StyledLink>
         <QuestionTrumb>
-          <Question>If you do not have an account yet</Question>
+          <Question>{`If you don't have an account yet`}</Question>
           <NavLinkStyled to="/signup">Sign up</NavLinkStyled>
         </QuestionTrumb>
       </Content>
     </Wrapper>
   );
 };
-
-export default SignIn;

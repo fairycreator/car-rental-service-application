@@ -18,6 +18,20 @@ const colors = {
   iconStroke: '#FFFFFF',
 };
 
+export const WrapForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  @media screen and (min-width: 834px) {
+    width: 380px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
+`;
+
 export const InputStyled = styled(Field)`
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
@@ -46,16 +60,6 @@ export const ErrorMsg = styled.div`
   margin-left: 12px;
   font-size: 12px;
   font-family: 'Poppins400';
-`;
-
-export const WrapForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  @media screen and (min-width: 1440px) {
-    width: 212px;
-    margin: 0;
-  }
 `;
 
 export const SvgIconEye = styled.svg`
@@ -115,9 +119,9 @@ export const Input = styled.input`
   width: 100%;
   padding: 8px 10px;
   border-radius: 12px;
-  border: 2px solid var(--color-primary-green-lite, #e3ffa8);
-  background: var(--color-primary-black-2, #0f0f0f);
-  color: var(--primary-color-grey, #b6b6b6);
+  border: 2px solid var(--primary-color-green-lite);
+  background: var(--primary-color-black-two);
+  color: var(--primary-color-grey);
   font-size: 14px;
   line-height: 1.43;
 
@@ -133,12 +137,12 @@ export const SignInButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 40px;
+  margin-top: 20px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
-  background: var(--color-primary-green-lite, #e3ffa8);
-  color: var(--color-primary-black-2, #0f0f0f);
+  background: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -147,13 +151,5 @@ export const SignInButton = styled.button`
   &:hover,
   &:focus {
     background-color: var(--secondary-color-yellow);
-  }
-
-  @media screen and (min-width: 834px) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
   }
 `;

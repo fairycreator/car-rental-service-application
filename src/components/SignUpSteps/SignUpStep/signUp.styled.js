@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const colors = {
   text: '#FFFFFF',
@@ -19,34 +19,40 @@ export const SignUpContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  @media (max-width: 768px) {
-    padding: 10px;
+  @media (min-width: 834px) {
+    padding-top: 20px;
   }
 `;
 
-// Wrapper
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 834px) {
+    align-items: center;
+  }
+  @media screen and (min-width: 1440px) {
+    margin-top: 80px;
+    align-items: flex-start;
+  }
+`;
+
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  padding: 10px;
-  background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 
   @media screen and (min-width: 834px) {
-    padding: 10px;
+    gap: 60px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    margin: 0 auto;
     flex-direction: row;
     gap: 104px;
     justify-content: center;
     align-items: flex-start;
-    padding-bottom: 72px;
   }
 `;
 
@@ -54,22 +60,20 @@ export const Wrapper = styled.div`
 export const Image = styled.img`
   width: 300px;
   height: 296px;
-  margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
     width: 380px;
     height: 376px;
-    margin-bottom: 60px;
   }
 
   @media screen and (min-width: 1440px) {
     width: 592px;
     height: 588px;
-    margin-bottom: 0;
   }
 `;
 
 // Title
+
 export const Title = styled.h1`
   color: var(--color-primary-white, #fff);
   font-size: 24px;
@@ -165,14 +169,13 @@ export const NextButton = styled.button`
   border-radius: 12px;
   border: none;
   text-decoration: none;
-  background: var(--color-primary-green-lite, #e3ffa8);
-  color: var(--color-primary-black-2, #0f0f0f);
+  background: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.43;
+  line-height: 1.42;
   transition: background-color, var(--transition-dur-and-func);
-  margin-bottom: 80px;
   &:hover,
   &:focus {
     background-color: var(--secondary-color-yellow);
@@ -181,32 +184,6 @@ export const NextButton = styled.button`
   &:disabled {
     background-color: var(--primary-color-green-lite);
     cursor: not-allowed;
-  }
-
-  @media screen and (min-width: 834px) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
-    margin-bottom: 168px;
-  }
-`;
-
-// Content
-export const Content = styled.div`
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-
-  @media screen and (min-width: 834px) {
-    align-items: center;
-    gap: 80px;
-  }
-  @media screen and (min-width: 1440px) {
-    padding-top: 80px;
-    align-items: flex-start;
   }
 `;
 
@@ -223,36 +200,35 @@ export const QuestionTrumb = styled.div`
   display: flex;
   gap: 20px;
   justify-content: center;
-  width: 100%;
+  margin-top: 54px;
+  margin-bottom: 40px;
 
-  @media screen and (min-width: 1440px) {
-    justify-content: flex-start;
+  @media screen and (min-width: 834px) {
+    gap: 16px;
   }
-
   @media screen and (min-width: 1440px) {
-    max-width: 364px;
+    margin-top: 145px;
+    justify-content: flex-start;
   }
 `;
 
 // Question
 export const Question = styled.p`
+  flex-shrink: 0;
+  line-height: 1.42;
   color: var(--primary-color-grey);
-  font-family: 'Poppins500';
-  font-size: 14px;
-  line-height: 1.43;
-  margin-bottom: 16px;
 `;
 
 // Link
-export const LinkStyled = styled(NavLink)`
+export const LinkStyled = styled(Link)`
   color: var(--primary-color-white);
-  font-family: 'Poppins500';
-  font-size: 14px;
-  line-height: 1.43;
-  cursor: pointer;
+  line-height: 1.42;
+  font-weight: 500;
+  flex-shrink: 0;
 
-  &:hover {
-    text-decoration: underline;
+  &:hover,
+  &:focus {
+    color: var(--primary-color-green-lite);
   }
 `;
 
