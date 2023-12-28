@@ -12,6 +12,7 @@ import {
   CustomRadio,
   NextButton,
   BackButton,
+  StyledErrorMessage,
 } from './Activity.styled';
 
 const activitySchema = Yup.object().shape({
@@ -56,7 +57,7 @@ function ActivityLevel({ onBackPage, onForm }) {
                 program
               </CustomLabel>
             </RadioWrapper>
-            <ErrorMessage name="activity" component="div" />
+            <ErrorMessage name="activity" component={StyledErrorMessage} />
             <NextButton type="submit">Sign Up</NextButton>
             <BackButton onClick={onBackPage}>Back</BackButton>
           </Form>
