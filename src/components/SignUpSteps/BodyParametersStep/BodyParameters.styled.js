@@ -12,21 +12,17 @@ const colors = {
 };
 
 export const HealthWrapper = styled.div`
-  margin: 0 auto;
-  padding: 10px;
   background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 
   @media screen and (min-width: 834px) {
-    padding: 10px;
+    gap: 60px;
   }
-
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    margin: 0 auto;
     flex-direction: row;
     gap: 104px;
     justify-content: center;
@@ -63,25 +59,23 @@ export const HealthContent = styled.div`
     gap: 80px;
   }
   @media screen and (min-width: 1440px) {
-    padding-top: 80px;
+    margin-top: 80px;
     align-items: flex-start;
     flex-direction: column;
   }
 `;
 
-export const Title = styled.h1`
-  color: var(--color-primary-white, #fff);
+export const Title = styled.h2`
+  color: var(--primary-color-white);
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
   margin-bottom: 16px;
-  margin-top: 24px;
 
   @media screen and (min-width: 834px) {
     text-align: center;
     font-size: 30px;
     line-height: 1.2;
-    margin-top: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -89,8 +83,8 @@ export const Title = styled.h1`
   }
 `;
 
-export const Subtitle = styled.p`
-  color: var(--color-primary-gray, #b6b6b6);
+export const Subtitle = styled.h2`
+  color: var(--primary-color-grey);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
@@ -109,13 +103,23 @@ export const Subtitle = styled.p`
 `;
 
 export const Formstyled = styled.div`
+  @media screen and (min-width: 834px) {
+    margin: 0 auto;
+    width: 380px;
+  }
+
   @media screen and (min-width: 1440px) {
     width: 212px;
+    margin: 0;
   }
 `;
 
 export const FormLabel = styled.label`
-  color: var(--primary-color-white, #fff);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  color: var(--primary-color-white);
   font-size: 14px;
   line-height: 1.43;
   font-weight: 500;
@@ -126,13 +130,11 @@ export const InputStyled = styled(Field)`
   width: 100%;
   padding: 8px 10px;
   border-radius: 12px;
-  border: 2px solid var(--color-primary-green-lite, #e3ffa8);
-  background: var(--color-primary-black-2, #0f0f0f);
-  color: var(--primary-color-grey, #b6b6b6);
+  border: 2px solid var(--primary-color-green-lite);
+  background: var(--primary-color-black-two);
+  color: var(--primary-color-grey);
   font-size: 14px;
   line-height: 1.43;
-  margin-top: 12px;
-  margin-bottom: 24px;
 
   &.inputError {
     border: 2px solid #e74a3b;
@@ -151,18 +153,22 @@ export const InputStyled = styled(Field)`
   @media screen and (min-width: 1440px) {
     width: 212px;
   }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 
 export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 16px;
+  margin-top: 40px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
-  background: var(--color-primary-green-lite, #e3ffa8);
-  color: var(--color-primary-black-2, #0f0f0f);
+  background: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -187,11 +193,12 @@ export const BackButton = styled.button`
   width: 100%;
   padding: 8px 10px;
   margin-top: 20px;
+  margin-bottom: 24px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
   background: transparent;
-  color: #b6b6b6;
+  color: var(--primary-color-grey);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -199,7 +206,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: transparent;
+    text-decoration: underline;
   }
 
   @media screen and (min-width: 834px) {
@@ -217,8 +224,8 @@ export const StyledErrorMessage = styled.div`
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
   letter-spacing: var(--main-letter-spacing);
-  margin-top: -18px;
-  margin-left: 9px;
+  /* margin-top: 5px; */
+  /* margin-left: 9px; */
   font-size: 12px;
   font-family: 'Poppins400';
 `;

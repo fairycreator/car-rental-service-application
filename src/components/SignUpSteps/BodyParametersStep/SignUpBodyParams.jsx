@@ -56,7 +56,7 @@ function BodyParameters({ onForm, onBackPage }) {
                 />
                 <ErrorMessage name="height" component={StyledErrorMessage} />
               </FormLabel>
-              <FormLabel>
+              <FormLabel style={{ marginTop: '24px' }}>
                 Weight
                 <Field
                   as={InputStyled}
