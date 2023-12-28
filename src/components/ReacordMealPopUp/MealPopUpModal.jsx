@@ -15,7 +15,6 @@ import {
 } from './Reacord.styled';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
-import { ModalInput } from '../ModalInput/ModalInput';
 import sprite from '../../assets/images/sprite.svg';
 import { Formik, Form, FieldArray } from 'formik';
 import { InputBlock, RecordInputBig } from '../ModalInput/ModalInput.styled';

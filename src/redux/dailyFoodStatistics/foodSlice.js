@@ -64,10 +64,10 @@ const deleteHandlerFullfilled = (state, action) => {
 };
 
 const handleUpdateFoodFullfiled = (state, action) => {
-  state.consumedFood.breakfast = action.payload[0]?.breakfast;
-  state.consumedFood.dinner = action.payload[0]?.dinner;
-  state.consumedFood.lunch = action.payload[0]?.lunch;
-  state.consumedFood.snack = action.payload[0]?.snack;
+  state.consumedFood.breakfast = action.payload?.breakfast;
+  state.consumedFood.dinner = action.payload?.dinner;
+  state.consumedFood.lunch = action.payload?.lunch;
+  state.consumedFood.snack = action.payload?.snack;
 };
 
 const consumedFood = {
@@ -85,6 +85,7 @@ const consumedFood = {
 const initialState = {
   consumedFood,
   isOpen: false,
+  selectedModalProduct: {},
 };
 
 const dailyStatisticsFoodSlice = createSlice({
@@ -94,6 +95,9 @@ const dailyStatisticsFoodSlice = createSlice({
   reducers: {
     openHandler(state, action) {
       state.isOpen = action.payload;
+    },
+    writeSelectProduct(state, action) {
+      state.selectedModalProduct = { ...action.payload };
     },
   },
   extraReducers: (builder) =>
@@ -105,5 +109,6 @@ const dailyStatisticsFoodSlice = createSlice({
       .addCase(getFood.rejected, handleRejected)
       .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
 });
-export const { openHandler } = dailyStatisticsFoodSlice.actions;
+export const { openHandler, writeSelectProduct } =
+  dailyStatisticsFoodSlice.actions;
 export const dailyStatisticsFoodReducer = dailyStatisticsFoodSlice.reducer;
