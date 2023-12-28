@@ -10,13 +10,14 @@ export function printTableWeight(arr, month, changedWeight) {
   let days = [];
   let values = [];
   let prevWeight = 0;
-  if (arr?.length > 0) {
-    prevWeight = arr[0].value;
-  }
   const zero = 0;
+
   const numberOfMonth = months.indexOf(month) + 1;
+
   const daysInMonth = getDaysInMonth(currentYear, numberOfMonth);
+  
   const arrDayFromBack = arr?.flatMap((item) => new Date(item.date).getDate());
+
   for (let i = 0; i < daysInMonth; i++) {
     if (arr?.length > 0) {
       if (arrDayFromBack.includes(i + 1)) {
@@ -38,8 +39,13 @@ export function printTableWeight(arr, month, changedWeight) {
       }
       days.push(i + 1);
     } else {
-      values.push(zero);
-      days.push(i + 1);
+      if (currentMonth === numberOfMonth && i + 1 === currentDay) {
+        values.push(changedWeight);
+        days.push(i + 1);
+      } else {
+        values.push(zero);
+        days.push(i + 1);
+      }
     }
   }
   const newArr = { values, days };
