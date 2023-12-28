@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import checkedIcon from '../../../assets/images/icons/checked-icon.svg';
-import { Field } from 'formik';
+import { Field, Form } from 'formik';
 
 const colors = {
   text: '#FFFFFF',
@@ -12,20 +12,31 @@ const colors = {
   iconStroke: '#FFFFFF',
 };
 
+export const StyledForm = styled(Form)`
+  @media screen and (min-width: 834px) {
+    width: 380px;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin: 0;
+  }
+`;
+
 //Radio buttons
 export const CustomRadio = styled(Field)`
   margin-right: 8px;
   cursor: pointer;
   appearance: none;
-  background-color: #fff;
-  border: 1px solid var(--color-primary-gray, #b6b6b6);
+  background-color: transparent;
+  border: 1px solid var(--primary-color-grey);
   border-radius: 50%;
   width: 12px;
   height: 12px;
   position: relative;
 
   &:checked {
-    border-color: var(--color-primary-green-lite, #e3ffa8);
+    border-color: var(--primary-color-green-lite);
     background-image: url(${checkedIcon});
     background-position: center;
     background-repeat: no-repeat;
@@ -37,22 +48,19 @@ export const CustomRadio = styled(Field)`
 `;
 
 export const CustomLabel = styled.label`
-  font-family: 'Poppins', sans-serif;
-  color: var(--color-primary-white, #fff);
-  font-size: 14px;
-  line-height: 24px;
+  color: var(--primary-color-white);
+  line-height: 1.42;
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 16px;
 
   ${CustomRadio}:checked + & {
-    color: var(--color-primary-green-lite, #e3ffa8);
+    color: var(--primary-color-green-lite);
   }
 `;
 
 export const StyledFormLabel = styled.label`
-  color: var(--color-primary-white, #fff);
+  color: var(--primary-color-white);
   font-size: 14px;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
@@ -63,27 +71,21 @@ export const StyledFormLabel = styled.label`
 
 //Wrapper
 export const GoalWrapper = styled.div`
-  margin: 0 auto;
-  padding: 10px;
-  background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 24px;
 
   @media screen and (min-width: 834px) {
-    padding: 10px;
+    gap: 60px;
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    margin: 0 auto;
     flex-direction: row;
     gap: 104px;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 20px;
-    padding-bottom: 72px;
   }
 `;
 
@@ -109,14 +111,14 @@ export const GoalContent = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 40px;
+  /* gap: 40px; */
 
   @media screen and (min-width: 834px) {
     align-items: center;
-    gap: 80px;
+    /* gap: 80px; */
   }
   @media screen and (min-width: 1440px) {
-    padding-top: 80px;
+    margin-top: 80px;
     align-items: flex-start;
   }
 `;
@@ -126,13 +128,11 @@ export const GoalTitle = styled.h1`
   font-weight: 500;
   line-height: 1.25;
   margin-bottom: 16px;
-  margin-top: 24px;
 
   @media screen and (min-width: 834px) {
     text-align: center;
     font-size: 30px;
     line-height: 1.2;
-    margin-top: 60px;
   }
 
   @media screen and (min-width: 1440px) {
@@ -162,9 +162,10 @@ export const GoalSubtitle = styled.p`
 export const RadioWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+
   flex-direction: column;
   align-items: flex-start;
+  gap: 24px;
 
   @media (min-width: 834px) and (max-width: 1439px) {
     flex-direction: row;
@@ -173,6 +174,7 @@ export const RadioWrapper = styled.div`
 
   @media (min-width: 1440px) {
     flex-direction: column;
+    gap: 16px;
   }
 `;
 
@@ -188,7 +190,7 @@ export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 20px;
+  margin-top: 24px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
@@ -216,13 +218,13 @@ export const NextButton = styled.button`
 export const BackButton = styled.button`
   display: block;
   width: 100%;
-  padding: 8px 10px;
   margin-top: 20px;
+  margin-bottom: 24px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
   background: transparent;
-  color: #b6b6b6;
+  color: var(--primary-color-grey);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -230,7 +232,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: transparent;
+    text-decoration: underline;
   }
 
   @media screen and (min-width: 834px) {
