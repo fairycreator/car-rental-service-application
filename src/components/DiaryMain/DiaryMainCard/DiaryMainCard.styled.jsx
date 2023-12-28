@@ -30,7 +30,28 @@ export const MealOptions = styled.p`
   display: flex;
   gap: 16px;
   @media screen and (min-width: 834px) {
-    width: AUTO;
+    min-width: 160px;
+  }
+`;
+export const MealOptionsSecond = styled.p`
+  color: var(--primary-color-white);
+  line-height: 1.42;
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  @media screen and (min-width: 834px) {
+    min-width: 88px;
+  }
+`;
+
+export const MealOptionsTrird = styled.p`
+  color: var(--primary-color-white);
+  line-height: 1.42;
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  @media screen and (min-width: 834px) {
+    min-width: 88px;
   }
 `;
 

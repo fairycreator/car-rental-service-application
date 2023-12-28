@@ -6,15 +6,13 @@ export const Title = styled.p`
   font-family: 'Poppins500';
 `;
 export const Container = styled.div`
-  width: 320px;
+  width: 300px;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 40px;
 
   @media screen and (min-width: 834px) {
     width: 834px;
-    padding-bottom: 52px;
   }
 
   @media screen and (min-width: 1440px) {

@@ -9,8 +9,11 @@ import {
   RecordMealBlock,
   RenderContainer,
   RenderContainerItem,
+  RenderContainerItemName,
   Wrapper,
   EditWrapper,
+  MealSubTextMain,
+  MealSubWrapper,
 } from './PlannerCard.styled';
 
 import { AddMore } from '../../ReacordMealPopUp/Reacord.styled';
@@ -26,9 +29,26 @@ export const PlannerCard = ({
   totalCarbs,
   totalProtein,
   totalFat,
+  setProductId,
+  setName,
+  setCalories,
+  setCarbogidrate,
+  setProtein,
+  setFat,
 }) => {
   const dispatch = useDispatch();
-  const onOpenHandler = () => {
+
+  const onOpenEditHandler = (e) => {
+    const id = e.currentTarget.dataset.set;
+    // const foodtype = `${typefood}`;
+    const selectedMeal = meal.find((item) => item._id === id);
+    setName(selectedMeal.name);
+    setCalories(selectedMeal.calories);
+    setCarbogidrate(selectedMeal.nutrition.carbogidrate);
+    setProtein(selectedMeal.nutrition.protein);
+    setFat(selectedMeal.nutrition.fat);
+    setProductId(id);
+    setFoodType(`${typefood.toLowerCase()}`);
     dispatch(openHandler(true));
   };
   return (
@@ -39,39 +59,43 @@ export const PlannerCard = ({
           <MealTitle>{`${title}`}</MealTitle>
         </MealContainer>
         <MealSubscription>
-          <MealSubText>
+          <MealSubTextMain>
             Carbonohidrates: {!totalCarbs ? 0 : totalCarbs}
-          </MealSubText>
-          <MealSubText>Protein: {!totalProtein ? 0 : totalProtein}</MealSubText>
-          <MealSubText>Fat: {!totalFat ? 0 : totalFat}</MealSubText>
+          </MealSubTextMain>
+          <MealSubWrapper>
+            <MealSubText>
+              Protein: {!totalProtein ? 0 : totalProtein}
+            </MealSubText>
+            <MealSubText>Fat: {!totalFat ? 0 : totalFat}</MealSubText>
+          </MealSubWrapper>
         </MealSubscription>
       </Wrapper>
-      <MealDashbord
-        style={{ marginTop: '20px' }}
-        onClick={() => setFoodType(`${typefood}`)}
-      >
-        <EditWrapper>
-          <svg style={{ width: '16px', height: '16px' }}>
-            <use href={`${sprite}#edit-2`}></use>
-          </svg>
-          <p>Edit</p>
-        </EditWrapper>
+
+      <MealDashbord>
         {meal?.length > 0 ? (
           meal.map((item, index) => {
             return (
-              <RenderContainer key={item._id}>
-                <Numeration>{index + 1}</Numeration>
-                <RenderContainerItem>{item.name}</RenderContainerItem>
-                <RenderContainerItem>
-                  Carbs: {item.nutrition.carbogidrate}
-                </RenderContainerItem>
-                <RenderContainerItem>
-                  Protein: {item.nutrition.protein}
-                </RenderContainerItem>
-                <RenderContainerItem>
-                  Fat: {item.nutrition.fat}
-                </RenderContainerItem>
-              </RenderContainer>
+              <div key={item._id} style={{ position: 'relative' }}>
+                <RenderContainer>
+                  <Numeration>{index + 1}</Numeration>
+                  <RenderContainerItemName>{item.name}</RenderContainerItemName>
+                  <RenderContainerItem>
+                    Carbs: {item.nutrition.carbogidrate}
+                  </RenderContainerItem>
+                  <RenderContainerItem>
+                    Protein: {item.nutrition.protein}
+                  </RenderContainerItem>
+                  <RenderContainerItem>
+                    Fat: {item.nutrition.fat}
+                  </RenderContainerItem>
+                </RenderContainer>
+                <EditWrapper data-set={item._id} onClick={onOpenEditHandler}>
+                  <svg style={{ width: '16px', height: '16px' }}>
+                    <use href={`${sprite}#edit-2`}></use>
+                  </svg>
+                  <p>Edit</p>
+                </EditWrapper>
+              </div>
             );
           })
         ) : (
@@ -84,7 +108,7 @@ export const PlannerCard = ({
               maxHeight: '20px',
             }}
           >
-            <AddMore onClick={onOpenHandler}>Record your meal</AddMore>
+            <AddMore>Record your meal</AddMore>
             <svg
               style={{
                 display: 'inline-block',
@@ -97,6 +121,7 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
+
         {meal?.length > 0 ? (
           <div style={{ display: 'flex' }}>
             <Numeration>{meal.length + 1}</Numeration>
@@ -109,7 +134,7 @@ export const PlannerCard = ({
                 maxHeight: '20px',
               }}
             >
-              <AddMore onClick={onOpenHandler}>Record your meal</AddMore>
+              <AddMore>Record your meal</AddMore>
               <svg
                 style={{
                   display: 'inline-block',

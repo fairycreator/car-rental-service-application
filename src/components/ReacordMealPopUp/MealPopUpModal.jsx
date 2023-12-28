@@ -1,5 +1,4 @@
 import Modal from 'react-modal';
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
@@ -15,9 +14,10 @@ import {
   CancelButton,
 } from './Reacord.styled';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
-// import { AddIcon } from './MealPopUpModal.styled';
-import { ModalInput } from '../ModalInput/ModalInput';
-// import sprite from '../../assets/images/sprite.svg';
+import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
+import sprite from '../../assets/images/sprite.svg';
+import { Formik, Form, FieldArray } from 'formik';
+import { InputBlock, RecordInputBig } from '../ModalInput/ModalInput.styled';
 
 const customStyles = {
   content: {
@@ -45,40 +45,31 @@ Modal.setAppElement('#root');
 export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const dispatch = useDispatch();
 
-  const [name, setName] = useState('');
-  const [calories, setColories] = useState('');
-  const [carbogidrate, setCarbogidrate] = useState('');
-  const [protein, setProtein] = useState('');
-  const [fat, setFat] = useState('');
-
-  //   const [inputCounter, setInputCounter] = useState([1]);
-
-  const arr = {
-    typeFood: typefood,
-    userFood: [
-      {
-        name,
-        calories,
-        nutrition: { carbogidrate, protein, fat },
-      },
-    ],
+  const initialCard = {
+    name: '',
+    carbogidrate: '',
+    protein: '',
+    fat: '',
+    calories: '',
   };
 
-  const formHandler = (e) => {
-    e.preventDefault();
+  const sendProducts = (values) => {
+    let arr = {
+      typeFood: typefood,
+      userFood: values.products.map((product) => ({
+        name: product.name,
+        calories: product.calories,
+        nutrition: {
+          carbogidrate: product.carbogidrate,
+          protein: product.protein,
+          fat: product.fat,
+        },
+      })),
+    };
+
     dispatch(addFood(arr));
     closeModal();
   };
-
-  //   const foodArray = [inputCounter];
-
-  // const handleAddMore = () => {
-  //   setInputCounter((prevstate) => {
-  //     console.log(prevstate);
-  //     const index = prevstate.lenght - 1;
-  //     [...prevstate, prevstate[index] + 1];
-  //   });
-  // };
 
   return (
     <Modal isOpen={stateModal} onRequestClose={closeModal} style={customStyles}>
@@ -95,39 +86,98 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
             {/* {secondType === undefined ? secondType : type} */}
           </MealTitle>
         </MealContainer>
-        <form onSubmit={formHandler}>
-          {/* {foodArray.map((item, index) => {
-            return ( */}
-          <ModalInput
-            // key={index}
-            setName={setName}
-            setColories={setColories}
-            setCarbogidrate={setCarbogidrate}
-            setProtein={setProtein}
-            setFat={setFat}
-            name={name}
-            calories={calories}
-            carbogidrate={carbogidrate}
-            protein={protein}
-            fat={fat}
-          />
-          {/* );
-          })} */}
 
-          {/* <Button onClick={handleAddMore} type="button">
-            <AddIcon>
-              <use href={`${sprite}#icon-add-converted`}></use>
-            </AddIcon>
-            Add more
-          </Button> */}
-
-          <ButtonBlock>
-            <Button type="submit">Confirm</Button>
-            <CancelButton onClick={closeModal} type="button">
-              Cancel
-            </CancelButton>
-          </ButtonBlock>
-        </form>
+        <Formik
+          initialValues={{ products: [initialCard] }}
+          onSubmit={(values) => sendProducts(values)}
+        >
+          {({ values }) => (
+            <Form>
+              <FieldArray name="products">
+                {({ remove, push }) => (
+                  <div>
+                    {values.products.map((product, index) => (
+                      <InputBlock key={index}>
+                        <RecordInputBig
+                          // id={`products.${dataIndex}.name`}
+                          name={`products.${index}.name`}
+                          placeholder="The name of the product or dish"
+                          value={values.products[index].name}
+                        />
+                        <RecordInputBig
+                          // id={`products.carbogidrate${dataIndex}`}
+                          name={`products.${index}.carbogidrate`}
+                          placeholder="Carbonoh."
+                          value={values.products[index].carbogidrate}
+                          type="number"
+                          min={1}
+                        />
+                        <RecordInputBig
+                          // id={`products.protein${dataIndex}`}
+                          name={`products.${index}.protein`}
+                          placeholder="Protein"
+                          value={values.products[index].protein}
+                          min={1}
+                          type="number"
+                        />
+                        <RecordInputBig
+                          // id={`products.fat${dataIndex}`}
+                          name={`products.${index}.fat`}
+                          placeholder="Fat"
+                          value={values.products[index].fat}
+                          min={1}
+                          type="number"
+                        />
+                        <RecordInputBig
+                          // id={`products.calories${dataIndex}`}
+                          name={`products.${index}.calories`}
+                          placeholder="Calories"
+                          value={values.products[index].calories}
+                          min={1}
+                          type="number"
+                        />
+                        <button
+                          data-set={index}
+                          type="button"
+                          onClick={(e) => {
+                            const index = e.currentTarget.dataset.set;
+                            if (values.products.length === 1) {
+                              closeModal();
+                            }
+                            remove(index);
+                          }}
+                        >
+                          <svg
+                            style={{
+                              display: 'inline-block',
+                              width: '20px',
+                              height: ' 20px',
+                              fill: 'white',
+                            }}
+                          >
+                            <use href={`${sprite}#trash-delete`}></use>
+                          </svg>
+                        </button>
+                      </InputBlock>
+                    ))}
+                    <ButtonAdd type="button" onClick={() => push(initialCard)}>
+                      <AddIcon>
+                        <use href={`${sprite}#icon-add-converted`}></use>
+                      </AddIcon>
+                      Add more
+                    </ButtonAdd>
+                  </div>
+                )}
+              </FieldArray>
+              <ButtonBlock>
+                <Button type="submit">Confirm</Button>
+                <CancelButton onClick={closeModal} type="button">
+                  Cancel
+                </CancelButton>
+              </ButtonBlock>
+            </Form>
+          )}
+        </Formik>
       </ContentBlock>
     </Modal>
   );

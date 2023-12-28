@@ -36,7 +36,7 @@ const DiaryMain = () => {
   };
 
   const allFood = ['breakfast', 'lunch', 'dinner', 'snack'];
-  // console.log('totalFood: ', totalFood);
+  // const allCapsFood = ['Breakfast', 'Lunch', 'Dinner', 'Snack'];
 
   let totalFatBreakfast = 0;
   let totalProteinBreakfast = 0;

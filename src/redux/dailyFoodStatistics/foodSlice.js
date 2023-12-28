@@ -9,6 +9,7 @@ const handleRejected = (state, action) => {
 const handleAddFoodFullfiled = (state, action) => {
   state.isLoading = false;
   state.error = null;
+  state.consumedFood._id = action.payload?._id;
   state.consumedFood.totalCalories = action.payload?.totalCalories;
   state.consumedFood.totalCarbs = action.payload?.totalCarbs;
   state.consumedFood.totalProtein = action.payload?.totalProteins;
@@ -33,21 +34,27 @@ const handleAddFoodFullfiled = (state, action) => {
 };
 
 const handeGetFoodFullfiled = (state, action) => {
-  state.consumedFood.cardID = action.payload[0]?._id;
-  state.consumedFood.totalCalories = action.payload[0]?.totalCalories;
-  state.consumedFood.totalCarbs = action.payload[0]?.totalCarbs;
-  state.consumedFood.totalProtein = action.payload[0]?.totalProteins;
-  state.consumedFood.totalFat = action.payload[0]?.totalFats;
+  state.consumedFood._id = action.payload?._id;
+  state.consumedFood.totalCalories = action.payload?.totalCalories;
+  state.consumedFood.totalCarbs = action.payload?.totalCarbs;
+  state.consumedFood.totalProtein = action.payload?.totalProteins;
+  state.consumedFood.totalFat = action.payload?.totalFats;
 
   if (action.payload) {
-    state.consumedFood.breakfast = action.payload[0]?.breakfast;
-    state.consumedFood.dinner = action.payload[0]?.dinner;
-    state.consumedFood.lunch = action.payload[0]?.lunch;
-    state.consumedFood.snack = action.payload[0]?.snack;
+    state.consumedFood.breakfast = action.payload.breakfast;
+    state.consumedFood.dinner = action.payload.dinner;
+    state.consumedFood.lunch = action.payload.lunch;
+    state.consumedFood.snack = action.payload.snack;
   }
 };
 
 const deleteHandlerFullfilled = (state, action) => {
+  state.consumedFood._id = action.payload?.resultTotal._id;
+  state.consumedFood.totalCalories = action.payload?.resultTotal.totalCalories;
+  state.consumedFood.totalCarbs = action.payload?.resultTotal.totalCarbs;
+  state.consumedFood.totalProtein = action.payload?.resultTotal.totalProteins;
+  state.consumedFood.totalFat = action.payload?.resultTotal.totalFats;
+
   const type = action.meta.arg.typeFood;
   if (action.payload.message) {
     state.consumedFood[type] = [];
@@ -57,10 +64,10 @@ const deleteHandlerFullfilled = (state, action) => {
 };
 
 const handleUpdateFoodFullfiled = (state, action) => {
-  state.consumedFood.breakfast = action.payload[0]?.breakfast;
-  state.consumedFood.dinner = action.payload[0]?.dinner;
-  state.consumedFood.lunch = action.payload[0]?.lunch;
-  state.consumedFood.snack = action.payload[0]?.snack;
+  state.consumedFood.breakfast = action.payload?.breakfast;
+  state.consumedFood.dinner = action.payload?.dinner;
+  state.consumedFood.lunch = action.payload?.lunch;
+  state.consumedFood.snack = action.payload?.snack;
 };
 
 const consumedFood = {
@@ -78,6 +85,7 @@ const consumedFood = {
 const initialState = {
   consumedFood,
   isOpen: false,
+  selectedModalProduct: {},
 };
 
 const dailyStatisticsFoodSlice = createSlice({
@@ -88,15 +96,19 @@ const dailyStatisticsFoodSlice = createSlice({
     openHandler(state, action) {
       state.isOpen = action.payload;
     },
+    writeSelectProduct(state, action) {
+      state.selectedModalProduct = { ...action.payload };
+    },
   },
   extraReducers: (builder) =>
     builder
 
-      .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       .addCase(getFood.fulfilled, handeGetFoodFullfiled)
+      .addCase(addFood.fulfilled, handleAddFoodFullfiled)
       .addCase(updateFood.fulfilled, handleUpdateFoodFullfiled)
       .addCase(getFood.rejected, handleRejected)
       .addCase(deleteFood.fulfilled, deleteHandlerFullfilled),
 });
-export const { openHandler } = dailyStatisticsFoodSlice.actions;
+export const { openHandler, writeSelectProduct } =
+  dailyStatisticsFoodSlice.actions;
 export const dailyStatisticsFoodReducer = dailyStatisticsFoodSlice.reducer;

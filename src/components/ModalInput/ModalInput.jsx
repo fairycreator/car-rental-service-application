@@ -1,80 +1,63 @@
 import sprite from '../../assets/images/sprite.svg';
-import {
-  InputBlock,
-  RecordInputBig,
-  SubInput,
-  SubInputBlock,
-} from './ModalInput.styled';
+import { InputBlock, RecordInputBig } from './ModalInput.styled';
 
-export const ModalInput = ({
-  setName,
-  setColories,
-  setCarbogidrate,
-  setProtein,
-  setFat,
-  name,
-  calories,
-  carbogidrate,
-  protein,
-  fat,
-}) => {
+export const ModalInput = ({ dataIndex, resetForm, values, remove }) => {
   return (
-    <InputBlock>
+    <InputBlock key={dataIndex}>
       <RecordInputBig
-        value={name}
+        id={`products.${dataIndex}.name`}
+        name={`products.${dataIndex}.name`}
         placeholder="The name of the product or dish"
-        onChange={(e) => {
-          setName(e.target.value);
-        }}
+        value={values.products[dataIndex].name}
       />
       <RecordInputBig
-        type={'number'}
+        id={`products.carbogidrate${dataIndex}`}
+        name={`products.carbogidrate${dataIndex}`}
+        placeholder="Carbonoh."
+        type="number"
         min={1}
-        onChange={(e) => {
-          setCarbogidrate(e.target.value);
-        }}
-        value={carbogidrate}
-        placeholder="Carbonoh"
       />
       <RecordInputBig
-        min={1}
-        type={'number'}
-        onChange={(e) => {
-          setProtein(e.target.value);
-        }}
-        value={protein}
+        id={`products.protein${dataIndex}`}
+        name={`products.protein${dataIndex}`}
         placeholder="Protein"
+        min={1}
+        type="number"
       />
-      <SubInputBlock>
-        <SubInput
-          min={1}
-          type={'number'}
-          onChange={(e) => {
-            setFat(e.target.value);
-          }}
-          value={fat}
-          placeholder="Fat"
-        />
-        <SubInput
-          min={1}
-          type={'number'}
-          onChange={(e) => {
-            setColories(e.target.value);
-          }}
-          value={calories}
-          placeholder="Calories"
-        />
-        <svg
-          style={{
-            display: 'inline-block',
-            width: '20px',
-            height: ' 20px',
-            fill: 'white',
-          }}
-        >
-          <use href={`${sprite}#trash-delete`}></use>
-        </svg>
-      </SubInputBlock>
+      <RecordInputBig
+        id={`products.fat${dataIndex}`}
+        name={`products.fat${dataIndex}`}
+        placeholder="Fat"
+        min={1}
+        type="number"
+      />
+      <RecordInputBig
+        id={`products.calories${dataIndex}`}
+        name={`products.calories${dataIndex}`}
+        placeholder="Calories"
+        min={1}
+        type="number"
+      />
+      <svg
+        style={{
+          display: 'inline-block',
+          width: '20px',
+          height: ' 20px',
+          fill: 'white',
+        }}
+        data-set={dataIndex}
+        onClick={(e) => {
+          const index = e.currentTarget.dataset.set;
+          console.log(index);
+          if (index === '0') {
+            resetForm();
+            return;
+          }
+          remove(index);
+        }}
+      >
+        <use href={`${sprite}#trash-delete`}></use>
+      </svg>
     </InputBlock>
   );
 };

@@ -4,6 +4,7 @@ import { getFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { Record } from '../ReacordMealPopUp/Record';
 import { Container, DesktopContainer, Title } from './Planner.styled';
 import { PlannerCard } from './PlannerCard/PlannerCard';
+import sprite from '../../assets/images/sprite.svg';
 
 import {
   selectBreakfast,
@@ -14,12 +15,18 @@ import {
 } from '../../redux/dailyFoodStatistics/foodSelectors';
 
 export const Planner = () => {
-  const iconPath = 'src/assets/images/sprite.svg';
   const [foodType, setFoodType] = useState('');
   const breakfast = useSelector(selectBreakfast);
   const lunch = useSelector(selectLunch);
   const dinner = useSelector(selectDinner);
   const snack = useSelector(selectSnack);
+
+  const [name, setName] = useState('');
+  const [calories, setCalories] = useState('');
+  const [carbogidrate, setCarbogidrate] = useState('');
+  const [protein, setProtein] = useState('');
+  const [fat, setFat] = useState('');
+  const [productId, setProductId] = useState('');
   const dispatch = useDispatch();
 
   const totalFatBreakfast = breakfast?.reduce(
@@ -85,7 +92,8 @@ export const Planner = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '5px',
-          marginBottom: '20px',
+          marginBottom: '16px',
+          maxWidth: '1372px',
         }}
       >
         <svg
@@ -97,11 +105,26 @@ export const Planner = () => {
             rotate: '180deg',
           }}
         >
-          <use href={`${iconPath}#icon-arrowright`}></use>
+          <use href={`${sprite}#icon-arrowright`}></use>
         </svg>
         <Title>Diary</Title>
       </div>
-      {isOpen ? <Record type={foodType} /> : null}
+      {isOpen ? (
+        <Record
+          type={foodType}
+          name={name}
+          calories={calories}
+          carbogidrate={carbogidrate}
+          protein={protein}
+          fat={fat}
+          productId={productId}
+          setName={setName}
+          setCalories={setCalories}
+          setCarbogidrate={setCarbogidrate}
+          setProtein={setProtein}
+          setFat={setFat}
+        />
+      ) : null}
       <DesktopContainer>
         <PlannerCard
           totalCarbs={totalCarbsBreakfast}
@@ -111,6 +134,12 @@ export const Planner = () => {
           title={'Breakfast'}
           typefood={'breakfast'}
           setFoodType={setFoodType}
+          setName={setName}
+          setCalories={setCalories}
+          setCarbogidrate={setCarbogidrate}
+          setProtein={setProtein}
+          setFat={setFat}
+          setProductId={setProductId}
         />
         <PlannerCard
           totalCarbs={totalCarbsLunch}
@@ -120,6 +149,12 @@ export const Planner = () => {
           title={'Lunch'}
           typefood={'lunch'}
           setFoodType={setFoodType}
+          setName={setName}
+          setCalories={setCalories}
+          setCarbogidrate={setCarbogidrate}
+          setProtein={setProtein}
+          setFat={setFat}
+          setProductId={setProductId}
         />
         <PlannerCard
           totalCarbs={totalCarbsDinner}
@@ -129,6 +164,12 @@ export const Planner = () => {
           title={'Dinner'}
           typefood={'dinner'}
           setFoodType={setFoodType}
+          setName={setName}
+          setCalories={setCalories}
+          setCarbogidrate={setCarbogidrate}
+          setProtein={setProtein}
+          setFat={setFat}
+          setProductId={setProductId}
         />
         <PlannerCard
           totalCarbs={totalCarbsSnack}
@@ -138,6 +179,12 @@ export const Planner = () => {
           title={'Snack'}
           typefood={'snack'}
           setFoodType={setFoodType}
+          setName={setName}
+          setCalories={setCalories}
+          setCarbogidrate={setCarbogidrate}
+          setProtein={setProtein}
+          setFat={setFat}
+          setProductId={setProductId}
         />
       </DesktopContainer>
     </Container>
