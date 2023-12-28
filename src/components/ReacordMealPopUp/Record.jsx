@@ -19,6 +19,7 @@ import {
   CancelButton,
 } from './Reacord.styled';
 import sprite from '../../assets/images/sprite.svg';
+import { capitalize } from '@mui/material';
 
 export const Record = ({
   type,
@@ -65,8 +66,9 @@ export const Record = ({
             marginTop: '24px',
           }}
         >
+          {/* виправити картинки!!!!!! */}
           <MealImage src="src/assets/images/Breakfast.png" />
-          <MealTitle>{secondType === undefined ? secondType : type}</MealTitle>
+          <MealTitle>{capitalize(type)}</MealTitle>
         </MealContainer>
         <form onSubmit={formHandler}>
           <InputBlock>
