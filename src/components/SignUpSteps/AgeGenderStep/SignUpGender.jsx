@@ -1,4 +1,4 @@
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import image from '../../../assets/backgroundImages/genderAge.png';
 import {
@@ -15,6 +15,8 @@ import {
   CustomRadio,
   StyledInput,
   StyledErrorMessage,
+  GenderWrap,
+  StyledForm,
 } from './SelectGenderAge.styled';
 
 const genderAgeSchema = Yup.object().shape({
@@ -39,33 +41,33 @@ function SelectGender({ onForm, onBackPage }) {
           onSubmit={onForm}
         >
           {() => (
-            <Form>
+            <StyledForm>
               <RadioWrapper>
                 <Text>Gender</Text>
-                <CustomLabel>
-                  <CustomRadio type="radio" name="gender" value="male" />
-                  Male
-                </CustomLabel>
-                <CustomLabel>
-                  <CustomRadio type="radio" name="gender" value="female" />
-                  Female
-                </CustomLabel>
+                <GenderWrap>
+                  <CustomLabel>
+                    <CustomRadio type="radio" name="gender" value="male" />
+                    Male
+                  </CustomLabel>
+                  <CustomLabel>
+                    <CustomRadio type="radio" name="gender" value="female" />
+                    Female
+                  </CustomLabel>
+                </GenderWrap>
                 <ErrorMessage name="gender" component={StyledErrorMessage} />
               </RadioWrapper>
               <Text>Your Age</Text>
-              <CustomLabel>
-                <StyledInput
-                  type="number"
-                  name="age"
-                  placeholder="Enter your age"
-                />
-                <ErrorMessage name="age" component={StyledErrorMessage} />
-              </CustomLabel>
+              <StyledInput
+                type="number"
+                name="age"
+                placeholder="Enter your age"
+              />
+              <ErrorMessage name="age" component={StyledErrorMessage} />
               <NextButton type="submit">Next</NextButton>
               <BackButton type="button" onClick={onBackPage}>
                 Back
               </BackButton>
-            </Form>
+            </StyledForm>
           )}
         </Formik>
       </GenderAgeContent>

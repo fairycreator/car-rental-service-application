@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Field } from 'formik';
+import { Field, Form } from 'formik';
 import checkedIcon from '../../../assets/images/icons/checked-icon.svg';
 
 const colors = {
@@ -13,12 +13,9 @@ const colors = {
 };
 
 export const GenderAgeWrapper = styled.div`
-  margin: 0 auto;
-  padding: 10px;
-  background-color: var(--primary-color-black-one);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
 
   @media screen and (min-width: 834px) {
@@ -27,8 +24,6 @@ export const GenderAgeWrapper = styled.div`
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
-    margin: 0 auto;
     flex-direction: row;
     gap: 104px;
     justify-content: center;
@@ -51,7 +46,7 @@ export const Image = styled.img`
 
   @media screen and (min-width: 1440px) {
     width: 592px;
-    height: 588px;
+    height: 570px;
   }
 `;
 
@@ -69,7 +64,7 @@ export const GenderAgeContent = styled.div`
 
 //Title
 export const Title = styled.h1`
-  color: var(--color-primary-white, #fff);
+  color: var(--primary-color-white);
   font-size: 24px;
   font-weight: 500;
   line-height: 1.25;
@@ -90,14 +85,14 @@ export const Title = styled.h1`
 
 //Subtitle
 export const Subtitle = styled.p`
-  color: var(--color-primary-gray, #b6b6b6);
+  color: var(--primary-color-grey);
   font-size: 18px;
   font-weight: 400;
   line-height: 1.33;
   margin-bottom: 24px;
 
   @media screen and (min-width: 834px) {
-    width: 444px;
+    width: 360px;
     text-align: center;
     font-size: 22px;
     line-height: 1.45;
@@ -108,23 +103,45 @@ export const Subtitle = styled.p`
   }
 `;
 
-export const RadioWrapper = styled.div`
+export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 20px;
 
-  @media (min-width: 480px) {
-    // For tablets
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  @media screen and (min-width: 834px) {
+    width: 380px;
   }
 
-  @media (min-width: 1024px) {
-    // For desktops
-    flex-direction: column;
+  @media screen and (min-width: 1440px) {
+    width: 212px;
+  }
+`;
+
+export const RadioWrapper = styled.div`
+  /* display: flex;
+  flex-direction: column; */
+  margin-bottom: 24px;
+  /* gap: 12px; */
+  width: 234px;
+
+  @media screen and (min-width: 834px) {
+    /* align-items: center; */
+  }
+
+  @media screen and (min-width: 1440px) {
     align-items: flex-start;
+  }
+`;
+
+export const GenderWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media screen and (min-width: 1440px) {
+    gap: 16px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
   }
 `;
 
@@ -153,12 +170,12 @@ export const NextButton = styled.button`
   display: block;
   width: 100%;
   padding: 8px 10px;
-  margin-top: 20px;
+  margin-top: 40px;
   border-radius: 12px;
   border: none;
   text-decoration: none;
-  background: var(--color-primary-green-lite, #e3ffa8);
-  color: var(--color-primary-black-2, #0f0f0f);
+  background: var(--primary-color-green-lite);
+  color: var(--primary-color-black-two);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -168,26 +185,22 @@ export const NextButton = styled.button`
   &:focus {
     background-color: var(--secondary-color-yellow);
   }
-
-  @media screen and (min-width: 834px) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
+  transition: background-color, var(--transition-dur-and-func);
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-color-yellow);
   }
 `;
 
 export const BackButton = styled.button`
   display: block;
   width: 100%;
-  padding: 8px 10px;
   margin-top: 20px;
-  border-radius: 12px;
+  margin-bottom: 24px;
   border: none;
   text-decoration: none;
   background: transparent;
-  color: #b6b6b6;
+  color: var(--primary-color-grey);
   text-align: center;
   font-size: 14px;
   font-weight: 500;
@@ -195,15 +208,7 @@ export const BackButton = styled.button`
   transition: background-color, var(--transition-dur-and-func);
   &:hover,
   &:focus {
-    background-color: transparent;
-  }
-
-  @media screen and (min-width: 834px) {
-    width: 100%;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 212px;
+    text-decoration: underline;
   }
 `;
 
@@ -213,15 +218,15 @@ export const CustomRadio = styled(Field)`
   margin-right: 8px;
   cursor: pointer;
   appearance: none;
-  background-color: #fff;
-  border: 1px solid var(--color-primary-gray, #b6b6b6);
+  background-color: transparent;
+  border: 1px solid var(--primary-color-grey);
   border-radius: 50%;
   width: 12px;
   height: 12px;
   position: relative;
 
   &:checked {
-    border-color: var(--color-primary-green-lite, #e3ffa8);
+    border-color: var(--primary-color-green-lite);
     background-image: url(${checkedIcon});
     background-position: center;
     background-repeat: no-repeat;
@@ -233,40 +238,43 @@ export const CustomRadio = styled(Field)`
 `;
 
 export const CustomLabel = styled.label`
-  font-family: 'Poppins', sans-serif;
-  color: var(--color-primary-white, #fff);
+  color: var(--primary-color-white);
   font-size: 14px;
-  line-height: 24px;
+  line-height: 1.42;
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-bottom: 16px;
+
+  @media screen and (min-width: 834px) {
+    justify-content: start;
+  }
 
   ${CustomRadio}:checked + & {
-    color: var(--color-primary-green-lite, #e3ffa8);
+    color: var(--primary-color-green-lite);
   }
 `;
 
 export const StyledFormLabel = styled.label`
   color: var(--color-primary-white, #fff);
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
   font-weight: 400;
   line-height: 20px;
-  text-align: left;
+  text-align: start;
   margin-bottom: 24px;
 `;
 
 //Input
+
+export const InputWrap = styled.div``;
 
 export const StyledInput = styled(Field)`
   position: relative;
   width: 100%;
   padding: 8px 10px;
   border-radius: 12px;
-  border: 2px solid var(--color-primary-green-lite, #e3ffa8);
-  background: var(--color-primary-black-2, #0f0f0f);
-  color: var(--primary-color-grey, #b6b6b6);
+  border: 2px solid var(--primary-color-green-lite);
+  background: transparent;
+  color: var(--primary-color-grey);
   font-size: 14px;
   line-height: 1.43;
 
@@ -291,25 +299,18 @@ export const StyledInput = styled(Field)`
   @media screen and (min-width: 1440px) {
     width: 212px;
   }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
 `;
 
 //Text
 export const Text = styled.p`
-  color: var(--color-primary-gray, #b6b6b6);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.33;
   margin-bottom: 12px;
-
-  @media screen and (min-width: 834px) {
-    width: 444px;
-    text-align: center;
-    line-height: 1.45;
-  }
-
-  @media screen and (min-width: 1440px) {
-    text-align: start;
-  }
+  color: var(--primary-color-white);
+  line-height: 1.42;
+  text-align: start;
 `;
 
 //Error
@@ -318,8 +319,6 @@ export const StyledErrorMessage = styled.div`
   font-size: var(--main-font-size);
   line-height: var(--main-line-height);
   letter-spacing: var(--main-letter-spacing);
-  margin-top: -10px;
-  margin-left: 9px;
+  margin-top: 5px;
   font-size: 12px;
-  font-family: 'Poppins400';
 `;
