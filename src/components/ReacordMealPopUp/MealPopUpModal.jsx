@@ -1,6 +1,5 @@
 import Modal from 'react-modal';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   MealContainer,
@@ -16,14 +15,9 @@ import {
 } from './Reacord.styled';
 import { addFood } from '../../redux/dailyFoodStatistics/foodOperations';
 import { AddIcon, ButtonAdd } from './MealPopUpModal.styled';
-import { ModalInput } from '../ModalInput/ModalInput';
 import sprite from '../../assets/images/sprite.svg';
-import { selectInputCounter } from '../../redux/dailyFoodStatistics/foodSelectors';
-import {
-  addInputHandler,
-  deleteInputHandler,
-} from '../../redux/dailyFoodStatistics/foodSlice';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FieldArray } from 'formik';
+import { InputBlock, RecordInputBig } from '../ModalInput/ModalInput.styled';
 
 const customStyles = {
   content: {
@@ -51,38 +45,30 @@ Modal.setAppElement('#root');
 export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
   const dispatch = useDispatch();
 
-  // const [name, setName] = useState('');
-  // const [calories, setColories] = useState('');
-  // const [carbogidrate, setCarbogidrate] = useState('');
-  // const [protein, setProtein] = useState('');
-  // const [fat, setFat] = useState('');
-
-  let inputCounter = useSelector(selectInputCounter);
-
-  const arr = {
-    typeFood: typefood,
-    userFood: [
-      // {
-      //   name,
-      //   calories,
-      //   nutrition: { carbogidrate, protein, fat },
-      // },
-    ],
+  const initialCard = {
+    name: '',
+    carbogidrate: '',
+    protein: '',
+    fat: '',
+    calories: '',
   };
 
-  const handleAddMore = () => {
-    const index = inputCounter.length - 1;
-    const counter = inputCounter[index] + 1;
-    dispatch(addInputHandler(counter));
-  };
+  const sendProducts = (values) => {
+    let arr = {
+      typeFood: typefood,
+      userFood: values.products.map((product) => ({
+        name: product.name,
+        calories: product.calories,
+        nutrition: {
+          carbogidrate: product.carbogidrate,
+          protein: product.protein,
+          fat: product.fat,
+        },
+      })),
+    };
 
-  const handleDeleteInput = (e, resetForm) => {
-    const index = e.currentTarget.dataset.set;
-    if (index === '0') {
-      resetForm();
-      return;
-    }
-    dispatch(deleteInputHandler(index));
+    dispatch(addFood(arr));
+    closeModal();
   };
 
   return (
@@ -100,51 +86,98 @@ export const MealPopUpModal = ({ stateModal, closeModal, typefood }) => {
             {/* {secondType === undefined ? secondType : type} */}
           </MealTitle>
         </MealContainer>
-        {inputCounter.map((item, i) => {
-          return (
-            <Formik
-              key={i}
-              initialValues={{
-                name: '',
-                carbogidrate: '',
-                protein: '',
-                fat: '',
-                calories: '',
-                productId: '',
-              }}
-              onSubmit={(values, { resetForm }) => {
-                console.log(values);
-                dispatch(addFood(arr));
-                closeModal();
-                resetForm();
-              }}
-            >
-              {({ resetForm }) => {
-                return (
-                  <Form>
-                    <ModalInput
-                      dataIndex={i}
-                      handleDeleteInput={handleDeleteInput}
-                      resetForm={resetForm}
-                    />
-                    <ButtonBlock>
-                      <Button type="submit">Confirm</Button>
-                      <CancelButton onClick={closeModal} type="button">
-                        Cancel
-                      </CancelButton>
-                    </ButtonBlock>
-                  </Form>
-                );
-              }}
-            </Formik>
-          );
-        })}
-        <ButtonAdd onClick={handleAddMore} type="button">
-          <AddIcon>
-            <use href={`${sprite}#icon-add-converted`}></use>
-          </AddIcon>
-          Add more
-        </ButtonAdd>
+
+        <Formik
+          initialValues={{ products: [initialCard] }}
+          onSubmit={(values) => sendProducts(values)}
+        >
+          {({ values }) => (
+            <Form>
+              <FieldArray name="products">
+                {({ remove, push }) => (
+                  <div>
+                    {values.products.map((product, index) => (
+                      <InputBlock key={index}>
+                        <RecordInputBig
+                          // id={`products.${dataIndex}.name`}
+                          name={`products.${index}.name`}
+                          placeholder="The name of the product or dish"
+                          value={values.products[index].name}
+                        />
+                        <RecordInputBig
+                          // id={`products.carbogidrate${dataIndex}`}
+                          name={`products.${index}.carbogidrate`}
+                          placeholder="Carbonoh."
+                          value={values.products[index].carbogidrate}
+                          type="number"
+                          min={1}
+                        />
+                        <RecordInputBig
+                          // id={`products.protein${dataIndex}`}
+                          name={`products.${index}.protein`}
+                          placeholder="Protein"
+                          value={values.products[index].protein}
+                          min={1}
+                          type="number"
+                        />
+                        <RecordInputBig
+                          // id={`products.fat${dataIndex}`}
+                          name={`products.${index}.fat`}
+                          placeholder="Fat"
+                          value={values.products[index].fat}
+                          min={1}
+                          type="number"
+                        />
+                        <RecordInputBig
+                          // id={`products.calories${dataIndex}`}
+                          name={`products.${index}.calories`}
+                          placeholder="Calories"
+                          value={values.products[index].calories}
+                          min={1}
+                          type="number"
+                        />
+                        <button
+                          data-set={index}
+                          type="button"
+                          onClick={(e) => {
+                            const index = e.currentTarget.dataset.set;
+                            if (values.products.length === 1) {
+                              closeModal();
+                            }
+                            remove(index);
+                          }}
+                        >
+                          <svg
+                            style={{
+                              display: 'inline-block',
+                              width: '20px',
+                              height: ' 20px',
+                              fill: 'white',
+                            }}
+                          >
+                            <use href={`${sprite}#trash-delete`}></use>
+                          </svg>
+                        </button>
+                      </InputBlock>
+                    ))}
+                    <ButtonAdd type="button" onClick={() => push(initialCard)}>
+                      <AddIcon>
+                        <use href={`${sprite}#icon-add-converted`}></use>
+                      </AddIcon>
+                      Add more
+                    </ButtonAdd>
+                  </div>
+                )}
+              </FieldArray>
+              <ButtonBlock>
+                <Button type="submit">Confirm</Button>
+                <CancelButton onClick={closeModal} type="button">
+                  Cancel
+                </CancelButton>
+              </ButtonBlock>
+            </Form>
+          )}
+        </Formik>
       </ContentBlock>
     </Modal>
   );

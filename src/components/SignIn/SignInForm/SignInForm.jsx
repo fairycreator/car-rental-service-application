@@ -86,7 +86,7 @@ const SignInForm = () => {
                 />
                 <IconWrapped>
                   <SvgIconEye onClick={togglePassInput}>
-                    <image href={showPassword ? iconeyeoff : iconeye} />
+                    <image href={showPassword ? iconeye : iconeyeoff} />
                   </SvgIconEye>
                 </IconWrapped>
               </LabelWrap>

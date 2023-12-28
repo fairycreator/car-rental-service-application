@@ -42,10 +42,12 @@ export const deleteFood = createAsyncThunk(
 export const updateFood = createAsyncThunk(
   'dailyStatisticsFood/updateFood',
   async ({ id, food }, thunkAPI) => {
+    console.log(id);
+    console.log(food);
     const { token } = thunkAPI.getState().auth;
     setAuthHeader(token);
 
-    const response = await axios.put(`/user/food-intake/${id}`, food);
+    const response = await axios.put(`/user/food-intake/${id}`, { ...food });
     return response.data;
   }
 );

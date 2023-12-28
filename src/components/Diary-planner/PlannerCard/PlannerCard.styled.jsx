@@ -179,7 +179,7 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const EditWrapper = styled.div`
+export const EditWrapper = styled.button`
   display: flex;
   gap: 6px;
   height: 20px;
