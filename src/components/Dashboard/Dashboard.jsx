@@ -36,9 +36,12 @@ import {
 } from '../../redux/monthStatistics/dashboardSelectors';
 import { getMonthStatistics } from '../../redux/monthStatistics/dashboardOperations';
 import { months } from '../../helpers/dashboard/common';
-import { getAvarageValue } from '../../helpers/dashboard/getAvarageValue';
 import { getAvarageValueCalories } from '../../helpers/dashboard/getAvarageValueCalories';
 import { cutQuery } from '../../helpers/dashboard/cutQuery';
+
+import { selectUserWeight } from '../../redux/auth/authSelectors';
+import { getAvarageValueWater } from '../../helpers/dashboard/getAvarageValueWater';
+import { getAvarageValueWeight } from '../../helpers/dashboard/getAvarageValueWeight';
 
 const date = new Date();
 let currentMonth = months[date.getMonth()];
@@ -50,6 +53,8 @@ export const Dashboard = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
+  const changedWeight = useSelector(selectUserWeight);
+  
   const location = useLocation();
   const backLink = location?.state?.from ?? '/';
 
@@ -132,7 +137,9 @@ export const Dashboard = () => {
                   <Value> Water </Value>
                   <Text>
                     Average value:{' '}
-                    <AverageValue>{getAvarageValue(water)} ml</AverageValue>
+                    <AverageValue>
+                      {getAvarageValueWater(water)} ml
+                    </AverageValue>
                   </Text>
                 </ValueWrapper>
                 <ScrollChart style={{ overflowX: 'auto' }}>
@@ -147,11 +154,13 @@ export const Dashboard = () => {
                 <Value> Weight </Value>
                 <Text>
                   Average value:{' '}
-                  <AverageValue>{getAvarageValue(weight)} kg</AverageValue>
+                  <AverageValue>
+                    {getAvarageValueWeight(weight, changedWeight)} kg
+                  </AverageValue>
                 </Text>
               </ValueWrapper>
               <ScrollChart>
-                <WeightTable month={month} />
+                <WeightTable month={month} changedWeight={changedWeight} />
               </ScrollChart>
             </ChartWrapper>
           </DashboardWrapper>

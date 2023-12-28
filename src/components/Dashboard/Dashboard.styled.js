@@ -124,7 +124,7 @@ export const LineChartsBox = styled.div`
   border-radius: 12px;
   padding-top: 24px;
   padding-right: 30px;
-  padding-bottom: 24px;
+  padding-bottom: 0px;
   padding-left: 14px;
 
   @media screen and (min-width: 834px) {
