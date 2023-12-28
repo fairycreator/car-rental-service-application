@@ -29,9 +29,26 @@ export const PlannerCard = ({
   totalCarbs,
   totalProtein,
   totalFat,
+  setProductId,
+  setName,
+  setCalories,
+  setCarbogidrate,
+  setProtein,
+  setFat,
 }) => {
   const dispatch = useDispatch();
-  const onOpenHandler = () => {
+
+  const onOpenEditHandler = (e) => {
+    const id = e.currentTarget.dataset.set;
+    // const foodtype = `${typefood}`;
+    const selectedMeal = meal.find((item) => item._id === id);
+    setName(selectedMeal.name);
+    setCalories(selectedMeal.calories);
+    setCarbogidrate(selectedMeal.nutrition.carbogidrate);
+    setProtein(selectedMeal.nutrition.protein);
+    setFat(selectedMeal.nutrition.fat);
+    setProductId(id);
+    setFoodType(`${typefood.toLowerCase()}`);
     dispatch(openHandler(true));
   };
   return (
@@ -53,7 +70,8 @@ export const PlannerCard = ({
           </MealSubWrapper>
         </MealSubscription>
       </Wrapper>
-      <MealDashbord onClick={() => setFoodType(`${typefood}`)}>
+
+      <MealDashbord>
         {meal?.length > 0 ? (
           meal.map((item, index) => {
             return (
@@ -71,7 +89,7 @@ export const PlannerCard = ({
                     Fat: {item.nutrition.fat}
                   </RenderContainerItem>
                 </RenderContainer>
-                <EditWrapper>
+                <EditWrapper data-set={item._id} onClick={onOpenEditHandler}>
                   <svg style={{ width: '16px', height: '16px' }}>
                     <use href={`${sprite}#edit-2`}></use>
                   </svg>
@@ -90,7 +108,7 @@ export const PlannerCard = ({
               maxHeight: '20px',
             }}
           >
-            <AddMore onClick={onOpenHandler}>Record your meal</AddMore>
+            <AddMore>Record your meal</AddMore>
             <svg
               style={{
                 display: 'inline-block',
@@ -103,6 +121,7 @@ export const PlannerCard = ({
             </svg>
           </div>
         )}
+
         {meal?.length > 0 ? (
           <div style={{ display: 'flex' }}>
             <Numeration>{meal.length + 1}</Numeration>
@@ -115,7 +134,7 @@ export const PlannerCard = ({
                 maxHeight: '20px',
               }}
             >
-              <AddMore onClick={onOpenHandler}>Record your meal</AddMore>
+              <AddMore>Record your meal</AddMore>
               <svg
                 style={{
                   display: 'inline-block',

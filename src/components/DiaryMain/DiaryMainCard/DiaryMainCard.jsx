@@ -17,6 +17,7 @@ import {
 import sprite from '../../../assets/images/sprite.svg';
 import { useState } from 'react';
 import { MealPopUpModal } from '../../ReacordMealPopUp/MealPopUpModal';
+import { capitalize } from '@mui/material';
 
 export const DiaryMainCard = ({
   meal,
@@ -47,7 +48,7 @@ export const DiaryMainCard = ({
       />
       <TitleBlock>
         <MealImage src={src} />
-        <MealTitle>{title}</MealTitle>
+        <MealTitle>{capitalize(title)}</MealTitle>
       </TitleBlock>
       <FoodBlock>
         {meal?.length > 0 ? (
